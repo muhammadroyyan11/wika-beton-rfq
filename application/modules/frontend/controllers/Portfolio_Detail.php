@@ -15,7 +15,8 @@ class Portfolio_Detail extends CI_Controller
   {
     $data = [
       'title' => 'Detail Portfolio',
-      'detail_portfolio' => $this->db->get('portfolio')->result_array()
+      'detail_portfolio' => $this->db->get('portfolio')->result_array(),
+      'company' => $this->db->get('company')->result_array(),
     ];
     $this->frontend->load('frontend/template', 'frontend/detail_portfolio/detail_portfolio', $data);
   }

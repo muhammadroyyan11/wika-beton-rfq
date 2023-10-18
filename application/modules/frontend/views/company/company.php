@@ -34,81 +34,35 @@
             <div class="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
                     <li data-filter="*" class="filter-active">Seluruh Manajement</li>
-                    <li data-filter=".filter-head">Kepala Divisi</li>
-                    <li data-filter=".filter-spv">Supervisi</li>
-                    <li data-filter=".filter-worker">Pekerja</li>
+                    <?php foreach ($pimpinan as $data): ?>
+                        <li data-filter=".<?= strtolower(str_replace(' ', '-', $data["jabatan"])) ?>">
+                            <?= $data["jabatan"] ?>
+                        </li>
+                    <?php endforeach; ?>
+                    <!-- <li data-filter=".filter-spv">Supervisi</li>
+                    <li data-filter=".filter-worker">Pekerja</li> -->
                 </ul>
             </div>
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-head"> 
-                <img src="<?= base_url() ?>assets/front/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="" /> //image
-                <div class="portfolio-info">
-                    <h4>Kepala Divisi</h4> //role
-                    <p>Bambang Suseno</p> // name
-                    <a href="<?= base_url() ?>assets/front/img/portfolio/portfolio-1.jpg" //image
-                        data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Kepala Divisi"
-                        style="right: 10px;"><i class="bx bx-plus"></i></a>
+            <?php foreach ($pimpinan as $data): ?>
+                <div class="col-lg-4 col-md-6 portfolio-item <?= strtolower(str_replace(' ', '-', $data["jabatan"])) ?>">
+                    <img src="<?= base_url() ?>/_temp/uploads/img/<?= $data['image'] ?>" class="img-fluid" alt=""
+                        style="width: 286; height: auto;" />
+                    <div class="portfolio-info">
+                        <h4>
+                            <?= $data['jabatan'] ?>
+                        </h4>
+                        <p>
+                            <?= $data['nama'] ?>
+                        </p>
+                        <a href="<?= base_url() ?>/_temp/uploads/img/<?= $data['image'] ?>" data-gallery="portfolioGallery"
+                            class="portfolio-lightbox preview-link" title="<?= $data['jabatan'] ?>" style="right: 10px;"><i
+                                class="bx bx-plus"></i></a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-spv">
-                <img src="<?= base_url() ?>assets/front/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                    <h4>Supervisi</h4>
-                    <p>Anang gaga</p>
-                    <a href="<?= base_url() ?>assets/front/img/portfolio/portfolio-1.jpg"
-                        data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Supervisi"
-                        style="right: 10px;"><i class="bx bx-plus"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-spv">
-                <img src="<?= base_url() ?>assets/front/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                    <h4>Supervisi</h4>
-                    <p>Anang gigi</p>
-                    <a href="<?= base_url() ?>assets/front/img/portfolio/portfolio-1.jpg"
-                        data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Supervisi"
-                        style="right: 10px;"><i class="bx bx-plus"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-worker">
-                <img src="<?= base_url() ?>assets/front/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                    <h4>Perkerja</h4>
-                    <p>Ilham 1</p>
-                    <a href="<?= base_url() ?>assets/front/img/portfolio/portfolio-3.jpg"
-                        data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Perkerja"
-                        style="right: 10px;"><i class="bx bx-plus"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-worker">
-                <img src="<?= base_url() ?>assets/front/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                    <h4>Perkerja</h4>
-                    <p>Ilham 2</p>
-                    <a href="<?= base_url() ?>assets/front/img/portfolio/portfolio-3.jpg"
-                        data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Perkerja"
-                        style="right: 10px;"><i class="bx bx-plus"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-worker">
-                <img src="<?= base_url() ?>assets/front/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                    <h4>Perkerja</h4>
-                    <p>Ilham 3</p>
-                    <a href="<?= base_url() ?>assets/front/img/portfolio/portfolio-3.jpg"
-                        data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Perkerja"
-                        style="right: 10px;"><i class="bx bx-plus"></i></a>
-                </div>
-            </div>
-
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

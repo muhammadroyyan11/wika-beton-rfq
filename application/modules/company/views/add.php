@@ -24,6 +24,12 @@
             <div id="misi"></div>
           </div>
 
+          <div class="form-group">
+            <label>Desc Company</label>
+            <textarea class="form-control text-editor" rows="3" data-original-label="desc_company" name="desc_company"></textarea>
+            <div id="desc_company"></div>
+          </div>
+
           <input type="hidden" name="submit" value="add">
 
           <div class="text-right">

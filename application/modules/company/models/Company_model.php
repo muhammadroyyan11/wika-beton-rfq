@@ -16,9 +16,9 @@ class Company_model extends MY_Model{
 
   private $table        = "company";
   private $primary_key  = "id";
-  private $column_order = array('name_company', 'visi', 'misi');
+  private $column_order = array('name_company', 'visi', 'misi', 'desc_company');
   private $order        = array('company.id'=>"DESC");
-  private $select       = "company.id,company.name_company,company.visi,company.misi";
+  private $select       = "company.id,company.name_company,company.visi,company.misi,company.desc_company";
 
 public function __construct()
 	{
@@ -51,6 +51,11 @@ public function __construct()
     if($this->input->post("misi"))
         {
           $this->db->like("company.misi", $this->input->post("misi"));
+        }
+
+    if($this->input->post("desc_company"))
+        {
+          $this->db->like("company.desc_company", $this->input->post("desc_company"));
         }
 
       if(isset($_POST['order'])) // here order processing

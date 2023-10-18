@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>MC2 WIKA</title>
+    <title>
+        <?= $company[0]['name_company'] ?> WIKA
+    </title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -14,7 +16,9 @@
     <link href="<?= base_url() ?>assets/front/img/wika/LOGO_MC_2_FIX.png" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="<?= base_url() ?>assets/front/vendor/aos/aos.css" rel="stylesheet" />
@@ -37,8 +41,11 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
             <h1 class="logo">
-                <a href="index.html" class="logo"><img src="<?= base_url() ?>assets/front/img/wika/LOGO_MC_2_FIX.png" alt="" /></a>
-                <a href="index.html">MC2 <span>WIKA</span></a>
+                <a href="index.html" class="logo"><img src="<?= base_url() ?>assets/front/img/wika/LOGO_MC_2_FIX.png"
+                        alt="" /></a>
+                <a href="index.html">
+                    <?= $company[0]['name_company'] ?> <span>WIKA</span>
+                </a>
             </h1>
             <!-- Uncomment below if you prefer to use an image logo -->
 
@@ -48,23 +55,25 @@
                         <a <?= $this->uri->segment(1) == 'home' || $this->uri->segment(1) == '' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="home">Beranda</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a <?= $this->uri->segment(1) == 'company' || $this->uri->segment(1) == 'home#about' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a <?= $this->uri->segment(1) == 'company' || $this->uri->segment(1) == 'home#about' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Perusahaan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= site_url('home#about') ?>">Tentang Perusahaan</a></li>
+                            <li><a class="dropdown-item" href="<?= site_url('home#about') ?>">Tentang Perusahaan</a>
+                            </li>
                             <li><a class="dropdown-item" href="<?= site_url('company') ?>">Struktur Perusahaan</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a <?= $this->uri->segment(1) == 'product' || $this->uri->segment(1) == '' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('product') ?>">Produk &
+                        <a <?= $this->uri->segment(1) == 'product' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('product') ?>">Produk &
                             Jasa</a>
                     </li>
                     <li>
-                        <a <?= $this->uri->segment(1) == 'portfolio' || $this->uri->segment(1) == '' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('portfolio') ?>">Portfolio</a>
+                        <a <?= $this->uri->segment(1) == 'portfolio' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('portfolio') ?>">Portfolio</a>
                     </li>
                     <li>
-                        <a <?= $this->uri->segment(1) == 'contact' || $this->uri->segment(1) == '' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('contact') ?>">Hubungi
+                        <a <?= $this->uri->segment(1) == 'contact' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('contact') ?>">Hubungi
                             Kami</a>
                     </li>
                 </ul>
@@ -82,14 +91,18 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container footer-maps" style="width: 80%;">
-            <iframe class="mb-4 mb-lg-0 rounded-5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1634035798356!2d106.87440221744386!3d-6.242184299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3232a5eb1b5%3A0x3e5f3684ce6774b5!2sPT%20Wijaya%20Karya%20(Persero)%20Tbk!5e0!3m2!1sen!2sid!4v1696154654814!5m2!1sen!2sid" frameborder="0" style="border: 0; width: 100%; height: 384px" allowfullscreen></iframe>
+            <iframe class="mb-4 mb-lg-0 rounded-5"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1634035798356!2d106.87440221744386!3d-6.242184299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3232a5eb1b5%3A0x3e5f3684ce6774b5!2sPT%20Wijaya%20Karya%20(Persero)%20Tbk!5e0!3m2!1sen!2sid!4v1696154654814!5m2!1sen!2sid"
+                frameborder="0" style="border: 0; width: 100%; height: 384px" allowfullscreen></iframe>
         </div>
 
         <div class="footer-top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>MC2 WIKA<span>.</span></h3>
+                        <h3>
+                            <?= $company[0]['name_company'] ?> WIKA<span>.</span>
+                        </h3>
                         <p>
                             A108 Adam Street <br />
                             New York, NY 535022<br />
@@ -171,7 +184,9 @@
 
         <div class="container py-4">
             <div class="copyright">
-                &copy; Copyright <strong><span>MC2 WIKA</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>
+                        <?= $company[0]['name_company'] ?> WIKA
+                    </span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 Designed by
@@ -182,7 +197,8 @@
     <!-- End Footer -->
 
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="<?= base_url() ?>assets/front/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -201,7 +217,7 @@
     <script src="<?= base_url() ?>assets/front/js/form.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.summernote').summernote();
         });
     </script>

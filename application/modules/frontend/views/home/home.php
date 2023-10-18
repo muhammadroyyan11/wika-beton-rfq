@@ -3,7 +3,7 @@
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <div class="row">
             <div class="col">
-                <h1>Selamat Datang di MC2 <span>WIKA</span></h1>
+                <h1>Selamat Datang di <?= $company[0]['name_company'] ?> <span>WIKA</span></h1>
                 <h2>
                     PT WIKA Beton merupakan produsen beton pracetak terbesar di Indonesia, bahkan Asia Tenggara.
                 </h2>
@@ -76,7 +76,7 @@
                     <?= $company[0]['name_company'] ?> <span>WIKA</span>
                 </h3>
                 <p style="width: auto; text-justify: auto;">
-                    <?= $company[0]['desc'] ?>
+                    <?= $company[0]['desc_company'] ?>
                 </p>
             </div>
 
@@ -136,7 +136,7 @@
     <!-- End About Section -->
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
+    <!-- <section id="clients" class="clients section-bg">
         <div class="container" data-aos="zoom-in">
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
@@ -164,7 +164,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Clients Section -->
 </main>
 <!-- End #main -->

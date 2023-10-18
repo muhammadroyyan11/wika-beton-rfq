@@ -22,6 +22,11 @@
             <textarea class="form-control text-editor" rows="3" data-original-label="misi" name="misi" id="misi"><?=$misi?></textarea>
           </div>
         
+          <div class="form-group">
+            <label>Desc Company</label>
+            <textarea class="form-control text-editor" rows="3" data-original-label="desc_company" name="desc_company" id="desc_company"><?=$desc_company?></textarea>
+          </div>
+        
           <input type="hidden" name="submit" value="update">
 
           <div class="text-right">
