@@ -15,7 +15,7 @@
                     class="img-perusahaan" alt="" />
             </div>
             <p>
-                <?= $struktur_organisasi[0]['description']  ?>
+                <?= $struktur_organisasi[0]['description'] ?>
             </p>
         </div>
     </div>
@@ -34,11 +34,21 @@
             <div class="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
                     <li data-filter="*" class="filter-active">Seluruh Manajement</li>
-                    <?php foreach ($pimpinan as $data): ?>
-                        <li data-filter=".<?= strtolower(str_replace(' ', '-', $data["jabatan"])) ?>">
-                            <?= $data["jabatan"] ?>
-                        </li>
-                    <?php endforeach; ?>
+                    <?php
+                    $jabatanArray = array();
+                    foreach ($pimpinan as $data):
+                        if (!in_array($data["jabatan"], $jabatanArray)) {
+                            // Tampilkan elemen hanya jika belum ditampilkan sebelumnya
+                            ?>
+                            <li data-filter=".<?= strtolower(str_replace(' ', '-', $data["jabatan"])) ?>">
+                                <?= $data["jabatan"] ?>
+                            </li>
+                            <?php
+                            // Tambahkan nilai jabatan ke dalam array sementara
+                            $jabatanArray[] = $data["jabatan"];
+                        }
+                    endforeach;
+                    ?>
                     <!-- <li data-filter=".filter-spv">Supervisi</li>
                     <li data-filter=".filter-worker">Pekerja</li> -->
                 </ul>
