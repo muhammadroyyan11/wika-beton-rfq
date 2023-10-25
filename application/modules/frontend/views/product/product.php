@@ -4,19 +4,20 @@
             <h2>Produk & Jasa</h2>
             <h3>Berikut adalah <span>Produk & Jasa</span> kami</h3>
             <p style="width: auto; text-justify: distribute;">
-            <?= $header_product[0]['desc_header']  ?>
+                <?= $header_product[0]['desc_header'] ?>
             </p>
         </div>
 
         <div class="container">
-            <?php foreach ($product as $data): ?>
+            <?php foreach ($product as $key => $data): ?>
                 <div class="row mt-3 data-aos" fade-up"">
                     <div class="col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box" style="width: 100%;">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                            <div class="icon"><i class="bi bi-<?php echo ($key + 1); ?>-circle"></i></div>
                             <h4><a href="">
                                     <?= $data['name'] ?>
-                                </a></h4>
+                                </a>
+                            </h4>
                         </div>
                     </div>
 
