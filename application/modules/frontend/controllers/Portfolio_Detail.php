@@ -17,6 +17,9 @@ class Portfolio_Detail extends CI_Controller
       'title' => 'Detail Portfolio',
       'detail_portfolio' => $this->db->get('portfolio')->result_array(),
       'company' => $this->db->get('company')->result_array(),
+      'footer_alamat_utama' => $this->db->get('footer_alamat_utama')->result_array(),
+      'footer_alamat_cabang' => $this->db->get('footer_alamat_cabang')->result_array(),
+      'social_network' => $this->db->get('social_network')->result_array(),
     ];
     $this->frontend->load('frontend/template', 'frontend/detail_portfolio/detail_portfolio', $data);
   }

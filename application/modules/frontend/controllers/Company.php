@@ -19,6 +19,9 @@ class Company extends CI_Controller
             'company' => $this->db->get('company')->result_array(),
             'pimpinan' => $this->db->get('pimpinan')->result_array(),
             'struktur_organisasi' => $this->db->get('struktur_organisasi')->result_array(),
+            'footer_alamat_utama' => $this->db->get('footer_alamat_utama')->result_array(),
+            'footer_alamat_cabang' => $this->db->get('footer_alamat_cabang')->result_array(),
+            'social_network' => $this->db->get('social_network')->result_array(),
         ];
         // var_dump($data);
         $this->frontend->load('frontend/template', 'frontend/company/company', $data);

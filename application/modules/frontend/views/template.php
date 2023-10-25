@@ -104,22 +104,27 @@
                             <?= $company[0]['name_company'] ?> WIKA<span>.</span>
                         </h3>
                         <p>
-                            A108 Adam Street <br />
-                            New York, NY 535022<br />
-                            United States <br /><br />
-                            <strong>Phone:</strong> +1 5589 55488 55<br />
-                            <strong>Email:</strong> info@example.com<br />
+                            <?= $footer_alamat_utama[0]['street'] ?>
+                            <br /><br />
+                            <strong>Phone:</strong>
+                            <?= $footer_alamat_utama[0]['no_hp'] ?><br />
+                            <strong>Email:</strong>
+                            <?= $footer_alamat_utama[0]['email'] ?><br />
                         </p>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
+                        <h4>Alamat Cabang WIKA MC2</h4>
                         <ul>
-                            <li>
-                                <i class="bx bx-chevron-right"></i>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
+                            <?php foreach ($footer_alamat_cabang as $key => $data): ?>
+                                <li>
+                                    <i class="bx bx-chevron-right"></i>
+                                    <a href="#">
+                                        <?= $data['streets'] ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                            <!-- <li>
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="#">About us</a>
                             </li>
@@ -134,7 +139,7 @@
                             <li>
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="#">Privacy policy</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
 
@@ -143,39 +148,39 @@
                         <ul>
                             <li>
                                 <i class="bx bx-chevron-right"></i>
-                                <a href="#">Web Design</a>
+                                <a href="<?= site_url('home#about') ?>">Tentang Perusahaan</a>
                             </li>
                             <li>
                                 <i class="bx bx-chevron-right"></i>
-                                <a href="#">Web Development</a>
+                                <a href="<?= site_url('company') ?>">Struktur Perusahaan</a>
                             </li>
                             <li>
                                 <i class="bx bx-chevron-right"></i>
-                                <a href="#">Product Management</a>
+                                <a href="<?= site_url('product') ?>">Produk &
+                            Jasa</a>
                             </li>
                             <li>
                                 <i class="bx bx-chevron-right"></i>
-                                <a href="#">Marketing</a>
+                                <a href="<?= site_url('portfolio') ?>">Portfolio</a>
                             </li>
                             <li>
                                 <i class="bx bx-chevron-right"></i>
-                                <a href="#">Graphic Design</a>
+                                <a href="<?= site_url('contact') ?>">Hubungi
+                            Kami</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Social Networks</h4>
+                        <h4>Hubungi Kami di Social Media</h4>
                         <p>
-                            Cras fermentum odio eu feugiat lide par naso tierra
-                            videa magna derita valies
+                            kalian dapat mengikuti info dari kami di social media dibawah
                         </p>
                         <div class="social-links mt-3">
-                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            <?php foreach ($social_network as $key => $data): ?>
+                                <a href="<?= $data['link'] ?>" class="<?= $data['name'] ?>"><i
+                                        class="<?= $data['icon'] ?>"></i></a>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,9 @@ class Home extends CI_Controller
             'title' => 'Home Page',
             'kategori' => $this->db->get('kategori')->result_array(),
             'company' => $this->db->get('company')->result_array(),
+            'footer_alamat_utama' => $this->db->get('footer_alamat_utama')->result_array(),
+            'footer_alamat_cabang' => $this->db->get('footer_alamat_cabang')->result_array(),
+            'social_network' => $this->db->get('social_network')->result_array(),
         ];
         // var_dump($data);
         $this->frontend->load('frontend/template', 'frontend/home/home', $data);
