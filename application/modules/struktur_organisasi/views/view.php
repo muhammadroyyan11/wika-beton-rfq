@@ -7,6 +7,10 @@
       <div class="card-body">
         <table class="table table-bordered table-striped">
         <tr>
+          <td>Description</td>
+          <td><?=$description?></td>
+        </tr>
+        <tr>
           <td>Image</td>
           <td><?=is_image($image)?></td>
         </tr>

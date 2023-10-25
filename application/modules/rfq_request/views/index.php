@@ -373,6 +373,7 @@
       "order": [], //Initial no order.
       "ordering": true,
       "searching": false,
+      "sort":true,
       "info": true,
       "bLengthChange": false,
       oLanguage: {

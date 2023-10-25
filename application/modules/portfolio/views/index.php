@@ -26,6 +26,18 @@
                                           <input type="text" id="image" class="form-control form-control-sm" placeholder="Image" />
                                       </div>
 
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="client_name" class="form-control form-control-sm" placeholder="Client name" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="category" class="form-control form-control-sm" placeholder="Category" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="date" id="project_date" class="form-control form-control-sm" placeholder="Project date" />
+                                      </div>
+
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -39,6 +51,9 @@
 							<th>Name portfolio</th>
 							<th>Desc portfolio</th>
 							<th>Image</th>
+							<th>Client name</th>
+							<th>Category</th>
+							<th>Project date</th>
                     <th>#</th>
                   </tr>
                 </thead>
@@ -79,6 +94,9 @@
                                           data.name_portfolio = $("#name_portfolio").val();
                                                         data.desc_portfolio = $("#desc_portfolio").val();
                                                         data.image = $("#image").val();
+                                                        data.client_name = $("#client_name").val();
+                                                        data.category = $("#category").val();
+                                                        data.project_date = $("#project_date").val();
                                     }
               },
 
@@ -100,10 +118,25 @@
             "orderable": false
           },
 
+					{
+            "targets": 3,
+            "orderable": false
+          },
+
+					{
+            "targets": 4,
+            "orderable": false
+          },
+
+					{
+            "targets": 5,
+            "orderable": false
+          },
+
         {
           "className": "text-center",
           "orderable": false,
-          "targets": 3
+          "targets": 6
         },
       ],
     });
@@ -112,6 +145,9 @@
                         $("#name_portfolio").val("");
                   $("#desc_portfolio").val("");
                   $("#image").val("");
+                  $("#client_name").val("");
+                  $("#category").val("");
+                  $("#project_date").val("");
                     table.ajax.reload();
     });
 

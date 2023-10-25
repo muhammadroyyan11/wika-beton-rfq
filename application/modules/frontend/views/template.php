@@ -92,7 +92,7 @@
     <footer id="footer">
         <div class="container footer-maps" style="width: 80%;">
             <iframe class="mb-4 mb-lg-0 rounded-5"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1634035798356!2d106.87440221744386!3d-6.242184299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3232a5eb1b5%3A0x3e5f3684ce6774b5!2sPT%20Wijaya%20Karya%20(Persero)%20Tbk!5e0!3m2!1sen!2sid!4v1696154654814!5m2!1sen!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3635.8278290307626!2d107.32933686040643!3d-6.407082490159274!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e697506e082a525%3A0xcd79bfed173657e4!2sPabrik%20Wika%20Beton%20Karawang%20Timur!5e0!3m2!1sen!2sid!4v1697704517544!5m2!1sen!2sid"
                 frameborder="0" style="border: 0; width: 100%; height: 384px" allowfullscreen></iframe>
         </div>
 

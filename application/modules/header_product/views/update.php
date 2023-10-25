@@ -8,8 +8,8 @@
           <form action="<?=$action?>" id="form" autocomplete="off">
           
           <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Name" name="name" id="name" value="<?=$name?>">
+            <label>Desc header</label>
+            <textarea class="form-control text-editor" rows="3" data-original-label="desc_header" name="desc_header" id="desc_header"><?=$desc_header?></textarea>
           </div>
         
           <input type="hidden" name="submit" value="update">

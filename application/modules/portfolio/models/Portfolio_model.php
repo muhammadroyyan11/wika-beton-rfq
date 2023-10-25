@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:35*/
+/*| Generate By M-CRUD Generator 26/10/2023 00:00*/
 /*| Please DO NOT modify this information*/
 
 
@@ -16,9 +16,9 @@ class Portfolio_model extends MY_Model{
 
   private $table        = "portfolio";
   private $primary_key  = "id";
-  private $column_order = array('name_portfolio', 'desc_portfolio', 'image');
+  private $column_order = array('name_portfolio', 'desc_portfolio', 'image', 'client_name', 'category', 'project_date');
   private $order        = array('portfolio.id'=>"DESC");
-  private $select       = "portfolio.id,portfolio.name_portfolio,portfolio.desc_portfolio,portfolio.image";
+  private $select       = "portfolio.id,portfolio.name_portfolio,portfolio.desc_portfolio,portfolio.image,portfolio.client_name,portfolio.category,portfolio.project_date";
 
 public function __construct()
 	{
@@ -51,6 +51,21 @@ public function __construct()
     if($this->input->post("image"))
         {
           $this->db->like("portfolio.image", $this->input->post("image"));
+        }
+
+    if($this->input->post("client_name"))
+        {
+          $this->db->like("portfolio.client_name", $this->input->post("client_name"));
+        }
+
+    if($this->input->post("category"))
+        {
+          $this->db->like("portfolio.category", $this->input->post("category"));
+        }
+
+    if($this->input->post("project_date"))
+        {
+          $this->db->like("portfolio.project_date", date('Y-m-d',strtotime($this->input->post("project_date"))));
         }
 
       if(isset($_POST['order'])) // here order processing

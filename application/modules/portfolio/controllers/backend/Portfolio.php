@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:35*/
+/*| Generate By M-CRUD Generator 26/10/2023 00:00*/
 /*| Please DO NOT modify this information*/
 
 
@@ -47,6 +47,9 @@ function json()
                 $rows[] = $row->name_portfolio;
                 $rows[] = $row->desc_portfolio;
                 $rows[] = is_image($row->image);
+                $rows[] = $row->client_name;
+                $rows[] = $row->category;
+                $rows[] = date("d-m-Y",  strtotime($row->project_date));
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -95,6 +98,9 @@ function detail($id)
           "name_portfolio" => $row->name_portfolio,
           "desc_portfolio" => $row->desc_portfolio,
           "image" => $row->image,
+          "client_name" => $row->client_name,
+          "category" => $row->category,
+          "project_date" => $row->project_date,
     );
     $this->template->view("view",$data);
   }else{
@@ -110,6 +116,9 @@ function add()
                   'name_portfolio' => set_value("name_portfolio"),
                   'desc_portfolio' => set_value("desc_portfolio"),
                   'image' => set_value("image"),
+                  'client_name' => set_value("client_name"),
+                  'category' => set_value("category"),
+                  'project_date' => set_value("project_date"),
                   );
   $this->template->view("add",$data);
 }
@@ -124,14 +133,20 @@ function add_action()
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name_portfolio","* Name portfolio","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean|required");
-    $this->form_validation->set_rules("image","* Image","trim|xss_clean");
+    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean");
+    $this->form_validation->set_rules("image","* Image","trim|xss_clean|required");
+    $this->form_validation->set_rules("client_name","* Client name","trim|xss_clean|required");
+    $this->form_validation->set_rules("category","* Category","trim|xss_clean|required");
+    $this->form_validation->set_rules("project_date","* Project date","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name_portfolio'] = $this->input->post('name_portfolio',true);
       $save_data['desc_portfolio'] = $this->input->post('desc_portfolio',true);
       $save_data['image'] = $this->imageCopy($this->input->post('image',true),$_POST['file-dir-image']);
+      $save_data['client_name'] = $this->input->post('client_name',true);
+      $save_data['category'] = $this->input->post('category',true);
+      $save_data['project_date'] = date("Y-m-d",  strtotime($this->input->post('project_date', true)));
 
       $this->model->insert($save_data);
 
@@ -157,6 +172,9 @@ function update($id)
                   'name_portfolio' => set_value("name_portfolio", $row->name_portfolio),
                   'desc_portfolio' => set_value("desc_portfolio", $row->desc_portfolio),
                   'image' => set_value("image", $row->image),
+                  'client_name' => set_value("client_name", $row->client_name),
+                  'category' => set_value("category", $row->category),
+                  'project_date' => $row->project_date == "" ? "":date("Y-m-d",  strtotime($row->project_date)),
                   );
     $this->template->view("update",$data);
   }else {
@@ -174,14 +192,20 @@ function update_action($id)
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name_portfolio","* Name portfolio","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean|required");
-    $this->form_validation->set_rules("image","* Image","trim|xss_clean");
+    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean");
+    $this->form_validation->set_rules("image","* Image","trim|xss_clean|required");
+    $this->form_validation->set_rules("client_name","* Client name","trim|xss_clean|required");
+    $this->form_validation->set_rules("category","* Category","trim|xss_clean|required");
+    $this->form_validation->set_rules("project_date","* Project date","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name_portfolio'] = $this->input->post('name_portfolio',true);
       $save_data['desc_portfolio'] = $this->input->post('desc_portfolio',true);
       $save_data['image'] = $this->imageCopy($this->input->post('image',true),$_POST['file-dir-image']);
+      $save_data['client_name'] = $this->input->post('client_name',true);
+      $save_data['category'] = $this->input->post('category',true);
+      $save_data['project_date'] = date("Y-m-d",  strtotime($this->input->post('project_date', true)));
 
       $save = $this->model->change(dec_url($id), $save_data);
 

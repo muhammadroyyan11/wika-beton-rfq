@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:36*/
+/*| Generate By M-CRUD Generator 25/10/2023 23:31*/
 /*| Please DO NOT modify this information*/
 
 
@@ -47,7 +47,6 @@ function json()
                 $rows[] = $row->name_company;
                 $rows[] = $row->visi;
                 $rows[] = $row->misi;
-                $rows[] = $row->desc_company;
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -96,7 +95,6 @@ function detail($id)
           "name_company" => $row->name_company,
           "visi" => $row->visi,
           "misi" => $row->misi,
-          "desc_company" => $row->desc_company,
     );
     $this->template->view("view",$data);
   }else{
@@ -112,7 +110,6 @@ function add()
                   'name_company' => set_value("name_company"),
                   'visi' => set_value("visi"),
                   'misi' => set_value("misi"),
-                  'desc_company' => set_value("desc_company"),
                   );
   $this->template->view("add",$data);
 }
@@ -129,14 +126,12 @@ function add_action()
     $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean|required");
     $this->form_validation->set_rules("visi","* Visi","trim|xss_clean|required");
     $this->form_validation->set_rules("misi","* Misi","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_company","* Desc Company","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name_company'] = $this->input->post('name_company',true);
       $save_data['visi'] = $this->input->post('visi',true);
       $save_data['misi'] = $this->input->post('misi',true);
-      $save_data['desc_company'] = $this->input->post('desc_company',true);
 
       $this->model->insert($save_data);
 
@@ -162,7 +157,6 @@ function update($id)
                   'name_company' => set_value("name_company", $row->name_company),
                   'visi' => set_value("visi", $row->visi),
                   'misi' => set_value("misi", $row->misi),
-                  'desc_company' => set_value("desc_company", $row->desc_company),
                   );
     $this->template->view("update",$data);
   }else {
@@ -182,14 +176,12 @@ function update_action($id)
     $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean|required");
     $this->form_validation->set_rules("visi","* Visi","trim|xss_clean|required");
     $this->form_validation->set_rules("misi","* Misi","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_company","* Desc Company","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name_company'] = $this->input->post('name_company',true);
       $save_data['visi'] = $this->input->post('visi',true);
       $save_data['misi'] = $this->input->post('misi',true);
-      $save_data['desc_company'] = $this->input->post('desc_company',true);
 
       $save = $this->model->change(dec_url($id), $save_data);
 

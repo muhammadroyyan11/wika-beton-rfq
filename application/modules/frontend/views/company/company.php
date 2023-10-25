@@ -11,11 +11,11 @@
 
         <div class="structureOrganisation">
             <div class="col" data-aos="fade-right" data-aos-delay="100" style="hight: 510px;">
-                <img src="<?= base_url() ?>assets/front/img/wika/structureOrganisasi.png" class="img-perusahaan"
-                    alt="" />
+                <img src="<?= base_url() ?>/_temp/uploads/img/<?= $struktur_organisasi[0]['image'] ?>"
+                    class="img-perusahaan" alt="" />
             </div>
-            <p>Berdasarkan Surat Keputusan Nomor SK.01.01/WB-0A.0006/2023 tentang Struktur Organisasi PT Wijaya Karya
-                Beton Tbk Tahun 2023 yang ditetapkan di Jakarta pada 16 Juni 2023 dan disetujui oleh seluruh Direksi.
+            <p>
+                <?= $struktur_organisasi[0]['description']  ?>
             </p>
         </div>
     </div>
@@ -49,7 +49,7 @@
             <?php foreach ($pimpinan as $data): ?>
                 <div class="col-lg-4 col-md-6 portfolio-item <?= strtolower(str_replace(' ', '-', $data["jabatan"])) ?>">
                     <img src="<?= base_url() ?>/_temp/uploads/img/<?= $data['image'] ?>" class="img-fluid" alt=""
-                        style="width: 286; height: auto;" />
+                        style="height: auto; width: -moz-available;" />
                     <div class="portfolio-info">
                         <h4>
                             <?= $data['jabatan'] ?>

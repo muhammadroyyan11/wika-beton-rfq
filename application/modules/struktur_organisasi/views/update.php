@@ -8,6 +8,11 @@
           <form action="<?=$action?>" id="form" autocomplete="off">
           
           <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control text-editor" rows="3" data-original-label="description" name="description" id="description"><?=$description?></textarea>
+          </div>
+        
+          <div class="form-group">
             <label>Image</label>
             <input type="file" name="img" class="file-upload-default" data-id="image"/>
             <div class="input-group col-xs-12">

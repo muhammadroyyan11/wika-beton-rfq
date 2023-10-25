@@ -26,10 +26,6 @@
                                           <input type="text" id="misi" class="form-control form-control-sm" placeholder="Misi" />
                                       </div>
 
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="desc_company" class="form-control form-control-sm" placeholder="Desc Company" />
-                                      </div>
-
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -43,7 +39,6 @@
 							<th>Name company</th>
 							<th>Visi</th>
 							<th>Misi</th>
-							<th>desc_company</th>
                     <th>#</th>
                   </tr>
                 </thead>
@@ -84,7 +79,6 @@
                                           data.name_company = $("#name_company").val();
                                                         data.visi = $("#visi").val();
                                                         data.misi = $("#misi").val();
-                                                        data.desc_company = $("#desc_company").val();
                                     }
               },
 
@@ -118,7 +112,6 @@
                         $("#name_company").val("");
                   $("#visi").val("");
                   $("#misi").val("");
-                  $("#desc_company").val("");
                     table.ajax.reload();
     });
 

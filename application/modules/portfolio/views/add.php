@@ -32,6 +32,21 @@
             <div id="image"></div>
           </div>
 
+          <div class="form-group">
+            <label>Client name</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Client name" name="client_name" id="client_name">
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Category" name="category" id="category">
+          </div>
+
+          <div class="form-group">
+            <label>Project date</label>
+            <input type="date" class="form-control form-control-sm" placeholder="Project date" name="project_date" id="project_date">
+          </div>
+
           <input type="hidden" name="submit" value="add">
 
           <div class="text-right">

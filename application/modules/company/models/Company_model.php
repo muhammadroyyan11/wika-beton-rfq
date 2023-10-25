@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:36*/
+/*| Generate By M-CRUD Generator 25/10/2023 23:31*/
 /*| Please DO NOT modify this information*/
 
 
@@ -16,9 +16,9 @@ class Company_model extends MY_Model{
 
   private $table        = "company";
   private $primary_key  = "id";
-  private $column_order = array('name_company', 'visi', 'misi', 'desc_company');
+  private $column_order = array('name_company', 'visi', 'misi');
   private $order        = array('company.id'=>"DESC");
-  private $select       = "company.id,company.name_company,company.visi,company.misi,company.desc_company";
+  private $select       = "company.id,company.name_company,company.visi,company.misi";
 
 public function __construct()
 	{
@@ -51,11 +51,6 @@ public function __construct()
     if($this->input->post("misi"))
         {
           $this->db->like("company.misi", $this->input->post("misi"));
-        }
-
-    if($this->input->post("desc_company"))
-        {
-          $this->db->like("company.desc_company", $this->input->post("desc_company"));
         }
 
       if(isset($_POST['order'])) // here order processing

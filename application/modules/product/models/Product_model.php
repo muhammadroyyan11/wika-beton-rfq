@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:39*/
+/*| Generate By M-CRUD Generator 26/10/2023 00:15*/
 /*| Please DO NOT modify this information*/
 
 

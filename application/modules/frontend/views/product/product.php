@@ -4,10 +4,7 @@
             <h2>Produk & Jasa</h2>
             <h3>Berikut adalah <span>Produk & Jasa</span> kami</h3>
             <p style="width: auto; text-justify: distribute;">
-                DIDUKUNG oleh 14 pabrik dan 1 pabrik beton bergerak WIKA Beton memproduksi berbagai jenis precast
-                produk beton (misalnya Tiang PC, Tiang PC, Produk Beton Rel Kereta Api, Produk Beton Jembatan, Kelautan
-                Produk Beton, Produk Beton Bangunan, Produk Beton Hydro Structure, Dinding Penahan dan
-                Yang lain).
+            <?= $header_product[0]['desc_header']  ?>
             </p>
         </div>
 

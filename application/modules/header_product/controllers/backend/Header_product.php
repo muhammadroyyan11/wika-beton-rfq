@@ -7,13 +7,13 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:38*/
+/*| Generate By M-CRUD Generator 26/10/2023 00:06*/
 /*| Please DO NOT modify this information*/
 
 
-class Kategori extends Backend{
+class Header_product extends Backend{
 
-private $title = "Kategori";
+private $title = "Header Product";
 
 
 public function __construct()
@@ -22,12 +22,12 @@ public function __construct()
     'title' => $this->title,
    );
   parent::__construct($config);
-  $this->load->model("Kategori_model","model");
+  $this->load->model("Header_product_model","model");
 }
 
 function index()
 {
-  $this->is_allowed('kategori_list');
+  $this->is_allowed('header_product_list');
   $this->template->set_title($this->title);
   $this->template->view("index");
 }
@@ -35,7 +35,7 @@ function index()
 function json()
 {
   if ($this->input->is_ajax_request()) {
-    if (!is_allowed('kategori_list')) {
+    if (!is_allowed('header_product_list')) {
       show_error("Access Permission", 403,'403::Access Not Permission');
       exit();
     }
@@ -44,17 +44,17 @@ function json()
     $data = array();
     foreach ($list as $row) {
         $rows = array();
-                $rows[] = $row->name;
+                $rows[] = $row->desc_header;
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
-                      <a href="'.url("kategori/detail/".enc_url($row->id)).'" id="detail" class="btn btn-primary" title="'.cclang("detail").'">
+                      <a href="'.url("header_product/detail/".enc_url($row->id)).'" id="detail" class="btn btn-primary" title="'.cclang("detail").'">
                         <i class="mdi mdi-file"></i>
                       </a>
-                      <a href="'.url("kategori/update/".enc_url($row->id)).'" id="update" class="btn btn-warning" title="'.cclang("update").'">
+                      <a href="'.url("header_product/update/".enc_url($row->id)).'" id="update" class="btn btn-warning" title="'.cclang("update").'">
                         <i class="ti-pencil"></i>
                       </a>
-                      <a href="'.url("kategori/delete/".enc_url($row->id)).'" id="delete" class="btn btn-danger" title="'.cclang("delete").'">
+                      <a href="'.url("header_product/delete/".enc_url($row->id)).'" id="delete" class="btn btn-danger" title="'.cclang("delete").'">
                         <i class="ti-trash"></i>
                       </a>
                     </div>
@@ -76,7 +76,7 @@ function json()
 
 function filter()
 {
-  if(!is_allowed('kategori_filter'))
+  if(!is_allowed('header_product_filter'))
   {
     echo "access not permission";
   }else{
@@ -86,11 +86,11 @@ function filter()
 
 function detail($id)
 {
-  $this->is_allowed('kategori_detail');
+  $this->is_allowed('header_product_detail');
     if ($row = $this->model->find(dec_url($id))) {
     $this->template->set_title("Detail ".$this->title);
     $data = array(
-          "name" => $row->name,
+          "desc_header" => $row->desc_header,
     );
     $this->template->view("view",$data);
   }else{
@@ -100,10 +100,10 @@ function detail($id)
 
 function add()
 {
-  $this->is_allowed('kategori_add');
+  $this->is_allowed('header_product_add');
   $this->template->set_title(cclang("add")." ".$this->title);
-  $data = array('action' => url("kategori/add_action"),
-                  'name' => set_value("name"),
+  $data = array('action' => url("header_product/add_action"),
+                  'desc_header' => set_value("desc_header"),
                   );
   $this->template->view("add",$data);
 }
@@ -111,22 +111,22 @@ function add()
 function add_action()
 {
   if($this->input->is_ajax_request()){
-    if (!is_allowed('kategori_add')) {
+    if (!is_allowed('header_product_add')) {
       show_error("Access Permission", 403,'403::Access Not Permission');
       exit();
     }
 
     $json = array('success' => false);
-    $this->form_validation->set_rules("name","* Name","trim|xss_clean|required");
+    $this->form_validation->set_rules("desc_header","* Desc header","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
-      $save_data['name'] = $this->input->post('name',true);
+      $save_data['desc_header'] = $this->input->post('desc_header',true);
 
       $this->model->insert($save_data);
 
       set_message("success",cclang("notif_save"));
-      $json['redirect'] = url("kategori");
+      $json['redirect'] = url("header_product");
       $json['success'] = true;
     }else {
       foreach ($_POST as $key => $value) {
@@ -140,11 +140,11 @@ function add_action()
 
 function update($id)
 {
-  $this->is_allowed('kategori_update');
+  $this->is_allowed('header_product_update');
   if ($row = $this->model->find(dec_url($id))) {
     $this->template->set_title(cclang("update")." ".$this->title);
-    $data = array('action' => url("kategori/update_action/$id"),
-                  'name' => set_value("name", $row->name),
+    $data = array('action' => url("header_product/update_action/$id"),
+                  'desc_header' => set_value("desc_header", $row->desc_header),
                   );
     $this->template->view("update",$data);
   }else {
@@ -155,23 +155,23 @@ function update($id)
 function update_action($id)
 {
   if($this->input->is_ajax_request()){
-    if (!is_allowed('kategori_update')) {
+    if (!is_allowed('header_product_update')) {
       show_error("Access Permission", 403,'403::Access Not Permission');
       exit();
     }
 
     $json = array('success' => false);
-    $this->form_validation->set_rules("name","* Name","trim|xss_clean|required");
+    $this->form_validation->set_rules("desc_header","* Desc header","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
-      $save_data['name'] = $this->input->post('name',true);
+      $save_data['desc_header'] = $this->input->post('desc_header',true);
 
       $save = $this->model->change(dec_url($id), $save_data);
 
       set_message("success",cclang("notif_update"));
 
-      $json['redirect'] = url("kategori");
+      $json['redirect'] = url("header_product");
       $json['success'] = true;
     }else {
       foreach ($_POST as $key => $value) {
@@ -186,7 +186,7 @@ function update_action($id)
 function delete($id)
 {
   if ($this->input->is_ajax_request()) {
-    if (!is_allowed('kategori_delete')) {
+    if (!is_allowed('header_product_delete')) {
       return $this->response([
         'type_msg' => "error",
         'msg' => "do not have permission to access"
@@ -205,5 +205,5 @@ function delete($id)
 
 }
 
-/* End of file Kategori.php */
-/* Location: ./application/modules/kategori/controllers/backend/Kategori.php */
+/* End of file Header_product.php */
+/* Location: ./application/modules/header_product/controllers/backend/Header_product.php */

@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:49*/
+/*| Generate By M-CRUD Generator 25/10/2023 23:38*/
 /*| Please DO NOT modify this information*/
 
 
@@ -16,9 +16,9 @@ class Struktur_organisasi_model extends MY_Model{
 
   private $table        = "struktur_organisasi";
   private $primary_key  = "id";
-  private $column_order = array('image');
+  private $column_order = array('description', 'image');
   private $order        = array('struktur_organisasi.id'=>"DESC");
-  private $select       = "struktur_organisasi.id,struktur_organisasi.image";
+  private $select       = "struktur_organisasi.id,struktur_organisasi.description,struktur_organisasi.image";
 
 public function __construct()
 	{
@@ -37,6 +37,11 @@ public function __construct()
     {
       $this->db->select($this->select);
       $this->db->from($this->table);
+
+    if($this->input->post("description"))
+        {
+          $this->db->like("struktur_organisasi.description", $this->input->post("description"));
+        }
 
     if($this->input->post("image"))
         {

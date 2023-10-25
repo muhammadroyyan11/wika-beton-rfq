@@ -17,6 +17,7 @@ class Product extends CI_Controller
           'title'       => 'Product Dan Jasa',
           'product'    => $this->db->get('product')->result_array(),
           'company' => $this->db->get('company')->result_array(),
+          'header_product' => $this->db->get('header_product')->result_array(),
         ];
         // var_dump($data);
         $this->frontend->load('frontend/template', 'frontend/product/product', $data);

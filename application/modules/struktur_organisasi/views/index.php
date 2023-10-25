@@ -15,6 +15,10 @@
             <form autocomplete="off" class="content-filter">
               <div class="row">
                                   <div class="form-group col-md-6">
+                                          <input type="text" id="description" class="form-control form-control-sm" placeholder="Description" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
                                           <input type="text" id="image" class="form-control form-control-sm" placeholder="Image" />
                                       </div>
 
@@ -28,6 +32,7 @@
               <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
+							<th>Description</th>
 							<th>Image</th>
                     <th>#</th>
                   </tr>
@@ -66,7 +71,8 @@
         "url": "<?= url("struktur_organisasi/json")?>",
         "type": "POST",
          "data": function(data) {
-                                          data.image = $("#image").val();
+                                          data.description = $("#description").val();
+                                                        data.image = $("#image").val();
                                     }
               },
 
@@ -78,16 +84,22 @@
             "orderable": false
           },
 
+					{
+            "targets": 1,
+            "orderable": false
+          },
+
         {
           "className": "text-center",
           "orderable": false,
-          "targets": 1
+          "targets": 2
         },
       ],
     });
 
     $("#reload").click(function() {
-                        $("#image").val("");
+                        $("#description").val("");
+                  $("#image").val("");
                     table.ajax.reload();
     });
 

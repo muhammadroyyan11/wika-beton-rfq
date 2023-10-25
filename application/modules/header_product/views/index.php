@@ -6,7 +6,7 @@
         <div class="card-header">
           <h4 class="card-title"><?=ucwords($title_module)?></h4>
           <div class="pull-right">
-                          <a href="<?=url("kategori/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
+                          <a href="<?=url("header_product/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
                                       <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
                       </div>
         </div>
@@ -15,7 +15,7 @@
             <form autocomplete="off" class="content-filter">
               <div class="row">
                                   <div class="form-group col-md-6">
-                                          <input type="text" id="name" class="form-control form-control-sm" placeholder="Name" />
+                                          <input type="text" id="desc_header" class="form-control form-control-sm" placeholder="Desc header" />
                                       </div>
 
                               </div>
@@ -28,7 +28,7 @@
               <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
-							<th>Name</th>
+							<th>Desc header</th>
                     <th>#</th>
                   </tr>
                 </thead>
@@ -63,10 +63,10 @@
 
       // Load data for the table's content from an Ajax source
       "ajax": {
-        "url": "<?= url("kategori/json")?>",
+        "url": "<?= url("header_product/json")?>",
         "type": "POST",
          "data": function(data) {
-                                          data.name = $("#name").val();
+                                          data.desc_header = $("#desc_header").val();
                                     }
               },
 
@@ -87,7 +87,7 @@
     });
 
     $("#reload").click(function() {
-                        $("#name").val("");
+                        $("#desc_header").val("");
                     table.ajax.reload();
     });
 

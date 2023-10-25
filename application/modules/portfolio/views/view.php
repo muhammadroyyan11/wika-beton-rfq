@@ -18,6 +18,18 @@
           <td>Image</td>
           <td><?=is_image($image)?></td>
         </tr>
+        <tr>
+          <td>Client name</td>
+          <td><?=$client_name?></td>
+        </tr>
+        <tr>
+          <td>Category</td>
+          <td><?=$category?></td>
+        </tr>
+      <tr>
+        <td>Project date</td>
+        <td><?=$project_date != "" ? date('d-m-Y',strtotime($project_date)):""?></td>
+      </tr>
         </table>
 
         <a href="<?=url($this->uri->segment(2))?>" class="btn btn-sm btn-danger mt-3"><?=cclang("back")?></a>

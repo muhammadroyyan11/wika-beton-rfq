@@ -18,10 +18,6 @@
           <td>Misi</td>
           <td><?=$misi?></td>
         </tr>
-        <tr>
-          <td>Desc Company</td>
-          <td><?=$desc_company?></td>
-        </tr>
         </table>
 
         <a href="<?=url($this->uri->segment(2))?>" class="btn btn-sm btn-danger mt-3"><?=cclang("back")?></a>

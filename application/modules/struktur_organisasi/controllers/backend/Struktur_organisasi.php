@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:49*/
+/*| Generate By M-CRUD Generator 25/10/2023 23:38*/
 /*| Please DO NOT modify this information*/
 
 
@@ -44,6 +44,7 @@ function json()
     $data = array();
     foreach ($list as $row) {
         $rows = array();
+                $rows[] = $row->description;
                 $rows[] = is_image($row->image);
         
         $rows[] = '
@@ -90,6 +91,7 @@ function detail($id)
     if ($row = $this->model->find(dec_url($id))) {
     $this->template->set_title("Detail ".$this->title);
     $data = array(
+          "description" => $row->description,
           "image" => $row->image,
     );
     $this->template->view("view",$data);
@@ -103,6 +105,7 @@ function add()
   $this->is_allowed('struktur_organisasi_add');
   $this->template->set_title(cclang("add")." ".$this->title);
   $data = array('action' => url("struktur_organisasi/add_action"),
+                  'description' => set_value("description"),
                   'image' => set_value("image"),
                   );
   $this->template->view("add",$data);
@@ -117,10 +120,12 @@ function add_action()
     }
 
     $json = array('success' => false);
-    $this->form_validation->set_rules("image","* Image","trim|xss_clean");
+    $this->form_validation->set_rules("description","* Description","trim|xss_clean|required");
+    $this->form_validation->set_rules("image","* Image","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
+      $save_data['description'] = $this->input->post('description',true);
       $save_data['image'] = $this->imageCopy($this->input->post('image',true),$_POST['file-dir-image']);
 
       $this->model->insert($save_data);
@@ -144,6 +149,7 @@ function update($id)
   if ($row = $this->model->find(dec_url($id))) {
     $this->template->set_title(cclang("update")." ".$this->title);
     $data = array('action' => url("struktur_organisasi/update_action/$id"),
+                  'description' => set_value("description", $row->description),
                   'image' => set_value("image", $row->image),
                   );
     $this->template->view("update",$data);
@@ -161,10 +167,12 @@ function update_action($id)
     }
 
     $json = array('success' => false);
-    $this->form_validation->set_rules("image","* Image","trim|xss_clean");
+    $this->form_validation->set_rules("description","* Description","trim|xss_clean|required");
+    $this->form_validation->set_rules("image","* Image","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
+      $save_data['description'] = $this->input->post('description',true);
       $save_data['image'] = $this->imageCopy($this->input->post('image',true),$_POST['file-dir-image']);
 
       $save = $this->model->change(dec_url($id), $save_data);

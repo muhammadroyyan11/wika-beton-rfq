@@ -8,17 +8,17 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 15/10/2023 17:38*/
+/*| Generate By M-CRUD Generator 26/10/2023 00:06*/
 /*| Please DO NOT modify this information*/
 
 
-class Kategori_model extends MY_Model{
+class Header_product_model extends MY_Model{
 
-  private $table        = "kategori";
+  private $table        = "header_product";
   private $primary_key  = "id";
-  private $column_order = array('name');
-  private $order        = array('kategori.id'=>"DESC");
-  private $select       = "kategori.id,kategori.name";
+  private $column_order = array('desc_header');
+  private $order        = array('header_product.id'=>"DESC");
+  private $select       = "header_product.id,header_product.desc_header";
 
 public function __construct()
 	{
@@ -38,9 +38,9 @@ public function __construct()
       $this->db->select($this->select);
       $this->db->from($this->table);
 
-    if($this->input->post("name"))
+    if($this->input->post("desc_header"))
         {
-          $this->db->like("kategori.name", $this->input->post("name"));
+          $this->db->like("header_product.desc_header", $this->input->post("desc_header"));
         }
 
       if(isset($_POST['order'])) // here order processing
@@ -83,5 +83,5 @@ public function __construct()
 
 }
 
-/* End of file Kategori_model.php */
-/* Location: ./application/modules/kategori/models/Kategori_model.php */
+/* End of file Header_product_model.php */
+/* Location: ./application/modules/header_product/models/Header_product_model.php */
