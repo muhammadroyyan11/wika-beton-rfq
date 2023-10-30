@@ -140,6 +140,21 @@ public function __construct()
 
     }
 
+    public function get($where = null)
+    {
+       $this->db->select('*');
+       $this->db->from($this->table);
+       if ($where != null) {
+          $this->db->where($where);
+       }
+       return $this->db->get();
+    }
+
+    public function edit($table, $data, $where)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 
     public function get_datatables()
     {
@@ -163,7 +178,17 @@ public function __construct()
       $this->db->from("$this->table");
       return $this->db->count_all_results();
     }
-
+    
+    function get_file($id ,$where = null)
+    {
+      $this->db->select('*');
+      $this->db->from('media');
+      if ($where != null) {
+         $this->db->where($where);
+         $this->db->where('rfq_id', $id);
+      }
+      return $this->db->get();  
+    }
 
 
 }

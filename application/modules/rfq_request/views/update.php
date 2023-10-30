@@ -362,6 +362,11 @@
             </div>
             <div id="metode_pembayaran"></div>
           </div>
+
+          <div class="form-group">
+            <label>Tambah lampiran</label>
+            <input type="file" class="form-control" name="file">
+          </div>
         
           <input type="hidden" name="submit" value="update">
 

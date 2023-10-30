@@ -9,6 +9,7 @@ class Contact extends CI_Controller
         parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Base_model', 'base');
+        $this->load->helper('app');
     }
 
     public function index()
@@ -26,7 +27,16 @@ class Contact extends CI_Controller
 
     public function add_action()
     {
-        $post = $this->input->post(NULL, TRUE);
+        $post = $this->input->post(null, true);
+
+        $config['upload_path']          = './assets/uploads/file/';
+        $config['allowed_types']        = 'jpg|jpeg|png|gif|pdf|docs|csv|xls|rar|zip';
+        // $config['max_size']             = 10000;
+        // $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['file_name']            = 'file-' . date('ymd') . '-' . substr(md5(rand()), 0, 6);
+
+        $this->load->library('upload', $config);
 
         $params = [
             'nama_perusahaan' => $post['nama_perusahaan'],
@@ -57,49 +67,34 @@ class Contact extends CI_Controller
             $params['metode_pembayaran'] = $post['pembayaran_text'];
         }
 
-        
         $rfq_id = $this->base->insert('rfq_request', $params);
 
-        // echo $rfq_id;
+        if (@$_FILES['file']['name'] != null) {
+            if ($this->upload->do_upload('file')) {
+                $post['file'] = $this->upload->data('file_name');
+                $post['tipe_file'] = $this->upload->data('file_type');
 
-        // if ($this->db->affected_rows() > 0) {
-        //     $config['upload_path']          = './uploads/';
-        //     $config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|xlsx|docs';
-        //     $config['encrypt_name']         = true;
-        //     $this->load->library('upload', $config);
-        //     $jumlah_berkas = count($_FILES['file']['name']);
+                $params_file = [
+                    'type'      => 'Header File',
+                    'file'      => $post['file'],
+                    'rfq_id'    => $rfq_id
+                ];
 
-        //     var_dump($jumlah_berkas, $rfq_id);
-        //     // for ($i = 0; $i < $jumlah_berkas; $i++) {
-        //     //     if (!empty($_FILES['file']['name'][$i])) {
+                $this->base->insert('media', $params_file);
 
-        //     //         $_FILES['file']['name'] = $_FILES['file']['name'][$i];
+                if ($this->db->affected_rows() > 0) {
+                    set_pesan('Rfq Terkirim, silahkan menunggu informasi lebih lanjut');
+                } else {
+                    set_pesan('Gagal menyimpan RFQ, silahkan coba kembali', FALSE);
+                }
+            } else {
+                echo 'error';
+            }
+        } else {
+            echo 'Testing';
+        }
 
-        //     //         if ($this->upload->do_upload('file')) {
-        //     //             $uploadData = $this->upload->data();
-        //     //             $data['file'] = $uploadData['file_name'];
-        //     //             $data['type'] = 'Header File';
-        //     //             $data['rfq_id']     = $rfq_id;
-        //     //             $this->base->add('media', $data);
-        //     //         }
-        //     //     }
-        //     // }
-        //     // redirect('home');
-        // } else {
-        //     set_pesan('Terjadi Kelasahan');
-        // }
+        redirect('contact');
 
-        // $config['upload_path']          = './uploads/';
-        // $config['allowed_types']        = 'gif|jpg|png';
-        // $config['max_size']             = 500;
-        // $config['max_width']            = 2048;
-        // $config['max_height']           = 1000;
-        // $config['encrypt_name']         = true;
-        // $this->load->library('upload', $config);
-        // $keterangan_berkas = $this->input->post('keterangan_berkas');
-        // $jumlah_berkas = count($_FILES['file']['name']);
-
-        // var_dump($post);
-        // var_dump($jumlah_berkas);
     }
 }

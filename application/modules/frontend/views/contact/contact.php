@@ -1,6 +1,8 @@
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
+
     <div class="container" data-aos="fade-up" style="width: 70%;">
+        <?= $this->session->flashdata('pesan'); ?>
         <div class="section-title">
             <h2>Contact</h2>
             <h3><span>Contact Us</span></h3>
@@ -33,35 +35,35 @@
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
-            <form action="<?= site_url('contact/add_action')?>" method="post" enctype='multipart/form-data'>
+            <form action="<?= site_url('contact/add_action') ?>" method="post" enctype='multipart/form-data'>
                 <div class="row">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Perusahaan</label>
-                        <input type="text" name="nama_perusahaan" class="form-control" id="name" placeholder="Your Name"  />
+                        <input type="text" name="nama_perusahaan" class="form-control" id="name" placeholder="Your Name" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Untuk Perhatian (u.p.)</label>
-                        <input type="text" name="untuk_perhatian" class="form-control" name="email" id="email" placeholder="Your Email"  />
+                        <input type="text" name="untuk_perhatian" class="form-control" name="email" id="email" placeholder="Your Email" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nomer Handphone</label>
-                        <input type="number" name="no_hp" class="form-control" id="name" placeholder="Your Name"  />
+                        <input type="number" name="no_hp" class="form-control" id="name" placeholder="Your Name" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Email Pelanggan</label>
-                        <input type="email" name="email" class="form-control" name="email" id="email" placeholder="Your Email"  />
+                        <input type="email" name="email" class="form-control" name="email" id="email" placeholder="Your Email" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Proyek</label>
-                        <input type="text" name="nama_proyek" class="form-control" id="name" placeholder="Your Name"  />
+                        <input type="text" name="nama_proyek" class="form-control" id="name" placeholder="Your Name" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Perusahan Project Owner</label>
-                        <input type="text" class="form-control" name="project_owner" id="email" placeholder="Your Email"  />
+                        <input type="text" class="form-control" name="project_owner" id="email" placeholder="Your Email" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -75,12 +77,12 @@
                 <div class="row">
                     <div class="col form-group">
                         <label for="datetime" class="form-label">Jangka Waktu Pelaksanaan Proyek Dimulai</label>
-                        <input type="date" class="form-control" name="tanggal_mulai" placeholder=""  />
+                        <input type="date" class="form-control" name="tanggal_mulai" placeholder="" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Jangka Waktu Pelaksanaan Proyek
                             Berakhir</label>
-                        <input type="date" class="form-control" name="tanggal_selesai" placeholder=""  />
+                        <input type="date" class="form-control" name="tanggal_selesai" placeholder="" />
                     </div>
                 </div>
 
@@ -131,7 +133,7 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlInput1" class="form-label">Lampiran Dokumen Teknis (BoQ, Shopdrawing, RKS, dll.)</label>
-                    <input type="file" multiple="" name="file[]" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    <input type="file" name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                 </div>
 
 
@@ -139,7 +141,7 @@
                     <div class="col form-group">
                         <label for="datetime" class="form-label">Koordinat Lokasi Proyek</label><br>
                         <label for="datetime" class="form-label">(Share Location)</label>
-                        <input type="text" class="form-control" name="koordinat" id="text" placeholder="Koordinat Lokasi Proyek"  />
+                        <input type="text" class="form-control" name="koordinat" id="text" placeholder="Koordinat Lokasi Proyek" />
                     </div>
                     <!-- <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk</label><br>
@@ -150,7 +152,7 @@
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Jarak</label><br>
                         <label for="exampleFormControlInput1" class="form-label">Batching Plant Menuju Site </label>
-                        <input type="text" class="form-control" name="jarak" id="text" placeholder="Jarak Batching Plant Menuju Site"  />
+                        <input type="text" class="form-control" name="jarak" id="text" placeholder="Jarak Batching Plant Menuju Site" />
                     </div>
                 </div>
 
@@ -191,13 +193,13 @@
                     </div>
                 </div>
 
-                <div class="my-3">
+                <!-- <div class="my-3">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
                     <div class="sent-message">
                         Your message has been sent. Thank you!
                     </div>
-                </div>
+                </div> -->
                 <div class="text-center d-grid gap-2">
                     <button class="btn-block" type="submit">Send Message</button>
                 </div>

@@ -118,9 +118,10 @@ class Base_model extends CI_Model
         return $this->db->update($table, $data);
     }
 
-    public function insert($table, $data, $batch = false)
+    public function insert($table, $data)
     {
-        return $batch ? $this->db->insert_batch($table, $data) : $this->db->insert($table, $data);
+        $this->db->insert($table, $data);
+        return $this->db->insert_id();
     }
 
     public function delete($table, $pk, $id)
