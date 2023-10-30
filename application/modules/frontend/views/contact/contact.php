@@ -8,12 +8,12 @@
             <h3><span>Contact Us</span></h3>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="row mt-2" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-6">
                 <div class="info-box mb-4">
                     <i class="bx bx-map"></i>
                     <h3>Our Address</h3>
-                    <p>A108 Adam Street, New York, NY 535022</p>
+                    <p><?= $footer_alamat_utama[0]['street'] ?></p>
                 </div>
             </div>
 
@@ -21,7 +21,7 @@
                 <div class="info-box mb-4">
                     <i class="bx bx-envelope"></i>
                     <h3>Email Us</h3>
-                    <p>contact@example.com</p>
+                    <p><?= $footer_alamat_utama[0]['email'] ?></p>
                 </div>
             </div>
 
@@ -29,44 +29,44 @@
                 <div class="info-box mb-4">
                     <i class="bx bx-phone-call"></i>
                     <h3>Call Us</h3>
-                    <p>+1 5589 55488 55</p>
+                    <p><?= $footer_alamat_utama[0]['no_hp'] ?></p>
                 </div>
             </div>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="row mt-2" data-aos="fade-up" data-aos-delay="100">
             <form action="<?= site_url('contact/add_action') ?>" method="post" enctype='multipart/form-data'>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Perusahaan</label>
-                        <input type="text" name="nama_perusahaan" class="form-control" id="name" placeholder="Your Name" />
+                        <input type="text" name="nama_perusahaan" class="form-control" id="name" placeholder="" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Untuk Perhatian (u.p.)</label>
-                        <input type="text" name="untuk_perhatian" class="form-control" name="email" id="email" placeholder="Your Email" />
+                        <input type="text" name="untuk_perhatian" class="form-control" name="email" id="email" placeholder="" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nomer Handphone</label>
-                        <input type="number" name="no_hp" class="form-control" id="name" placeholder="Your Name" />
+                        <input type="number" name="no_hp" class="form-control" id="name" placeholder="" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Email Pelanggan</label>
-                        <input type="email" name="email" class="form-control" name="email" id="email" placeholder="Your Email" />
+                        <input type="email" name="email" class="form-control" name="email" id="email" placeholder="" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Proyek</label>
-                        <input type="text" name="nama_proyek" class="form-control" id="name" placeholder="Your Name" />
+                        <input type="text" name="nama_proyek" class="form-control" id="name" placeholder="" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Perusahan Project Owner</label>
-                        <input type="text" class="form-control" name="project_owner" id="email" placeholder="Your Email" />
+                        <input type="text" class="form-control" name="project_owner" id="email" placeholder="" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Jenis Proyek</label>
                     <select class="form-select" name="jenis_proyek" aria-label="Default select example">
                         <option selected>Pilih proyek</option>
@@ -74,7 +74,7 @@
                         <option value="Project Based">Project Based</option>
                     </select>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col form-group">
                         <label for="datetime" class="form-label">Jangka Waktu Pelaksanaan Proyek Dimulai</label>
                         <input type="date" class="form-control" name="tanggal_mulai" placeholder="" />
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Sumber Dana Proyek</label>
                         <select class="form-select" name="sumber_dana" aria-label="Default select example">
@@ -131,13 +131,13 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlInput1" class="form-label">Lampiran Dokumen Teknis (BoQ, Shopdrawing, RKS, dll.)</label>
+                <div class="form-group mt-2">
+                    <label for="exampleFormControlInput1" class="form-label">Lampiran Dokumen Teknis (BoQ, Shopdrawing, RKS, dll.) jika lebih dari 1 maka di .zip</label>
                     <input type="file" name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                 </div>
 
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col form-group">
                         <label for="datetime" class="form-label">Koordinat Lokasi Proyek</label><br>
                         <label for="datetime" class="form-label">(Share Location)</label>
@@ -147,7 +147,7 @@
                         <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk</label><br>
                         <label for="exampleFormControlInput1" class="form-label"></label>
                        
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name="" id="" cols="30" row mt-2s="10"></textarea>
                     </div> -->
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Jarak</label><br>
@@ -156,12 +156,13 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <br>
+                <div class="form-group" style="margin-top: 5px;">
                     <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk(Spesifikasi/Mutu, FA/NFA, Slump dan Vol)</label>
-                    <textarea name="kebutuhan_produk" class="form-control" id="summernote" cols="30" rows="10"></textarea>
+                    <textarea name="kebutuhan_produk" class="form-control" id="summernote" cols="30" row mt-2s="10"></textarea>
                 </div>
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Suplai Batching Plant dari</label>
                         <select class="form-select" name="suplai_select" id="batchingPlantSelect" aria-label="Default select example">
@@ -200,8 +201,9 @@
                         Your message has been sent. Thank you!
                     </div>
                 </div> -->
+                <br>
                 <div class="text-center d-grid gap-2">
-                    <button class="btn-block" type="submit">Send Message</button>
+                    <button class="btn btn-block btn-primary" type="submit">Send Message</button>
                 </div>
             </form>
         </div>

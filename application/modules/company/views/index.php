@@ -7,25 +7,12 @@
           <h4 class="card-title"><?=ucwords($title_module)?></h4>
           <div class="pull-right">
                           <a href="<?=url("company/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
-                                      <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
-                      </div>
+                                  </div>
         </div>
         <div class="card-content">
           <div class="card-body card-dashboard">
             <form autocomplete="off" class="content-filter">
               <div class="row">
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="name_company" class="form-control form-control-sm" placeholder="Name company" />
-                                      </div>
-
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="visi" class="form-control form-control-sm" placeholder="Visi" />
-                                      </div>
-
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="misi" class="form-control form-control-sm" placeholder="Misi" />
-                                      </div>
-
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -37,8 +24,12 @@
                 <thead>
                   <tr>
 							<th>Name company</th>
+							<th>Desc company</th>
 							<th>Visi</th>
 							<th>Misi</th>
+							<th>Img logo</th>
+							<th>Img desc</th>
+							<th>Img header</th>
                     <th>#</th>
                   </tr>
                 </thead>
@@ -75,11 +66,6 @@
       "ajax": {
         "url": "<?= url("company/json")?>",
         "type": "POST",
-         "data": function(data) {
-                                          data.name_company = $("#name_company").val();
-                                                        data.visi = $("#visi").val();
-                                                        data.misi = $("#misi").val();
-                                    }
               },
 
       //Set column definition initialisation properties.
@@ -100,35 +86,38 @@
             "orderable": false
           },
 
+					{
+            "targets": 3,
+            "orderable": false
+          },
+
+					{
+            "targets": 4,
+            "orderable": false
+          },
+
+					{
+            "targets": 5,
+            "orderable": false
+          },
+
+					{
+            "targets": 6,
+            "orderable": false
+          },
+
         {
           "className": "text-center",
           "orderable": false,
-          "targets": 3
+          "targets": 7
         },
       ],
     });
 
     $("#reload").click(function() {
-                        $("#name_company").val("");
-                  $("#visi").val("");
-                  $("#misi").val("");
-                    table.ajax.reload();
+            table.ajax.reload();
     });
 
-          $(document).on("click", "#filter-show", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideDown();
-      });
-
-      $(document).on("click", "#filter", function(e) {
-        e.preventDefault();
-        $("#table").DataTable().ajax.reload();
-      })
-
-      $(document).on("click", "#filter-cancel", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideUp();
-      });
     
     $(document).on("click", "#delete", function(e) {
       e.preventDefault();

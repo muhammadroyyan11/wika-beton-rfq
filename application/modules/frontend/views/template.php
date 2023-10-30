@@ -12,8 +12,8 @@
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="<?= base_url() ?>assets/front/img/wika/LOGO_MC_2_FIX.png" rel="icon" />
-    <link href="<?= base_url() ?>assets/front/img/wika/LOGO_MC_2_FIX.png" rel="apple-touch-icon" />
+    <link href="<?= base_url() ?>/_temp/uploads/img/<?= $company[0]['img_logo'] ?>" rel="icon" />
+    <link href="<?= base_url() ?>/_temp/uploads/img/<?= $company[0]['img_logo'] ?>" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
     <link
@@ -41,7 +41,7 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
             <h1 class="logo">
-                <a href="index.html" class="logo"><img src="<?= base_url() ?>assets/front/img/wika/LOGO_MC_2_FIX.png"
+                <a href="index.html" class="logo"><img src="<?= base_url() ?>/_temp/uploads/img/<?= $company[0]['img_logo'] ?>"
                         alt="" /></a>
                 <a href="index.html">
                     <?= $company[0]['name_company'] ?> <span>WIKA</span>

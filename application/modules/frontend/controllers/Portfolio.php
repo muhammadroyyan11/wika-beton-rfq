@@ -21,6 +21,11 @@ class Portfolio extends CI_Controller
           'footer_alamat_cabang' => $this->db->get('footer_alamat_cabang')->result_array(),
           'social_network' => $this->db->get('social_network')->result_array(),
         ];
+
+        // $dd = [
+        //     'portfolio'    => $this->db->get('portfolio')->result_array(),
+        // ];
+        // var_dump($dd);
         $this->frontend->load('frontend/template', 'frontend/portfolio/portfolio', $data);
     }
 }

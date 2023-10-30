@@ -11,12 +11,28 @@
           <td><?=$name_company?></td>
         </tr>
         <tr>
+          <td>Desc company</td>
+          <td><?=$desc_company?></td>
+        </tr>
+        <tr>
           <td>Visi</td>
           <td><?=$visi?></td>
         </tr>
         <tr>
           <td>Misi</td>
           <td><?=$misi?></td>
+        </tr>
+        <tr>
+          <td>Img logo</td>
+          <td><?=is_image($img_logo)?></td>
+        </tr>
+        <tr>
+          <td>Img desc</td>
+          <td><?=is_image($img_desc)?></td>
+        </tr>
+        <tr>
+          <td>Img header</td>
+          <td><?=is_image($img_header)?></td>
         </tr>
         </table>
 

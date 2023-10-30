@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 25/10/2023 23:31*/
+/*| Generate By M-CRUD Generator 31/10/2023 00:46*/
 /*| Please DO NOT modify this information*/
 
 
@@ -45,8 +45,12 @@ function json()
     foreach ($list as $row) {
         $rows = array();
                 $rows[] = $row->name_company;
+                $rows[] = $row->desc_company;
                 $rows[] = $row->visi;
                 $rows[] = $row->misi;
+                $rows[] = is_image($row->img_logo);
+                $rows[] = is_image($row->img_desc);
+                $rows[] = is_image($row->img_header);
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -76,15 +80,6 @@ function json()
   }
 }
 
-function filter()
-{
-  if(!is_allowed('company_filter'))
-  {
-    echo "access not permission";
-  }else{
-    $this->template->view("filter",[],false);
-  }
-}
 
 function detail($id)
 {
@@ -93,8 +88,12 @@ function detail($id)
     $this->template->set_title("Detail ".$this->title);
     $data = array(
           "name_company" => $row->name_company,
+          "desc_company" => $row->desc_company,
           "visi" => $row->visi,
           "misi" => $row->misi,
+          "img_logo" => $row->img_logo,
+          "img_desc" => $row->img_desc,
+          "img_header" => $row->img_header,
     );
     $this->template->view("view",$data);
   }else{
@@ -108,8 +107,12 @@ function add()
   $this->template->set_title(cclang("add")." ".$this->title);
   $data = array('action' => url("company/add_action"),
                   'name_company' => set_value("name_company"),
+                  'desc_company' => set_value("desc_company"),
                   'visi' => set_value("visi"),
                   'misi' => set_value("misi"),
+                  'img_logo' => set_value("img_logo"),
+                  'img_desc' => set_value("img_desc"),
+                  'img_header' => set_value("img_header"),
                   );
   $this->template->view("add",$data);
 }
@@ -124,14 +127,22 @@ function add_action()
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean|required");
+    $this->form_validation->set_rules("desc_company","* Desc company","trim|xss_clean|required");
     $this->form_validation->set_rules("visi","* Visi","trim|xss_clean|required");
     $this->form_validation->set_rules("misi","* Misi","trim|xss_clean|required");
+    $this->form_validation->set_rules("img_logo","* Img logo","trim|xss_clean");
+    $this->form_validation->set_rules("img_desc","* Img desc","trim|xss_clean");
+    $this->form_validation->set_rules("img_header","* Img header","trim|xss_clean");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name_company'] = $this->input->post('name_company',true);
+      $save_data['desc_company'] = $this->input->post('desc_company',true);
       $save_data['visi'] = $this->input->post('visi',true);
       $save_data['misi'] = $this->input->post('misi',true);
+      $save_data['img_logo'] = $this->imageCopy($this->input->post('img_logo',true),$_POST['file-dir-img_logo']);
+      $save_data['img_desc'] = $this->imageCopy($this->input->post('img_desc',true),$_POST['file-dir-img_desc']);
+      $save_data['img_header'] = $this->imageCopy($this->input->post('img_header',true),$_POST['file-dir-img_header']);
 
       $this->model->insert($save_data);
 
@@ -155,8 +166,12 @@ function update($id)
     $this->template->set_title(cclang("update")." ".$this->title);
     $data = array('action' => url("company/update_action/$id"),
                   'name_company' => set_value("name_company", $row->name_company),
+                  'desc_company' => set_value("desc_company", $row->desc_company),
                   'visi' => set_value("visi", $row->visi),
                   'misi' => set_value("misi", $row->misi),
+                  'img_logo' => set_value("img_logo", $row->img_logo),
+                  'img_desc' => set_value("img_desc", $row->img_desc),
+                  'img_header' => set_value("img_header", $row->img_header),
                   );
     $this->template->view("update",$data);
   }else {
@@ -174,14 +189,22 @@ function update_action($id)
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean|required");
+    $this->form_validation->set_rules("desc_company","* Desc company","trim|xss_clean|required");
     $this->form_validation->set_rules("visi","* Visi","trim|xss_clean|required");
     $this->form_validation->set_rules("misi","* Misi","trim|xss_clean|required");
+    $this->form_validation->set_rules("img_logo","* Img logo","trim|xss_clean");
+    $this->form_validation->set_rules("img_desc","* Img desc","trim|xss_clean");
+    $this->form_validation->set_rules("img_header","* Img header","trim|xss_clean");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name_company'] = $this->input->post('name_company',true);
+      $save_data['desc_company'] = $this->input->post('desc_company',true);
       $save_data['visi'] = $this->input->post('visi',true);
       $save_data['misi'] = $this->input->post('misi',true);
+      $save_data['img_logo'] = $this->imageCopy($this->input->post('img_logo',true),$_POST['file-dir-img_logo']);
+      $save_data['img_desc'] = $this->imageCopy($this->input->post('img_desc',true),$_POST['file-dir-img_desc']);
+      $save_data['img_header'] = $this->imageCopy($this->input->post('img_header',true),$_POST['file-dir-img_header']);
 
       $save = $this->model->change(dec_url($id), $save_data);
 
