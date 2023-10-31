@@ -44,8 +44,8 @@ function json()
     $data = array();
     foreach ($list as $row) {
         $rows = array();
-                $rows[] = $row->description;
-                $rows[] = is_image($row->image);
+                $rows[] = strlen($row->description) > 70 ? substr($row->description, 0, 70) . "..." : $row->description;
+                $rows[] = imgView($row->image,'','width:auto;height:40px');
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">

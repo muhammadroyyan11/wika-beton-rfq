@@ -45,12 +45,12 @@ function json()
     foreach ($list as $row) {
         $rows = array();
                 $rows[] = $row->name_company;
-                $rows[] = $row->desc_company;
-                $rows[] = $row->visi;
-                $rows[] = $row->misi;
-                $rows[] = is_image($row->img_logo);
-                $rows[] = is_image($row->img_desc);
-                $rows[] = is_image($row->img_header);
+                $rows[] = strlen($row->desc_company) > 100 ? substr($row->desc_company, 0, 100) . "..." : $row->desc_company;
+                $rows[] = strlen($row->visi) > 100 ? substr($row->visi, 0, 100) . "..." : $row->visi;
+                $rows[] = strlen($row->misi) > 100 ? substr($row->misi, 0, 100) . "..." : $row->misi;
+                $rows[] = imgView($row->img_logo,'','width:auto;height:40px');
+                $rows[] = imgView($row->img_desc,'','width:auto;height:40px');
+                $rows[] = imgView($row->img_header,'','width:auto;height:40px');
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">

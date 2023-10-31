@@ -44,7 +44,7 @@ function json()
     $data = array();
     foreach ($list as $row) {
         $rows = array();
-                $rows[] = $row->street;
+                $rows[] = strlen($row->street) > 60 ? substr($row->street, 0, 60) . "..." : $row->street;
                 $rows[] = $row->no_hp;
                 $rows[] = $row->email;
         

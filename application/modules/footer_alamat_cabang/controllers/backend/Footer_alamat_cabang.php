@@ -45,8 +45,8 @@ function json()
     foreach ($list as $row) {
         $rows = array();
                 $rows[] = $row->name;
-                $rows[] = $row->description;
-                $rows[] = $row->streets;
+                $rows[] = strlen($row->description) > 60 ? substr($row->description, 0, 60) . "..." : $row->description;
+                $rows[] = strlen($row->streets) > 60 ? substr($row->streets, 0, 60) . "..." : $row->streets;
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">

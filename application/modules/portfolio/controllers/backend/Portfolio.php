@@ -45,8 +45,8 @@ function json()
     foreach ($list as $row) {
         $rows = array();
                 $rows[] = $row->name_portfolio;
-                $rows[] = $row->desc_portfolio;
-                $rows[] = is_image($row->image,'','width:auto;height:40px');
+                $rows[] = strlen($row->desc_portfolio) > 100 ? substr($row->desc_portfolio, 0, 100) . "..." : $row->desc_portfolio;
+                $rows[] = imgView($row->image,'','width:auto;height:40px');
                 $rows[] = $row->client_name;
                 $rows[] = $row->category;
                 $rows[] = date("d-m-Y",  strtotime($row->project_date));

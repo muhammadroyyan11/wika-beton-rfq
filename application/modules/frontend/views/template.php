@@ -194,8 +194,8 @@
                     </span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                Designed by
-                <a href="#">Bisa Karya</a>
+                Build by <strong>Bisa Karya</strong>
+                2023
             </div>
         </div>
     </footer>

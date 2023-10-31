@@ -21,7 +21,7 @@
           <tr>
             <td>Image</td>
             <td>
-              <?= is_image($image) ?>
+              <?= imgView($image) ?>
             </td>
           </tr>
         </table>

@@ -24,15 +24,15 @@
         </tr>
         <tr>
           <td>Img logo</td>
-          <td><?=is_image($img_logo)?></td>
+          <td><?=imgView($img_logo)?></td>
         </tr>
         <tr>
           <td>Img desc</td>
-          <td><?=is_image($img_desc)?></td>
+          <td><?=imgView($img_desc)?></td>
         </tr>
         <tr>
           <td>Img header</td>
-          <td><?=is_image($img_header)?></td>
+          <td><?=imgView($img_header)?></td>
         </tr>
         </table>
 
