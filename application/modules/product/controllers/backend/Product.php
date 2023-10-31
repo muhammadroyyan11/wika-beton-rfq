@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 26/10/2023 00:15*/
+/*| Generate By M-CRUD Generator 31/10/2023 01:22*/
 /*| Please DO NOT modify this information*/
 
 
@@ -46,7 +46,7 @@ function json()
         $rows = array();
                 $rows[] = $row->name;
                 $rows[] = $row->description;
-                $rows[] = is_image($row->img);
+                $rows[] = is_image($row->img,'','width:auto;height:40px');
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -124,7 +124,7 @@ function add_action()
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name","* Name","trim|xss_clean|required");
-    $this->form_validation->set_rules("description","* Description","trim|xss_clean|required");
+    $this->form_validation->set_rules("description","* Description","trim|xss_clean|htmlspecialchars");
     $this->form_validation->set_rules("img","* Img","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
@@ -174,7 +174,7 @@ function update_action($id)
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name","* Name","trim|xss_clean|required");
-    $this->form_validation->set_rules("description","* Description","trim|xss_clean|required");
+    $this->form_validation->set_rules("description","* Description","trim|xss_clean|htmlspecialchars");
     $this->form_validation->set_rules("img","* Img","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 

@@ -14,13 +14,12 @@
 
           <div class="form-group">
             <label>Desc portfolio</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="desc_portfolio" name="desc_portfolio"></textarea>
-            <div id="desc_portfolio"></div>
+            <textarea class="form-control form-control-sm" placeholder="Desc portfolio" name="desc_portfolio" id="desc_portfolio" rows="3" cols="80"></textarea>
           </div>
 
           <div class="form-group">
             <label>Image</label>
-            <input type="file" name="img" class="file-upload-default" data-id="image"/>
+            <input type="file" name="img" class="file-upload-default" data-id="image" style="display: none;"/>
             <div class="input-group col-xs-12">
               <input type="hidden" class="file-dir" name="file-dir-image" data-id="image"/>
               <input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="image" placeholder="Image" readonly name="image" />

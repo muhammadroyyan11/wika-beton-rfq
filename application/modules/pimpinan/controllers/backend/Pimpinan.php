@@ -46,7 +46,7 @@ function json()
         $rows = array();
                 $rows[] = $row->nama;
                 $rows[] = $row->jabatan;
-                $rows[] = is_image($row->image);
+                $rows[] = imgView($row->image);
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">

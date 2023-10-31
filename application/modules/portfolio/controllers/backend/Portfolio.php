@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 26/10/2023 00:00*/
+/*| Generate By M-CRUD Generator 31/10/2023 01:18*/
 /*| Please DO NOT modify this information*/
 
 
@@ -46,7 +46,7 @@ function json()
         $rows = array();
                 $rows[] = $row->name_portfolio;
                 $rows[] = $row->desc_portfolio;
-                $rows[] = is_image($row->image);
+                $rows[] = is_image($row->image,'','width:auto;height:40px');
                 $rows[] = $row->client_name;
                 $rows[] = $row->category;
                 $rows[] = date("d-m-Y",  strtotime($row->project_date));
@@ -133,11 +133,11 @@ function add_action()
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name_portfolio","* Name portfolio","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean");
-    $this->form_validation->set_rules("image","* Image","trim|xss_clean|required");
-    $this->form_validation->set_rules("client_name","* Client name","trim|xss_clean|required");
-    $this->form_validation->set_rules("category","* Category","trim|xss_clean|required");
-    $this->form_validation->set_rules("project_date","* Project date","trim|xss_clean|required");
+    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean|htmlspecialchars");
+    $this->form_validation->set_rules("image","* Image","trim|xss_clean");
+    $this->form_validation->set_rules("client_name","* Client name","trim|xss_clean");
+    $this->form_validation->set_rules("category","* Category","trim|xss_clean");
+    $this->form_validation->set_rules("project_date","* Project date","trim|xss_clean");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
@@ -192,11 +192,11 @@ function update_action($id)
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name_portfolio","* Name portfolio","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean");
-    $this->form_validation->set_rules("image","* Image","trim|xss_clean|required");
-    $this->form_validation->set_rules("client_name","* Client name","trim|xss_clean|required");
-    $this->form_validation->set_rules("category","* Category","trim|xss_clean|required");
-    $this->form_validation->set_rules("project_date","* Project date","trim|xss_clean|required");
+    $this->form_validation->set_rules("desc_portfolio","* Desc portfolio","trim|xss_clean|htmlspecialchars");
+    $this->form_validation->set_rules("image","* Image","trim|xss_clean");
+    $this->form_validation->set_rules("client_name","* Client name","trim|xss_clean");
+    $this->form_validation->set_rules("category","* Category","trim|xss_clean");
+    $this->form_validation->set_rules("project_date","* Project date","trim|xss_clean");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {

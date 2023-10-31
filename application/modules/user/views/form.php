@@ -54,7 +54,7 @@
 
           <div class="form-group">
 					<label>Image</label>
-						<input type="file" name="img" class="file-upload-default" data-id="photo"/>
+						<input type="file" name="img" class="file-upload-default" style="display: none;" data-id="photo"/>
 							<div class="input-group col-xs-12">
 								<input type="hidden" class="file-dir" name="file-dir" data-id="photo"/>
 								<input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="photo" readonly name="photo" value="<?=$file_name?>" />

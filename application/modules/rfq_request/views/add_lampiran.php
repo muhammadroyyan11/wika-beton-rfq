@@ -5,15 +5,14 @@
         Add Lampiran
       </div>
       <div class="card-body">
-          <form action="<?= site_url('cpanel/rfq_request/proses_lampiran')?>" method="post" autocomplete="off">
+          <form action="<?= site_url('cpanel/rfq_request/proses_lampiran')?>" method="post" enctype="multipart/form-data" autocomplete="off">
           
           <div class="form-group">
             <label>Tambah lampiran</label>
             <input type="file" class="form-control" name="file">
             <input type="hidden" name="rfq_id" value="<?= $id?>" class="form-control">
           </div>
-        
-          <input type="hidden" name="submit" value="update">
+          <!-- <input type="hidden" name="submit" value="update"> -->
 
           <div class="text-right">
             <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

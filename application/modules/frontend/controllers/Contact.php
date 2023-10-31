@@ -34,7 +34,7 @@ class Contact extends CI_Controller
         // $config['max_size']             = 10000;
         // $config['max_width']            = 10000;
         $config['max_height']           = 10000;
-        $config['file_name']            = 'file-' . date('ymd') . '-' . substr(md5(rand()), 0, 6);
+        // $config['file_name']            = 'file-' . date('ymd') . '-' . substr(md5(rand()), 0, 6);
 
         $this->load->library('upload', $config);
 

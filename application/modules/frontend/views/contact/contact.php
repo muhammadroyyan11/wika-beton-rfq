@@ -159,7 +159,7 @@
                 <br>
                 <div class="form-group" style="margin-top: 5px;">
                     <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk(Spesifikasi/Mutu, FA/NFA, Slump dan Vol)</label>
-                    <textarea name="kebutuhan_produk" class="form-control" id="summernote" cols="30" row mt-2s="10"></textarea>
+                    <textarea name="kebutuhan_produk" class="form-control" id="editor1" cols="50" row mt-2s="10"></textarea>
                 </div>
 
                 <div class="row mt-2">

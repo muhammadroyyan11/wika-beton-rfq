@@ -14,7 +14,7 @@
         
           <div class="form-group">
             <label>Desc portfolio</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="desc_portfolio" name="desc_portfolio" id="desc_portfolio"><?=$desc_portfolio?></textarea>
+            <textarea class="form-control form-control-sm" placeholder="Desc portfolio" name="desc_portfolio" id="desc_portfolio" rows="3" cols="80"><?=$desc_portfolio?></textarea>
           </div>
         
           <div class="form-group">

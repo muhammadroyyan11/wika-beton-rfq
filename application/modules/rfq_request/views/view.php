@@ -132,7 +132,7 @@
                     <td><?= $no++; ?></td>
                     <td><?= $data['file'] ?></td>
                     <td><?= $data['type'] ?></td>
-                    <td><a href="#" class="btn btn-secondary btn-sm">Download</a></td>
+                    <td><a href="<?= base_url()?>assets/uploads/file/<?= $data['file']?>" target="_blank" class="btn btn-secondary btn-sm">Download</a></td>
                   </tr>
                 <?php } ?>
               </tbody>

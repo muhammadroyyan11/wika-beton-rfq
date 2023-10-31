@@ -179,13 +179,12 @@ public function __construct()
       return $this->db->count_all_results();
     }
     
-    function get_file($id ,$where = null)
+    function get_file($where = null)
     {
       $this->db->select('*');
       $this->db->from('media');
       if ($where != null) {
-         $this->db->where($where);
-         $this->db->where('rfq_id', $id);
+         $this->db->where('rfq_id', $where);
       }
       return $this->db->get();  
     }

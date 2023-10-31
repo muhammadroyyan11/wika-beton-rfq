@@ -14,7 +14,7 @@
         
           <div class="form-group">
             <label>Description</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="description" name="description" id="description"><?=$description?></textarea>
+            <textarea class="form-control form-control-sm" placeholder="Description" name="description" id="description" rows="3" cols="80"><?=$description?></textarea>
           </div>
         
           <div class="form-group">

@@ -24,6 +24,7 @@ class Rfq_request extends Backend
     );
     parent::__construct($config);
     $this->load->model("Rfq_request_model", "model");
+    $this->load->model('Base_model', 'base');
   }
 
   function index()
@@ -156,7 +157,7 @@ class Rfq_request extends Backend
         "status" => $row->status,
       );
 
-      $data['file'] = $this->model->get_file($row->id, ['type' => 'Header File'])->result_array();
+      $data['file'] = $this->model->get_file($row->id)->result_array();
       $this->template->view("view", $data);
       // var_dump($data['file']);
     } else {
@@ -174,7 +175,8 @@ class Rfq_request extends Backend
     $this->template->view("add_lampiran", $data);
   }
 
-  function proses_lampiran(){
+  function proses_lampiran()
+  {
     $post = $this->input->post(null, true);
 
     $config['upload_path']          = './assets/uploads/file/';
@@ -182,8 +184,8 @@ class Rfq_request extends Backend
     // $config['max_size']             = 10000;
     // $config['max_width']            = 10000;
     $config['max_height']           = 10000;
-    $config['file_name']            = 'file-' . date('ymd') . '-' . substr(md5(rand()), 0, 6);
-
+    // $config['file_name']            = 'file-' . date('ymd') . '-' . substr(md5(rand()), 0, 6);
+    // var_dump($post);
     $this->load->library('upload', $config);
 
     if (@$_FILES['file']['name'] != null) {
@@ -194,18 +196,18 @@ class Rfq_request extends Backend
         $params_file = [
           'type'      => 'File Tambahan',
           'file'      => $post['file'],
-          'rfq_id'    => $post['id']
+          'rfq_id'    => $post['rfq_id']
         ];
 
+        // var_dump($params_file);
         $this->base->insert('media', $params_file);
-
       } else {
         echo 'error';
       }
     } else {
       echo 'Testing';
     }
-    
+
     redirect('cpanel/rfq_request/');
   }
 
