@@ -26,17 +26,15 @@
                   <select class="form-control form-control-sm select2" data-placeholder=" -- Select Jabatan -- "
                     name="jabatan" id="jabatan">
                     <option value=""></option>
-                    <option value="Komisaris Utama">Komisaris Utama</option>
-                    <option value="Komisaris Independent">Komisaris Independent</option>
-                    <option value="Komisaris">Komisaris</option>
-                    <option value="Direktur Utama">Direktur Utama</option>
-                    <option value="Direktur Keuangan, Human, Capital & Manajemen Risiko">Direktur Keuangan, Human,
-                      Capital & Manajemen Risiko</option>
-                    <option value="Direktur Pemasaran & Pengembangan">Direktur Pemasaran & Pengembangan</option>
-                    <option value="Direktur Teknik & Produksi">Direktur Teknik & Produksi</option>
-                    <option value="Direktur Operasi & Supply Chain Management">Direktur Operasi & Supply Chain
-                      Management</option>
-                    <option value="Sekretaris Perusahaan">Sekretaris Perusahaan</option>
+                    <option value="Manajer Unit">Manajer Unit</option>
+                    <option value="Deputy Manajer">Deputy Manajer</option>
+                    <option value="Keuangan dan SDM">Keuangan dan SDM</option>
+                    <option value="Komersial">Komersial</option>
+                    <option value="Teknik dan Mutu">Teknik dan Mutu</option>
+                    <option value="Peralatan">Peralatan</option>
+                    <option value="Produksi">Produksi</option>
+                    <option value="Pelaksana">Pelaksana</option>
+                    <option value="Sales Engineer">Sales Engineer</option>
                   </select>
                 </div>
 

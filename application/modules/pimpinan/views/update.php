@@ -16,15 +16,15 @@
             <label>Jabatan</label>
             <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="jabatan" id="jabatan">
               <option value=""></option>
-              <option <?=($jabatan == "Komisaris Utama" ? "selected":"")?> value="Komisaris Utama">Komisaris Utama</option>
-              <option <?=($jabatan == "Komisaris Independent" ? "selected":"")?> value="Komisaris Independent">Komisaris Independent</option>
-              <option <?=($jabatan == "Komisaris" ? "selected":"")?> value="Komisaris">Komisaris</option>
-              <option <?=($jabatan == "Direktur Utama" ? "selected":"")?> value="Direktur Utama">Direktur Utama</option>
-              <option <?=($jabatan == "Direktur Keuangan, Human, Capital & Manajemen Risiko" ? "selected":"")?> value="Direktur Keuangan, Human, Capital & Manajemen Risiko">Direktur Keuangan, Human, Capital & Manajemen Risiko</option>
-              <option <?=($jabatan == "Direktur Pemasaran & Pengembangan" ? "selected":"")?> value="Direktur Pemasaran & Pengembangan">Direktur Pemasaran & Pengembangan</option>
-              <option <?=($jabatan == "Direktur Teknik & Produksi" ? "selected":"")?> value="Direktur Teknik & Produksi">Direktur Teknik & Produksi</option>
-              <option <?=($jabatan == "Direktur Operasi & Supply Chain Management" ? "selected":"")?> value="Direktur Operasi & Supply Chain Management">Direktur Operasi & Supply Chain Management</option>
-              <option <?=($jabatan == "Sekretaris Perusahaan" ? "selected":"")?> value="Sekretaris Perusahaan">Sekretaris Perusahaan</option>
+              <option <?=($jabatan == "Manajer Unit" ? "selected":"")?> value="Manajer Unit">Manajer Unit</option>
+              <option <?=($jabatan == "Deputy Manajer" ? "selected":"")?> value="Deputy Manajer">Deputy Manajer</option>
+              <option <?=($jabatan == "Keuangan dan SDM" ? "selected":"")?> value="Keuangan dan SDM">Keuangan dan SDM</option>
+              <option <?=($jabatan == "Komersial" ? "selected":"")?> value="Komersial">Komersial</option>
+              <option <?=($jabatan == "Teknik dan Mutu" ? "selected":"")?> value="Teknik dan Mutu">Teknik dan Mutu</option>
+              <option <?=($jabatan == "Peralatan" ? "selected":"")?> value="Peralatan">Peralatan</option>
+              <option <?=($jabatan == "Produksi" ? "selected":"")?> value="Produksi">Produksi</option>
+              <option <?=($jabatan == "Pelaksana" ? "selected":"")?> value="Pelaksana">Pelaksana</option>
+              <option <?=($jabatan == "Sales Engineer" ? "selected":"")?> value="Sales Engineer">Sales Engineer</option>
             </select>
           </div>
         
