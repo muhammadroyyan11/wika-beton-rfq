@@ -13,7 +13,9 @@
                 <div class="info-box mb-4">
                     <i class="bx bx-map"></i>
                     <h3>Our Address</h3>
-                    <p><?= $footer_alamat_utama[0]['street'] ?></p>
+                    <p>
+                        <?= $footer_alamat_utama[0]['street'] ?>
+                    </p>
                 </div>
             </div>
 
@@ -21,7 +23,9 @@
                 <div class="info-box mb-4">
                     <i class="bx bx-envelope"></i>
                     <h3>Email Us</h3>
-                    <p><?= $footer_alamat_utama[0]['email'] ?></p>
+                    <p>
+                        <?= $footer_alamat_utama[0]['email'] ?>
+                    </p>
                 </div>
             </div>
 
@@ -29,8 +33,18 @@
                 <div class="info-box mb-4">
                     <i class="bx bx-phone-call"></i>
                     <h3>Call Us</h3>
-                    <p><?= $footer_alamat_utama[0]['no_hp'] ?></p>
+                    <p>
+                        <?= $footer_alamat_utama[0]['no_hp'] ?>
+                    </p>
                 </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="text-center">
+            <div class="section-title">
+                <h2>RFQ</h2>
+                <h3><span>Request For Quotation</span></h3>
             </div>
         </div>
 
@@ -43,7 +57,8 @@
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Untuk Perhatian (u.p.)</label>
-                        <input type="text" name="untuk_perhatian" class="form-control" name="email" id="email" placeholder="" />
+                        <input type="text" name="untuk_perhatian" class="form-control" name="email" id="email"
+                            placeholder="" />
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -132,8 +147,10 @@
                 </div>
 
                 <div class="form-group mt-2">
-                    <label for="exampleFormControlInput1" class="form-label">Lampiran Dokumen Teknis (BoQ, Shopdrawing, RKS, dll.) jika lebih dari 1 maka di .zip</label>
-                    <input type="file" name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    <label for="exampleFormControlInput1" class="form-label">Lampiran Dokumen Teknis (BoQ, Shopdrawing,
+                        RKS, dll.) jika lebih dari 1 maka di .zip</label>
+                    <input type="file" name="file" class="form-control" id="inputGroupFile04"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                 </div>
 
 
@@ -141,7 +158,8 @@
                     <div class="col form-group">
                         <label for="datetime" class="form-label">Koordinat Lokasi Proyek</label><br>
                         <label for="datetime" class="form-label">(Share Location)</label>
-                        <input type="text" class="form-control" name="koordinat" id="text" placeholder="Koordinat Lokasi Proyek" />
+                        <input type="text" class="form-control" name="koordinat" id="text"
+                            placeholder="Koordinat Lokasi Proyek" />
                     </div>
                     <!-- <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk</label><br>
@@ -152,20 +170,24 @@
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Jarak</label><br>
                         <label for="exampleFormControlInput1" class="form-label">Batching Plant Menuju Site </label>
-                        <input type="text" class="form-control" name="jarak" id="text" placeholder="Jarak Batching Plant Menuju Site" />
+                        <input type="text" class="form-control" name="jarak" id="text"
+                            placeholder="Jarak Batching Plant Menuju Site" />
                     </div>
                 </div>
 
                 <br>
                 <div class="form-group" style="margin-top: 5px;">
-                    <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk(Spesifikasi/Mutu, FA/NFA, Slump dan Vol)</label>
-                    <textarea name="kebutuhan_produk" class="form-control" id="editor1" cols="50" row mt-2s="10"></textarea>
+                    <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk(Spesifikasi/Mutu, FA/NFA,
+                        Slump dan Vol)</label>
+                    <textarea name="kebutuhan_produk" class="form-control" id="editor1" cols="50" row
+                        mt-2s="10"></textarea>
                 </div>
 
                 <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Suplai Batching Plant dari</label>
-                        <select class="form-select" name="suplai_select" id="batchingPlantSelect" aria-label="Default select example">
+                        <select class="form-select" name="suplai_select" id="batchingPlantSelect"
+                            aria-label="Default select example">
                             <option selected>Pilih Batching Plant</option>
                             <option value="Batching Plant Karawang">Batching Plant Karawang</option>
                             <option value="Batching Plant Walini">Batching Plant Walini</option>
@@ -175,11 +197,13 @@
                             <option value="Batching Plant On Site">Batching Plant On Site</option>
                             <option value="other">Other</option>
                         </select>
-                        <input type="text" name="suplai_text" class="form-control mt-2" id="otherBatchingPlantInput" placeholder="Masukkan nama Batching Plant" style="display:none;">
+                        <input type="text" name="suplai_text" class="form-control mt-2" id="otherBatchingPlantInput"
+                            placeholder="Masukkan nama Batching Plant" style="display:none;">
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Metode Pembayaran</label>
-                        <select class="form-select" name="pembayaran_select" id="methodPaymentSelect" aria-label="Default select example">
+                        <select class="form-select" name="pembayaran_select" id="methodPaymentSelect"
+                            aria-label="Default select example">
                             <option value="NULL">Pilih Metode Pembayaran</option>
                             <option value="Cash Before Delivery">Cash Before Delivery</option>
                             <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
@@ -190,7 +214,8 @@
                             <option value="Reguler 60 Hari">Reguler 60 Hari</option>
                             <option value="other">Other</option>
                         </select>
-                        <input type="text" name="pembayaran_text" class="form-control mt-2" id="otherMethodPaymentInput" placeholder="Masukkan metode pembayaran" style="display:none;">
+                        <input type="text" name="pembayaran_text" class="form-control mt-2" id="otherMethodPaymentInput"
+                            placeholder="Masukkan metode pembayaran" style="display:none;">
                     </div>
                 </div>
 

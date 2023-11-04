@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 26/10/2023 01:04*/
+/*| Generate By M-CRUD Generator 04/11/2023 19:55*/
 /*| Please DO NOT modify this information*/
 
 
@@ -44,7 +44,8 @@ function json()
     $data = array();
     foreach ($list as $row) {
         $rows = array();
-                $rows[] = strlen($row->street) > 60 ? substr($row->street, 0, 60) . "..." : $row->street;
+                $rows[] = $row->name;
+                $rows[] = $row->street;
                 $rows[] = $row->no_hp;
                 $rows[] = $row->email;
         
@@ -76,15 +77,6 @@ function json()
   }
 }
 
-function filter()
-{
-  if(!is_allowed('footer_alamat_utama_filter'))
-  {
-    echo "access not permission";
-  }else{
-    $this->template->view("filter",[],false);
-  }
-}
 
 function detail($id)
 {
@@ -92,6 +84,7 @@ function detail($id)
     if ($row = $this->model->find(dec_url($id))) {
     $this->template->set_title("Detail ".$this->title);
     $data = array(
+          "name" => $row->name,
           "street" => $row->street,
           "no_hp" => $row->no_hp,
           "email" => $row->email,
@@ -107,6 +100,7 @@ function add()
   $this->is_allowed('footer_alamat_utama_add');
   $this->template->set_title(cclang("add")." ".$this->title);
   $data = array('action' => url("footer_alamat_utama/add_action"),
+                  'name' => set_value("name"),
                   'street' => set_value("street"),
                   'no_hp' => set_value("no_hp"),
                   'email' => set_value("email"),
@@ -123,12 +117,14 @@ function add_action()
     }
 
     $json = array('success' => false);
+    $this->form_validation->set_rules("name","* Name","trim|xss_clean");
     $this->form_validation->set_rules("street","* Street","trim|xss_clean|required");
     $this->form_validation->set_rules("no_hp","* No hp","trim|xss_clean|required");
     $this->form_validation->set_rules("email","* Email","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
+      $save_data['name'] = $this->input->post('name',true);
       $save_data['street'] = $this->input->post('street',true);
       $save_data['no_hp'] = $this->input->post('no_hp',true);
       $save_data['email'] = $this->input->post('email',true);
@@ -154,6 +150,7 @@ function update($id)
   if ($row = $this->model->find(dec_url($id))) {
     $this->template->set_title(cclang("update")." ".$this->title);
     $data = array('action' => url("footer_alamat_utama/update_action/$id"),
+                  'name' => set_value("name", $row->name),
                   'street' => set_value("street", $row->street),
                   'no_hp' => set_value("no_hp", $row->no_hp),
                   'email' => set_value("email", $row->email),
@@ -173,12 +170,14 @@ function update_action($id)
     }
 
     $json = array('success' => false);
+    $this->form_validation->set_rules("name","* Name","trim|xss_clean");
     $this->form_validation->set_rules("street","* Street","trim|xss_clean|required");
     $this->form_validation->set_rules("no_hp","* No hp","trim|xss_clean|required");
     $this->form_validation->set_rules("email","* Email","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
+      $save_data['name'] = $this->input->post('name',true);
       $save_data['street'] = $this->input->post('street',true);
       $save_data['no_hp'] = $this->input->post('no_hp',true);
       $save_data['email'] = $this->input->post('email',true);

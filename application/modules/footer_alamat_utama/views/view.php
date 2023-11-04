@@ -7,6 +7,10 @@
       <div class="card-body">
         <table class="table table-bordered table-striped">
         <tr>
+          <td>Name</td>
+          <td><?=$name?></td>
+        </tr>
+        <tr>
           <td>Street</td>
           <td><?=$street?></td>
         </tr>

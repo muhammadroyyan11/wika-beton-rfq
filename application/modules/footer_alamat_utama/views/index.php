@@ -7,25 +7,12 @@
           <h4 class="card-title"><?=ucwords($title_module)?></h4>
           <div class="pull-right">
                           <a href="<?=url("footer_alamat_utama/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
-                                      <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
-                      </div>
+                                  </div>
         </div>
         <div class="card-content">
           <div class="card-body card-dashboard">
             <form autocomplete="off" class="content-filter">
               <div class="row">
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="street" class="form-control form-control-sm" placeholder="Street" />
-                                      </div>
-
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="no_hp" class="form-control form-control-sm" placeholder="No hp" />
-                                      </div>
-
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="email" class="form-control form-control-sm" placeholder="Email" />
-                                      </div>
-
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -36,6 +23,7 @@
               <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
+							<th>Name</th>
 							<th>Street</th>
 							<th>No hp</th>
 							<th>Email</th>
@@ -75,11 +63,6 @@
       "ajax": {
         "url": "<?= url("footer_alamat_utama/json")?>",
         "type": "POST",
-         "data": function(data) {
-                                          data.street = $("#street").val();
-                                                        data.no_hp = $("#no_hp").val();
-                                                        data.email = $("#email").val();
-                                    }
               },
 
       //Set column definition initialisation properties.
@@ -100,35 +83,23 @@
             "orderable": false
           },
 
+					{
+            "targets": 3,
+            "orderable": false
+          },
+
         {
           "className": "text-center",
           "orderable": false,
-          "targets": 3
+          "targets": 4
         },
       ],
     });
 
     $("#reload").click(function() {
-                        $("#street").val("");
-                  $("#no_hp").val("");
-                  $("#email").val("");
-                    table.ajax.reload();
+            table.ajax.reload();
     });
 
-          $(document).on("click", "#filter-show", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideDown();
-      });
-
-      $(document).on("click", "#filter", function(e) {
-        e.preventDefault();
-        $("#table").DataTable().ajax.reload();
-      })
-
-      $(document).on("click", "#filter-cancel", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideUp();
-      });
     
     $(document).on("click", "#delete", function(e) {
       e.preventDefault();

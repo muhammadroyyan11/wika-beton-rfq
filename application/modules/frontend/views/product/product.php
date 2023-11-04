@@ -4,7 +4,7 @@
             <h2>Produk & Jasa</h2>
             <h3>Berikut adalah <span>Produk & Jasa</span> kami</h3>
             <p style="width: auto; text-justify: distribute;">
-                <?= $header_product[0]['desc_header'] ?>
+                <?= $description[0]['desc_product'] ?>
             </p>
         </div>
 
@@ -13,7 +13,9 @@
                 <div class="row mt-3 data-aos" fade-up"">
                     <div class="col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box" style="width: 100%;">
-                            <div class="icon"><i class="bi bi-<?php echo ($key + 1); ?>-circle"></i></div>
+                            <div class="icon">
+                                <img src="<?= base_url() ?>/_temp/uploads/img/<?= $data['img_icon'] ?>" alt="<?= $data['id'] ?>" style="width: 50px;">
+                            </div>
                             <h4><a href="">
                                     <?= $data['name'] ?>
                                 </a>

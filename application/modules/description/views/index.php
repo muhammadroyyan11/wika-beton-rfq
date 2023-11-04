@@ -6,18 +6,13 @@
         <div class="card-header">
           <h4 class="card-title"><?=ucwords($title_module)?></h4>
           <div class="pull-right">
-                          <a href="<?=url("header_product/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
-                                      <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
-                      </div>
+                          <a href="<?=url("description/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
+                                  </div>
         </div>
         <div class="card-content">
           <div class="card-body card-dashboard">
             <form autocomplete="off" class="content-filter">
               <div class="row">
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="desc_header" class="form-control form-control-sm" placeholder="Desc header" />
-                                      </div>
-
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -28,7 +23,8 @@
               <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
-							<th>Desc header</th>
+							<th>Desc product</th>
+							<th>Desc beranda</th>
                     <th>#</th>
                   </tr>
                 </thead>
@@ -63,11 +59,8 @@
 
       // Load data for the table's content from an Ajax source
       "ajax": {
-        "url": "<?= url("header_product/json")?>",
+        "url": "<?= url("description/json")?>",
         "type": "POST",
-         "data": function(data) {
-                                          data.desc_header = $("#desc_header").val();
-                                    }
               },
 
       //Set column definition initialisation properties.
@@ -78,33 +71,23 @@
             "orderable": false
           },
 
+					{
+            "targets": 1,
+            "orderable": false
+          },
+
         {
           "className": "text-center",
           "orderable": false,
-          "targets": 1
+          "targets": 2
         },
       ],
     });
 
     $("#reload").click(function() {
-                        $("#desc_header").val("");
-                    table.ajax.reload();
+            table.ajax.reload();
     });
 
-          $(document).on("click", "#filter-show", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideDown();
-      });
-
-      $(document).on("click", "#filter", function(e) {
-        e.preventDefault();
-        $("#table").DataTable().ajax.reload();
-      })
-
-      $(document).on("click", "#filter-cancel", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideUp();
-      });
     
     $(document).on("click", "#delete", function(e) {
       e.preventDefault();

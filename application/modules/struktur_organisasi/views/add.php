@@ -9,13 +9,12 @@
 
           <div class="form-group">
             <label>Description</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="description" name="description"></textarea>
-            <div id="description"></div>
+            <textarea class="form-control form-control-sm" placeholder="Description" name="description" id="description" rows="3" cols="80"></textarea>
           </div>
 
           <div class="form-group">
             <label>Image</label>
-            <input type="file" name="img" class="file-upload-default" data-id="image"/>
+            <input type="file" name="img" class="file-upload-default" data-id="image" style="display: none;"/>
             <div class="input-group col-xs-12">
               <input type="hidden" class="file-dir" name="file-dir-image" data-id="image"/>
               <input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="image" placeholder="Image" readonly name="image" />

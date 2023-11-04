@@ -3,9 +3,9 @@
     <div class="container" data-aos="fade-up">
         <div class="section-title">
             <h2>Struktur Perusahaan</h2>
-            <h3>MC2 <span>WIKA</span></h3>
+            <h3><?= $company[0]['name_company'] ?></h3>
             <p style="width: auto; text-justify: auto;">
-                Struktur Organisasi Perusahaan PT Wijaya Karya Beton Tbk
+                Struktur Organisasi Perusahaan <?= $company[0]['name_company'] ?>
             </p>
         </div>
 
@@ -14,9 +14,9 @@
                 <img src="<?= base_url() ?>/_temp/uploads/img/<?= $struktur_organisasi[0]['image'] ?>"
                     class="img-perusahaan" alt="" />
             </div>
-            <p>
+            <!-- <p>
                 <?= $struktur_organisasi[0]['description'] ?>
-            </p>
+            </p> -->
         </div>
     </div>
 </section>

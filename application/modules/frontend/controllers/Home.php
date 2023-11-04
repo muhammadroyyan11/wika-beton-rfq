@@ -21,6 +21,7 @@ class Home extends CI_Controller
             'footer_alamat_utama' => $this->db->get('footer_alamat_utama')->result_array(),
             'footer_alamat_cabang' => $this->db->get('footer_alamat_cabang')->result_array(),
             'social_network' => $this->db->get('social_network')->result_array(),
+            'description' => $this->db->get('description')->result_array(),
         ];
         // var_dump($data);
         $this->frontend->load('frontend/template', 'frontend/home/home', $data);

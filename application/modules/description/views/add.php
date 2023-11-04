@@ -8,9 +8,13 @@
           <form action="<?=$action?>" id="form" autocomplete="off">
 
           <div class="form-group">
-            <label>Desc header</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="desc_header" name="desc_header"></textarea>
-            <div id="desc_header"></div>
+            <label>Desc product</label>
+            <textarea class="form-control form-control-sm" placeholder="Desc product" name="desc_product" id="desc_product" rows="3" cols="80"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Desc beranda</label>
+            <textarea class="form-control form-control-sm" placeholder="Desc beranda" name="desc_beranda" id="desc_beranda" rows="3" cols="80"></textarea>
           </div>
 
           <input type="hidden" name="submit" value="add">

@@ -8,13 +8,18 @@
           <form action="<?=$action?>" id="form" autocomplete="off">
 
           <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Name" name="name" id="name">
+          </div>
+
+          <div class="form-group">
             <label>Street</label>
             <textarea class="form-control form-control-sm" placeholder="Street" name="street" id="street" rows="3" cols="80"></textarea>
           </div>
 
           <div class="form-group">
             <label>No hp</label>
-            <input type="text" class="form-control form-control-sm" placeholder="No hp" name="no_hp" id="no_hp">
+            <input type="number" class="form-control form-control-sm" placeholder="No hp" name="no_hp" id="no_hp">
           </div>
 
           <div class="form-group">

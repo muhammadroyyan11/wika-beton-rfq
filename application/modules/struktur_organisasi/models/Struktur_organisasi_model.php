@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 25/10/2023 23:38*/
+/*| Generate By M-CRUD Generator 04/11/2023 13:32*/
 /*| Please DO NOT modify this information*/
 
 
@@ -37,16 +37,6 @@ public function __construct()
     {
       $this->db->select($this->select);
       $this->db->from($this->table);
-
-    if($this->input->post("description"))
-        {
-          $this->db->like("struktur_organisasi.description", $this->input->post("description"));
-        }
-
-    if($this->input->post("image"))
-        {
-          $this->db->like("struktur_organisasi.image", $this->input->post("image"));
-        }
 
       if(isset($_POST['order'])) // here order processing
        {

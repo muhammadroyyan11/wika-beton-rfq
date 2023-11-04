@@ -8,17 +8,17 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 26/10/2023 00:06*/
+/*| Generate By M-CRUD Generator 04/11/2023 18:07*/
 /*| Please DO NOT modify this information*/
 
 
-class Header_product_model extends MY_Model{
+class Description_model extends MY_Model{
 
-  private $table        = "header_product";
+  private $table        = "description";
   private $primary_key  = "id";
-  private $column_order = array('desc_header');
-  private $order        = array('header_product.id'=>"DESC");
-  private $select       = "header_product.id,header_product.desc_header";
+  private $column_order = array('desc_product', 'desc_beranda');
+  private $order        = array('description.id'=>"DESC");
+  private $select       = "description.id,description.desc_product,description.desc_beranda";
 
 public function __construct()
 	{
@@ -37,11 +37,6 @@ public function __construct()
     {
       $this->db->select($this->select);
       $this->db->from($this->table);
-
-    if($this->input->post("desc_header"))
-        {
-          $this->db->like("header_product.desc_header", $this->input->post("desc_header"));
-        }
 
       if(isset($_POST['order'])) // here order processing
        {
@@ -83,5 +78,5 @@ public function __construct()
 
 }
 
-/* End of file Header_product_model.php */
-/* Location: ./application/modules/header_product/models/Header_product_model.php */
+/* End of file Description_model.php */
+/* Location: ./application/modules/description/models/Description_model.php */

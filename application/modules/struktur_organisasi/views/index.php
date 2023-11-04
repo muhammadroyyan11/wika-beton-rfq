@@ -7,21 +7,12 @@
           <h4 class="card-title"><?=ucwords($title_module)?></h4>
           <div class="pull-right">
                           <a href="<?=url("struktur_organisasi/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
-                                      <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
-                      </div>
+                                  </div>
         </div>
         <div class="card-content">
           <div class="card-body card-dashboard">
             <form autocomplete="off" class="content-filter">
               <div class="row">
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="description" class="form-control form-control-sm" placeholder="Description" />
-                                      </div>
-
-                                  <div class="form-group col-md-6">
-                                          <input type="text" id="image" class="form-control form-control-sm" placeholder="Image" />
-                                      </div>
-
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -70,10 +61,6 @@
       "ajax": {
         "url": "<?= url("struktur_organisasi/json")?>",
         "type": "POST",
-         "data": function(data) {
-                                          data.description = $("#description").val();
-                                                        data.image = $("#image").val();
-                                    }
               },
 
       //Set column definition initialisation properties.
@@ -98,25 +85,9 @@
     });
 
     $("#reload").click(function() {
-                        $("#description").val("");
-                  $("#image").val("");
-                    table.ajax.reload();
+            table.ajax.reload();
     });
 
-          $(document).on("click", "#filter-show", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideDown();
-      });
-
-      $(document).on("click", "#filter", function(e) {
-        e.preventDefault();
-        $("#table").DataTable().ajax.reload();
-      })
-
-      $(document).on("click", "#filter-cancel", function(e) {
-        e.preventDefault();
-        $(".content-filter").slideUp();
-      });
     
     $(document).on("click", "#delete", function(e) {
       e.preventDefault();

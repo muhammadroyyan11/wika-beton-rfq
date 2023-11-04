@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <title>
-        <?= $company[0]['name_company'] ?> WIKA
+        <?= $company[0]['name_company'] ?>
     </title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
@@ -41,10 +41,10 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
             <h1 class="logo">
-                <a href="index.html" class="logo"><img src="<?= base_url() ?>/_temp/uploads/img/<?= $company[0]['img_logo'] ?>"
-                        alt="" /></a>
-                <a href="index.html">
-                    <?= $company[0]['name_company'] ?> <span>WIKA</span>
+                <a href="<?= site_url('home') ?>" class="logo"><img
+                        src="<?= base_url() ?>/_temp/uploads/img/<?= $company[0]['img_logo'] ?>" alt="" /></a>
+                <a href="<?= site_url('home') ?>" style="font-size: 14px;">
+                    <?= $company[0]['name_company'] ?>
                 </a>
             </h1>
             <!-- Uncomment below if you prefer to use an image logo -->
@@ -101,11 +101,13 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h3>
-                            <?= $company[0]['name_company'] ?> WIKA<span>.</span>
+                            <?= $footer_alamat_utama[0]['name'] ?><span>.</span>
                         </h3>
-                        <p>
+                        <a href="<?= $footer_alamat_utama[0]['maps'] ?>" target="_blank">
                             <?= $footer_alamat_utama[0]['street'] ?>
-                            <br /><br />
+                        </a>
+                        <br /><br />
+                        <p>
                             <strong>Phone:</strong>
                             <?= $footer_alamat_utama[0]['no_hp'] ?><br />
                             <strong>Email:</strong>
@@ -114,32 +116,22 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Alamat Cabang WIKA MC2</h4>
+                        <h4>Alamat Cabang</h4>
                         <ul>
                             <?php foreach ($footer_alamat_cabang as $key => $data): ?>
-                                <li>
-                                    <i class="bx bx-chevron-right"></i>
-                                    <a href="#">
-                                        <?= $data['streets'] ?>
-                                    </a>
+                                <li style="align-items: flex-start;">
+                                    <i class="bx bx-chevron-right" style="margin-top: 3px;"></i>
+                                    <div class="row">
+                                        <p style="margin-bottom: 0px;">
+                                            <?= $data['name'] ?>
+                                        </p>
+                                        <a href="<?= $data['description'] ?>" target="_blank">
+                                            <?= $data['streets'] ?>
+                                        </a>
+                                    </div>
+
                                 </li>
                             <?php endforeach; ?>
-                            <!-- <li>
-                                <i class="bx bx-chevron-right"></i>
-                                <a href="#">About us</a>
-                            </li>
-                            <li>
-                                <i class="bx bx-chevron-right"></i>
-                                <a href="#">Services</a>
-                            </li>
-                            <li>
-                                <i class="bx bx-chevron-right"></i>
-                                <a href="#">Terms of service</a>
-                            </li>
-                            <li>
-                                <i class="bx bx-chevron-right"></i>
-                                <a href="#">Privacy policy</a>
-                            </li> -->
                         </ul>
                     </div>
 
@@ -157,7 +149,7 @@
                             <li>
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="<?= site_url('product') ?>">Produk &
-                            Jasa</a>
+                                    Jasa</a>
                             </li>
                             <li>
                                 <i class="bx bx-chevron-right"></i>
@@ -166,7 +158,7 @@
                             <li>
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="<?= site_url('contact') ?>">Hubungi
-                            Kami</a>
+                                    Kami</a>
                             </li>
                         </ul>
                     </div>
@@ -190,7 +182,7 @@
         <div class="container py-4">
             <div class="copyright">
                 &copy; Copyright <strong><span>
-                        <?= $company[0]['name_company'] ?> WIKA
+                        <?= $company[0]['name_company'] ?>
                     </span></strong>. All Rights Reserved
             </div>
             <div class="credits">
@@ -227,17 +219,17 @@
             $('.summernote').summernote();
         });
 
-        $(function() {
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace('editor1')
-                CKEDITOR.replace('editor2')
-                CKEDITOR.replace('editor3')
-                CKEDITOR.replace('editor4')
-                CKEDITOR.replace('editor5')
-                //bootstrap WYSIHTML5 - text editor
-                $('.textarea').wysihtml5()
-            })
+        $(function () {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor1')
+            CKEDITOR.replace('editor2')
+            CKEDITOR.replace('editor3')
+            CKEDITOR.replace('editor4')
+            CKEDITOR.replace('editor5')
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5()
+        })
     </script>
 </body>
 

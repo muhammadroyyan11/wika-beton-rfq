@@ -7,8 +7,12 @@
       <div class="card-body">
         <table class="table table-bordered table-striped">
         <tr>
-          <td>Desc header</td>
-          <td><?=$desc_header?></td>
+          <td>Desc product</td>
+          <td><?=$desc_product?></td>
+        </tr>
+        <tr>
+          <td>Desc beranda</td>
+          <td><?=$desc_beranda?></td>
         </tr>
         </table>
 

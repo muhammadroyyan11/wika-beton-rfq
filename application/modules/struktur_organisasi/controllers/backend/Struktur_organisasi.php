@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 25/10/2023 23:38*/
+/*| Generate By M-CRUD Generator 04/11/2023 13:32*/
 /*| Please DO NOT modify this information*/
 
 
@@ -44,8 +44,8 @@ function json()
     $data = array();
     foreach ($list as $row) {
         $rows = array();
-                $rows[] = strlen($row->description) > 70 ? substr($row->description, 0, 70) . "..." : $row->description;
-                $rows[] = imgView($row->image,'','width:auto;height:40px');
+                $rows[] = $row->description;
+                $rows[] = is_image($row->image,'','width:auto;height:40px');
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -75,15 +75,6 @@ function json()
   }
 }
 
-function filter()
-{
-  if(!is_allowed('struktur_organisasi_filter'))
-  {
-    echo "access not permission";
-  }else{
-    $this->template->view("filter",[],false);
-  }
-}
 
 function detail($id)
 {

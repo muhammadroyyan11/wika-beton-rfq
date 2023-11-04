@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td>Image</td>
-          <td><?=imgView($image)?></td>
+          <td><?=is_image($image)?></td>
         </tr>
         </table>
 

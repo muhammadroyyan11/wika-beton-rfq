@@ -8,8 +8,13 @@
           <form action="<?=$action?>" id="form" autocomplete="off">
           
           <div class="form-group">
-            <label>Desc header</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="desc_header" name="desc_header" id="desc_header"><?=$desc_header?></textarea>
+            <label>Desc product</label>
+            <textarea class="form-control form-control-sm" placeholder="Desc product" name="desc_product" id="desc_product" rows="3" cols="80"><?=$desc_product?></textarea>
+          </div>
+        
+          <div class="form-group">
+            <label>Desc beranda</label>
+            <textarea class="form-control form-control-sm" placeholder="Desc beranda" name="desc_beranda" id="desc_beranda" rows="3" cols="80"><?=$desc_beranda?></textarea>
           </div>
         
           <input type="hidden" name="submit" value="update">
