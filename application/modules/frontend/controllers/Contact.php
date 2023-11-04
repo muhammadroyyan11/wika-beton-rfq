@@ -30,7 +30,7 @@ class Contact extends CI_Controller
         $post = $this->input->post(null, true);
 
         $config['upload_path']          = './assets/uploads/file/';
-        $config['allowed_types']        = 'jpg|jpeg|png|gif|pdf|docs|csv|xls|rar|zip';
+        $config['allowed_types']        = 'jpg|jpeg|png|gif|pdf|docs|csv|xls|rar|zip|xlsx';
         // $config['max_size']             = 10000;
         // $config['max_width']            = 10000;
         $config['max_height']           = 10000;

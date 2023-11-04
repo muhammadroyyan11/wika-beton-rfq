@@ -240,7 +240,7 @@ class Rfq_request extends Backend
     // $uri  =  $this->model->find(dec_u  rl($url))->id;
 
     $config['upload_path']          = './assets/uploads/file/';
-    $config['allowed_types']        = 'jpg|jpeg|png|gif|pdf|docs|csv|xls|rar|zip';
+    $config['allowed_types']        = 'jpg|jpeg|png|gif|pdf|docs|csv|xls|rar|zip|xlsx';
     $config['max_height']           = 10000;
     $this->load->library('upload', $config);
 
