@@ -19,17 +19,17 @@
         
           <div class="form-group">
             <label>Visi</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="visi" name="visi" id="visi"><?=$visi?></textarea>
+            <textarea class="form-control form-control-sm" placeholder="Visi" name="visi" id="visi" rows="3" cols="80"><?=$visi?></textarea>
           </div>
         
           <div class="form-group">
             <label>Misi</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Misi" name="misi" id="misi" value="<?=$misi?>">
+            <textarea class="form-control form-control-sm" placeholder="Misi" name="misi" id="misi" rows="3" cols="80"><?=$misi?></textarea>
           </div>
         
           <div class="form-group">
             <label>Img logo</label>
-            <input type="file" name="img" class="file-upload-default" data-id="img_logo"/>
+            <input type="file" name="img" class="file-upload-default" data-id="img_logo" style="display: none;"/>
             <div class="input-group col-xs-12">
               <input type="hidden" class="file-dir" name="file-dir-img_logo" data-id="img_logo"/>
               <input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="img_logo" placeholder="Img logo" readonly name="img_logo" value="<?=$img_logo?>" />
@@ -43,7 +43,7 @@
         
           <div class="form-group">
             <label>Img desc</label>
-            <input type="file" name="img" class="file-upload-default" data-id="img_desc"/>
+            <input type="file" name="img" class="file-upload-default" data-id="img_desc" style="display: none;"/>
             <div class="input-group col-xs-12">
               <input type="hidden" class="file-dir" name="file-dir-img_desc" data-id="img_desc"/>
               <input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="img_desc" placeholder="Img desc" readonly name="img_desc" value="<?=$img_desc?>" />
@@ -57,7 +57,7 @@
         
           <div class="form-group">
             <label>Img header</label>
-            <input type="file" name="img" class="file-upload-default" data-id="img_header"/>
+            <input type="file" name="img" class="file-upload-default" data-id="img_header" style="display: none;"/>
             <div class="input-group col-xs-12">
               <input type="hidden" class="file-dir" name="file-dir-img_header" data-id="img_header"/>
               <input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="img_header" placeholder="Img header" readonly name="img_header" value="<?=$img_header?>" />

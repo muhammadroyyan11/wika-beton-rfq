@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 31/10/2023 00:46*/
+/*| Generate By M-CRUD Generator 04/11/2023 10:33*/
 /*| Please DO NOT modify this information*/
 
 
@@ -37,6 +37,41 @@ public function __construct()
     {
       $this->db->select($this->select);
       $this->db->from($this->table);
+
+    if($this->input->post("name_company"))
+        {
+          $this->db->like("company.name_company", $this->input->post("name_company"));
+        }
+
+    if($this->input->post("desc_company"))
+        {
+          $this->db->like("company.desc_company", $this->input->post("desc_company"));
+        }
+
+    if($this->input->post("visi"))
+        {
+          $this->db->like("company.visi", $this->input->post("visi"));
+        }
+
+    if($this->input->post("misi"))
+        {
+          $this->db->like("company.misi", $this->input->post("misi"));
+        }
+
+    if($this->input->post("img_logo"))
+        {
+          $this->db->like("company.img_logo", $this->input->post("img_logo"));
+        }
+
+    if($this->input->post("img_desc"))
+        {
+          $this->db->like("company.img_desc", $this->input->post("img_desc"));
+        }
+
+    if($this->input->post("img_header"))
+        {
+          $this->db->like("company.img_header", $this->input->post("img_header"));
+        }
 
       if(isset($_POST['order'])) // here order processing
        {

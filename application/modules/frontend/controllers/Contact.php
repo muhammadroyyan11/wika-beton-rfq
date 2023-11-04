@@ -55,13 +55,13 @@ class Contact extends CI_Controller
             'kebutuhan_produk' => $post['kebutuhan_produk']
         ];
 
-        if ($post['suplai_select'] != 'NULL') {
+        if ($post['suplai_select'] != 'other') {
             $params['suplai_batching'] = $post['suplai_select'];
         } else {
             $params['suplai_batching'] = $post['suplai_text'];
         }
 
-        if ($post['pembayaran_select'] != 'NULL') {
+        if ($post['pembayaran_select'] != 'other') {
             $params['metode_pembayaran'] = $post['pembayaran_select'];
         } else {
             $params['metode_pembayaran'] = $post['pembayaran_text'];

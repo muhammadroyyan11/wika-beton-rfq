@@ -14,6 +14,7 @@
     </div>
     <div class="card">
       <div class="card-body">
+        <?= $this->session->flashdata('pesan'); ?>
         <table class="table table-bordered table-striped">
           <tr>
             <td>No penawaran</td>
@@ -97,7 +98,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Lampiran</h5>
@@ -110,9 +111,9 @@
           <?php
           if ($status == 1) { ?>
             <div class="pull-right">
-              <a href="<?= site_url('cpanel/rfq_request/add_lampiran/'.$id) ?>" class="btn btn-primary btn-sm btn-flat">
+              <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#addLampiran">
                 <i class="fa fa-plus"></i> Tambah
-              </a>
+              </button>
             </div>
           <?php } ?>
           <div class="table-responsive">
@@ -122,6 +123,7 @@
                   <th>No</th>
                   <th>File</th>
                   <th>Type</th>
+                  <th>Status</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -130,15 +132,64 @@
                 foreach ($file as $key => $data) { ?>
                   <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $data['file'] ?></td>
+                    <td><?= character_limiter($data['file'], 20) ?> </td>
                     <td><?= $data['type'] ?></td>
-                    <td><a href="<?= base_url()?>assets/uploads/file/<?= $data['file']?>" target="_blank" class="btn btn-secondary btn-sm">Download</a></td>
+                    <td>
+                      <?php if ($data['status'] == 0) {
+                        echo 'Waiting';
+                      } else if ($data['status'] == 1) {
+                        echo 'Approved';
+                      } else {
+                        echo 'Rejected';
+                      } ?>
+                    </td>
+                    <td>
+                      <a href="<?= base_url() ?>assets/uploads/file/<?= $data['file'] ?>" target="_blank" class="btn btn-secondary btn-sm">Download</a>
+                      <?php
+                      if ($data['status'] == 0) { ?>
+                        <a href="<?= site_url('cpanel/rfq_request/approved_lampiran/' . $data['id']) ?>" class="btn btn-success btn-sm btn-flat"><i class="fa fa-check"></i>Approved</a>
+                        <a href="<?= site_url('cpanel/rfq_request/not_approved') ?>" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-times"></i>Not Approved</a>
+                      <?php }
+                      ?>
+
+                    </td>
                   </tr>
                 <?php } ?>
               </tbody>
             </table>
           </div>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addLampiran" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lampiran</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= site_url('cpanel/rfq_request/proses_lampiran') ?>" method="post" enctype="multipart/form-data" autocomplete="off">
+
+          <div class="form-group">
+            <label>Tambah lampiran</label>
+            <input type="file" class="form-control" name="file">
+            <input type="hidden" name="rfq_id" value="<?= $id ?>" class="form-control">
+          </div>
+          <!-- <input type="hidden" name="submit" value="update"> -->
+
+          <div class="text-right">
+            <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

@@ -60,7 +60,26 @@ class Rfq_request extends Backend
 
   function not_approved()
   {
-    echo 'halo';
+    $get = $this->model->get(['id' => $id])->row();
+
+    if ($get->no_penawaran == null) {
+      set_pesan('Harap update no penawaran terlebih dahulu', false);
+      redirect('cpanel/rfq_request');
+    } else {
+      $params = [
+        'status' => 2
+      ];
+
+      $this->model->edit('rfq_request', $params, ['id' => $id]);
+
+      if ($this->db->affected_rows() > 0) {
+        set_pesan('Data berhasil disimpan');
+      } else {
+        set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+      }
+
+      redirect('cpanel/rfq_request');
+    }
   }
 
   function json()
@@ -95,7 +114,7 @@ class Rfq_request extends Backend
 
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
-                      <a href="' . url("rfq_request/detail/" . enc_url($row->id)) . '" id="detail" class="btn btn-primary" title="' . cclang("detail") . '">
+                      <a href="' . url("rfq_request/detail/" . $row->id) . '" id="detail" class="btn btn-primary" title="' . cclang("detail") . '">
                         <i class="mdi mdi-file"></i>
                       </a>
                       <a href="' . url("rfq_request/update/" . enc_url($row->id)) . '" id="update" class="btn btn-warning" title="' . cclang("update") . '">
@@ -133,7 +152,7 @@ class Rfq_request extends Backend
   function detail($id)
   {
     $this->is_allowed('rfq_request_detail');
-    if ($row = $this->model->find(dec_url($id))) {
+    if ($row = $this->model->find($id)) {
       $this->template->set_title("Detail " . $this->title);
       $data = array(
         "id" => $row->id,
@@ -159,10 +178,49 @@ class Rfq_request extends Backend
 
       $data['file'] = $this->model->get_file($row->id)->result_array();
       $this->template->view("view", $data);
-      // var_dump($data['file']);
     } else {
       $this->error404();
     }
+  }
+
+  function approved_lampiran($id)
+  {
+    $post = $this->input->post(null, true);
+    $get = $this->base->get('media', ['id' => $id])->row();
+
+    $params = [
+      'status' => 1
+    ];
+
+    $this->model->edit('media', $params, ['id' => $id]);
+
+    if ($this->db->affected_rows() > 0) {
+      set_pesan('Data berhasil disimpan');
+    } else {
+      set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+    }
+
+    redirect("cpanel/rfq_request/detail/" . $get->rfq_id);
+  }
+
+  function not_approved_lampiran($id)
+  {
+    $post = $this->input->post(null, true);
+    $get = $this->base->get('media', ['id' => $id])->row();
+
+    $params = [
+      'status' => 1
+    ];
+
+    $this->model->edit('media', $params, ['id' => $id]);
+
+    if ($this->db->affected_rows() > 0) {
+      set_pesan('Data berhasil disimpan');
+    } else {
+      set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+    }
+
+    redirect("cpanel/rfq_request/detail/" . $get->rfq_id);
   }
 
   function add_lampiran($id)
@@ -178,14 +236,12 @@ class Rfq_request extends Backend
   function proses_lampiran()
   {
     $post = $this->input->post(null, true);
+    $url = $this->uri->segment(4);
+    // $uri  =  $this->model->find(dec_u  rl($url))->id;
 
     $config['upload_path']          = './assets/uploads/file/';
     $config['allowed_types']        = 'jpg|jpeg|png|gif|pdf|docs|csv|xls|rar|zip';
-    // $config['max_size']             = 10000;
-    // $config['max_width']            = 10000;
     $config['max_height']           = 10000;
-    // $config['file_name']            = 'file-' . date('ymd') . '-' . substr(md5(rand()), 0, 6);
-    // var_dump($post);
     $this->load->library('upload', $config);
 
     if (@$_FILES['file']['name'] != null) {
@@ -198,7 +254,6 @@ class Rfq_request extends Backend
           'file'      => $post['file'],
           'rfq_id'    => $post['rfq_id']
         ];
-
         // var_dump($params_file);
         $this->base->insert('media', $params_file);
       } else {
@@ -207,8 +262,8 @@ class Rfq_request extends Backend
     } else {
       echo 'Testing';
     }
-
-    redirect('cpanel/rfq_request/');
+    echo $url;
+    redirect("cpanel/rfq_request/detail/" . $post['rfq_id']);
   }
 
   function add()

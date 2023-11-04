@@ -7,12 +7,41 @@
           <h4 class="card-title"><?=ucwords($title_module)?></h4>
           <div class="pull-right">
                           <a href="<?=url("company/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
-                                  </div>
+                                      <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
+                      </div>
         </div>
         <div class="card-content">
           <div class="card-body card-dashboard">
             <form autocomplete="off" class="content-filter">
               <div class="row">
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="name_company" class="form-control form-control-sm" placeholder="Name company" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="desc_company" class="form-control form-control-sm" placeholder="Desc company" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="visi" class="form-control form-control-sm" placeholder="Visi" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="misi" class="form-control form-control-sm" placeholder="Misi" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="img_logo" class="form-control form-control-sm" placeholder="Img logo" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="img_desc" class="form-control form-control-sm" placeholder="Img desc" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="img_header" class="form-control form-control-sm" placeholder="Img header" />
+                                      </div>
+
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -66,6 +95,15 @@
       "ajax": {
         "url": "<?= url("company/json")?>",
         "type": "POST",
+         "data": function(data) {
+                                          data.name_company = $("#name_company").val();
+                                                        data.desc_company = $("#desc_company").val();
+                                                        data.visi = $("#visi").val();
+                                                        data.misi = $("#misi").val();
+                                                        data.img_logo = $("#img_logo").val();
+                                                        data.img_desc = $("#img_desc").val();
+                                                        data.img_header = $("#img_header").val();
+                                    }
               },
 
       //Set column definition initialisation properties.
@@ -115,9 +153,30 @@
     });
 
     $("#reload").click(function() {
-            table.ajax.reload();
+                        $("#name_company").val("");
+                  $("#desc_company").val("");
+                  $("#visi").val("");
+                  $("#misi").val("");
+                  $("#img_logo").val("");
+                  $("#img_desc").val("");
+                  $("#img_header").val("");
+                    table.ajax.reload();
     });
 
+          $(document).on("click", "#filter-show", function(e) {
+        e.preventDefault();
+        $(".content-filter").slideDown();
+      });
+
+      $(document).on("click", "#filter", function(e) {
+        e.preventDefault();
+        $("#table").DataTable().ajax.reload();
+      })
+
+      $(document).on("click", "#filter-cancel", function(e) {
+        e.preventDefault();
+        $(".content-filter").slideUp();
+      });
     
     $(document).on("click", "#delete", function(e) {
       e.preventDefault();

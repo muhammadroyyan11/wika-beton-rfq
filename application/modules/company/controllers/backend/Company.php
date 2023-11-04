@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 31/10/2023 00:46*/
+/*| Generate By M-CRUD Generator 04/11/2023 10:33*/
 /*| Please DO NOT modify this information*/
 
 
@@ -45,12 +45,12 @@ function json()
     foreach ($list as $row) {
         $rows = array();
                 $rows[] = $row->name_company;
-                $rows[] = strlen($row->desc_company) > 100 ? substr($row->desc_company, 0, 100) . "..." : $row->desc_company;
-                $rows[] = strlen($row->visi) > 100 ? substr($row->visi, 0, 100) . "..." : $row->visi;
-                $rows[] = strlen($row->misi) > 100 ? substr($row->misi, 0, 100) . "..." : $row->misi;
-                $rows[] = imgView($row->img_logo,'','width:auto;height:40px');
-                $rows[] = imgView($row->img_desc,'','width:auto;height:40px');
-                $rows[] = imgView($row->img_header,'','width:auto;height:40px');
+                $rows[] = $row->desc_company;
+                $rows[] = $row->visi;
+                $rows[] = $row->misi;
+                $rows[] = is_image($row->img_logo,'','width:auto;height:40px');
+                $rows[] = is_image($row->img_desc,'','width:auto;height:40px');
+                $rows[] = is_image($row->img_header,'','width:auto;height:40px');
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -80,6 +80,15 @@ function json()
   }
 }
 
+function filter()
+{
+  if(!is_allowed('company_filter'))
+  {
+    echo "access not permission";
+  }else{
+    $this->template->view("filter",[],false);
+  }
+}
 
 function detail($id)
 {
@@ -126,10 +135,10 @@ function add_action()
     }
 
     $json = array('success' => false);
-    $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_company","* Desc company","trim|xss_clean|required");
-    $this->form_validation->set_rules("visi","* Visi","trim|xss_clean|required");
-    $this->form_validation->set_rules("misi","* Misi","trim|xss_clean|required");
+    $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean");
+    $this->form_validation->set_rules("desc_company","* Desc company","trim|xss_clean");
+    $this->form_validation->set_rules("visi","* Visi","trim|xss_clean");
+    $this->form_validation->set_rules("misi","* Misi","trim|xss_clean");
     $this->form_validation->set_rules("img_logo","* Img logo","trim|xss_clean");
     $this->form_validation->set_rules("img_desc","* Img desc","trim|xss_clean");
     $this->form_validation->set_rules("img_header","* Img header","trim|xss_clean");
@@ -188,10 +197,10 @@ function update_action($id)
     }
 
     $json = array('success' => false);
-    $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean|required");
-    $this->form_validation->set_rules("desc_company","* Desc company","trim|xss_clean|required");
-    $this->form_validation->set_rules("visi","* Visi","trim|xss_clean|required");
-    $this->form_validation->set_rules("misi","* Misi","trim|xss_clean|required");
+    $this->form_validation->set_rules("name_company","* Name company","trim|xss_clean");
+    $this->form_validation->set_rules("desc_company","* Desc company","trim|xss_clean");
+    $this->form_validation->set_rules("visi","* Visi","trim|xss_clean");
+    $this->form_validation->set_rules("misi","* Misi","trim|xss_clean");
     $this->form_validation->set_rules("img_logo","* Img logo","trim|xss_clean");
     $this->form_validation->set_rules("img_desc","* Img desc","trim|xss_clean");
     $this->form_validation->set_rules("img_header","* Img header","trim|xss_clean");
