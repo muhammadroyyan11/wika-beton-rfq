@@ -377,10 +377,10 @@ class Rfq_request extends Backend
 
     $this->base->del('media', ['id' => $id]);
 
-    if ($this->db->affected_rows > 0) {
-      set_pesan('Terjadi kelasahan saat menghapus lampiran', FALSE);
-    } else{
-      set_pesan('Lampiran berhasil di hapus');
+    if ($this->db->affected_rows() > 0) {
+      set_pesan('Data berhasil disimpan');
+    } else {
+      set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
     }
 
     redirect("cpanel/rfq_request/detail/" . $get->rfq_id);
