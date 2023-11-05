@@ -73,7 +73,7 @@ class Contact extends CI_Controller
                 $post['tipe_file'] = $this->upload->data('file_type');
 
                 $params_file = [
-                    'type'      => 'Header File',
+                    'type'      => 'Document Client',
                     'file'      => $post['file'],
                     'rfq_id'    => $rfq_id
                 ];

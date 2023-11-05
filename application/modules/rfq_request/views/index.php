@@ -39,54 +39,6 @@
                   <input type="text" id="email_pelanggan" class="form-control form-control-sm" placeholder="Email pelanggan" />
                 </div>
 
-                <div class="form-group col-md-6">
-                  <input type="text" id="no_hp" class="form-control form-control-sm" placeholder="No hp" />
-                </div>
-
-                <div class="form-group col-md-6">
-                  <input type="text" id="kebutuhan_produk" class="form-control form-control-sm" placeholder="Kebutuhan produk" />
-                </div>
-
-                <div class="form-group col-md-6">
-                  <select class="form-control form-control-sm select2" data-placeholder=" -- Select Suplai batching -- " name="suplai_batching" id="suplai_batching">
-                    <option value=""></option>
-                    <option value="Batching Plant Karawang">Batching Plant Karawang</option>
-                    <option value="Batching Plant Walini">Batching Plant Walini</option>
-                    <option value="Batching Plant Cakung">Batching Plant Cakung</option>
-                    <option value="Batching Plant Cilegon">Batching Plant Cilegon</option>
-                    <option value="Batching Plant Ancol">Batching Plant Ancol</option>
-                    <option value="Batching Plant On Site">Batching Plant On Site</option>
-                  </select>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <input type="text" id="jarak" class="form-control form-control-sm" placeholder="Jarak" />
-                </div>
-
-                <div class="form-group col-md-6">
-                  <select class="form-control form-control-sm select2" data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek" id="jenis_proyek">
-                    <option value=""></option>
-                    <option value="Retail">Retail</option>
-                    <option value="Project Based">Project Based</option>
-                  </select>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <input type="date" id="tanggal_mulai" class="form-control form-control-sm" placeholder="Tanggal mulai" />
-                </div>
-
-                <div class="form-group col-md-6">
-                  <input type="date" id="tanggal_selesai" class="form-control form-control-sm" placeholder="Tanggal selesai" />
-                </div>
-
-                <div class="form-group col-md-6">
-                  <input type="text" id="koordinat" class="form-control form-control-sm" placeholder="Koordinat maps" />
-                </div>
-
-                <div class="form-group col-md-6">
-                  <input type="text" id="batching_jarak" class="form-control form-control-sm" placeholder="Jarak Batching Plant Menuju Site" />
-                </div>
-
               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?= cclang("cancel") ?></button>
