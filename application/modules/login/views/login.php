@@ -91,7 +91,7 @@
                     </div>
                     <div class="login-footer">
                       <div class="divider">
-                        <div class="divider-text">&copy; desa</div>
+                        <div class="divider-text">&copy; OP2 WIKA BETON</div>
                       </div>
                     </div>
                   </div>

@@ -209,7 +209,7 @@ class Rfq_request extends Backend
     $get = $this->base->get('media', ['id' => $id])->row();
 
     $params = [
-      'status' => 1
+      'status' => 2
     ];
 
     $this->model->edit('media', $params, ['id' => $id]);
@@ -369,6 +369,21 @@ class Rfq_request extends Backend
 
       $this->response($json);
     }
+  }
+
+  function delete_lampiran($id){
+    $post = $this->input->post(null, true);
+    $get = $this->base->get('media', ['id' => $id])->row();
+
+    $this->base->del('media', ['id' => $id]);
+
+    if ($this->db->affected_rows > 0) {
+      set_pesan('Terjadi kelasahan saat menghapus lampiran', FALSE);
+    } else{
+      set_pesan('Lampiran berhasil di hapus');
+    }
+
+    redirect("cpanel/rfq_request/detail/" . $get->rfq_id);
   }
 
   function delete($id)
