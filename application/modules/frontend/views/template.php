@@ -31,6 +31,8 @@
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
+
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>assets/front/css/style.css" rel="stylesheet" />
@@ -206,7 +208,6 @@
     <script src="<?= base_url() ?>assets/front/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/front/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="<?= base_url() ?>assets/front/vendor/php-email-form/validate.js"></script>
-    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 
     <!-- Template Main JS File -->
     <script src="<?= base_url() ?>assets/front/js/main.js"></script>

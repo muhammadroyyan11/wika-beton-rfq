@@ -101,7 +101,7 @@ class Rfq_request extends Backend
         $rows[] = $row->untuk_perhatian;
         $rows[] = $row->email_pelanggan;
         $rows[] = $row->no_hp;
-        $rows[] = $row->kebutuhan_produk;
+        $rows[] = character_limiter($row->kebutuhan_produk, 100);
         $rows[] = $row->suplai_batching;
         $rows[] = $row->sumber_dana;
         $rows[] = $row->sektor;
