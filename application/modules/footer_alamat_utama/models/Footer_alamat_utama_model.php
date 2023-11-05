@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 04/11/2023 19:55*/
+/*| Generate By M-CRUD Generator 05/11/2023 13:11*/
 /*| Please DO NOT modify this information*/
 
 
@@ -16,9 +16,9 @@ class Footer_alamat_utama_model extends MY_Model{
 
   private $table        = "footer_alamat_utama";
   private $primary_key  = "id";
-  private $column_order = array('name', 'street', 'no_hp', 'email');
+  private $column_order = array('name', 'street', 'maps', 'no_hp', 'email');
   private $order        = array('footer_alamat_utama.id'=>"DESC");
-  private $select       = "footer_alamat_utama.id,footer_alamat_utama.name,footer_alamat_utama.street,footer_alamat_utama.no_hp,footer_alamat_utama.email";
+  private $select       = "footer_alamat_utama.id,footer_alamat_utama.name,footer_alamat_utama.street,footer_alamat_utama.maps,footer_alamat_utama.no_hp,footer_alamat_utama.email";
 
 public function __construct()
 	{
@@ -37,6 +37,11 @@ public function __construct()
     {
       $this->db->select($this->select);
       $this->db->from($this->table);
+
+    if($this->input->post("name"))
+        {
+          $this->db->like("footer_alamat_utama.name", $this->input->post("name"));
+        }
 
       if(isset($_POST['order'])) // here order processing
        {

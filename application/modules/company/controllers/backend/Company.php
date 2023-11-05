@@ -45,9 +45,9 @@ function json()
     foreach ($list as $row) {
         $rows = array();
                 $rows[] = $row->name_company;
-                $rows[] = $row->desc_company;
-                $rows[] = $row->visi;
-                $rows[] = $row->misi;
+                $rows[] = character_limiter($row->desc_company, 50);
+                $rows[] = character_limiter($row->visi, 50);
+                $rows[] = character_limiter($row->misi, 50);
                 $rows[] = is_image($row->img_logo,'','width:auto;height:40px');
                 $rows[] = is_image($row->img_desc,'','width:auto;height:40px');
                 $rows[] = is_image($row->img_header,'','width:auto;height:40px');

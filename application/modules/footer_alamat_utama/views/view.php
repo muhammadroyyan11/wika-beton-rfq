@@ -15,6 +15,10 @@
           <td><?=$street?></td>
         </tr>
         <tr>
+          <td>Maps</td>
+          <td><?=$maps?></td>
+        </tr>
+        <tr>
           <td>No hp</td>
           <td><?=$no_hp?></td>
         </tr>

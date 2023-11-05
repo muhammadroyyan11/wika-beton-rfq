@@ -18,8 +18,13 @@
           </div>
         
           <div class="form-group">
+            <label>Maps</label>
+            <textarea class="form-control form-control-sm" placeholder="Maps" name="maps" id="maps" rows="3" cols="80"><?=$maps?></textarea>
+          </div>
+        
+          <div class="form-group">
             <label>No hp</label>
-            <input type="number" class="form-control form-control-sm" placeholder="No hp" name="no_hp" id="no_hp" value="<?=$no_hp?>">
+            <input type="text" class="form-control form-control-sm" placeholder="No hp" name="no_hp" id="no_hp" value="<?=$no_hp?>">
           </div>
         
           <div class="form-group">

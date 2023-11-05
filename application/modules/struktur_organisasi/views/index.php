@@ -4,27 +4,29 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"><?=ucwords($title_module)?></h4>
+          <h4 class="card-title">
+            <?= ucwords($title_module) ?>
+          </h4>
           <div class="pull-right">
-                          <a href="<?=url("struktur_organisasi/add")?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
-                                  </div>
+            <a href="<?= url("struktur_organisasi/add") ?>" class="btn btn-success btn-flat"><i
+                class="fa fa-file btn-icon-prepend"></i> Add</a>
+          </div>
         </div>
         <div class="card-content">
           <div class="card-body card-dashboard">
             <form autocomplete="off" class="content-filter">
               <div class="row">
-                              </div>
+              </div>  
               <div class="pull-right">
-                <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
-                <button type="button" class="btn btn-primary btn-sm" id="filter">Filter</button>
               </div>
             </form>
             <div class="table-responsive">
-              <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+              <table class="table display" name="table" id="table"
+                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
-							<th>Description</th>
-							<th>Image</th>
+                    <th>Description</th>
+                    <th>Image</th>
                     <th>#</th>
                   </tr>
                 </thead>
@@ -41,7 +43,7 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function() {
+  $(document).ready(function () {
     var table;
     //datatables
     table = $('#table').DataTable({
@@ -59,22 +61,22 @@
 
       // Load data for the table's content from an Ajax source
       "ajax": {
-        "url": "<?= url("struktur_organisasi/json")?>",
+        "url": "<?= url("struktur_organisasi/json") ?>",
         "type": "POST",
-              },
+      },
 
       //Set column definition initialisation properties.
       "columnDefs": [
-        
-					{
-            "targets": 0,
-            "orderable": false
-          },
 
-					{
-            "targets": 1,
-            "orderable": false
-          },
+        {
+          "targets": 0,
+          "orderable": false
+        },
+
+        {
+          "targets": 1,
+          "orderable": false
+        },
 
         {
           "className": "text-center",
@@ -84,25 +86,25 @@
       ],
     });
 
-    $("#reload").click(function() {
-            table.ajax.reload();
+    $("#reload").click(function () {
+      table.ajax.reload();
     });
 
-    
-    $(document).on("click", "#delete", function(e) {
+
+    $(document).on("click", "#delete", function (e) {
       e.preventDefault();
       $('.modal-dialog').addClass('modal-sm');
-      $("#modalTitle").text('<?=cclang("confirm")?>');
-      $('#modalContent').html(`<p class="mb-4"><?=cclang("delete_description")?></p>
+      $("#modalTitle").text('<?= cclang("confirm") ?>');
+      $('#modalContent').html(`<p class="mb-4"><?= cclang("delete_description") ?></p>
                               <div class="pull-right">
-  														<button type='button' class='btn btn-default btn-sm' data-dismiss='modal'><?=cclang("cancel")?></button>
-  	                          <button type='button' class='btn btn-primary btn-sm' id='ya-hapus' data-id=` + $(this).attr('alt') + `  data-url=` + $(this).attr('href') + `><?=cclang("delete_action")?></button>
-  														</div>`);
+                              <button type='button' class='btn btn-default btn-sm' data-dismiss='modal'><?= cclang("cancel") ?></button>
+                              <button type='button' class='btn btn-primary btn-sm' id='ya-hapus' data-id=` + $(this).attr('alt') + `  data-url=` + $(this).attr('href') + `><?= cclang("delete_action") ?></button>
+                              </div>`);
       $("#modalGue").modal('show');
     });
 
 
-    $(document).on('click', '#ya-hapus', function(e) {
+    $(document).on('click', '#ya-hapus', function (e) {
       $(this).prop('disabled', true)
         .text('Processing...');
       $.ajax({
@@ -110,7 +112,7 @@
         type: 'POST',
         cache: false,
         dataType: 'json',
-        success: function(json) {
+        success: function (json) {
           $('#modalGue').modal('hide');
           swal(json.msg, {
             icon: json.type_msg

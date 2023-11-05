@@ -7,13 +7,13 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 04/11/2023 19:55*/
+/*| Generate By M-CRUD Generator 05/11/2023 13:11*/
 /*| Please DO NOT modify this information*/
 
 
 class Footer_alamat_utama extends Backend{
 
-private $title = "Footer Alamat Utama";
+private $title = "Alamat Utama";
 
 
 public function __construct()
@@ -46,6 +46,7 @@ function json()
         $rows = array();
                 $rows[] = $row->name;
                 $rows[] = $row->street;
+                $rows[] = $row->maps;
                 $rows[] = $row->no_hp;
                 $rows[] = $row->email;
         
@@ -77,6 +78,15 @@ function json()
   }
 }
 
+function filter()
+{
+  if(!is_allowed('footer_alamat_utama_filter'))
+  {
+    echo "access not permission";
+  }else{
+    $this->template->view("filter",[],false);
+  }
+}
 
 function detail($id)
 {
@@ -86,6 +96,7 @@ function detail($id)
     $data = array(
           "name" => $row->name,
           "street" => $row->street,
+          "maps" => $row->maps,
           "no_hp" => $row->no_hp,
           "email" => $row->email,
     );
@@ -102,6 +113,7 @@ function add()
   $data = array('action' => url("footer_alamat_utama/add_action"),
                   'name' => set_value("name"),
                   'street' => set_value("street"),
+                  'maps' => set_value("maps"),
                   'no_hp' => set_value("no_hp"),
                   'email' => set_value("email"),
                   );
@@ -119,13 +131,15 @@ function add_action()
     $json = array('success' => false);
     $this->form_validation->set_rules("name","* Name","trim|xss_clean");
     $this->form_validation->set_rules("street","* Street","trim|xss_clean|required");
-    $this->form_validation->set_rules("no_hp","* No hp","trim|xss_clean|required");
+    $this->form_validation->set_rules("maps","* Maps","trim|xss_clean|required");
+    $this->form_validation->set_rules("no_hp","* No hp","trim|xss_clean|numeric");
     $this->form_validation->set_rules("email","* Email","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name'] = $this->input->post('name',true);
       $save_data['street'] = $this->input->post('street',true);
+      $save_data['maps'] = $this->input->post('maps',true);
       $save_data['no_hp'] = $this->input->post('no_hp',true);
       $save_data['email'] = $this->input->post('email',true);
 
@@ -152,6 +166,7 @@ function update($id)
     $data = array('action' => url("footer_alamat_utama/update_action/$id"),
                   'name' => set_value("name", $row->name),
                   'street' => set_value("street", $row->street),
+                  'maps' => set_value("maps", $row->maps),
                   'no_hp' => set_value("no_hp", $row->no_hp),
                   'email' => set_value("email", $row->email),
                   );
@@ -172,13 +187,15 @@ function update_action($id)
     $json = array('success' => false);
     $this->form_validation->set_rules("name","* Name","trim|xss_clean");
     $this->form_validation->set_rules("street","* Street","trim|xss_clean|required");
-    $this->form_validation->set_rules("no_hp","* No hp","trim|xss_clean|required");
+    $this->form_validation->set_rules("maps","* Maps","trim|xss_clean|required");
+    $this->form_validation->set_rules("no_hp","* No hp","trim|xss_clean|numeric");
     $this->form_validation->set_rules("email","* Email","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name'] = $this->input->post('name',true);
       $save_data['street'] = $this->input->post('street',true);
+      $save_data['maps'] = $this->input->post('maps',true);
       $save_data['no_hp'] = $this->input->post('no_hp',true);
       $save_data['email'] = $this->input->post('email',true);
 

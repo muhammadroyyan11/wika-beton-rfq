@@ -755,7 +755,7 @@ section {
   margin-bottom: 15px;
 }
 
-.featured-services .icon i {
+.featured-services .icon img {
   font-size: 48px;
   line-height: 1;
   color: #106eea;
@@ -783,7 +783,7 @@ section {
   color: #fff;
 }
 
-.featured-services .icon-box:hover .icon i {
+.featured-services .icon-box:hover .icon img {
   color: #fff;
 }
 
