@@ -21,11 +21,39 @@ class Portfolio extends CI_Controller
           'footer_alamat_cabang' => $this->db->get('footer_alamat_cabang')->result_array(),
           'social_network' => $this->db->get('social_network')->result_array(),
         ];
-
-        // $dd = [
-        //     'portfolio'    => $this->db->get('portfolio')->result_array(),
-        // ];
-        // var_dump($dd);
         $this->frontend->load('frontend/template', 'frontend/portfolio/portfolio', $data);
+    }
+
+    public function detail_portfolio()
+    {
+      // Mengambil nilai ID portofolio dari query string
+      $portfolio_id = $this->input->get('id');
+
+      // Mengambil data portofolio berdasarkan ID dari database
+      $detail_portfolio = $this->db->get_where('portfolio', ['id' => $portfolio_id])->row_array();
+
+      // Jika portofolio dengan ID tertentu tidak ditemukan, Anda bisa mengatasi kasus ini
+      if (!$detail_portfolio) {
+        show_404(); // Menampilkan halaman error 404
+        return;
+      }
+
+      // Data lain yang Anda ingin lewatkan ke view
+      $data = [
+        'title' => 'Detail Portfolio',
+        'detail_portfolio' => $detail_portfolio,
+        'company' => $this->db->get('company')->result_array(),
+        'footer_alamat_utama' => $this->db->get('footer_alamat_utama')->result_array(),
+        'footer_alamat_cabang' => $this->db->get('footer_alamat_cabang')->result_array(),
+        'social_network' => $this->db->get('social_network')->result_array(),
+      ];
+
+      // $dd = [
+      //   'detail_portfolio' => $detail_portfolio,
+      // ];
+      // var_dump($dd);
+
+      // Memuat view dengan data yang telah disiapkan
+      $this->frontend->load('frontend/template', 'frontend/detail_portfolio/detail_portfolio', $data);
     }
 }
