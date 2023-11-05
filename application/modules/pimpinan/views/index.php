@@ -38,10 +38,6 @@
                   </select>
                 </div>
 
-                <div class="form-group col-md-6">
-                  <input type="text" id="image" class="form-control form-control-sm" placeholder="Image" />
-                </div>
-
               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel">
