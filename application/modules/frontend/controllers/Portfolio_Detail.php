@@ -19,11 +19,13 @@ class Portfolio_Detail extends CI_Controller
       // Mengambil data portofolio berdasarkan ID dari database
       $detail_portfolio = $this->db->get_where('portfolio', ['id' => $portfolio_id])->row_array();
 
+      var_dump($detail_portfolio);
+
       // Jika portofolio dengan ID tertentu tidak ditemukan, Anda bisa mengatasi kasus ini
-      if (!$detail_portfolio) {
-        show_404(); // Menampilkan halaman error 404
-        return;
-      }
+      // if (!$detail_portfolio) {
+      //   show_404(); // Menampilkan halaman error 404
+      //   return;
+      // }
 
       // Data lain yang Anda ingin lewatkan ke view
       $data = [
