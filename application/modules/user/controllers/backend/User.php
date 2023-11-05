@@ -97,7 +97,15 @@ function add()
 {
   $this->is_allowed('user_add');
   $this->template->set_title(cclang("add")." user");
-  $data = array('action' => url("User/add_action"),
+  // $data = array('action' => url("User/add_action"),
+  //               'button' => "save",
+  //               'nama' => set_value("nama"),
+  //               'email' => set_value("email"),
+  //               'is_active' => set_value("is_active"),
+  //               'file_name' => set_value("file_name"),
+  //               'id_group' => set_value("id_group"),
+  //               );
+  $data = array('action' => url("user/add_action"),
                 'button' => "save",
                 'nama' => set_value("nama"),
                 'email' => set_value("email"),
@@ -161,7 +169,15 @@ function update($id)
   $this->is_allowed('user_update');
   if ($row = $this->model->get_where_data(dec_url($id))) {
     $this->template->set_title(cclang("update")." User");
-    $data = array('action' => url("User/update_action/$id"),
+    // $data = array('action' => url("User/update_action/$id"),
+    //               'button' => "update",
+    //               'nama' => set_value("nama",$row->name),
+    //               'email' => set_value("email",$row->email),
+    //               'file_name' => set_value("file_name",$row->photo),
+    //               'is_active' => set_value("is_active",$row->is_active),
+    //               'id_group' => set_value("id_group",$row->id_group),
+    //               );
+    $data = array('action' => url("user/update_action/$id"),
                   'button' => "update",
                   'nama' => set_value("nama",$row->name),
                   'email' => set_value("email",$row->email),
