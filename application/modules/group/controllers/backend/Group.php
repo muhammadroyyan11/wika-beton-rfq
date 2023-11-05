@@ -85,7 +85,7 @@ class Group extends Backend{
   {
     $this->is_allowed('groups_add');
     $this->template->set_title("Add New Group");
-    $data = array('action' => url("Group/add_action"),
+    $data = array('action' => url("group/add_action"),
                   'button' => "save",
                   'group' => set_value("group"),
                   'definition' => set_value("definition")
