@@ -31,8 +31,6 @@ class Contact extends CI_Controller
 
         $config['upload_path']          = './assets/uploads/file/';
         $config['allowed_types']        = 'jpg|jpeg|png|gif|pdf|docs|csv|xls|rar|zip|xlsx';
-        // $config['max_size']             = 10000;
-        // $config['max_width']            = 10000;
         $config['max_height']           = 10000;
         // $config['file_name']            = 'file-' . date('ymd') . '-' . substr(md5(rand()), 0, 6);
 
@@ -93,8 +91,6 @@ class Contact extends CI_Controller
         } else {
             echo 'Testing';
         }
-
         redirect('contact');
-
     }
 }

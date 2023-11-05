@@ -18,6 +18,14 @@
                                           <input type="text" id="name" class="form-control form-control-sm" placeholder="Name" />
                                       </div>
 
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="description" class="form-control form-control-sm" placeholder="Description" />
+                                      </div>
+
+                                  <div class="form-group col-md-6">
+                                          <input type="text" id="img" class="form-control form-control-sm" placeholder="Img" />
+                                      </div>
+
                               </div>
               <div class="pull-right">
                 <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?=cclang("cancel")?></button>
@@ -31,7 +39,6 @@
 							<th>Name</th>
 							<th>Description</th>
 							<th>Img</th>
-							<th>Img icon</th>
                     <th>#</th>
                   </tr>
                 </thead>
@@ -70,6 +77,8 @@
         "type": "POST",
          "data": function(data) {
                                           data.name = $("#name").val();
+                                                        data.description = $("#description").val();
+                                                        data.img = $("#img").val();
                                     }
               },
 
@@ -91,21 +100,18 @@
             "orderable": false
           },
 
-					{
-            "targets": 3,
-            "orderable": false
-          },
-
         {
           "className": "text-center",
           "orderable": false,
-          "targets": 4
+          "targets": 3
         },
       ],
     });
 
     $("#reload").click(function() {
                         $("#name").val("");
+                  $("#description").val("");
+                  $("#img").val("");
                     table.ajax.reload();
     });
 

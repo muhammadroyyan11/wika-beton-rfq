@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 04/11/2023 18:30*/
+/*| Generate By M-CRUD Generator 31/10/2023 01:22*/
 /*| Please DO NOT modify this information*/
 
 
@@ -16,9 +16,9 @@ class Product_model extends MY_Model{
 
   private $table        = "product";
   private $primary_key  = "id";
-  private $column_order = array('name', 'description', 'img', 'img_icon');
+  private $column_order = array('name', 'description', 'img');
   private $order        = array('product.id'=>"DESC");
-  private $select       = "product.id,product.name,product.description,product.img,product.img_icon";
+  private $select       = "product.id,product.name,product.description,product.img";
 
 public function __construct()
 	{
@@ -41,6 +41,16 @@ public function __construct()
     if($this->input->post("name"))
         {
           $this->db->like("product.name", $this->input->post("name"));
+        }
+
+    if($this->input->post("description"))
+        {
+          $this->db->like("product.description", $this->input->post("description"));
+        }
+
+    if($this->input->post("img"))
+        {
+          $this->db->like("product.img", $this->input->post("img"));
         }
 
       if(isset($_POST['order'])) // here order processing
