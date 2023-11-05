@@ -81,7 +81,8 @@ $route['product'] = 'frontend/product';
 $route['contact'] = 'frontend/contact';
 $route['contact/add_action'] = 'frontend/contact/add_action';
 $route['portfolio'] = 'frontend/portfolio';
-$route['portfolio/detail_portfolio'] = 'frontend/portfolio_detail';
+// $route['portfolio/detail_portfolio'] = 'frontend/portfolio_detail';
+$route['portfolio/detail_portfolio'] = 'frontend/Portfolio_Detail';
 $route['company'] = 'frontend/company';
 
 
