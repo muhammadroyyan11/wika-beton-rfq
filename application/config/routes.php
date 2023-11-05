@@ -55,7 +55,7 @@ $URI =& load_class('URI');
 if ($URI->segment(1) == ADMIN_ROUTE) {
   $route['404_override'] = 'core/backend/core/pagenotfound';
 }else {
-  $route['404_override'] = '';
+  $route['404_override'] = 'frontend/error404';
 }
 
 $route['default_controller'] = DEFAULT_CONTROLLER;
