@@ -231,6 +231,11 @@
             //bootstrap WYSIHTML5 - text editor
             $('.textarea').wysihtml5()
         })
+
+        function changeImage(element, newImageSrc) {
+            var iconElement = element.querySelector('.icon img');
+            iconElement.src = newImageSrc;
+        }
     </script>
 </body>
 

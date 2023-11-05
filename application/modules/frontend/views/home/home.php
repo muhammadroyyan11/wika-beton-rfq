@@ -33,8 +33,11 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0"
                     style="width: 250px; text-align: center;">
-                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon"><img src="assets/front/img/wika/READYMIX.png" alt="" style="width: 50px;"></i>
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100"
+                        onmouseover="changeImage(this, 'assets/front/img/wika/READYMIX.png')"
+                        onmouseout="changeImage(this, 'assets/front/img/wika/READYMIX_(WARNA).png')">
+                        <div class="icon"><img src="assets/front/img/wika/READYMIX_(WARNA).png" alt=""
+                                style="width: 50px;">
                         </div>
                         <h4 class="title"><a>Readymix</a></h4>
                         <p class="description">
@@ -44,8 +47,10 @@
 
                 <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0"
                     style="width: 250px; text-align: center;">
-                    <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon"><img src="assets/front/img/wika/QUARRY.png" alt="" style="width: 50px;"></i>
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="200"
+                        onmouseover="changeImage(this, 'assets/front/img/wika/QUARRY.png')"
+                        onmouseout="changeImage(this, 'assets/front/img/wika/QUARRY_(WARNA).png')">
+                        <div class="icon"><img src="assets/front/img/wika/QUARRY_(WARNA).png" alt="" style="width: 50px;">
                         </div>
                         <h4 class="title">
                             <a>Quarry</a>
@@ -57,8 +62,11 @@
 
                 <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0"
                     style="width: 250px; text-align: center;">
-                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                        <div class="icon"><img src="assets/front/img/wika/PRODUK_BETON_LAIN-LAIN.png" alt="" style="width: 50px;"></i>
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300"
+                        onmouseover="changeImage(this, 'assets/front/img/wika/PRODUK_BETON_LAIN-LAIN.png')"
+                        onmouseout="changeImage(this, 'assets/front/img/wika/PRODUK_BETON_LAIN-LAIN_(WARNA).png')">
+                        <div class="icon"><img src="assets/front/img/wika/PRODUK_BETON_LAIN-LAIN_(WARNA).png" alt=""
+                                style="width: 50px;"></i>
                         </div>
                         <h4 class="title"><a>Produk Beton Lain-lain</a></h4>
                         <p class="description">
@@ -68,8 +76,10 @@
 
                 <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0"
                     style="width: 250px; text-align: center;">
-                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                        <div class="icon"><img src="assets/front/img/wika/JASA.png" alt="" style="width: 50px;"></i>
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="400"
+                        onmouseover="changeImage(this, 'assets/front/img/wika/JASA.png')"
+                        onmouseout="changeImage(this, 'assets/front/img/wika/JASA(WARNA).png')">
+                        <div class="icon"><img src="assets/front/img/wika/JASA(WARNA).png" alt="" style="width: 50px;"></i>
                         </div>
                         <h4 class="title"><a>Jasa</a></h4>
                         <p class="description">
