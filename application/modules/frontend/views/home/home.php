@@ -17,7 +17,7 @@
                 <!-- <h2>
                     <?= $description[0]['desc_beranda'] ?>
                 </h2> -->
-                <div class="d-flex">
+                <div class="d-flex" style="margin-top: 30px;">
                     <a href="#about" class="btn-get-started scrollto">Profile</a>
                 </div>
             </div>

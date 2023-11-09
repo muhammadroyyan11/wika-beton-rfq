@@ -172,7 +172,7 @@
                         </p>
                         <div class="social-links mt-3">
                             <?php foreach ($social_network as $key => $data): ?>
-                                <a href="<?= $data['link'] ?>" class="<?= $data['name'] ?>"><i
+                                <a href="<?= $data['link'] ?>" class="<?= $data['name'] ?>" target="_blank"><i
                                         class="<?= $data['icon'] ?>"></i></a>
                             <?php endforeach; ?>
                         </div>
