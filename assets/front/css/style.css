@@ -578,6 +578,48 @@ h6 {
   color: #3b8af2;
 }
 
+#dropdown .arrow {
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+
+#dropdown .arrow span {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-bottom: 5px solid #3b8af2;
+  border-right: 5px solid #3b8af2;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animate 2s infinite;
+}
+
+#dropdown .arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+#dropdown .arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+      opacity: 0;
+      transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: rotate(45deg) translate(20px, 20px);
+  }
+}
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
