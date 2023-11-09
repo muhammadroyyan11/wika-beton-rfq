@@ -31,6 +31,20 @@
             <div id="img"></div>
           </div>
         
+          <div class="form-group">
+            <label>Img icon</label>
+            <input type="file" name="img" class="file-upload-default" data-id="img_icon" style="display: none;"/>
+            <div class="input-group col-xs-12">
+              <input type="hidden" class="file-dir" name="file-dir-img_icon" data-id="img_icon"/>
+              <input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="img_icon" placeholder="Img icon" readonly name="img_icon" value="<?=$img_icon?>" />
+            <span class="input-group-append">
+              <button class="btn-remove-image btn btn-danger btn-sm" type="button" data-id="img_icon" style="display:<?=$img_icon!=''?'block':'none'?>;"><i class="ti-trash"></i></button>
+              <button class="file-upload-browse btn btn-primary btn-sm" data-id="img_icon" type="button">Select File</button>
+            </span>
+            </div>
+            <div id="img_icon"></div>
+          </div>
+        
           <input type="hidden" name="submit" value="update">
 
           <div class="text-right">

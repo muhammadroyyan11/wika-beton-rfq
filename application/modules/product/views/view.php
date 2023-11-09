@@ -18,6 +18,10 @@
           <td>Img</td>
           <td><?=imgView($img)?></td>
         </tr>
+        <tr>
+          <td>Img icon</td>
+          <td><?=imgView($img_icon)?></td>
+        </tr>
         </table>
 
         <a href="<?=url($this->uri->segment(2))?>" class="btn btn-sm btn-danger mt-3"><?=cclang("back")?></a>

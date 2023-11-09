@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 31/10/2023 01:22*/
+/*| Generate By M-CRUD Generator 09/11/2023 16:05*/
 /*| Please DO NOT modify this information*/
 
 
@@ -45,8 +45,9 @@ function json()
     foreach ($list as $row) {
         $rows = array();
                 $rows[] = $row->name;
-                $rows[] = strlen($row->description) > 60 ? substr($row->description, 0, 60) . "..." : $row->description;
-                $rows[] = imgView($row->img,'','width:auto;height:40px');
+                $rows[] = strlen($row->description) > 50 ? substr($row->description, 0, 50) . "..." : $row->description;
+                $rows[] = is_image($row->img,'','width:auto;height:40px');
+                $rows[] = is_image($row->img_icon,'','width:auto;height:40px');
         
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -95,6 +96,7 @@ function detail($id)
           "name" => $row->name,
           "description" => $row->description,
           "img" => $row->img,
+          "img_icon" => $row->img_icon,
     );
     $this->template->view("view",$data);
   }else{
@@ -110,6 +112,7 @@ function add()
                   'name' => set_value("name"),
                   'description' => set_value("description"),
                   'img' => set_value("img"),
+                  'img_icon' => set_value("img_icon"),
                   );
   $this->template->view("add",$data);
 }
@@ -124,14 +127,16 @@ function add_action()
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name","* Name","trim|xss_clean|required");
-    $this->form_validation->set_rules("description","* Description","trim|xss_clean|htmlspecialchars");
+    $this->form_validation->set_rules("description","* Description","trim|xss_clean|required");
     $this->form_validation->set_rules("img","* Img","trim|xss_clean|required");
+    $this->form_validation->set_rules("img_icon","* Img icon","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name'] = $this->input->post('name',true);
       $save_data['description'] = $this->input->post('description',true);
       $save_data['img'] = $this->imageCopy($this->input->post('img',true),$_POST['file-dir-img']);
+      $save_data['img_icon'] = $this->imageCopy($this->input->post('img_icon',true),$_POST['file-dir-img_icon']);
 
       $this->model->insert($save_data);
 
@@ -157,6 +162,7 @@ function update($id)
                   'name' => set_value("name", $row->name),
                   'description' => set_value("description", $row->description),
                   'img' => set_value("img", $row->img),
+                  'img_icon' => set_value("img_icon", $row->img_icon),
                   );
     $this->template->view("update",$data);
   }else {
@@ -174,14 +180,16 @@ function update_action($id)
 
     $json = array('success' => false);
     $this->form_validation->set_rules("name","* Name","trim|xss_clean|required");
-    $this->form_validation->set_rules("description","* Description","trim|xss_clean|htmlspecialchars");
+    $this->form_validation->set_rules("description","* Description","trim|xss_clean|required");
     $this->form_validation->set_rules("img","* Img","trim|xss_clean|required");
+    $this->form_validation->set_rules("img_icon","* Img icon","trim|xss_clean|required");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">','</i>');
 
     if ($this->form_validation->run()) {
       $save_data['name'] = $this->input->post('name',true);
       $save_data['description'] = $this->input->post('description',true);
       $save_data['img'] = $this->imageCopy($this->input->post('img',true),$_POST['file-dir-img']);
+      $save_data['img_icon'] = $this->imageCopy($this->input->post('img_icon',true),$_POST['file-dir-img_icon']);
 
       $save = $this->model->change(dec_url($id), $save_data);
 
