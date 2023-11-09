@@ -1871,4 +1871,9 @@ section {
     text-align: center;
     padding: 2px 0;
   }
+  #footer .footer-top .footer-links {
+    margin-bottom: 30px;
+    min-width: 360px;
+  }
+  
 }

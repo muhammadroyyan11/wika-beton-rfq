@@ -127,7 +127,7 @@
                                         <p style="margin-bottom: 0px;">
                                             <?= $data['name'] ?>
                                         </p>
-                                        <a href="<?= $data['description'] ?>" target="_blank">
+                                        <a href="<?= $data['description'] ?>" target="_blank" style="line-height: 17px;">
                                             <?= $data['streets'] ?>
                                         </a>
                                     </div>
@@ -140,24 +140,24 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li>
+                            <li style="align-items: flex-start;">
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="<?= site_url('home#about') ?>">Tentang Perusahaan</a>
                             </li>
-                            <li>
+                            <li style="align-items: flex-start;">
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="<?= site_url('company') ?>">Struktur Perusahaan</a>
                             </li>
-                            <li>
+                            <li style="align-items: flex-start;">
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="<?= site_url('product') ?>">Produk &
                                     Jasa</a>
                             </li>
-                            <li>
+                            <li style="align-items: flex-start;">
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="<?= site_url('portfolio') ?>">Portfolio</a>
                             </li>
-                            <li>
+                            <li style="align-items: flex-start;">
                                 <i class="bx bx-chevron-right"></i>
                                 <a href="<?= site_url('contact') ?>">Hubungi
                                     Kami</a>
