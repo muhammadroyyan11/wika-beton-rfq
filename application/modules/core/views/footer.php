@@ -126,7 +126,7 @@
     var label = categoryAxis.renderer.labels.template;
     label.wrap = true;
     label.maxWidth = 160;
-    label.tooltipText = "asdasd";
+    label.tooltipText = "{category}";
 
     categoryAxis.events.on("sizechanged", function(ev) {
       var axis = ev.target;
