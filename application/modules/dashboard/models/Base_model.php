@@ -41,7 +41,7 @@ class Base_model extends CI_Model
 
     public function data_grafik()
     {
-        $this->db->select('count(id) as Total, Bulan, MONTH(createdOn) as Bulan');
+        $this->db->select('count(id) as Total, bulan');
         $this->db->from('rfq_request');
         $this->db->group_by('MONTH(createdOn)');
         return $this->db->get()->result();

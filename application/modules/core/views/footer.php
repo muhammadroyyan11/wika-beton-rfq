@@ -116,7 +116,7 @@
     chart.data = data;
     // Create axes
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "Bulan";
+    categoryAxis.dataFields.category = "bulan";
     categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.renderer.minGridDistance = 20;
     categoryAxis.renderer.inside = false;
@@ -126,7 +126,7 @@
     var label = categoryAxis.renderer.labels.template;
     label.wrap = true;
     label.maxWidth = 160;
-    label.tooltipText = "{category}";
+    label.tooltipText = "asdasd";
 
     categoryAxis.events.on("sizechanged", function(ev) {
       var axis = ev.target;
@@ -147,7 +147,7 @@
     valueAxis1.min = 0;
     var series1 = chart.series.push(new am4charts.ColumnSeries());
     series1.dataFields.valueY = "Total";
-    series1.dataFields.categoryX = "Bulan";
+    series1.dataFields.categoryX = "bulan";
     series1.yAxis = valueAxis1;
     series1.columns.template.tooltipText = "{valueY.value}";
 

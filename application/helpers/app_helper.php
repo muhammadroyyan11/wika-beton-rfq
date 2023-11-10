@@ -285,10 +285,31 @@ if (!function_exists('is_combo')) {
 
 function set_pesan($pesan, $tipe = true)
 {
-    $ci = get_instance();
-    if ($tipe) {
-        $ci->session->set_flashdata('pesan', "<div class='alert alert-success'><strong>SUCCESS!</strong> {$pesan} <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
-    } else {
-        $ci->session->set_flashdata('pesan', "<div class='alert alert-danger'><strong>ERROR!</strong> {$pesan} <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
-    }
+	$ci = get_instance();
+	if ($tipe) {
+		$ci->session->set_flashdata('pesan', "<div class='alert alert-success'><strong>SUCCESS!</strong> {$pesan} <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+	} else {
+		$ci->session->set_flashdata('pesan', "<div class='alert alert-danger'><strong>ERROR!</strong> {$pesan} <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+	}
+}
+
+
+if (!function_exists('format_indo')) {
+	function format_indo($date)
+	{
+		date_default_timezone_set('Asia/Jakarta');
+		// array hari dan bulan
+		$Hari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu");
+		$Bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+		// pemisahan tahun, bulan, hari, dan waktu
+		$tahun = substr($date, 0, 4);
+		$bulan = substr($date, 5, 2);
+		$tgl = substr($date, 8, 2);
+		$waktu = substr($date, 11, 5);
+		$hari = date("w", strtotime($date));
+		$result = $Bulan[(int)$bulan - 1];
+
+		return $result;
+	}
 }

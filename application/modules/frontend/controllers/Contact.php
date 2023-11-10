@@ -51,7 +51,8 @@ class Contact extends CI_Controller
             'koordinat'       => $post['koordinat'],
             'batching_jarak'  => $post['jarak'],
             'kebutuhan_produk'=> $post['kebutuhan_produk'],
-            'createdOn'       => date('Y-m-d H:i:s')
+            'createdOn'       => date('Y-m-d H:i:s'),
+            'bulan'           => format_indo(date('Y-m-d'))
         ];
 
         if ($post['suplai_select'] != 'other') {
