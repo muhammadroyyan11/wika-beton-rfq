@@ -17,7 +17,7 @@
                 <!-- <h2>
                     <?= $description[0]['desc_beranda'] ?>
                 </h2> -->
-                <div class="d-flex">
+                <div class="d-flex" style="margin-top: 30px;">
                     <a href="#about" class="btn-get-started scrollto">Profile</a>
                 </div>
             </div>
@@ -25,6 +25,14 @@
     </div>
 </section>
 <!-- End Hero -->
+
+<div id="dropdown" class="d-flex">
+    <div class="arrow">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
 
 <main id="main">
     <!-- ======= Featured Services Section ======= -->
@@ -50,7 +58,8 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="200"
                         onmouseover="changeImage(this, 'assets/front/img/wika/QUARRY.png')"
                         onmouseout="changeImage(this, 'assets/front/img/wika/QUARRY_(WARNA).png')">
-                        <div class="icon"><img src="assets/front/img/wika/QUARRY_(WARNA).png" alt="" style="width: 50px;">
+                        <div class="icon"><img src="assets/front/img/wika/QUARRY_(WARNA).png" alt=""
+                                style="width: 50px;">
                         </div>
                         <h4 class="title">
                             <a>Quarry</a>
@@ -79,7 +88,8 @@
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="400"
                         onmouseover="changeImage(this, 'assets/front/img/wika/JASA.png')"
                         onmouseout="changeImage(this, 'assets/front/img/wika/JASA(WARNA).png')">
-                        <div class="icon"><img src="assets/front/img/wika/JASA(WARNA).png" alt="" style="width: 50px;"></i>
+                        <div class="icon"><img src="assets/front/img/wika/JASA(WARNA).png" alt=""
+                                style="width: 50px;"></i>
                         </div>
                         <h4 class="title"><a>Jasa</a></h4>
                         <p class="description">
@@ -105,21 +115,20 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100" style="hight: 510px;">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100" style="height: 510px;">
                     <img src="<?= base_url() ?>/_temp/uploads/img/<?= $company[0]['img_desc'] ?>" class="img-perusahaan"
                         alt="" />
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
-                    data-aos-delay="100">
+                    data-aos-delay="100" style="align-self: flex-start;">
                     <h3>
                         Visi Misi
                     </h3>
-                    <p class="fst-italic">
+                    <p class="fst-italic" style="text-align: justify;">
                         "
-                        <?= $company[0]['visi'] ?>
-                        ".
+                        <?= $company[0]['visi'] ?>".
                     </p>
-                    <ul>
+                    <ul style="text-align: justify;">
                         <li style="display: flex; align-items: start;">
                             <i class="bi bi-1-circle-fill"></i>
                             <p>

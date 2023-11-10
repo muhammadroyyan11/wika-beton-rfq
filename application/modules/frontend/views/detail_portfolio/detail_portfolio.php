@@ -50,7 +50,7 @@
                 </div>
                 <div class="portfolio-description">
                     <h2><?= $detail_portfolio['name_portfolio'] ?></h2>
-                    <p>
+                    <p style="text-align: justify;">
                         <?= $detail_portfolio['desc_portfolio'] ?>
                     </p>
                 </div>
