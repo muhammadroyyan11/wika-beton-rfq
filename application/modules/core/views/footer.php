@@ -124,7 +124,7 @@
 
     categoryAxis.renderer.grid.template.disabled = true;
     var label = categoryAxis.renderer.labels.template;
-    label.wrap = true;
+    label.wrap = false;
     label.maxWidth = 160;
     label.tooltipText = "{category}";
 
@@ -152,8 +152,8 @@
     series1.columns.template.tooltipText = "{valueY.value}";
 
     chart.cursor = new am4charts.XYCursor();
-    chart.legend = new am4charts.Legend();
-    chart.legend.position = "top";
+    // chart.legend = new am4charts.Legend();
+    // chart.legend.position = "top";
   }
 </script>
 
