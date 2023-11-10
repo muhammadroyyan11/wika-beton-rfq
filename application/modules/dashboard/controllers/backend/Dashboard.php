@@ -1,22 +1,33 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
 
-class Dashboard extends Backend{
+class Dashboard extends Backend
+{
 
   private $title = "Dashboard";
 
   public function __construct()
   {
     parent::__construct();
-    $this->load->model("Core_model","model");
+    $this->load->model("Core_model", "model");
+    $this->load->model("Base_model", "base");
   }
 
   function index()
   {
-    $this->template->set_title("Dashboard");
+    $data = [
+      'newRFQ'  => $this->base->get('rfq_request')
+    ];
+    $this->template->set_title("Dashboard", $data);
     $this->template->view("index");
+  }
+
+  public function data_grafik()
+  {
+    $grafik = $this->base->data_grafik();
+    echo $data = json_encode($grafik);
   }
 
   function test()
@@ -25,17 +36,15 @@ class Dashboard extends Backend{
     echo json_encode($get_controller);
   }
 
-  function folderSize ($dir = null)
+  function folderSize($dir = null)
   {
     $dir = "./_temp/uploads/img/";
-      $size = 0;
+    $size = 0;
 
-      foreach (glob(rtrim($dir, '/').'/*', GLOB_NOSORT) as $each) {
-          $size += is_file($each) ? filesize($each) : folderSize($each);
-      }
+    foreach (glob(rtrim($dir, '/') . '/*', GLOB_NOSORT) as $each) {
+      $size += is_file($each) ? filesize($each) : folderSize($each);
+    }
 
-      echo $size. "Kb";
+    echo $size . "Kb";
   }
-
-
 }

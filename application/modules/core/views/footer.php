@@ -71,6 +71,12 @@
 <script src="<?= base_url() ?>assets/app-assets/vendors/js/calendar/extensions/interactions.min.js"></script>
 <!-- <script src="<?= base_url() ?>assets/app-assets/js/scripts/pages/dashboard-analytics.js"></script> -->
 
+<!-- Amchart Chart JS -->
+<script src="<?php echo base_url() ?>assets/amcharts4/core.js"></script>
+<script src="<?php echo base_url() ?>assets/amcharts4/chart.js"></script>
+<script src="<?php echo base_url() ?>assets/amcharts4/animated.js"></script>
+<script src="<?php echo base_url() ?>assets/amcharts4/kelly.js"></script>
+
 <!-- DRAG -->
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js" type="text/javascript"></script>
@@ -84,6 +90,72 @@
 
 <!-- CKEDITOR-->
 <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
+
+<script>
+  $(document).ready(function() {
+    init();
+  });
+
+  function init() {
+    $(".init-loading").html("<i class='fa fa-spin fa-refresh'></i> &nbsp;&nbsp;&nbsp;Memuat Data ...");
+    grafik();
+  }
+
+  function grafik() {
+    $.ajax({
+      url: "<?= site_url('cpanel/dashboard/data_grafik') ?>",
+      dataType: "json",
+      success: function(data) {
+        barChart(data, "grafik");
+      }
+    })
+  }
+
+  function barChart(data, chartdiv) {
+    var chart = am4core.create(chartdiv, am4charts.XYChart);
+    chart.data = data;
+    // Create axes
+    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "Bulan";
+    categoryAxis.renderer.grid.template.location = 0;
+    categoryAxis.renderer.minGridDistance = 20;
+    categoryAxis.renderer.inside = false;
+    categoryAxis.start = 0;
+
+    categoryAxis.renderer.grid.template.disabled = true;
+    var label = categoryAxis.renderer.labels.template;
+    label.wrap = true;
+    label.maxWidth = 160;
+    label.tooltipText = "{category}";
+
+    categoryAxis.events.on("sizechanged", function(ev) {
+      var axis = ev.target;
+      var cellWidth = axis.pixelWidth / (axis.endIndex - axis.startIndex);
+      if (cellWidth < axis.renderer.labels.template.maxWidth) {
+        axis.renderer.labels.template.rotation = -75;
+        axis.renderer.labels.template.horizontalCenter = "right";
+        axis.renderer.labels.template.verticalCenter = "middle";
+      } else {
+        axis.renderer.labels.template.rotation = 0;
+        axis.renderer.labels.template.horizontalCenter = "middle";
+        axis.renderer.labels.template.verticalCenter = "top";
+      }
+    });
+
+    var valueAxis1 = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis1.extraMax = 0.3;
+    valueAxis1.min = 0;
+    var series1 = chart.series.push(new am4charts.ColumnSeries());
+    series1.dataFields.valueY = "Total";
+    series1.dataFields.categoryX = "Bulan";
+    series1.yAxis = valueAxis1;
+    series1.columns.template.tooltipText = "{valueY.value}";
+
+    chart.cursor = new am4charts.XYCursor();
+    chart.legend = new am4charts.Legend();
+    chart.legend.position = "top";
+  }
+</script>
 
 <script>
   var hoursLabel = document.getElementById("hours");
@@ -105,11 +177,6 @@
       return valString;
     }
   }
-
-  <?php if (@$this->session->absen_needed) : ?>
-    var absenNeeded = '<?= json_encode($this->session->absen_needed) ?>';
-    <?php $this->session->sess_unset('absen_needed') ?>
-  <?php endif; ?>
 </script>
 
 <script type="text/javascript">

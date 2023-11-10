@@ -66,6 +66,7 @@ $route['mcrud'] = 'mcrud/Mcrud';
 $route['mcrud/(:any)'] = 'mcrud/Mcrud/$1';
 //
 $route['maintenance'] = 'core/backend/core/maintenance';
+$route['dashboard/data_grafik'] = 'cpanel/dashboard/data_grafik';
 
 $route['pagenotfound'] = 'core/backend/core/pagenotfound';
 
