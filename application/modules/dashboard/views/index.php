@@ -26,7 +26,7 @@
         <div class="card">
           <div class="card-content">
             <div class="card-body">
-              <h4 class="card-title">RFQ Terbaru</h4>
+              <h4 class="card-title">Grafik RFQ Request Per Bulan</h4>
             </div>
             <!-- <div class="table-responsive">
               <table class="table">
