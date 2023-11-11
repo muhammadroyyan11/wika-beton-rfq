@@ -38,24 +38,19 @@ class Rfq_request extends Backend
   {
     $get = $this->model->get(['id' => $id])->row();
 
-    if ($get->no_penawaran == null) {
-      set_pesan('Harap update no penawaran terlebih dahulu', false);
-      redirect('cpanel/rfq_request');
+    $params = [
+      'status' => 1
+    ];
+
+    $this->model->edit('rfq_request', $params, ['id' => $id]);
+
+    if ($this->db->affected_rows() > 0) {
+      set_pesan('Data berhasil disimpan');
     } else {
-      $params = [
-        'status' => 1
-      ];
-
-      $this->model->edit('rfq_request', $params, ['id' => $id]);
-
-      if ($this->db->affected_rows() > 0) {
-        set_pesan('Data berhasil disimpan');
-      } else {
-        set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
-      }
-
-      redirect('cpanel/rfq_request');
+      set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
     }
+
+    redirect('cpanel/rfq_request');
   }
 
   function not_approved()
