@@ -185,10 +185,6 @@
             <input type="file" class="form-control" name="file">
             <input type="hidden" name="rfq_id" value="<?= $id ?>" class="form-control">
           </div>
-          <div class="form-group">
-            <label>Keterangan</label>
-            <input type="text" class="form-control" name="keterangan">
-          </div>
           <!-- <input type="hidden" name="submit" value="update"> -->
 
           <div class="text-right">
