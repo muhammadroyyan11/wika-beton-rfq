@@ -14,7 +14,7 @@
               </div>
               <div class="text-center">
                 <h1 class="mb-2 text-white">Welcome <?= profile('name') ?>,</h1>
-                <p class="m-auto w-75">Selamat datang di admin panel <strong>WIKA</strong></p>
+                <p class="m-auto w-75">Selamat datang di admin panel <strong><?= $company[0]['name_company'] ?></strong></p>
               </div>
             </div>
           </div>

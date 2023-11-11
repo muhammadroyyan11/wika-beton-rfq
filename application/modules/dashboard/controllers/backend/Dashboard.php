@@ -18,10 +18,11 @@ class Dashboard extends Backend
   function index()
   {
     $data = [
-      'newRFQ'  => $this->base->get('rfq_request')
+      'newRFQ'  => $this->base->get('rfq_request'),
+      'company' => $this->db->get('company')->result_array(),
     ];
     $this->template->set_title("Dashboard", $data);
-    $this->template->view("index");
+    $this->template->view("index", $data);
   }
 
   public function data_grafik()
