@@ -31,7 +31,7 @@
     <!-- include summernote css/js -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
-    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
+    
 
 
     <!-- Template Main CSS File -->
@@ -214,11 +214,23 @@
 
     <!-- JS File -->
     <script src="<?= base_url() ?>assets/front/js/form.js"></script>
+    <!-- <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script> -->
+    <script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script>
 
     <script>
-        $(function () {iguration.
-            CKEDITOR.replace('editor1')
-        })
+       var ckeditor = CKEDITOR.replace('editor1', {
+            height: '300px'
+        });
+
+        // var ckeditor = CKEDITOR.replace('posting', {
+        //     height: '600px',
+        //     filebrowserUploadUrl: 'https://kobis.id/posting/upload_image',
+        //     filebrowserUploadMethod: "form"
+        // });
+
+
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.inline('editable');
 
         function changeImage(element, newImageSrc) {
             var iconElement = element.querySelector('.icon img');
