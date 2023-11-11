@@ -245,7 +245,7 @@ class Rfq_request extends Backend
         $post['tipe_file'] = $this->upload->data('file_type');
 
         $params_file = [
-          'type'      => $post['keterangan'],
+          'type'      => profile('name'),
           'file'      => $post['file'],
           'rfq_id'    => $post['rfq_id']
         ];

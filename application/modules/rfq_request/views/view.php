@@ -122,7 +122,7 @@
                 <tr>
                   <th>No</th>
                   <th>File</th>
-                  <th>Type</th>
+                  <th>Uploaded by</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
@@ -138,7 +138,7 @@
                       <?php if ($data['status'] == 0) {
                         echo 'Waiting';
                       } else if ($data['status'] == 1) {
-                        echo 'Approved';
+                        echo 'Done';
                       } else {
                         echo 'Rejected';
                       } ?>
