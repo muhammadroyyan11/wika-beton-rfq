@@ -11,6 +11,16 @@
             <label>No penawaran</label>
             <input type="text" class="form-control form-control-sm" placeholder="No penawaran" name="no_penawaran" id="no_penawaran" value="<?=$no_penawaran?>">
           </div>
+
+          <div class="form-group">
+            <label>Pelanggan</label>
+            <!-- <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="no_penawaran" id="no_penawaran" value="<?=$no_penawaran?>"> -->
+            <select name="pelanggan" id="" class="form-control">
+              <option value="">-- Silahkan Pilih --</option>
+              <option value="WIKA" <?= $pelanggan == 'WIKA' ? 'selected' : '' ?>>WIKA</option>
+              <option value="NON WIKA" <?= $pelanggan == 'NON WIKA' ? 'selected' : '' ?>>NON WIKA</option>
+            </select>
+          </div>
         
           <div class="form-group">
             <label>Nama perusahaan</label>

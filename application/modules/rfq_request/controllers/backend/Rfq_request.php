@@ -90,6 +90,7 @@ class Rfq_request extends Backend
       foreach ($list as $row) {
         $rows = array();
         $rows[] = $row->no_penawaran;
+        $rows[] = $row->pelanggan;
         $rows[] = $row->nama_perusahaan;
         $rows[] = $row->nama_proyek;
         $rows[] = $row->nama_owner;
@@ -152,6 +153,7 @@ class Rfq_request extends Backend
       $data = array(
         "id" => $row->id,
         "no_penawaran" => $row->no_penawaran,
+        "pelanggan" => $row->pelanggan,
         "nama_perusahaan" => $row->nama_perusahaan,
         "nama_proyek" => $row->nama_proyek,
         "nama_owner" => $row->nama_owner,
@@ -322,6 +324,7 @@ class Rfq_request extends Backend
         'nama_perusahaan' => set_value("nama_perusahaan", $row->nama_perusahaan),
         'nama_proyek' => set_value("nama_proyek", $row->nama_proyek),
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
+        'pelanggan' => set_value("pelanggan", $row->pelanggan),
       );
       $this->template->view("update", $data);
     } else {
@@ -338,7 +341,7 @@ class Rfq_request extends Backend
       }
 
       $json = array('success' => false);
-      $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean|required");
+      // $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean|required");
       $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean|required");
       $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean|required");
       $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean|required");
@@ -349,6 +352,7 @@ class Rfq_request extends Backend
         $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
         $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
         $save_data['nama_owner'] = $this->input->post('nama_owner', true);
+        $save_data['pelanggan'] = $this->input->post('pelanggan', true);
 
         $save = $this->model->change(dec_url($id), $save_data);
 

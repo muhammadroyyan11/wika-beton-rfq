@@ -50,6 +50,7 @@
                 <thead>
                   <tr>
                     <th>No penawaran</th>
+                    <th>Pelanggan</th>
                     <th>Nama perusahaan</th>
                     <th>Nama proyek</th>
                     <th>Nama owner</th>

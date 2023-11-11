@@ -21,6 +21,10 @@
             <td><?= $no_penawaran ?></td>
           </tr>
           <tr>
+            <td>Pelanggan</td>
+            <td><?= $pelanggan ?></td>
+          </tr>
+          <tr>
             <td>Nama perusahaan</td>
             <td><?= $nama_perusahaan ?></td>
           </tr>
