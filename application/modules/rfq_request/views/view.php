@@ -144,10 +144,10 @@
                       } ?>
                     </td>
                     <td>
-                      <a href="<?= base_url() ?>assets/uploads/file/<?= $data['file'] ?>" target="_blank" class="btn btn-secondary btn-sm"><i class="fa fa-download"></i> Download</a>
+                      <a href="<?= base_url() ?>assets/uploads/file/<?= $data['file'] ?>" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-download"></i> Download</a>
                       <?php
                       if ($data['status'] == 0) { ?>
-                        <a href="<?= site_url('cpanel/rfq_request/approved_lampiran/' . $data['id']) ?>" class="btn btn-success btn-sm btn-flat"><i class="fa fa-check"></i> Approved</a>
+                        <a href="<?= site_url('cpanel/rfq_request/approved_lampiran/' . $data['id']) ?>" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check"></i> Approved</a>
                         <a href="<?= site_url('cpanel/rfq_request/not_approved_lampiran/' . $data['id']) ?>" class="btn btn-warning btn-sm btn-flat"><i class="fa fa-times"></i> Not Approved</a>
                       <?php }
                       ?>
