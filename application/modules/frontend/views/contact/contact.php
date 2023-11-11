@@ -74,16 +74,16 @@
                 <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Proyek</label>
-                        <input type="text" name="nama_proyek" class="form-control" id="name" placeholder="" />
+                        <input type="text" name="nama_proyek" class="form-control" required id="name" placeholder="" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Nama Perusahan Project Owner</label>
-                        <input type="text" class="form-control" name="project_owner" id="email" placeholder="" />
+                        <input type="text" class="form-control" name="project_owner" required id="email" placeholder="" />
                     </div>
                 </div>
                 <div class="form-group mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Jenis Proyek</label>
-                    <select class="form-select" name="jenis_proyek" aria-label="Default select example">
+                    <select class="form-select" name="jenis_proyek" required aria-label="Default select example">
                         <option selected>Pilih proyek</option>
                         <option value="Retail">Retail</option>
                         <option value="Project Based">Project Based</option>
@@ -92,19 +92,19 @@
                 <div class="row mt-2">
                     <div class="col form-group">
                         <label for="datetime" class="form-label">Jangka Waktu Pelaksanaan Proyek Dimulai</label>
-                        <input type="date" class="form-control" name="tanggal_mulai" placeholder="" />
+                        <input type="date" class="form-control" required name="tanggal_mulai" placeholder="" />
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Jangka Waktu Pelaksanaan Proyek
                             Berakhir</label>
-                        <input type="date" class="form-control" name="tanggal_selesai" placeholder="" />
+                        <input type="date" class="form-control" required name="tanggal_selesai" placeholder="" />
                     </div>
                 </div>
 
                 <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Sumber Dana Proyek</label>
-                        <select class="form-select" name="sumber_dana" aria-label="Default select example">
+                        <select class="form-select" name="sumber_dana" required aria-label="Default select example">
                             <option selected>Pilih sumber dana proyek</option>
                             <option value="APBN">APBN</option>
                             <option value="APBD">APBD</option>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Sektor</label>
-                        <select class="form-select" name="sektor" aria-label="Default select example">
+                        <select class="form-select" name="sektor" required aria-label="Default select example">
                             <option selected>Pilih sektor</option>
                             <option value="AGROBISNIS">AGROBISNIS</option>
                             <option value="AIRPORT">AIRPORT</option>
@@ -153,12 +153,11 @@
                         aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                 </div>
 
-
                 <div class="row mt-2">
                     <div class="col form-group">
                         <label for="datetime" class="form-label">Koordinat Lokasi Proyek</label><br>
                         <label for="datetime" class="form-label">(Share Location)</label>
-                        <input type="text" class="form-control" name="koordinat" id="text"
+                        <input type="text" required class="form-control" name="koordinat" id="text"
                             placeholder="Koordinat Lokasi Proyek" />
                     </div>
                     <!-- <div class="col form-group">
@@ -170,7 +169,7 @@
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Jarak</label><br>
                         <label for="exampleFormControlInput1" class="form-label">Batching Plant Menuju Site </label>
-                        <input type="text" class="form-control" name="jarak" id="text"
+                        <input type="text" required class="form-control" name="jarak" id="text"
                             placeholder="Jarak Batching Plant Menuju Site" />
                     </div>
                 </div>
