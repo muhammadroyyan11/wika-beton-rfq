@@ -91,7 +91,7 @@ class Contact extends CI_Controller
                 echo 'error';
             }
         } else {
-            echo 'Testing';
+             redirect('contact');
         }
         redirect('contact');
     }
