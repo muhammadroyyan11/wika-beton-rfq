@@ -14,7 +14,11 @@
               </div>
               <div class="text-center">
                 <h1 class="mb-2 text-white">Welcome <?= profile('name') ?>,</h1>
+<<<<<<< HEAD
                 <p class="m-auto w-75">Selamat datang di admin panel <strong>OP2 WIKA BETON</strong></p>
+=======
+                <p class="m-auto w-75">Selamat datang di admin panel <strong><?= $company[0]['name_company'] ?></strong></p>
+>>>>>>> 592d4b290377bb097124c7db04d07d2d8e29d3cd
               </div>
             </div>
           </div>

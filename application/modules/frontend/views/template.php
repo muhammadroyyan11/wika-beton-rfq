@@ -29,8 +29,8 @@
     <link href="<?= base_url() ?>assets/front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
     <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 
 
@@ -216,20 +216,8 @@
     <script src="<?= base_url() ?>assets/front/js/form.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('.summernote').summernote();
-        });
-
-        $(function () {
-            // Replace the <textarea id="editor1"> with a CKEditor
-            // instance, using default configuration.
+        $(function () {iguration.
             CKEDITOR.replace('editor1')
-            CKEDITOR.replace('editor2')
-            CKEDITOR.replace('editor3')
-            CKEDITOR.replace('editor4')
-            CKEDITOR.replace('editor5')
-            //bootstrap WYSIHTML5 - text editor
-            $('.textarea').wysihtml5()
         })
 
         function changeImage(element, newImageSrc) {
