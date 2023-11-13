@@ -111,7 +111,7 @@
                         <br /><br />
                         <p>
                             <strong>Phone:</strong>
-                            <?= $footer_alamat_utama[0]['no_hp'] ?><br />
+                            +<?= $phone ?><br />
                             <strong>Email:</strong>
                             <?= $footer_alamat_utama[0]['email'] ?><br />
                         </p>
