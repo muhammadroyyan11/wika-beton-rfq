@@ -126,10 +126,9 @@
                 <tr>
                   <th>No</th>
                   <th>File</th>
+                  <th>Date Uploaded</th>
                   <th>Uploaded by</th>
                   <th>Status</th>
-                  <th>Create at</th>
-                  <th>Update at</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -139,6 +138,7 @@
                   <tr>
                     <td><?= $no++; ?></td>
                     <td><?= character_limiter($data['file'], 20) ?> </td>
+                    <td><?= $data['create_at'] ?></td>
                     <td><?= $data['type'] ?></td>
                     <td>
                       <?php if ($data['status'] == 0) {
@@ -149,7 +149,6 @@
                         echo 'Rejected';
                       } ?>
                     </td>
-                    <td><?= $data['create_at'] ?></td>
                     <td>
                       <a href="<?= base_url() ?>assets/uploads/file/<?= $data['file'] ?>" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-download"></i> Download</a>
                       <?php
