@@ -6,7 +6,7 @@
         <div class="card-header">
           <h4 class="card-title"><?= ucwords($title_module) ?></h4>
           <div class="pull-right">
-            <a href="<?= url("rfq_request/add") ?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
+            <!-- <a href="<?= url("rfq_request/add") ?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a> -->
             <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
           </div>
         </div>
@@ -91,7 +91,7 @@
 
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
-      "order": [], //Initial no order.
+      "order": [1,'asc'], //Initial no order.
       "ordering": true,
       "searching": false,
       "sort": true,

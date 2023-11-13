@@ -322,7 +322,9 @@ class Rfq_request extends Backend
       $data = array(
         'action' => url("rfq_request/update_action/$id"),
         'no_penawaran' => set_value("no_penawaran", $row->no_penawaran),
+        'untuk_perhatian' => set_value("untuk_perhatian", $row->untuk_perhatian),
         'nama_perusahaan' => set_value("nama_perusahaan", $row->nama_perusahaan),
+        'email_pelanggan' => set_value("email_pelanggan", $row->email_pelanggan),
         'nama_proyek' => set_value("nama_proyek", $row->nama_proyek),
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
         'pelanggan' => set_value("pelanggan", $row->pelanggan),
@@ -352,6 +354,8 @@ class Rfq_request extends Backend
         $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
         $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
         $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
+        $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
+        $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
         $save_data['nama_owner'] = $this->input->post('nama_owner', true);
         $save_data['pelanggan'] = $this->input->post('pelanggan', true);
 
