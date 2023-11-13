@@ -188,7 +188,6 @@ class Rfq_request extends Backend
 
     $params = [
       'status' => 1,
-      'update_at'    => date('Y-m-d H:i:s'),
     ];
 
     $this->model->edit('media', $params, ['id' => $id]);
@@ -209,7 +208,6 @@ class Rfq_request extends Backend
 
     $params = [
       'status' => 2,
-      'update_at'    => date('Y-m-d H:i:s'),
     ];
 
     $this->model->edit('media', $params, ['id' => $id]);
@@ -254,7 +252,6 @@ class Rfq_request extends Backend
           'file'      => $post['file'],
           'rfq_id'    => $post['rfq_id'],
           'create_at'    => date('Y-m-d H:i:s'),
-          'update_at'    => date('Y-m-d H:i:s'),
         ];
         // var_dump($params_file);
         $this->base->insert('media', $params_file);

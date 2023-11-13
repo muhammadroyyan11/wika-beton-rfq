@@ -150,7 +150,6 @@
                       } ?>
                     </td>
                     <td><?= $data['create_at'] ?></td>
-                    <td><?= $data['update_at'] ?></td>
                     <td>
                       <a href="<?= base_url() ?>assets/uploads/file/<?= $data['file'] ?>" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-download"></i> Download</a>
                       <?php
