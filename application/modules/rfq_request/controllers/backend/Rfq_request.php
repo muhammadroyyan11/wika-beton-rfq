@@ -87,10 +87,9 @@ class Rfq_request extends Backend
 
       $list = $this->model->get_datatables();
       $data = array();
-      $nomer = 1;
       foreach ($list as $row) {
         $rows = array();
-        $rows[] = $nomer;
+        $rows[] = $row->id;
         $rows[] = $row->no_penawaran;
         $rows[] = $row->pelanggan;
         $rows[] = $row->nama_perusahaan;
@@ -125,7 +124,6 @@ class Rfq_request extends Backend
                  ';
 
         $data[] = $rows;
-        $nomer ++;
       }
 
       $output = array(

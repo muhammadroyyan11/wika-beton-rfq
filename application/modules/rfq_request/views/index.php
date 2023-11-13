@@ -49,7 +49,7 @@
               <table class="table display table-striped" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
-                    <th>No</th>
+                    <th>No Id</th>
                     <th>No penawaran</th>
                     <th>Pelanggan</th>
                     <th>Nama perusahaan</th>
@@ -106,7 +106,7 @@
         "url": "<?= url("rfq_request/json") ?>",
         "type": "POST",
         "data": function(data) {
-          data.nomer = $("#nomer").val();
+          data.id = $("#id").val();
           data.no_penawaran = $("#no_penawaran").val();
           data.nama_perusahaan = $("#nama_perusahaan").val();
           data.nama_proyek = $("#nama_proyek").val();
