@@ -82,7 +82,9 @@ class Contact extends CI_Controller
                 $params_file = [
                     'type'      => 'Document Client',
                     'file'      => $post['file'],
-                    'rfq_id'    => $rfq_id
+                    'rfq_id'    => $rfq_id,
+                    'create_at'    => date('Y-m-d H:i:s'),
+                    'update_at'    => date('Y-m-d H:i:s'),
                 ];
 
                 $this->base->insert('media', $params_file);
