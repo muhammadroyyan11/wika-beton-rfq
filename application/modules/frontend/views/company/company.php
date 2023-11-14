@@ -29,8 +29,8 @@
 <section id="portfolio" class="portfolio">
     <div class="container" data-aos="fade-up" style="width: 70%;">
         <div class="section-title">
-            <h2>Struktur Perusahaan</h2>
-            <h3>Berikut adalah <span>Struktur Perusahaan</span> kami</h3>
+            <h2>Struktur Manajemen</h2>
+            <h3>Berikut adalah <span>Struktur Manajemen</span> kami</h3>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
