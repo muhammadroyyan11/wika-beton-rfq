@@ -50,7 +50,7 @@
         <div class="text-center">
             <div class="section-title">
                 <h2>RFQ</h2>
-                <h3><span>Request For Quotation</span></h3>
+                <h3><span>Pengajuan Permintaan Penawaran</span></h3>
             </div>
         </div>
 

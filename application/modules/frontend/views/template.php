@@ -62,9 +62,9 @@
                             Perusahaan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= site_url('home#about') ?>">Tentang Perusahaan</a>
+                            <li><a class="dropdown-item" href="<?= site_url('home#about') ?>">Tentang Kami</a>
                             </li>
-                            <li><a class="dropdown-item" href="<?= site_url('company') ?>">Struktur Perusahaan</a></li>
+                            <li><a class="dropdown-item" href="<?= site_url('company') ?>">Struktur Organisasi</a></li>
                         </ul>
                     </li>
                     <li>

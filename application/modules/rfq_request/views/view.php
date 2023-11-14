@@ -6,7 +6,7 @@
       if ($status == 0) { ?>
         <div class="pull-right">
           <a href="<?= site_url('cpanel/rfq_request/approved/' . $id) ?>" class="btn btn-success btn-sm btn-flat"><i class="fa fa-check"></i>Approved</a>
-          <a href="<?= site_url('cpanel/rfq_request/not_approved') ?>" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-times"></i>Not Approved</a>
+          <a href="<?= site_url('cpanel/rfq_request/not_approved/' . $id) ?>" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-times"></i>Not Approved</a>
         </div>
       <?php }
       ?>
@@ -19,6 +19,10 @@
           <tr>
             <td>No penawaran</td>
             <td><?= $no_penawaran ?></td>
+          </tr>
+          <tr>
+            <td>Status penawaran</td>
+            <td><?= $status_penawaran ?></td>
           </tr>
           <tr>
             <td>Pelanggan</td>

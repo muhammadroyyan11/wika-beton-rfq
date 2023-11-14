@@ -51,6 +51,7 @@
                   <tr>
                     <th>No Id</th>
                     <th>No penawaran</th>
+                    <th>Status penawaran</th>
                     <th>Pelanggan</th>
                     <th>Nama perusahaan</th>
                     <th>Nama proyek</th>
@@ -91,7 +92,7 @@
 
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
-      "order": [1,'asc'], //Initial no order.
+      "order": [0,'ASC'], //Initial no order.
       "ordering": true,
       "searching": false,
       "sort": true,
@@ -108,6 +109,8 @@
         "data": function(data) {
           data.id = $("#id").val();
           data.no_penawaran = $("#no_penawaran").val();
+          data.status_penawaran = $("#status_penawaran").val();
+          data.pelanggan = $("#pelanggan").val();
           data.nama_perusahaan = $("#nama_perusahaan").val();
           data.nama_proyek = $("#nama_proyek").val();
           data.nama_owner = $("#nama_owner").val();
@@ -133,7 +136,7 @@
 
         {
           "targets": 0,
-          "orderable": false
+          "orderable": true
         },
 
         {
@@ -217,15 +220,32 @@
         },
 
         {
+          "targets": 17,
+          "orderable": false
+        },
+
+        
+        {
+          "targets": 18,
+          "orderable": false
+        },
+        
+        {
+          "targets": 18,
+          "orderable": false
+        },
+
+        {
           "className": "text-center",
           "orderable": false,
-          "targets": 17
+          "targets": 19
         },
       ],
     });
 
     $("#reload").click(function() {
       $("#no_penawaran").val("");
+      $("#status_penawaran").val("");
       $("#nama_perusahaan").val("");
       $("#nama_proyek").val("");
       $("#nama_owner").val("");

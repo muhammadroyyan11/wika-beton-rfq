@@ -105,7 +105,7 @@
     <section id="about" class="about section-bg">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
-                <h2>Tentang Perusahaan</h2>
+                <h2>Tentang Kami</h2>
                 <h3>
                     <?= $company[0]['name_company'] ?>
                 </h3>
