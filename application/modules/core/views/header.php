@@ -70,6 +70,13 @@
   <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/assets/css/style.css">
   <!-- END: Custom CSS-->
 
+  <!-- SUMMERNOTE  -->
+  <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 
   <!-- plugins:js -->
   <script src="<?= base_url() ?>_temp/backend/vendors/js/vendor.bundle.base.js"></script>
@@ -80,10 +87,11 @@
   <!-- <script src="<?= base_url() ?>_temp/backend/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> -->
   <script src="<?= base_url() ?>_temp/backend/vendors/fancybox/jquery.fancybox.min.js"></script>
   <script src="<?= base_url() ?>_temp/backend/vendors/select2/select2.min.js"></script>
-  <script src="<?= base_url() ?>_temp/backend/vendors/summernote/dist/summernote-bs4.min.js"></script>
+  <!-- <script src="<?= base_url() ?>_temp/backend/vendors/summernote/dist/summernote-bs4.min.js"></script> -->
   <script src="<?= base_url() ?>_temp/backend/vendors/clipboard/clipboard.min.js"></script>
   <script src="<?= base_url() ?>_temp/backend/js/custom.js"></script>
   <script src="<?= base_url() ?>_temp/backend/ckeditor/ckeditor.js"></script>
+  
   <!-- end plugins js -->
   <script>
     var BASE_URL = "<?= base_url() ?>";

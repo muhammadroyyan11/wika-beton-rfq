@@ -325,6 +325,7 @@ class Rfq_request extends Backend
         'nama_proyek' => set_value("nama_proyek", $row->nama_proyek),
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
         'pelanggan' => set_value("pelanggan", $row->pelanggan),
+        'kebutuhan' => set_value("kebutuhan_produk", $row->kebutuhan_produk),
       );
       $this->template->view("update", $data);
     } else {

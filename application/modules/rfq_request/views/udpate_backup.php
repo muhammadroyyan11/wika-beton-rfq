@@ -39,7 +39,7 @@
 
           <div class="form-group">
             <label>Kebutuhan Produk</label>
-            <textarea class="form-control" id="summernote" rows="3" data-original-label="about" name="about"><?= $kebutuhan?></textarea>
+            <textarea id="editor1"><?= $nama_owner?></textarea>
           </div>
 
           <input type="hidden" name="submit" value="update">
@@ -53,15 +53,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  $('#summernote').summernote({
-    height: 300,                 // set editor height
-    minHeight: null,             // set minimum height of editor
-    maxHeight: null,             // set maximum height of editor
-    focus: true                  // set focus to editable area after initializin
-  });
-</script>
 
 
 <script type="text/javascript">

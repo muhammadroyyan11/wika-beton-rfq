@@ -214,8 +214,8 @@
 
     <!-- JS File -->
     <script src="<?= base_url() ?>assets/front/js/form.js"></script>
-    <!-- <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script> -->
-    <script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script>
+    
+    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 
     <script>
        var ckeditor = CKEDITOR.replace('editor1', {

@@ -89,7 +89,29 @@
 <script src="<?= base_url() ?>assets/app-assets/js/scripts/forms/select/form-select2.js"></script>
 
 <!-- CKEDITOR-->
-<script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
+<script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script>
+
+
+<script>
+  var ckeditor = CKEDITOR.replace('.editor1', {
+    height: '300px'
+  });
+
+  // var ckeditor = CKEDITOR.replace('posting', {
+  //     height: '600px',
+  //     filebrowserUploadUrl: 'https://kobis.id/posting/upload_image',
+  //     filebrowserUploadMethod: "form"
+  // });
+
+
+  CKEDITOR.disableAutoInline = true;
+  CKEDITOR.inline('editable');
+
+  function changeImage(element, newImageSrc) {
+    var iconElement = element.querySelector('.icon img');
+    iconElement.src = newImageSrc;
+  }
+</script>
 
 <script>
   $(document).ready(function() {
@@ -233,12 +255,6 @@
   CKEDITOR.disableAutoInline = true;
   CKEDITOR.inline('editable');
 </script>
-<script>
-  $('#summernote').summernote({
-    height: 300,
-  });
-</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
 
