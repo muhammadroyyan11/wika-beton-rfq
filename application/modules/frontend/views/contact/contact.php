@@ -9,9 +9,9 @@
         </div>
 
         <div class="row mt-2" data-aos="fade-up" data-aos-delay="100">
-            <div class="col-lg-6">
+            <div class="col">
                 <a href="<?= $footer_alamat_utama[0]['maps'] ?>" target="_blank">
-                    <div class="info-box mb-4">
+                    <div class="info-box mb-4" style="height: 190px;">
                         <i class="bx bx-map"></i>
                         <h3>Our Address</h3>
                         <p>
@@ -21,21 +21,21 @@
                 </a>
             </div>
 
-            <div class="col-lg-3 col-md-6">
-                <!-- <a href="mailto:<?= $footer_alamat_utama[0]['email'] ?>?body=This is the body of the message"> -->
-                <div class="info-box mb-4">
-                    <i class="bx bx-envelope"></i>
-                    <h3>Email Us</h3>
-                    <p>
-                        <?= $footer_alamat_utama[0]['email'] ?>
-                    </p>
-                </div>
-                <!-- </a> -->
+            <div class="col">
+                <a href="mailto:<?= $footer_alamat_utama[0]['email'] ?>">
+                    <div class="info-box mb-4" style="height: 190px;">
+                        <i class="bx bx-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>
+                            <?= $footer_alamat_utama[0]['email'] ?>
+                        </p>
+                    </div>
+                </a>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-3" sty>
                 <a href="https://wa.me/<?= $footer_alamat_utama[0]['no_hp'] ?>">
-                    <div class="info-box mb-4">
+                    <div class="info-box mb-4" style="height: 190px;">
                         <i class="bx bx-phone-call"></i>
                         <h3>Call Us</h3>
                         <p>
@@ -175,9 +175,9 @@
                     </div> -->
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Jarak</label><br>
-                        <label for="exampleFormControlInput1" class="form-label">Batching Plant Menuju Site </label>
+                        <label for="exampleFormControlInput1" class="form-label">Estimasi Menuju Site </label>
                         <input type="text" required class="form-control" name="jarak" id="text"
-                            placeholder="Jarak Batching Plant Menuju Site" />
+                            placeholder="Estimasi Menuju Site" />
                     </div>
                 </div>
 

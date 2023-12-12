@@ -49,7 +49,7 @@
         
           <div class="form-group">
             <label>Kebutuhan produk</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="kebutuhan_produk" name="kebutuhan_produk" id="summernote"><?=$kebutuhan_produk?></textarea>
+            <textarea class="form-control text-editor" rows="3" data-original-label="kebutuhan_produk" name="kebutuhan_produk" id="ckeditor300"><?=$kebutuhan_produk?></textarea>
           </div>
         
           <div class="form-group">
@@ -66,7 +66,7 @@
           </div>
         
           <div class="form-group">
-            <label>Jarak</label>
+            <label>Estimasi Menuju Site</label>
             <input type="text" class="form-control form-control-sm" placeholder="Jarak" name="jarak" id="jarak" value="<?=$jarak?>">
           </div>
         
@@ -207,13 +207,6 @@
           }
         }
       });
-  });
-</script>
-
-<script>
-  $('#summernote').summernote({
-    tabsize: 2,
-    height: 300
   });
 </script>
 

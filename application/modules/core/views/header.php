@@ -89,7 +89,7 @@
   <script src="<?= base_url() ?>_temp/backend/vendors/summernote/dist/summernote-bs4.min.js"></script>
   <script src="<?= base_url() ?>_temp/backend/vendors/clipboard/clipboard.min.js"></script>
   <script src="<?= base_url() ?>_temp/backend/js/custom.js"></script>
-  <script src="<?= base_url() ?>_temp/backend/ckeditor/ckeditor.js"></script>
+  <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
   <!-- end plugins js -->
   <script>
     var BASE_URL = "<?= base_url() ?>";

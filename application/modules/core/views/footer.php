@@ -232,13 +232,13 @@
 
 <!-- CKEDITOR -->
 <script>
-  // var ckeditor = CKEDITOR.replace('ckeditor', {
-  //   height: '600px'
-  // });
+  var ckeditor = CKEDITOR.replace('ckeditor600', {
+    height: '600px'
+  });
 
-  // var ckeditor = CKEDITOR.replace('ckeditor2', {
-  //   height: '600px'
-  // });
+  var ckeditor = CKEDITOR.replace('ckeditor300', {
+    height: '300px'
+  });
 
   // var ckeditor = CKEDITOR.replace('posting', {
   //     height: '600px',

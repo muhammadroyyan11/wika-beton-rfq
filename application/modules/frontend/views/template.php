@@ -111,9 +111,13 @@
                         <br /><br />
                         <p>
                             <strong>Phone:</strong>
-                            +<?= $phone ?><br />
+                            <a href="https://wa.me/<?= $phone ?>">+<?= $phone ?></a>
+                        </p>
+                        <p>
                             <strong>Email:</strong>
-                            <?= $footer_alamat_utama[0]['email'] ?><br />
+                            <a  href="mailto:<?= $footer_alamat_utama[0]['email'] ?>">
+                                <?= $footer_alamat_utama[0]['email'] ?>
+                            </a>
                         </p>
                     </div>
 
@@ -214,13 +218,12 @@
 
     <!-- JS File -->
     <script src="<?= base_url() ?>assets/front/js/form.js"></script>
-    
     <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 
     <script>
-    //    var ckeditor = CKEDITOR.replace('editor1', {
-    //         height: '300px'
-    //     });
+        var ckeditor = CKEDITOR.replace('editor1', {
+            height: '300px'
+        });
 
         // var ckeditor = CKEDITOR.replace('posting', {
         //     height: '600px',
