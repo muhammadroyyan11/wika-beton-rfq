@@ -89,13 +89,13 @@
 <script src="<?= base_url() ?>assets/app-assets/js/scripts/forms/select/form-select2.js"></script>
 
 <!-- CKEDITOR-->
-<script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script>
+<!-- <script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script> -->
 
 
 <script>
-  var ckeditor = CKEDITOR.replace('.editor1', {
-    height: '300px'
-  });
+  // var ckeditor = CKEDITOR.replace('.editor1', {
+  //   height: '300px'
+  // });
 
   // var ckeditor = CKEDITOR.replace('posting', {
   //     height: '600px',
@@ -104,13 +104,13 @@
   // });
 
 
-  CKEDITOR.disableAutoInline = true;
-  CKEDITOR.inline('editable');
+  // CKEDITOR.disableAutoInline = true;
+  // CKEDITOR.inline('editable');
 
-  function changeImage(element, newImageSrc) {
-    var iconElement = element.querySelector('.icon img');
-    iconElement.src = newImageSrc;
-  }
+  // function changeImage(element, newImageSrc) {
+  //   var iconElement = element.querySelector('.icon img');
+  //   iconElement.src = newImageSrc;
+  // }
 </script>
 
 <script>
@@ -232,13 +232,13 @@
 
 <!-- CKEDITOR -->
 <script>
-  var ckeditor = CKEDITOR.replace('ckeditor', {
-    height: '600px'
-  });
+  // var ckeditor = CKEDITOR.replace('ckeditor', {
+  //   height: '600px'
+  // });
 
-  var ckeditor = CKEDITOR.replace('ckeditor2', {
-    height: '600px'
-  });
+  // var ckeditor = CKEDITOR.replace('ckeditor2', {
+  //   height: '600px'
+  // });
 
   // var ckeditor = CKEDITOR.replace('posting', {
   //     height: '600px',
@@ -246,14 +246,14 @@
   //     filebrowserUploadMethod: "form"
   // });
 
-  CKEDITOR.replace('posting', {
-    height: '600px',
-    filebrowserUploadUrl: '<?= base_url('posting/uploadImage') ?>',
-    filebrowserUploadMethod: 'form'
-  });
+  // CKEDITOR.replace('posting', {
+  //   height: '600px',
+  //   filebrowserUploadUrl: '<?= base_url('posting/uploadImage') ?>',
+  //   filebrowserUploadMethod: 'form'
+  // });
 
-  CKEDITOR.disableAutoInline = true;
-  CKEDITOR.inline('editable');
+  // CKEDITOR.disableAutoInline = true;
+  // CKEDITOR.inline('editable');
 </script>
 <script type="text/javascript">
   $(document).ready(function() {

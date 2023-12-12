@@ -218,9 +218,9 @@
     <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 
     <script>
-       var ckeditor = CKEDITOR.replace('editor1', {
-            height: '300px'
-        });
+    //    var ckeditor = CKEDITOR.replace('editor1', {
+    //         height: '300px'
+    //     });
 
         // var ckeditor = CKEDITOR.replace('posting', {
         //     height: '600px',
@@ -229,13 +229,13 @@
         // });
 
 
-        CKEDITOR.disableAutoInline = true;
-        CKEDITOR.inline('editable');
+        // CKEDITOR.disableAutoInline = true;
+        // CKEDITOR.inline('editable');
 
-        function changeImage(element, newImageSrc) {
-            var iconElement = element.querySelector('.icon img');
-            iconElement.src = newImageSrc;
-        }
+        // function changeImage(element, newImageSrc) {
+        //     var iconElement = element.querySelector('.icon img');
+        //     iconElement.src = newImageSrc;
+        // }
     </script>
 </body>
 
