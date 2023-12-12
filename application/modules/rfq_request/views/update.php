@@ -9,22 +9,7 @@
 
           <div class="form-group">
             <label>No penawaran</label>
-<<<<<<< HEAD
             <input type="text" class="form-control form-control-sm" placeholder="No penawaran" name="no_penawaran" id="no_penawaran" value="<?= $no_penawaran ?>">
-=======
-            <input type="text" class="form-control form-control-sm" placeholder="No penawaran" name="no_penawaran"
-              id="no_penawaran" value="<?= $no_penawaran ?>">
-          </div>
-
-          <div class="form-group">
-            <label>Status penawaran</label>
-            <!-- <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="no_penawaran" id="no_penawaran" value="<?= $no_penawaran ?>"> -->
-            <select name="status_penawaran" id="" class="form-control">
-              <option value="">-- Silahkan Pilih --</option>
-              <option value="Diperoleh" <?= $status_penawaran == 'Diperoleh' ? 'selected' : '' ?>>Diperoleh</option>
-              <option value="Gagal Diperoleh" <?= $status_penawaran == 'Gagal Diperoleh' ? 'selected' : '' ?>>Gagal Diperoleh</option>
-            </select>
->>>>>>> 6acf0f86e28007d6894259cadd320f8f20de2fe4
           </div>
 
           <div class="form-group">
@@ -37,7 +22,6 @@
             </select>
           </div>
 
-<<<<<<< HEAD
           <div class="form-group">
             <label>Nama perusahaan</label>
             <input type="text" class="form-control form-control-sm" placeholder="Nama perusahaan" name="nama_perusahaan" id="nama_perusahaan" value="<?= $nama_perusahaan ?>">
@@ -46,41 +30,16 @@
           <div class="form-group">
             <label>Nama proyek</label>
             <input type="text" class="form-control form-control-sm" placeholder="Nama proyek" name="nama_proyek" id="nama_proyek" value="<?= $nama_proyek ?>">
-=======
-          <div class="form-group">
-            <label>Untuk Perhatian</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Untuk Perhatian" name="untuk_perhatian"
-              id="untuk_perhatian" value="<?= $untuk_perhatian ?>">
-          </div>
-
-          <div class="form-group">
-            <label>Nama perusahaan</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Nama perusahaan" name="nama_perusahaan"
-              id="nama_perusahaan" value="<?= $nama_perusahaan ?>">
-          </div>
-
-          <div class="form-group">
-            <label>Email Pelanggan</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Email Pelanggan" name="email_pelanggan"
-              id="email_pelanggan" value="<?= $email_pelanggan ?>">
-          </div>
-
-          <div class="form-group">
-            <label>Nama proyek</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Nama proyek" name="nama_proyek"
-              id="nama_proyek" value="<?= $nama_proyek ?>">
->>>>>>> 6acf0f86e28007d6894259cadd320f8f20de2fe4
           </div>
 
           <div class="form-group">
             <label>Nama owner</label>
-<<<<<<< HEAD
             <input type="text" class="form-control form-control-sm" placeholder="Nama owner" name="nama_owner" id="nama_owner" value="<?= $nama_owner ?>">
           </div>
 
           <div class="form-group">
             <label>Kebutuhan Produk</label>
-            <textarea class="form-control" id="summernote" rows="3" data-original-label="about" name="about"><?= $kebutuhan?></textarea>
+            <textarea class="form-control" id="summernote" rows="3" data-original-label="about" name="kebutuhan"><?= $kebutuhan?></textarea>
           </div>
 
           <input type="hidden" name="submit" value="update">
@@ -88,21 +47,6 @@
           <div class="text-right">
             <a href="<?= url($this->uri->segment(2)) ?>" class="btn btn-sm btn-danger"><?= cclang("cancel") ?></a>
             <button type="submit" id="submit" class="btn btn-sm btn-primary"><?= cclang("update") ?></button>
-=======
-            <input type="text" class="form-control form-control-sm" placeholder="Nama owner" name="nama_owner"
-              id="nama_owner" value="<?= $nama_owner ?>">
-          </div>
-
-          <input type="hidden" name="submit" value="update">
-
-          <div class="text-right">
-            <a href="<?= url($this->uri->segment(2)) ?>" class="btn btn-sm btn-danger">
-              <?= cclang("cancel") ?>
-            </a>
-            <button type="submit" id="submit" class="btn btn-sm btn-primary">
-              <?= cclang("update") ?>
-            </button>
->>>>>>> 6acf0f86e28007d6894259cadd320f8f20de2fe4
           </div>
         </form>
       </div>

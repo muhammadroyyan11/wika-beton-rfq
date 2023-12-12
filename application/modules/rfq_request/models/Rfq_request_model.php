@@ -16,15 +16,9 @@ class Rfq_request_model extends MY_Model{
 
   private $table        = "rfq_request";
   private $primary_key  = "id";
-<<<<<<< HEAD
-  private $column_order = array('no_penawaran', 'pelanggan','kebutuhan_produk','nama_perusahaan', 'nama_proyek', 'nama_owner', 'untuk_perhatian', 'email_pelanggan', 'no_hp', 'kebutuhan_produk', 'suplai_batching', 'sumber_dana', 'sektor', 'jenis_proyek', 'tanggal_mulai', 'tanggal_selesai', 'koordinat', 'batching_jarak', 'metode_pembayaran');
-  private $order        = array('rfq_request.id'=>"DESC");
-  private $select       = "rfq_request.id,rfq_request.no_penawaran,rfq_request.pelanggan,rfq_request.nama_perusahaan,rfq_request.nama_proyek,rfq_request.nama_owner,rfq_request.untuk_perhatian,rfq_request.email_pelanggan,rfq_request.no_hp,rfq_request.kebutuhan_produk,rfq_request.suplai_batching,rfq_request.sumber_dana,rfq_request.sektor,rfq_request.jenis_proyek,rfq_request.tanggal_mulai,rfq_request.tanggal_selesai,rfq_request.koordinat,rfq_request.batching_jarak,rfq_request.metode_pembayaran";
-=======
-  private $column_order = array('id', 'no_penawaran', 'status_penawaran', 'pelanggan', 'nama_perusahaan', 'nama_proyek', 'nama_owner', 'untuk_perhatian', 'email_pelanggan', 'no_hp', 'kebutuhan_produk', 'suplai_batching', 'sumber_dana', 'sektor', 'jenis_proyek', 'tanggal_mulai', 'tanggal_selesai', 'koordinat', 'batching_jarak', 'metode_pembayaran');
+  private $column_order = array('id', 'no_penawaran', 'status_penawaran', 'pelanggan', 'kebutuhan_produk','nama_perusahaan', 'nama_proyek', 'nama_owner', 'untuk_perhatian', 'email_pelanggan', 'no_hp', 'kebutuhan_produk', 'suplai_batching', 'sumber_dana', 'sektor', 'jenis_proyek', 'tanggal_mulai', 'tanggal_selesai', 'koordinat', 'batching_jarak', 'metode_pembayaran');
   private $order        = array('rfq_request.id'=>"ASC");
-  private $select       = "rfq_request.id,rfq_request.no_penawaran,rfq_request.status_penawaran,rfq_request.pelanggan,rfq_request.nama_perusahaan,rfq_request.nama_proyek,rfq_request.nama_owner,rfq_request.untuk_perhatian,rfq_request.email_pelanggan,rfq_request.no_hp,rfq_request.kebutuhan_produk,rfq_request.suplai_batching,rfq_request.sumber_dana,rfq_request.sektor,rfq_request.jenis_proyek,rfq_request.tanggal_mulai,rfq_request.tanggal_selesai,rfq_request.koordinat,rfq_request.batching_jarak,rfq_request.metode_pembayaran";
->>>>>>> 6acf0f86e28007d6894259cadd320f8f20de2fe4
+  private $select       = "rfq_request.id,rfq_request.no_penawaran,rfq_request.status_penawaran,rfq_request.pelanggan,rfq_request.kebutuhan_produk,rfq_request.nama_perusahaan,rfq_request.nama_proyek,rfq_request.nama_owner,rfq_request.untuk_perhatian,rfq_request.email_pelanggan,rfq_request.no_hp,rfq_request.kebutuhan_produk,rfq_request.suplai_batching,rfq_request.sumber_dana,rfq_request.sektor,rfq_request.jenis_proyek,rfq_request.tanggal_mulai,rfq_request.tanggal_selesai,rfq_request.koordinat,rfq_request.batching_jarak,rfq_request.metode_pembayaran";
 
 public function __construct()
 	{

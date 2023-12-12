@@ -359,6 +359,7 @@ class Rfq_request extends Backend
         $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
         $save_data['nama_owner'] = $this->input->post('nama_owner', true);
         $save_data['pelanggan'] = $this->input->post('pelanggan', true);
+        $save_data['kebutuhan'] = $this->input->post('kebutuhan', true);
 
         $save = $this->model->change(dec_url($id), $save_data);
 
