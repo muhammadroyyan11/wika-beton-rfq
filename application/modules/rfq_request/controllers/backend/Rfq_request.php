@@ -53,28 +53,23 @@ class Rfq_request extends Backend
     redirect('cpanel/rfq_request');
   }
 
-  function not_approved()
+  function not_approved($id)
   {
     $get = $this->model->get(['id' => $id])->row();
 
-    if ($get->no_penawaran == null) {
-      set_pesan('Harap update no penawaran terlebih dahulu', false);
-      redirect('cpanel/rfq_request');
+    $params = [
+      'status' => 2
+    ];
+
+    $this->model->edit('rfq_request', $params, ['id' => $id]);
+
+    if ($this->db->affected_rows() > 0) {
+      set_pesan('Data berhasil disimpan');
     } else {
-      $params = [
-        'status' => 2
-      ];
-
-      $this->model->edit('rfq_request', $params, ['id' => $id]);
-
-      if ($this->db->affected_rows() > 0) {
-        set_pesan('Data berhasil disimpan');
-      } else {
-        set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
-      }
-
-      redirect('cpanel/rfq_request');
+      set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
     }
+
+    redirect('cpanel/rfq_request');
   }
 
   function json()
@@ -89,7 +84,9 @@ class Rfq_request extends Backend
       $data = array();
       foreach ($list as $row) {
         $rows = array();
+        $rows[] = $row->id;
         $rows[] = $row->no_penawaran;
+        $rows[] = $row->status_penawaran;
         $rows[] = $row->pelanggan;
         $rows[] = $row->nama_perusahaan;
         $rows[] = $row->nama_proyek;
@@ -153,6 +150,7 @@ class Rfq_request extends Backend
       $data = array(
         "id" => $row->id,
         "no_penawaran" => $row->no_penawaran,
+        "status_penawaran" => $row->status_penawaran,
         "pelanggan" => $row->pelanggan,
         "nama_perusahaan" => $row->nama_perusahaan,
         "nama_proyek" => $row->nama_proyek,
@@ -186,7 +184,7 @@ class Rfq_request extends Backend
     $get = $this->base->get('media', ['id' => $id])->row();
 
     $params = [
-      'status' => 1
+      'status' => 1,
     ];
 
     $this->model->edit('media', $params, ['id' => $id]);
@@ -206,7 +204,7 @@ class Rfq_request extends Backend
     $get = $this->base->get('media', ['id' => $id])->row();
 
     $params = [
-      'status' => 2
+      'status' => 2,
     ];
 
     $this->model->edit('media', $params, ['id' => $id]);
@@ -249,7 +247,8 @@ class Rfq_request extends Backend
         $params_file = [
           'type'      => profile('name'),
           'file'      => $post['file'],
-          'rfq_id'    => $post['rfq_id']
+          'rfq_id'    => $post['rfq_id'],
+          'create_at'    => date('Y-m-d H:i:s'),
         ];
         // var_dump($params_file);
         $this->base->insert('media', $params_file);
@@ -321,7 +320,10 @@ class Rfq_request extends Backend
       $data = array(
         'action' => url("rfq_request/update_action/$id"),
         'no_penawaran' => set_value("no_penawaran", $row->no_penawaran),
+        'status_penawaran' => set_value("status_penawaran", $row->status_penawaran),
+        'untuk_perhatian' => set_value("untuk_perhatian", $row->untuk_perhatian),
         'nama_perusahaan' => set_value("nama_perusahaan", $row->nama_perusahaan),
+        'email_pelanggan' => set_value("email_pelanggan", $row->email_pelanggan),
         'nama_proyek' => set_value("nama_proyek", $row->nama_proyek),
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
         'pelanggan' => set_value("pelanggan", $row->pelanggan),
@@ -350,8 +352,11 @@ class Rfq_request extends Backend
 
       if ($this->form_validation->run()) {
         $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
+        $save_data['status_penawaran'] = $this->input->post('status_penawaran', true);
         $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
         $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
+        $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
+        $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
         $save_data['nama_owner'] = $this->input->post('nama_owner', true);
         $save_data['pelanggan'] = $this->input->post('pelanggan', true);
 

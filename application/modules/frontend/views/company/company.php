@@ -2,11 +2,14 @@
 <section id="company" class="company section-bg">
     <div class="container" data-aos="fade-up">
         <div class="section-title">
-            <h2>Struktur Perusahaan</h2>
-            <h3><?= $company[0]['name_company'] ?></h3>
-            <p style="width: auto; text-justify: auto;">
-                Struktur Organisasi Perusahaan <?= $company[0]['name_company'] ?>
-            </p>
+            <h2>Struktur Organisasi</h2>
+            <h3>
+                <?= $company[0]['name_company'] ?>
+            </h3>
+            <!-- <p style="width: auto; text-justify: auto;">
+                Struktur Organisasi
+                <?= $company[0]['name_company'] ?>
+            </p> -->
         </div>
 
         <div class="structureOrganisation">
@@ -26,8 +29,8 @@
 <section id="portfolio" class="portfolio">
     <div class="container" data-aos="fade-up" style="width: 70%;">
         <div class="section-title">
-            <h2>Struktur Manajemen Perusahaan</h2>
-            <h3>Berikut adalah <span>Struktur Manajemen Perusahaan</span> kami</h3>
+            <h2>Struktur Manajemen</h2>
+            <h3>Berikut adalah <span>Struktur Manajemen</span> kami</h3>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">

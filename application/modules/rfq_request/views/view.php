@@ -6,7 +6,7 @@
       if ($status == 0) { ?>
         <div class="pull-right">
           <a href="<?= site_url('cpanel/rfq_request/approved/' . $id) ?>" class="btn btn-success btn-sm btn-flat"><i class="fa fa-check"></i>Approved</a>
-          <a href="<?= site_url('cpanel/rfq_request/not_approved') ?>" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-times"></i>Not Approved</a>
+          <a href="<?= site_url('cpanel/rfq_request/not_approved/' . $id) ?>" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-times"></i>Not Approved</a>
         </div>
       <?php }
       ?>
@@ -19,6 +19,10 @@
           <tr>
             <td>No penawaran</td>
             <td><?= $no_penawaran ?></td>
+          </tr>
+          <tr>
+            <td>Status penawaran</td>
+            <td><?= $status_penawaran ?></td>
           </tr>
           <tr>
             <td>Pelanggan</td>
@@ -126,6 +130,7 @@
                 <tr>
                   <th>No</th>
                   <th>File</th>
+                  <th>Date Uploaded</th>
                   <th>Uploaded by</th>
                   <th>Status</th>
                   <th>Aksi</th>
@@ -137,6 +142,7 @@
                   <tr>
                     <td><?= $no++; ?></td>
                     <td><?= character_limiter($data['file'], 20) ?> </td>
+                    <td><?= $data['create_at'] ?></td>
                     <td><?= $data['type'] ?></td>
                     <td>
                       <?php if ($data['status'] == 0) {

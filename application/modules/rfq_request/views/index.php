@@ -6,7 +6,7 @@
         <div class="card-header">
           <h4 class="card-title"><?= ucwords($title_module) ?></h4>
           <div class="pull-right">
-            <a href="<?= url("rfq_request/add") ?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
+            <!-- <a href="<?= url("rfq_request/add") ?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a> -->
             <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
           </div>
         </div>
@@ -46,10 +46,12 @@
               </div>
             </form>
             <div class="table-responsive">
-              <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+              <table class="table display table-striped" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                   <tr>
+                    <th>No Id</th>
                     <th>No penawaran</th>
+                    <th>Status penawaran</th>
                     <th>Pelanggan</th>
                     <th>Nama perusahaan</th>
                     <th>Nama proyek</th>
@@ -90,7 +92,7 @@
 
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
-      "order": [], //Initial no order.
+      "order": [0,'ASC'], //Initial no order.
       "ordering": true,
       "searching": false,
       "sort": true,
@@ -105,7 +107,10 @@
         "url": "<?= url("rfq_request/json") ?>",
         "type": "POST",
         "data": function(data) {
+          data.id = $("#id").val();
           data.no_penawaran = $("#no_penawaran").val();
+          data.status_penawaran = $("#status_penawaran").val();
+          data.pelanggan = $("#pelanggan").val();
           data.nama_perusahaan = $("#nama_perusahaan").val();
           data.nama_proyek = $("#nama_proyek").val();
           data.nama_owner = $("#nama_owner").val();
@@ -131,7 +136,7 @@
 
         {
           "targets": 0,
-          "orderable": false
+          "orderable": true
         },
 
         {
@@ -215,15 +220,32 @@
         },
 
         {
+          "targets": 17,
+          "orderable": false
+        },
+
+        
+        {
+          "targets": 18,
+          "orderable": false
+        },
+        
+        {
+          "targets": 18,
+          "orderable": false
+        },
+
+        {
           "className": "text-center",
           "orderable": false,
-          "targets": 17
+          "targets": 19
         },
       ],
     });
 
     $("#reload").click(function() {
       $("#no_penawaran").val("");
+      $("#status_penawaran").val("");
       $("#nama_perusahaan").val("");
       $("#nama_proyek").val("");
       $("#nama_owner").val("");
