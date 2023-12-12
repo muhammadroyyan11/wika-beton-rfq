@@ -7,7 +7,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 12/12/2023 17:07*/
+/*| Generate By M-CRUD Generator 19/10/2023 16:09*/
 /*| Please DO NOT modify this information*/
 
 
@@ -24,6 +24,7 @@ class Rfq_request extends Backend
     );
     parent::__construct($config);
     $this->load->model("Rfq_request_model", "model");
+    $this->load->model('Base_model', 'base');
   }
 
   function index()
@@ -32,7 +33,6 @@ class Rfq_request extends Backend
     $this->template->set_title($this->title);
     $this->template->view("index");
   }
-
 
   function approved($id)
   {
@@ -63,8 +63,6 @@ class Rfq_request extends Backend
 
     $this->model->edit('rfq_request', $params, ['id' => $id]);
 
-
-
     if ($this->db->affected_rows() > 0) {
       set_pesan('Data berhasil disimpan');
     } else {
@@ -86,7 +84,9 @@ class Rfq_request extends Backend
       $data = array();
       foreach ($list as $row) {
         $rows = array();
+        $rows[] = $row->id;
         $rows[] = $row->no_penawaran;
+        $rows[] = $row->status_penawaran;
         $rows[] = $row->pelanggan;
         $rows[] = $row->nama_perusahaan;
         $rows[] = $row->nama_proyek;
@@ -94,9 +94,8 @@ class Rfq_request extends Backend
         $rows[] = $row->untuk_perhatian;
         $rows[] = $row->email_pelanggan;
         $rows[] = $row->no_hp;
-        $rows[] = $row->kebutuhan_produk;
+        $rows[] = character_limiter($row->kebutuhan_produk, 50);
         $rows[] = $row->suplai_batching;
-        $rows[] = $row->jarak;
         $rows[] = $row->sumber_dana;
         $rows[] = $row->sektor;
         $rows[] = $row->jenis_proyek;
@@ -105,8 +104,6 @@ class Rfq_request extends Backend
         $rows[] = $row->koordinat;
         $rows[] = $row->batching_jarak;
         $rows[] = $row->metode_pembayaran;
-        $rows[] = $row->bulan;
-        $rows[] = $row->status;
 
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -151,9 +148,10 @@ class Rfq_request extends Backend
     if ($row = $this->model->find($id)) {
       $this->template->set_title("Detail " . $this->title);
       $data = array(
+        "id" => $row->id,
         "no_penawaran" => $row->no_penawaran,
-        "pelanggan" => $row->pelanggan,
         "status_penawaran" => $row->status_penawaran,
+        "pelanggan" => $row->pelanggan,
         "nama_perusahaan" => $row->nama_perusahaan,
         "nama_proyek" => $row->nama_proyek,
         "nama_owner" => $row->nama_owner,
@@ -162,7 +160,6 @@ class Rfq_request extends Backend
         "no_hp" => $row->no_hp,
         "kebutuhan_produk" => $row->kebutuhan_produk,
         "suplai_batching" => $row->suplai_batching,
-        "jarak" => $row->jarak,
         "sumber_dana" => $row->sumber_dana,
         "sektor" => $row->sektor,
         "jenis_proyek" => $row->jenis_proyek,
@@ -173,6 +170,7 @@ class Rfq_request extends Backend
         "metode_pembayaran" => $row->metode_pembayaran,
         "status" => $row->status,
       );
+
       $data['file'] = $this->model->get_file($row->id)->result_array();
       $this->template->view("view", $data);
     } else {
@@ -264,21 +262,6 @@ class Rfq_request extends Backend
     redirect("cpanel/rfq_request/detail/" . $post['rfq_id']);
   }
 
-  function delete_lampiran($id){
-    $post = $this->input->post(null, true);
-    $get = $this->base->get('media', ['id' => $id])->row();
-
-    $this->base->del('media', ['id' => $id]);
-
-    if ($this->db->affected_rows() > 0) {
-      set_pesan('Data berhasil disimpan');
-    } else {
-      set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
-    }
-
-    redirect("cpanel/rfq_request/detail/" . $get->rfq_id);
-  }
-
   function add()
   {
     $this->is_allowed('rfq_request_add');
@@ -286,25 +269,9 @@ class Rfq_request extends Backend
     $data = array(
       'action' => url("rfq_request/add_action"),
       'no_penawaran' => set_value("no_penawaran"),
-      'pelanggan' => set_value("pelanggan"),
       'nama_perusahaan' => set_value("nama_perusahaan"),
       'nama_proyek' => set_value("nama_proyek"),
       'nama_owner' => set_value("nama_owner"),
-      'untuk_perhatian' => set_value("untuk_perhatian"),
-      'email_pelanggan' => set_value("email_pelanggan"),
-      'no_hp' => set_value("no_hp"),
-      'kebutuhan_produk' => set_value("kebutuhan_produk"),
-      'suplai_batching' => set_value("suplai_batching"),
-      'jarak' => set_value("jarak"),
-      'sumber_dana' => set_value("sumber_dana"),
-      'sektor' => set_value("sektor"),
-      'jenis_proyek' => set_value("jenis_proyek"),
-      'tanggal_mulai' => set_value("tanggal_mulai"),
-      'tanggal_selesai' => set_value("tanggal_selesai"),
-      'koordinat' => set_value("koordinat"),
-      'batching_jarak' => set_value("batching_jarak"),
-      'metode_pembayaran' => set_value("metode_pembayaran"),
-      'status' => set_value("status"),
     );
     $this->template->view("add", $data);
   }
@@ -318,49 +285,17 @@ class Rfq_request extends Backend
       }
 
       $json = array('success' => false);
-      $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean");
-      $this->form_validation->set_rules("pelanggan", "* Pelanggan", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean");
-      $this->form_validation->set_rules("untuk_perhatian", "* Untuk perhatian", "trim|xss_clean");
-      $this->form_validation->set_rules("email_pelanggan", "* Email pelanggan", "trim|xss_clean");
-      $this->form_validation->set_rules("no_hp", "* No hp", "trim|xss_clean|numeric");
-      $this->form_validation->set_rules("kebutuhan_produk", "* Kebutuhan produk", "trim|xss_clean");
-      $this->form_validation->set_rules("suplai_batching", "* Suplai batching", "trim|xss_clean");
-      $this->form_validation->set_rules("jarak", "* Jarak", "trim|xss_clean");
-      $this->form_validation->set_rules("sumber_dana", "* Sumber dana", "trim|xss_clean");
-      $this->form_validation->set_rules("sektor", "* Sektor", "trim|xss_clean");
-      $this->form_validation->set_rules("jenis_proyek", "* Jenis proyek", "trim|xss_clean");
-      $this->form_validation->set_rules("tanggal_mulai", "* Tanggal mulai", "trim|xss_clean");
-      $this->form_validation->set_rules("tanggal_selesai", "* Tanggal selesai", "trim|xss_clean");
-      $this->form_validation->set_rules("koordinat", "* Koordinat", "trim|xss_clean");
-      $this->form_validation->set_rules("batching_jarak", "* Batching jarak", "trim|xss_clean");
-      $this->form_validation->set_rules("metode_pembayaran", "* Metode pembayaran", "trim|xss_clean");
-      $this->form_validation->set_rules("status", "* Status", "trim|xss_clean");
+      $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean|required");
+      $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean|required");
+      $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean|required");
+      $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean|required");
       $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
       if ($this->form_validation->run()) {
         $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
-        $save_data['pelanggan'] = $this->input->post('pelanggan', true);
         $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
         $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
         $save_data['nama_owner'] = $this->input->post('nama_owner', true);
-        $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
-        $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
-        $save_data['no_hp'] = $this->input->post('no_hp', true);
-        $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan_produk', true);
-        $save_data['suplai_batching'] = $this->input->post('suplai_batching', true);
-        $save_data['jarak'] = $this->input->post('jarak', true);
-        $save_data['sumber_dana'] = $this->input->post('sumber_dana', true);
-        $save_data['sektor'] = $this->input->post('sektor', true);
-        $save_data['jenis_proyek'] = $this->input->post('jenis_proyek', true);
-        $save_data['tanggal_mulai'] = date("Y-m-d",  strtotime($this->input->post('tanggal_mulai', true)));
-        $save_data['tanggal_selesai'] = date("Y-m-d",  strtotime($this->input->post('tanggal_selesai', true)));
-        $save_data['koordinat'] = $this->input->post('koordinat', true);
-        $save_data['batching_jarak'] = $this->input->post('batching_jarak', true);
-        $save_data['metode_pembayaran'] = $this->input->post('metode_pembayaran', true);
-        $save_data['status'] = $this->input->post('status', true);
 
         $this->model->insert($save_data);
 
@@ -385,25 +320,14 @@ class Rfq_request extends Backend
       $data = array(
         'action' => url("rfq_request/update_action/$id"),
         'no_penawaran' => set_value("no_penawaran", $row->no_penawaran),
-        'pelanggan' => set_value("pelanggan", $row->pelanggan),
+        'status_penawaran' => set_value("status_penawaran", $row->status_penawaran),
+        'untuk_perhatian' => set_value("untuk_perhatian", $row->untuk_perhatian),
         'nama_perusahaan' => set_value("nama_perusahaan", $row->nama_perusahaan),
+        'email_pelanggan' => set_value("email_pelanggan", $row->email_pelanggan),
         'nama_proyek' => set_value("nama_proyek", $row->nama_proyek),
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
-        'untuk_perhatian' => set_value("untuk_perhatian", $row->untuk_perhatian),
-        'email_pelanggan' => set_value("email_pelanggan", $row->email_pelanggan),
-        'no_hp' => set_value("no_hp", $row->no_hp),
-        'kebutuhan_produk' => set_value("kebutuhan_produk", $row->kebutuhan_produk),
-        'suplai_batching' => set_value("suplai_batching", $row->suplai_batching),
-        'jarak' => set_value("jarak", $row->jarak),
-        'sumber_dana' => set_value("sumber_dana", $row->sumber_dana),
-        'sektor' => set_value("sektor", $row->sektor),
-        'jenis_proyek' => set_value("jenis_proyek", $row->jenis_proyek),
-        'tanggal_mulai' => $row->tanggal_mulai == "" ? "" : date("Y-m-d",  strtotime($row->tanggal_mulai)),
-        'tanggal_selesai' => $row->tanggal_selesai == "" ? "" : date("Y-m-d",  strtotime($row->tanggal_selesai)),
-        'koordinat' => set_value("koordinat", $row->koordinat),
-        'batching_jarak' => set_value("batching_jarak", $row->batching_jarak),
-        'metode_pembayaran' => set_value("metode_pembayaran", $row->metode_pembayaran),
-        'status' => set_value("status", $row->status),
+        'pelanggan' => set_value("pelanggan", $row->pelanggan),
+        'kebutuhan' => set_value("kebutuhan_produk", $row->kebutuhan_produk),
       );
       $this->template->view("update", $data);
     } else {
@@ -420,49 +344,22 @@ class Rfq_request extends Backend
       }
 
       $json = array('success' => false);
-      $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean");
-      $this->form_validation->set_rules("pelanggan", "* Pelanggan", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean");
-      $this->form_validation->set_rules("untuk_perhatian", "* Untuk perhatian", "trim|xss_clean");
-      $this->form_validation->set_rules("email_pelanggan", "* Email pelanggan", "trim|xss_clean");
-      $this->form_validation->set_rules("no_hp", "* No hp", "trim|xss_clean|numeric");
-      $this->form_validation->set_rules("kebutuhan_produk", "* Kebutuhan produk", "trim|xss_clean");
-      $this->form_validation->set_rules("suplai_batching", "* Suplai batching", "trim|xss_clean");
-      $this->form_validation->set_rules("jarak", "* Jarak", "trim|xss_clean");
-      $this->form_validation->set_rules("sumber_dana", "* Sumber dana", "trim|xss_clean");
-      $this->form_validation->set_rules("sektor", "* Sektor", "trim|xss_clean");
-      $this->form_validation->set_rules("jenis_proyek", "* Jenis proyek", "trim|xss_clean");
-      $this->form_validation->set_rules("tanggal_mulai", "* Tanggal mulai", "trim|xss_clean");
-      $this->form_validation->set_rules("tanggal_selesai", "* Tanggal selesai", "trim|xss_clean");
-      $this->form_validation->set_rules("koordinat", "* Koordinat", "trim|xss_clean");
-      $this->form_validation->set_rules("batching_jarak", "* Batching jarak", "trim|xss_clean");
-      $this->form_validation->set_rules("metode_pembayaran", "* Metode pembayaran", "trim|xss_clean");
-      $this->form_validation->set_rules("status", "* Status", "trim|xss_clean");
+      // $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean|required");
+      $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean|required");
+      $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean|required");
+      $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean|required");
       $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
       if ($this->form_validation->run()) {
         $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
-        $save_data['pelanggan'] = $this->input->post('pelanggan', true);
+        $save_data['status_penawaran'] = $this->input->post('status_penawaran', true);
         $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
         $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
-        $save_data['nama_owner'] = $this->input->post('nama_owner', true);
         $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
         $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
-        $save_data['no_hp'] = $this->input->post('no_hp', true);
-        $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan_produk', true);
-        $save_data['suplai_batching'] = $this->input->post('suplai_batching', true);
-        $save_data['jarak'] = $this->input->post('jarak', true);
-        $save_data['sumber_dana'] = $this->input->post('sumber_dana', true);
-        $save_data['sektor'] = $this->input->post('sektor', true);
-        $save_data['jenis_proyek'] = $this->input->post('jenis_proyek', true);
-        $save_data['tanggal_mulai'] = date("Y-m-d",  strtotime($this->input->post('tanggal_mulai', true)));
-        $save_data['tanggal_selesai'] = date("Y-m-d",  strtotime($this->input->post('tanggal_selesai', true)));
-        $save_data['koordinat'] = $this->input->post('koordinat', true);
-        $save_data['batching_jarak'] = $this->input->post('batching_jarak', true);
-        $save_data['metode_pembayaran'] = $this->input->post('metode_pembayaran', true);
-        $save_data['status'] = $this->input->post('status', true);
+        $save_data['nama_owner'] = $this->input->post('nama_owner', true);
+        $save_data['pelanggan'] = $this->input->post('pelanggan', true);
+        $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan', true);
 
         $save = $this->model->change(dec_url($id), $save_data);
 
@@ -478,6 +375,21 @@ class Rfq_request extends Backend
 
       $this->response($json);
     }
+  }
+
+  function delete_lampiran($id){
+    $post = $this->input->post(null, true);
+    $get = $this->base->get('media', ['id' => $id])->row();
+
+    $this->base->del('media', ['id' => $id]);
+
+    if ($this->db->affected_rows() > 0) {
+      set_pesan('Data berhasil disimpan');
+    } else {
+      set_pesan('Terjadi kesalahan menyimpan data!', FALSE);
+    }
+
+    redirect("cpanel/rfq_request/detail/" . $get->rfq_id);
   }
 
   function delete($id)
