@@ -13,6 +13,11 @@
           </div>
 
           <div class="form-group">
+            <label>Pelanggan</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="pelanggan" id="pelanggan">
+          </div>
+
+          <div class="form-group">
             <label>Nama perusahaan</label>
             <input type="text" class="form-control form-control-sm" placeholder="Nama perusahaan" name="nama_perusahaan" id="nama_perusahaan">
           </div>
@@ -25,6 +30,139 @@
           <div class="form-group">
             <label>Nama owner</label>
             <input type="text" class="form-control form-control-sm" placeholder="Nama owner" name="nama_owner" id="nama_owner">
+          </div>
+
+          <div class="form-group">
+            <label>Untuk perhatian</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Untuk perhatian" name="untuk_perhatian" id="untuk_perhatian">
+          </div>
+
+          <div class="form-group">
+            <label>Email pelanggan</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Email pelanggan" name="email_pelanggan" id="email_pelanggan">
+          </div>
+
+          <div class="form-group">
+            <label>No hp</label>
+            <input type="text" class="form-control form-control-sm" placeholder="No hp" name="no_hp" id="no_hp">
+          </div>
+
+          <div class="form-group">
+            <label>Kebutuhan produk</label>
+            <textarea class="form-control text-editor" rows="3" data-original-label="kebutuhan_produk" name="kebutuhan_produk"></textarea>
+            <div id="kebutuhan_produk"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Suplai batching</label>
+            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="suplai_batching" id="suplai_batching">
+              <option value=""></option>
+              <option value="Batching Plant Karawang">Batching Plant Karawang</option>
+              <option value="Batching Plant Walini">Batching Plant Walini</option>
+              <option value="Batching Plant Cakung">Batching Plant Cakung</option>
+              <option value="Batching Plant Cilegon">Batching Plant Cilegon</option>
+              <option value="Batching Plant Ancol">Batching Plant Ancol</option>
+              <option value="Batching Plant On Site">Batching Plant On Site</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Jarak</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Jarak" name="jarak" id="jarak">
+          </div>
+
+          <div class="form-group">
+            <label>Sumber dana</label>
+            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="sumber_dana" id="sumber_dana">
+              <option value=""></option>
+              <option value="APBN">APBN</option>
+              <option value="APBD">APBD</option>
+              <option value="SWASTA NASIONAL">SWASTA NASIONAL</option>
+              <option value="SWASTA ASING">SWASTA ASING</option>
+              <option value="LOAN">LOAN</option>
+              <option value="INVESTASI">INVESTASI</option>
+              <option value="BUMN">BUMN</option>
+              <option value="BUMD">BUMD</option>
+              <option value="PEMERINTAH">PEMERINTAH</option>
+              <option value="PEMERINTAH ASING">PEMERINTAH ASING</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Sektor</label>
+            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="sektor" id="sektor">
+              <option value=""></option>
+              <option value="AGROBISNIS">AGROBISNIS</option>
+              <option value="AIRPORT">AIRPORT</option>
+              <option value="ELECTRICITY">ELECTRICITY</option>
+              <option value="ENERGY">ENERGY</option>
+              <option value="INDUSTRI">INDUSTRI</option>
+              <option value="INFRASTRUKTUR">INFRASTRUKTUR</option>
+              <option value="INFRASTRUKTUR ENERGI">INFRASTRUKTUR ENERGI</option>
+              <option value="INFRASTRUKTUR TAMBANG">INFRASTRUKTUR TAMBANG</option>
+              <option value="JALAN DAN JEMBATAN">JALAN DAN JEMBATAN</option>
+              <option value="MARINE">MARINE</option>
+              <option value="PEKERJAAN UMUM">PEKERJAAN UMUM</option>
+              <option value="PEMERINTAHAN">PEMERINTAHAN</option>
+              <option value="PERHUBUNGAN">PERHUBUNGAN</option>
+              <option value="PERTAMBANGAN">PERTAMBANGAN</option>
+              <option value="POWER PLANT">POWER PLANT</option>
+              <option value="PROPERTI">PROPERTI</option>
+              <option value="PROPERTI & COMMERCIAL">PROPERTI & COMMERCIAL</option>
+              <option value="RAILWAY">RAILWAY</option>
+              <option value="SUMBER DAYA AIR">SUMBER DAYA AIR</option>
+              <option value="SWASTA">SWASTA</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Jenis proyek</label>
+            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="jenis_proyek" id="jenis_proyek">
+              <option value=""></option>
+              <option value="Retail">Retail</option>
+              <option value="Project based">Project based</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Tanggal mulai</label>
+            <input type="date" class="form-control form-control-sm" placeholder="Tanggal mulai" name="tanggal_mulai" id="tanggal_mulai">
+          </div>
+
+          <div class="form-group">
+            <label>Tanggal selesai</label>
+            <input type="date" class="form-control form-control-sm" placeholder="Tanggal selesai" name="tanggal_selesai" id="tanggal_selesai">
+          </div>
+
+          <div class="form-group">
+            <label>Koordinat</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Koordinat" name="koordinat" id="koordinat">
+          </div>
+
+          <div class="form-group">
+            <label>Batching jarak</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Batching jarak" name="batching_jarak" id="batching_jarak">
+          </div>
+
+          <div class="form-group">
+            <label>Metode pembayaran</label>
+            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="metode_pembayaran" id="metode_pembayaran">
+              <option value=""></option>
+              <option value="Cash Before Delivery">Cash Before Delivery</option>
+              <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
+              <option value="SCF 120 Hari">SCF 120 Hari</option>
+              <option value="SCF 180 Hari">SCF 180 Hari</option>
+              <option value="Reguler 14 Hari">Reguler 14 Hari</option>
+              <option value="Reguler 30 Hari">Reguler 30 Hari</option>
+              <option value="Reguler 60 Hari">Reguler 60 Hari</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <input type="text" class="form-control form-control-sm" placeholder="Status" name="status" id="status">
           </div>
 
           <input type="hidden" name="submit" value="add">
