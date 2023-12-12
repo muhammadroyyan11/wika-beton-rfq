@@ -53,17 +53,16 @@
           </div>
         
           <div class="form-group">
-            <label>Suplai batching</label>
-            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="suplai_batching" id="suplai_batching">
-              <option value=""></option>
-              <option <?=($suplai_batching == "Batching Plant Karawang" ? "selected":"")?> value="Batching Plant Karawang">Batching Plant Karawang</option>
-              <option <?=($suplai_batching == "Batching Plant Walini" ? "selected":"")?> value="Batching Plant Walini">Batching Plant Walini</option>
-              <option <?=($suplai_batching == "Batching Plant Cakung" ? "selected":"")?> value="Batching Plant Cakung">Batching Plant Cakung</option>
-              <option <?=($suplai_batching == "Batching Plant Cilegon" ? "selected":"")?> value="Batching Plant Cilegon">Batching Plant Cilegon</option>
-              <option <?=($suplai_batching == "Batching Plant Ancol" ? "selected":"")?> value="Batching Plant Ancol">Batching Plant Ancol</option>
-              <option <?=($suplai_batching == "Batching Plant On Site" ? "selected":"")?> value="Batching Plant On Site">Batching Plant On Site</option>
-              <option <?=($suplai_batching == "Other" ? "selected":"")?> value="Other">Other</option>
-            </select>
+              <label>Suplai batching</label>
+              <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="suplai_batching" id="suplai_batching" onchange="checkOtherOption(this)" disabled>
+                  <option style="display: none;" id="other_suplai_batching" value=<?=($suplai_batching)?> ><?=($suplai_batching)?></option>
+                  <option <?=($suplai_batching == "Batching Plant Karawang" ? "selected":"")?> value="Batching Plant Karawang">Batching Plant Karawang</option>
+                  <option <?=($suplai_batching == "Batching Plant Walini" ? "selected":"")?> value="Batching Plant Walini">Batching Plant Walini</option>
+                  <option <?=($suplai_batching == "Batching Plant Cakung" ? "selected":"")?> value="Batching Plant Cakung">Batching Plant Cakung</option>
+                  <option <?=($suplai_batching == "Batching Plant Cilegon" ? "selected":"")?> value="Batching Plant Cilegon">Batching Plant Cilegon</option>
+                  <option <?=($suplai_batching == "Batching Plant Ancol" ? "selected":"")?> value="Batching Plant Ancol">Batching Plant Ancol</option>
+                  <option <?=($suplai_batching == "Batching Plant On Site" ? "selected":"")?> value="Batching Plant On Site">Batching Plant On Site</option>
+              </select>
           </div>
         
           <div class="form-group">
@@ -146,7 +145,7 @@
         
           <div class="form-group">
             <label>Metode pembayaran</label>
-            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="metode_pembayaran" id="metode_pembayaran">
+            <select class="form-control form-control-sm select2" disabled data-placeholder=" -- Select -- " name="metode_pembayaran" id="metode_pembayaran">
               <option value=""></option>
               <option <?=($metode_pembayaran == "Cash Before Delivery" ? "selected":"")?> value="Cash Before Delivery">Cash Before Delivery</option>
               <option <?=($metode_pembayaran == "30% DP 70% Pelunasan" ? "selected":"")?> value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
@@ -216,4 +215,11 @@
     tabsize: 2,
     height: 300
   });
+</script>
+
+<script>
+    function checkOtherOption(selectElement) {
+      var otherInput = document.getElementById('other_suplai_batching');
+      otherInput.style.display = (selectElement.value != 'Batching Plant On Site' && selectElement.value != 'Batching Plant Ancol' && selectElement.value != 'Batching Plant Cilegon' && selectElement.value != 'Batching Plant Cakung' && selectElement.value != 'Batching Plant Walini' && selectElement.value != 'Batching Plant Karawang') ? 'block' : 'none';
+  }
 </script>
