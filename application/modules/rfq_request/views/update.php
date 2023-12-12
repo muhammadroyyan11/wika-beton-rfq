@@ -146,7 +146,7 @@
           <div class="form-group">
             <label>Metode pembayaran</label>
             <select class="form-control form-control-sm select2" disabled data-placeholder=" -- Select -- " name="metode_pembayaran" id="metode_pembayaran">
-              <option style="display: none;" id="other_suplai_batching" value=<?=($suplai_batching)?>><?=($suplai_batching)?></option>
+              <option style="display: none;" id="other_suplai_batching" value=<?=($metode_pembayaran)?>><?=($metode_pembayaran)?></option>
               <option <?=($metode_pembayaran == "Cash Before Delivery" ? "selected":"")?> value="Cash Before Delivery">Cash Before Delivery</option>
               <option <?=($metode_pembayaran == "30% DP 70% Pelunasan" ? "selected":"")?> value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
               <option <?=($metode_pembayaran == "SCF 120 Hari" ? "selected":"")?> value="SCF 120 Hari">SCF 120 Hari</option>
@@ -218,8 +218,13 @@
 </script>
 
 <script>
-    function checkOtherOption(selectElement) {
-      var otherInput = document.getElementById('other_suplai_batching');
-      otherInput.style.display = (selectElement.value != 'Batching Plant On Site' && selectElement.value != 'Batching Plant Ancol' && selectElement.value != 'Batching Plant Cilegon' && selectElement.value != 'Batching Plant Cakung' && selectElement.value != 'Batching Plant Walini' && selectElement.value != 'Batching Plant Karawang') ? 'block' : 'none';
+  function checkOtherOption(selectElement) {
+    var otherInput = document.getElementById('other_suplai_batching');
+    otherInput.style.display = (selectElement.value != 'Batching Plant On Site' && selectElement.value != 'Batching Plant Ancol' && selectElement.value != 'Batching Plant Cilegon' && selectElement.value != 'Batching Plant Cakung' && selectElement.value != 'Batching Plant Walini' && selectElement.value != 'Batching Plant Karawang') ? 'block' : 'none';
+  }
+
+  function checkOtherOption(selectElement) {
+    var otherInput = document.getElementById('other_suplai_batching');
+    otherInput.style.display = (selectElement.value != 'Cash Before Delivery' && selectElement.value != '30% DP 70% Pelunasan' && selectElement.value != 'SCF 120 Hari' && selectElement.value != 'SCF 180 Hari' && selectElement.value != 'Reguler 14 Hari' && selectElement.value != 'Reguler 30 Hari' && selectElement.value != 'Reguler 60 Hari') ? 'block' : 'none';
   }
 </script>
