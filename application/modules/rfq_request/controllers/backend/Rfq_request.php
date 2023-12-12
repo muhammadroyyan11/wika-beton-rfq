@@ -151,6 +151,7 @@ class Rfq_request extends Backend
     if ($row = $this->model->find($id)) {
       $this->template->set_title("Detail " . $this->title);
       $data = array(
+        "id" => $row->id,
         "no_penawaran" => $row->no_penawaran,
         "pelanggan" => $row->pelanggan,
         "status_penawaran" => $row->status_penawaran,
