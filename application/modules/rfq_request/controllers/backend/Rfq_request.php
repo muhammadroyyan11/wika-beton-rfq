@@ -152,6 +152,7 @@ class Rfq_request extends Backend
       $this->template->set_title("Detail " . $this->title);
       $data = array(
         "id" => $row->id,
+        "pelanggan" => $row->pelanggan,
         "no_penawaran" => $row->no_penawaran,
         "pelanggan" => $row->pelanggan,
         "status_penawaran" => $row->status_penawaran,

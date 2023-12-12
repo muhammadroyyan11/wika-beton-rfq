@@ -11,10 +11,14 @@
             <label>No penawaran</label>
             <input type="text" class="form-control form-control-sm" placeholder="No penawaran" name="no_penawaran" id="no_penawaran" value="<?=$no_penawaran?>">
           </div>
-        
+
           <div class="form-group">
-            <label>Pelanggan</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="pelanggan" id="pelanggan" value="<?=$pelanggan?>">
+            <label>Jenis Pelanggan</label>
+            <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="pelanggan" id="pelanggan">
+              <option value=""></option>
+              <option <?=($pelanggan == "WIKA" ? "selected":"")?> value="Retail">WIKA</option>
+              <option <?=($pelanggan == "NON WIKA" ? "selected":"")?> value="Project based">NON WIKA</option>
+            </select>
           </div>
         
           <div class="form-group">
@@ -49,7 +53,7 @@
         
           <div class="form-group">
             <label>Kebutuhan produk</label>
-            <textarea class="form-control text-editor" rows="3" data-original-label="kebutuhan_produk" name="kebutuhan_produk" id="ckeditor300"><?=$kebutuhan_produk?></textarea>
+            <textarea class="form-control text-editor" rows="3" name="kebutuhan_produk" id="ckeditor300"><?=$kebutuhan_produk?></textarea>
           </div>
         
           <div class="form-group">
