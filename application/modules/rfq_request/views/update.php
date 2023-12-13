@@ -13,6 +13,16 @@
           </div>
 
           <div class="form-group">
+            <label>Status penawaran</label>
+            <!-- <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="no_penawaran" id="no_penawaran" value="<?= $no_penawaran ?>"> -->
+            <select name="status_penawaran" id="" class="form-control">
+              <option value="">-- Silahkan Pilih --</option>
+              <option value="Diperoleh" <?= $status_penawaran == 'Diperoleh' ? 'selected' : '' ?>>Diperoleh</option>
+              <option value="Gagal Diperoleh" <?= $status_penawaran == 'Gagal Diperoleh' ? 'selected' : '' ?>>Gagal Diperoleh</option>
+            </select>
+          </div>
+
+          <div class="form-group">
             <label>Jenis Pelanggan</label>
             <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- " name="pelanggan" id="pelanggan">
               <option value=""></option>
@@ -162,10 +172,10 @@
             </select>
           </div>
         
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Status</label>
             <input type="text" class="form-control form-control-sm" placeholder="Status" name="status" id="status" value="<?=$status?>">
-          </div>
+          </div> -->
         
           <input type="hidden" name="submit" value="update">
 

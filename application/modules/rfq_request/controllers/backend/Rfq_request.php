@@ -87,7 +87,9 @@ class Rfq_request extends Backend
       $data = array();
       foreach ($list as $row) {
         $rows = array();
+        $rows[] = $row->id;
         $rows[] = $row->no_penawaran;
+        $rows[] = $row->status_penawaran;
         $rows[] = $row->pelanggan;
         $rows[] = $row->nama_perusahaan;
         $rows[] = $row->nama_proyek;
@@ -95,9 +97,8 @@ class Rfq_request extends Backend
         $rows[] = $row->untuk_perhatian;
         $rows[] = $row->email_pelanggan;
         $rows[] = $row->no_hp;
-        $rows[] = $row->kebutuhan_produk;
+        $rows[] = character_limiter($row->kebutuhan_produk, 50);
         $rows[] = $row->suplai_batching;
-        $rows[] = $row->jarak;
         $rows[] = $row->sumber_dana;
         $rows[] = $row->sektor;
         $rows[] = $row->jenis_proyek;
@@ -106,8 +107,6 @@ class Rfq_request extends Backend
         $rows[] = $row->koordinat;
         $rows[] = $row->batching_jarak;
         $rows[] = $row->metode_pembayaran;
-        $rows[] = $row->bulan;
-        $rows[] = $row->status;
 
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -153,10 +152,9 @@ class Rfq_request extends Backend
       $this->template->set_title("Detail " . $this->title);
       $data = array(
         "id" => $row->id,
-        "pelanggan" => $row->pelanggan,
         "no_penawaran" => $row->no_penawaran,
-        "pelanggan" => $row->pelanggan,
         "status_penawaran" => $row->status_penawaran,
+        "pelanggan" => $row->pelanggan,
         "nama_perusahaan" => $row->nama_perusahaan,
         "nama_proyek" => $row->nama_proyek,
         "nama_owner" => $row->nama_owner,
@@ -165,7 +163,6 @@ class Rfq_request extends Backend
         "no_hp" => $row->no_hp,
         "kebutuhan_produk" => $row->kebutuhan_produk,
         "suplai_batching" => $row->suplai_batching,
-        "jarak" => $row->jarak,
         "sumber_dana" => $row->sumber_dana,
         "sektor" => $row->sektor,
         "jenis_proyek" => $row->jenis_proyek,
@@ -388,6 +385,7 @@ class Rfq_request extends Backend
       $data = array(
         'action' => url("rfq_request/update_action/$id"),
         'no_penawaran' => set_value("no_penawaran", $row->no_penawaran),
+        'status_penawaran' => set_value("status_penawaran", $row->status_penawaran),
         'pelanggan' => set_value("pelanggan", $row->pelanggan),
         'nama_perusahaan' => set_value("nama_perusahaan", $row->nama_perusahaan),
         'nama_proyek' => set_value("nama_proyek", $row->nama_proyek),
@@ -448,6 +446,7 @@ class Rfq_request extends Backend
       if ($this->form_validation->run()) {
         $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
         $save_data['pelanggan'] = $this->input->post('pelanggan', true);
+        $save_data['status_penawaran'] = $this->input->post('status_penawaran', true);
         $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
         $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
         $save_data['nama_owner'] = $this->input->post('nama_owner', true);
