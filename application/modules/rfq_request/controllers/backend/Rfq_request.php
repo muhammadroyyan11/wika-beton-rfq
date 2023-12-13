@@ -24,6 +24,7 @@ class Rfq_request extends Backend
     );
     parent::__construct($config);
     $this->load->model("Rfq_request_model", "model");
+    $this->load->model("Base_model", "base");
   }
 
   function index()
