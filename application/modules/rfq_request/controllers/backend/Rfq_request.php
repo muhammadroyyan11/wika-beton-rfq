@@ -34,7 +34,6 @@ class Rfq_request extends Backend
     $this->template->view("index");
   }
 
-
   function approved($id)
   {
     $get = $this->model->get(['id' => $id])->row();
@@ -63,8 +62,6 @@ class Rfq_request extends Backend
     ];
 
     $this->model->edit('rfq_request', $params, ['id' => $id]);
-
-
 
     if ($this->db->affected_rows() > 0) {
       set_pesan('Data berhasil disimpan');
@@ -386,25 +383,13 @@ class Rfq_request extends Backend
         'action' => url("rfq_request/update_action/$id"),
         'no_penawaran' => set_value("no_penawaran", $row->no_penawaran),
         'status_penawaran' => set_value("status_penawaran", $row->status_penawaran),
-        'pelanggan' => set_value("pelanggan", $row->pelanggan),
+        'untuk_perhatian' => set_value("untuk_perhatian", $row->untuk_perhatian),
         'nama_perusahaan' => set_value("nama_perusahaan", $row->nama_perusahaan),
+        'email_pelanggan' => set_value("email_pelanggan", $row->email_pelanggan),
         'nama_proyek' => set_value("nama_proyek", $row->nama_proyek),
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
-        'untuk_perhatian' => set_value("untuk_perhatian", $row->untuk_perhatian),
-        'email_pelanggan' => set_value("email_pelanggan", $row->email_pelanggan),
-        'no_hp' => set_value("no_hp", $row->no_hp),
+        'pelanggan' => set_value("pelanggan", $row->pelanggan),
         'kebutuhan_produk' => set_value("kebutuhan_produk", $row->kebutuhan_produk),
-        'suplai_batching' => set_value("suplai_batching", $row->suplai_batching),
-        'jarak' => set_value("jarak", $row->jarak),
-        'sumber_dana' => set_value("sumber_dana", $row->sumber_dana),
-        'sektor' => set_value("sektor", $row->sektor),
-        'jenis_proyek' => set_value("jenis_proyek", $row->jenis_proyek),
-        'tanggal_mulai' => $row->tanggal_mulai == "" ? "" : date("Y-m-d",  strtotime($row->tanggal_mulai)),
-        'tanggal_selesai' => $row->tanggal_selesai == "" ? "" : date("Y-m-d",  strtotime($row->tanggal_selesai)),
-        'koordinat' => set_value("koordinat", $row->koordinat),
-        'batching_jarak' => set_value("batching_jarak", $row->batching_jarak),
-        'metode_pembayaran' => set_value("metode_pembayaran", $row->metode_pembayaran),
-        'status' => set_value("status", $row->status),
       );
       $this->template->view("update", $data);
     } else {
@@ -422,49 +407,21 @@ class Rfq_request extends Backend
 
       $json = array('success' => false);
       $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean");
-      $this->form_validation->set_rules("pelanggan", "* Pelanggan", "trim|xss_clean");
       $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean");
       $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean");
       $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean");
-      $this->form_validation->set_rules("untuk_perhatian", "* Untuk perhatian", "trim|xss_clean");
-      $this->form_validation->set_rules("email_pelanggan", "* Email pelanggan", "trim|xss_clean");
-      $this->form_validation->set_rules("no_hp", "* No hp", "trim|xss_clean|numeric");
-      $this->form_validation->set_rules("kebutuhan_produk", "* Kebutuhan produk", "trim|xss_clean");
-      $this->form_validation->set_rules("suplai_batching", "* Suplai batching", "trim|xss_clean");
-      $this->form_validation->set_rules("jarak", "* Jarak", "trim|xss_clean");
-      $this->form_validation->set_rules("sumber_dana", "* Sumber dana", "trim|xss_clean");
-      $this->form_validation->set_rules("sektor", "* Sektor", "trim|xss_clean");
-      $this->form_validation->set_rules("jenis_proyek", "* Jenis proyek", "trim|xss_clean");
-      $this->form_validation->set_rules("tanggal_mulai", "* Tanggal mulai", "trim|xss_clean");
-      $this->form_validation->set_rules("tanggal_selesai", "* Tanggal selesai", "trim|xss_clean");
-      $this->form_validation->set_rules("koordinat", "* Koordinat", "trim|xss_clean");
-      $this->form_validation->set_rules("batching_jarak", "* Batching jarak", "trim|xss_clean");
-      $this->form_validation->set_rules("metode_pembayaran", "* Metode pembayaran", "trim|xss_clean");
-      $this->form_validation->set_rules("status", "* Status", "trim|xss_clean");
       $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
       if ($this->form_validation->run()) {
         $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
-        $save_data['pelanggan'] = $this->input->post('pelanggan', true);
         $save_data['status_penawaran'] = $this->input->post('status_penawaran', true);
         $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
         $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
-        $save_data['nama_owner'] = $this->input->post('nama_owner', true);
         $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
         $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
-        $save_data['no_hp'] = $this->input->post('no_hp', true);
+        $save_data['nama_owner'] = $this->input->post('nama_owner', true);
+        $save_data['pelanggan'] = $this->input->post('pelanggan', true);
         $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan_produk', true);
-        $save_data['suplai_batching'] = $this->input->post('suplai_batching', true);
-        $save_data['jarak'] = $this->input->post('jarak', true);
-        $save_data['sumber_dana'] = $this->input->post('sumber_dana', true);
-        $save_data['sektor'] = $this->input->post('sektor', true);
-        $save_data['jenis_proyek'] = $this->input->post('jenis_proyek', true);
-        $save_data['tanggal_mulai'] = date("Y-m-d",  strtotime($this->input->post('tanggal_mulai', true)));
-        $save_data['tanggal_selesai'] = date("Y-m-d",  strtotime($this->input->post('tanggal_selesai', true)));
-        $save_data['koordinat'] = $this->input->post('koordinat', true);
-        $save_data['batching_jarak'] = $this->input->post('batching_jarak', true);
-        $save_data['metode_pembayaran'] = $this->input->post('metode_pembayaran', true);
-        $save_data['status'] = $this->input->post('status', true);
 
         $save = $this->model->change(dec_url($id), $save_data);
 

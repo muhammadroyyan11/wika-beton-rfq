@@ -22,11 +22,6 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="pelanggan" class="form-control form-control-sm"
-                                        placeholder="Pelanggan" />
-                                </div>
-
-                                <div class="form-group col-md-6">
                                     <input type="text" id="nama_perusahaan" class="form-control form-control-sm"
                                         placeholder="Nama perusahaan" />
                                 </div>
@@ -52,16 +47,6 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="no_hp" class="form-control form-control-sm"
-                                        placeholder="No hp" />
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="kebutuhan_produk" class="form-control form-control-sm"
-                                        placeholder="Kebutuhan produk" />
-                                </div>
-
-                                <div class="form-group col-md-6">
                                     <select class="form-control form-control-sm select2"
                                         data-placeholder=" -- Select Suplai batching -- " name="suplai_batching"
                                         id="suplai_batching">
@@ -73,29 +58,6 @@
                                         <option value="Batching Plant Ancol">Batching Plant Ancol</option>
                                         <option value="Batching Plant On Site">Batching Plant On Site</option>
                                         <option value="Other">Other</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="jarak" class="form-control form-control-sm"
-                                        placeholder="Jarak" />
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
-                                        data-placeholder=" -- Select Sumber dana -- " name="sumber_dana"
-                                        id="sumber_dana">
-                                        <option value=""></option>
-                                        <option value="APBN">APBN</option>
-                                        <option value="APBD">APBD</option>
-                                        <option value="SWASTA NASIONAL">SWASTA NASIONAL</option>
-                                        <option value="SWASTA ASING">SWASTA ASING</option>
-                                        <option value="LOAN">LOAN</option>
-                                        <option value="INVESTASI">INVESTASI</option>
-                                        <option value="BUMN">BUMN</option>
-                                        <option value="BUMD">BUMD</option>
-                                        <option value="PEMERINTAH">PEMERINTAH</option>
-                                        <option value="PEMERINTAH ASING">PEMERINTAH ASING</option>
                                     </select>
                                 </div>
 
@@ -137,21 +99,6 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="date" id="tanggal_mulai" class="form-control form-control-sm"
-                                        placeholder="Tanggal mulai" />
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <input type="date" id="tanggal_selesai" class="form-control form-control-sm"
-                                        placeholder="Tanggal selesai" />
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="koordinat" class="form-control form-control-sm"
-                                        placeholder="Koordinat" />
-                                </div>
-
-                                <div class="form-group col-md-6">
                                     <input type="text" id="batching_jarak" class="form-control form-control-sm"
                                         placeholder="Batching jarak" />
                                 </div>
@@ -170,16 +117,6 @@
                                         <option value="Reguler 60 Hari">Reguler 60 Hari</option>
                                         <option value="Other">Other</option>
                                     </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="bulan" class="form-control form-control-sm"
-                                        placeholder="Bulan" />
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="status" class="form-control form-control-sm"
-                                        placeholder="Status" />
                                 </div>
 
                             </div>
