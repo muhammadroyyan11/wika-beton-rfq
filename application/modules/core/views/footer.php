@@ -93,27 +93,6 @@
 
 
 <script>
-  // var ckeditor = CKEDITOR.replace('.editor1', {
-  //   height: '300px'
-  // });
-
-  // var ckeditor = CKEDITOR.replace('posting', {
-  //     height: '600px',
-  //     filebrowserUploadUrl: 'https://kobis.id/posting/upload_image',
-  //     filebrowserUploadMethod: "form"
-  // });
-
-
-  // CKEDITOR.disableAutoInline = true;
-  // CKEDITOR.inline('editable');
-
-  // function changeImage(element, newImageSrc) {
-  //   var iconElement = element.querySelector('.icon img');
-  //   iconElement.src = newImageSrc;
-  // }
-</script>
-
-<script>
   $(document).ready(function() {
     init();
   });
@@ -231,30 +210,11 @@
 </script>
 
 <!-- CKEDITOR -->
-<script>
-  var ckeditor = CKEDITOR.replace('ckeditor600', {
-    height: '600px'
-  });
-
+<!-- <script>
   var ckeditor = CKEDITOR.replace('ckeditor300', {
     height: '300px'
   });
-
-  // var ckeditor = CKEDITOR.replace('posting', {
-  //     height: '600px',
-  //     filebrowserUploadUrl: '<?= base_url('posting/upload_image') ?>',
-  //     filebrowserUploadMethod: "form"
-  // });
-
-  // CKEDITOR.replace('posting', {
-  //   height: '600px',
-  //   filebrowserUploadUrl: '<?= base_url('posting/uploadImage') ?>',
-  //   filebrowserUploadMethod: 'form'
-  // });
-
-  // CKEDITOR.disableAutoInline = true;
-  // CKEDITOR.inline('editable');
-</script>
+</script> -->
 <script type="text/javascript">
   $(document).ready(function() {
 

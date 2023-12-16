@@ -61,7 +61,7 @@
     
           <div class="form-group">
             <label>Kebutuhan produk</label>
-            <textarea class="form-control text-editor" rows="3" name="kebutuhan_produk" id="ckeditor300"><?=$kebutuhan_produk?></textarea>
+            <textarea class="form-control" rows="3" name="kebutuhan_produk" id="ckeditor300"><?=$kebutuhan_produk?></textarea>
           </div>
         
           <input type="hidden" name="submit" value="update">
@@ -112,13 +112,7 @@
 </script>
 
 <script>
-  function checkOtherOption(selectElement) {
-    var otherInput = document.getElementById('other_suplai_batching');
-    otherInput.style.display = (selectElement.value != 'Batching Plant On Site' && selectElement.value != 'Batching Plant Ancol' && selectElement.value != 'Batching Plant Cilegon' && selectElement.value != 'Batching Plant Cakung' && selectElement.value != 'Batching Plant Walini' && selectElement.value != 'Batching Plant Karawang') ? 'block' : 'none';
-  }
-
-  function checkOtherOption(selectElement) {
-    var otherInput = document.getElementById('other_suplai_batching');
-    otherInput.style.display = (selectElement.value != 'Cash Before Delivery' && selectElement.value != '30% DP 70% Pelunasan' && selectElement.value != 'SCF 120 Hari' && selectElement.value != 'SCF 180 Hari' && selectElement.value != 'Reguler 14 Hari' && selectElement.value != 'Reguler 30 Hari' && selectElement.value != 'Reguler 60 Hari') ? 'block' : 'none';
-  }
+  var ckeditor = CKEDITOR.replace('ckeditor300', {
+    height: '300px'
+  });
 </script>

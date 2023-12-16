@@ -28,7 +28,7 @@
   <!-- TOAST MSG  -->
   <link rel="stylesheet" href="<?= base_url() ?>_temp/backend/vendors/jquery-toast-plugin/jquery.toast.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>_temp/backend/vendors/fancybox/jquery.fancybox.min.css" />
-  <link rel="stylesheet" href="<?= base_url() ?>_temp/backend/vendors/summernote/dist/summernote-bs4.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/summernote/summernote-bs4.css">
   <!-- END TOAST MSG  -->
 
   <!-- BEGIN: Vendor CSS-->
@@ -86,7 +86,7 @@
   <!-- <script src="<?= base_url() ?>_temp/backend/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> -->
   <script src="<?= base_url() ?>_temp/backend/vendors/fancybox/jquery.fancybox.min.js"></script>
   <script src="<?= base_url() ?>_temp/backend/vendors/select2/select2.min.js"></script>
-  <script src="<?= base_url() ?>_temp/backend/vendors/summernote/dist/summernote-bs4.min.js"></script>
+  <script src="<?= base_url() ?>assets/summernote/summernote-bs4.min.js"></script>
   <script src="<?= base_url() ?>_temp/backend/vendors/clipboard/clipboard.min.js"></script>
   <script src="<?= base_url() ?>_temp/backend/js/custom.js"></script>
   <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
