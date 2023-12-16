@@ -261,7 +261,8 @@ class Rfq_request extends Backend
     redirect("cpanel/rfq_request/detail/" . $post['rfq_id']);
   }
 
-  function delete_lampiran($id){
+  function delete_lampiran($id)
+  {
     $post = $this->input->post(null, true);
     $get = $this->base->get('media', ['id' => $id])->row();
 
@@ -399,43 +400,75 @@ class Rfq_request extends Backend
 
   function update_action($id)
   {
-    if ($this->input->is_ajax_request()) {
-      if (!is_allowed('rfq_request_update')) {
-        show_error("Access Permission", 403, '403::Access Not Permission');
-        exit();
-      }
+    // if ($this->input->is_ajax_request()) {
+    //   if (!is_allowed('rfq_request_update')) {
+    //     show_error("Access Permission", 403, '403::Access Not Permission');
+    //     exit();
+    //   }
 
-      $json = array('success' => false);
-      $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean");
-      $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean");
-      $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
+    //   $json = array('success' => false);
+    //   $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean");
+    //   $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean");
+    //   $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean");
+    //   $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean");
+    //   $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
-      if ($this->form_validation->run()) {
-        $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
-        $save_data['status_penawaran'] = $this->input->post('status_penawaran', true);
-        $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
-        $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
-        $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
-        $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
-        $save_data['nama_owner'] = $this->input->post('nama_owner', true);
-        $save_data['pelanggan'] = $this->input->post('pelanggan', true);
-        $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan_produk', true);
+    //   if ($this->form_validation->run()) {
+    //     $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
+    //     $save_data['status_penawaran'] = $this->input->post('status_penawaran', true);
+    //     $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
+    //     $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
+    //     $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
+    //     $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
+    //     $save_data['nama_owner'] = $this->input->post('nama_owner', true);
+    //     $save_data['pelanggan'] = $this->input->post('pelanggan', true);
+    //     $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan_produk', true);
 
-        $save = $this->model->change(dec_url($id), $save_data);
+    //     // var_dump($this->input->post(null, true));
 
-        set_message("success", cclang("notif_update"));
+    //     $save = $this->model->change(dec_url($id), $save_data);
 
-        $json['redirect'] = url("rfq_request");
-        $json['success'] = true;
-      } else {
-        foreach ($_POST as $key => $value) {
-          $json['alert'][$key] = form_error($key);
-        }
-      }
+    //     set_message("success", cclang("notif_update"));
 
-      $this->response($json);
+    //     $json['redirect'] = url("rfq_request");
+    //     $json['success'] = true;
+    //   } else {
+    //     foreach ($_POST as $key => $value) {
+    //       $json['alert'][$key] = form_error($key);
+    //     }
+    //   }
+
+    //   $this->response($json);
+    // }
+
+
+    $json = array('success' => false);
+    $this->form_validation->set_rules("no_penawaran", "* No penawaran", "trim|xss_clean");
+    $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean");
+    $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean");
+    $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean");
+    $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
+
+    if ($this->form_validation->run()) {
+      $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
+      $save_data['status_penawaran'] = $this->input->post('status_penawaran', true);
+      $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
+      $save_data['nama_proyek'] = $this->input->post('nama_proyek', true);
+      $save_data['untuk_perhatian'] = $this->input->post('untuk_perhatian', true);
+      $save_data['email_pelanggan'] = $this->input->post('email_pelanggan', true);
+      $save_data['nama_owner'] = $this->input->post('nama_owner', true);
+      $save_data['pelanggan'] = $this->input->post('pelanggan', true);
+      $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan_produk', true);
+
+      // var_dump($this->input->post(null, true));
+
+      $save = $this->model->change(dec_url($id), $save_data);
+
+      set_message("success", cclang("notif_update"));
+
+     redirect(url("rfq_request"));
+    } else {
+      echo 'Error';
     }
   }
 

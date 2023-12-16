@@ -5,7 +5,7 @@
         <?=ucwords($title_module)?>
       </div>
       <div class="card-body">
-          <form action="<?=$action?>" id="form" autocomplete="off">
+          <form action="<?=$action?>" method="POST" autocomplete="off">
           
           <div class="form-group">
             <label>No penawaran</label>
