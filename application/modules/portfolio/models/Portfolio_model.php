@@ -8,7 +8,7 @@
 /*| instagram :  */
 /*| youtube :  */
 /*| --------------------------------------------------------------------------*/
-/*| Generate By M-CRUD Generator 31/10/2023 01:18*/
+/*| Generate By M-CRUD Generator 18/12/2023 00:15*/
 /*| Please DO NOT modify this information*/
 
 
@@ -16,9 +16,9 @@ class Portfolio_model extends MY_Model{
 
   private $table        = "portfolio";
   private $primary_key  = "id";
-  private $column_order = array('name_portfolio', 'desc_portfolio', 'image', 'client_name', 'category', 'project_date');
+  private $column_order = array('name_portfolio', 'desc_portfolio', 'image', 'client_name', 'category', 'project_date', 'pic', 'jabatan', 'rate_quality', 'rate_awareness', 'rate_service', 'rate_professionalism', 'rate_facility', 'rate_project_focus', 'rate_safety_aspect', 'rate_competitiveness');
   private $order        = array('portfolio.id'=>"DESC");
-  private $select       = "portfolio.id,portfolio.name_portfolio,portfolio.desc_portfolio,portfolio.image,portfolio.client_name,portfolio.category,portfolio.project_date";
+  private $select       = "portfolio.id,portfolio.name_portfolio,portfolio.desc_portfolio,portfolio.image,portfolio.client_name,portfolio.category,portfolio.project_date,portfolio.pic,portfolio.jabatan,portfolio.rate_quality,portfolio.rate_awareness,portfolio.rate_service,portfolio.rate_professionalism,portfolio.rate_facility,portfolio.rate_project_focus,portfolio.rate_safety_aspect,portfolio.rate_competitiveness";
 
 public function __construct()
 	{
@@ -38,21 +38,6 @@ public function __construct()
       $this->db->select($this->select);
       $this->db->from($this->table);
 
-    if($this->input->post("name_portfolio"))
-        {
-          $this->db->like("portfolio.name_portfolio", $this->input->post("name_portfolio"));
-        }
-
-    if($this->input->post("desc_portfolio"))
-        {
-          $this->db->like("portfolio.desc_portfolio", $this->input->post("desc_portfolio"));
-        }
-
-    if($this->input->post("image"))
-        {
-          $this->db->like("portfolio.image", $this->input->post("image"));
-        }
-
     if($this->input->post("client_name"))
         {
           $this->db->like("portfolio.client_name", $this->input->post("client_name"));
@@ -66,6 +51,11 @@ public function __construct()
     if($this->input->post("project_date"))
         {
           $this->db->like("portfolio.project_date", date('Y-m-d',strtotime($this->input->post("project_date"))));
+        }
+
+    if($this->input->post("pic"))
+        {
+          $this->db->like("portfolio.pic", $this->input->post("pic"));
         }
 
       if(isset($_POST['order'])) // here order processing

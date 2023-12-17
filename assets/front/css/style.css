@@ -1394,6 +1394,16 @@ section {
   padding: 0;
 }
 
+.portfolio-details #table-portfolio table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.portfolio-details #table-portfolio tr td {
+  text-align: left;
+  vertical-align: top;
+}
+
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/

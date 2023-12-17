@@ -16,7 +16,7 @@
         </tr>
         <tr>
           <td>Image</td>
-          <td><?=imgView($image)?></td>
+          <td><?=is_image($image)?></td>
         </tr>
         <tr>
           <td>Client name</td>
@@ -30,6 +30,46 @@
         <td>Project date</td>
         <td><?=$project_date != "" ? date('d-m-Y',strtotime($project_date)):""?></td>
       </tr>
+        <tr>
+          <td>Pic</td>
+          <td><?=$pic?></td>
+        </tr>
+        <tr>
+          <td>Jabatan</td>
+          <td><?=$jabatan?></td>
+        </tr>
+        <tr>
+          <td>Rate quality</td>
+          <td><?=$rate_quality?></td>
+        </tr>
+        <tr>
+          <td>Rate awareness</td>
+          <td><?=$rate_awareness?></td>
+        </tr>
+        <tr>
+          <td>Rate service</td>
+          <td><?=$rate_service?></td>
+        </tr>
+        <tr>
+          <td>Rate professionalism</td>
+          <td><?=$rate_professionalism?></td>
+        </tr>
+        <tr>
+          <td>Rate facility</td>
+          <td><?=$rate_facility?></td>
+        </tr>
+        <tr>
+          <td>Rate project focus</td>
+          <td><?=$rate_project_focus?></td>
+        </tr>
+        <tr>
+          <td>Rate safety aspect</td>
+          <td><?=$rate_safety_aspect?></td>
+        </tr>
+        <tr>
+          <td>Rate competitiveness</td>
+          <td><?=$rate_competitiveness?></td>
+        </tr>
         </table>
 
         <a href="<?=url($this->uri->segment(2))?>" class="btn btn-sm btn-danger mt-3"><?=cclang("back")?></a>
