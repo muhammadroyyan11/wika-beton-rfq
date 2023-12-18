@@ -13,6 +13,7 @@ class Template
   {
     $this->CI =& get_instance();
     $this->CI->load->model("Core_model");
+    $this->CI->load->model("Base_model");
   }
 
 
@@ -26,7 +27,9 @@ class Template
     // if ($this->CI->userize->init()) {
       if ($default) {
         $header_params['title_module'] = $this->temp_title;
-        $header_params['main_menu'] = $this->CI->load->view("core/menu",[],true);
+          $header_params['main_menu'] = $this->CI->load->view("core/menu",[],true);
+        // $header_params['notification'] = $this->CI->load->view("core/menu",[],true);
+        $header_params['notifCount'] = $this->CI->load->view("core/menu",[],true);
         $this->CI->load->view('header',$header_params);
         // $this->CI->load->view(config_item("cpanel").'sidebar',$header_params);
         if (profile("id_group") != 1) {

@@ -54,6 +54,21 @@ if (!function_exists('profile')) {
 	}
 }
 
+
+// if (!function_exists('notifCount')) {
+// 	function notifCount($field)
+// 	{
+// 		$ci = &get_instance();
+// 		$qry = $ci->db->select("*")
+// 			->from("notification")
+// 			->where("status", 0)
+// 			->get()
+// 			->num_rows();
+// 		return $qry->$field;
+// 	}
+// }
+
+
 if (!function_exists('cclang')) {
 	function cclang($langkey = null, $params = [])
 	{

@@ -39,6 +39,14 @@ class Base_model extends CI_Model
         return $this->db->get();
     }
 
+    public function data_grafik()
+    {
+        $this->db->select('count(id) as Total, bulan');
+        $this->db->from('rfq_request');
+        $this->db->group_by('MONTH(createdOn)');
+        return $this->db->get()->result();
+    }
+
     public function count($table, $where = null)
     {
         return $this->db->get_where($table, $where)->num_rows();
@@ -129,43 +137,44 @@ class Base_model extends CI_Model
         return $this->db->delete($table, [$pk => $id]);
     }
 
-    public function makePagination($baseUrl, $uriSegment, $totalRows = null){
+    public function makePagination($baseUrl, $uriSegment, $totalRows = null)
+    {
         $this->load->library('pagination');
-  
+
         $config = [
-           'base_url'            => $baseUrl,
-           'uri_segment'         => $uriSegment,
-           'per_page'            => 3,
-           'total_rows'          => $totalRows,
-           'use_page_numbers'    => true,
-           
-           'full_tag_open'       => '<ul class="pagination justify-content-center">',
-           'full_tag_close'      => '</ul>',
-           
-           'attributes'          => ['class' => 'page-link text-danger'],
-           'first_link'          => false,
-           'last_link'           => false,
-           'first_tag_open'      => '<li class="page-item">',
-           'first_tag_close'     => '</li>',
-           'prev_link'           => '&lt',
-           'prev_tag_open'       => '<li class="page-item">',
-           'prev_tag_close'      => '</li>',
-           'next-link'           => '&gt',
-           'next_tag_open'       => '<li class="page-item">',
-           'next_tag_close'      => '</li>',
-           'last_tag_open'       => '<li class="page-item">',
-           'last_tag_close'      => '</li>', 
-           'cur_tag_open'        => '<li class="page-item danger"><a href="#" class="page-link text-white">',
-           'cur_tag_close'       => '<span class="sr-only"></span></a></li>',
-           'num_tag_open'        => '<li class="page-item">',
-           'num_tag_close'       => '</li>'
+            'base_url'            => $baseUrl,
+            'uri_segment'         => $uriSegment,
+            'per_page'            => 3,
+            'total_rows'          => $totalRows,
+            'use_page_numbers'    => true,
+
+            'full_tag_open'       => '<ul class="pagination justify-content-center">',
+            'full_tag_close'      => '</ul>',
+
+            'attributes'          => ['class' => 'page-link text-danger'],
+            'first_link'          => false,
+            'last_link'           => false,
+            'first_tag_open'      => '<li class="page-item">',
+            'first_tag_close'     => '</li>',
+            'prev_link'           => '&lt',
+            'prev_tag_open'       => '<li class="page-item">',
+            'prev_tag_close'      => '</li>',
+            'next-link'           => '&gt',
+            'next_tag_open'       => '<li class="page-item">',
+            'next_tag_close'      => '</li>',
+            'last_tag_open'       => '<li class="page-item">',
+            'last_tag_close'      => '</li>',
+            'cur_tag_open'        => '<li class="page-item danger"><a href="#" class="page-link text-white">',
+            'cur_tag_close'       => '<span class="sr-only"></span></a></li>',
+            'num_tag_open'        => '<li class="page-item">',
+            'num_tag_close'       => '</li>'
         ];
-  
+
         $this->pagination->initialize($config);
         return $this->pagination->create_links();
-     }
+    }
 
-     public function getAllPosting($id = null, $where = null, $page)
+    public function getAllPosting($id = null, $where = null, $page)
     {
         $this->db->from('artikel');
         if ($where != null) {
@@ -190,13 +199,4 @@ class Base_model extends CI_Model
 
         return $offset;
     }
-
-    public function numbering()
-    {
-        $this->db->select('*');
-        $this->db->from('numberFormat');
-        $this->db->order_by('number', 'DESC');
-        return $this->db->get()->row();
-    }
-
 }

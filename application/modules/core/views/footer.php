@@ -91,6 +91,22 @@
 <!-- CKEDITOR-->
 <!-- <script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script> -->
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    setInterval(function(){
+          $.ajax({
+                url:"<?= site_url('cpanel/core/data_notif') ?>",
+                type:"POST",
+                dataType:"json",//datatype lainnya: html, text
+                data:{},
+                success:function(data){
+                    $("#tot-prod").html(data.tot);
+                    console.log(data.tot);
+                }
+            });
+          },2000);
+  })
+</script>
 
 <script>
   $(document).ready(function() {
