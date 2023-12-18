@@ -130,7 +130,7 @@
               <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                 <li class="dropdown-menu-header">
                   <div class="dropdown-header m-0 p-2">
-                    <h3 class="white"><?= $tes?></h3><span class="grey darken-2">App Notifications</span>
+                    <h3 class="white">5</h3><span class="grey darken-2">App Notifications</span>
                   </div>
                 </li>
                 <li class="scrollable-container media-list">
