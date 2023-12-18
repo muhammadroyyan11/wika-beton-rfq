@@ -85,6 +85,9 @@ class Rfq_request extends Backend
       foreach ($list as $row) {
         $rows = array();
         $rows[] = $row->id;
+        $rows[] = $row->deadline;
+        $rows[] = $row->sbu;
+        $rows[] = $row->npp;
         $rows[] = $row->no_penawaran;
         $rows[] = $row->status_penawaran;
         $rows[] = $row->pelanggan;
@@ -101,9 +104,13 @@ class Rfq_request extends Backend
         $rows[] = $row->jenis_proyek;
         $rows[] = date("d-m-Y",  strtotime($row->tanggal_mulai));
         $rows[] = date("d-m-Y",  strtotime($row->tanggal_selesai));
+        $rows[] = $row->wilayah;
         $rows[] = $row->koordinat;
         $rows[] = $row->batching_jarak;
         $rows[] = $row->metode_pembayaran;
+        $rows[] = $row->omzet_kontrak;
+        $rows[] = $row->omzet_penjualan;
+        $rows[] = $row->termin;
 
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -169,6 +176,13 @@ class Rfq_request extends Backend
         "batching_jarak" => $row->batching_jarak,
         "metode_pembayaran" => $row->metode_pembayaran,
         "status" => $row->status,
+        "deadline" => $row->deadline,
+        "sbu" => $row->sbu,
+        "npp" => $row->npp,
+        "wilayah" => $row->wilayah,
+        "omzet_kontrak" => $row->omzet_kontrak,
+        "omzet_penjualan" => $row->omzet_penjualan,
+        "termin" => $row->termin,
       );
       $data['file'] = $this->model->get_file($row->id)->result_array();
       $this->template->view("view", $data);
@@ -303,6 +317,13 @@ class Rfq_request extends Backend
       'batching_jarak' => set_value("batching_jarak"),
       'metode_pembayaran' => set_value("metode_pembayaran"),
       'status' => set_value("status"),
+      'deadline' => set_value("deadline"),
+      'sbu' => set_value("sbu"),
+      'npp' => set_value("npp"),
+      'wilayah' => set_value("wilayah"),
+      'omzet_kontrak' => set_value("omzet_kontrak"),
+      'omzet_penjualan' => set_value("omzet_penjualan"),
+      'termin' => set_value("termin"),
     );
     $this->template->view("add", $data);
   }
@@ -336,6 +357,13 @@ class Rfq_request extends Backend
       $this->form_validation->set_rules("batching_jarak", "* Batching jarak", "trim|xss_clean");
       $this->form_validation->set_rules("metode_pembayaran", "* Metode pembayaran", "trim|xss_clean");
       $this->form_validation->set_rules("status", "* Status", "trim|xss_clean");
+      $this->form_validation->set_rules("deadline", "* Deadline", "trim|xss_clean");
+      $this->form_validation->set_rules("sbu", "* SBU", "trim|xss_clean");
+      $this->form_validation->set_rules("npp", "* NPP", "trim|xss_clean");
+      $this->form_validation->set_rules("wilayah", "* Wilayah", "trim|xss_clean");
+      $this->form_validation->set_rules("omzet_kontrak", "* Omzet Kontrak", "trim|xss_clean");
+      $this->form_validation->set_rules("omzet_penjualan", "* Omzet Penjualan", "trim|xss_clean");
+      $this->form_validation->set_rules("termin", "* Termin", "trim|xss_clean");
       $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
       if ($this->form_validation->run()) {
@@ -359,6 +387,13 @@ class Rfq_request extends Backend
         $save_data['batching_jarak'] = $this->input->post('batching_jarak', true);
         $save_data['metode_pembayaran'] = $this->input->post('metode_pembayaran', true);
         $save_data['status'] = $this->input->post('status', true);
+        $save_data['deadline'] = $this->input->post('deadline', true);
+        $save_data['sbu'] = $this->input->post('sbu', true);
+        $save_data['npp'] = $this->input->post('npp', true);
+        $save_data['wilayah'] = $this->input->post('wilayah', true);
+        $save_data['omzet_kontrak'] = $this->input->post('omzet_kontrak', true);
+        $save_data['omzet_penjualan'] = $this->input->post('omzet_penjualan', true);
+        $save_data['termin'] = $this->input->post('termin', true);
 
         $this->model->insert($save_data);
 
@@ -391,6 +426,13 @@ class Rfq_request extends Backend
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
         'pelanggan' => set_value("pelanggan", $row->pelanggan),
         'kebutuhan_produk' => set_value("kebutuhan_produk", $row->kebutuhan_produk),
+        'deadline' => set_value("deadline"),
+        'sbu' => set_value("sbu"),
+        'npp' => set_value("npp"),
+        'wilayah' => set_value("wilayah"),
+        'omzet_kontrak' => set_value("omzet_kontrak"),
+        'omzet_penjualan' => set_value("omzet_penjualan"),
+        'termin' => set_value("termin"),
       );
       $this->template->view("update", $data);
     } else {
@@ -447,6 +489,13 @@ class Rfq_request extends Backend
     $this->form_validation->set_rules("nama_perusahaan", "* Nama perusahaan", "trim|xss_clean");
     $this->form_validation->set_rules("nama_proyek", "* Nama proyek", "trim|xss_clean");
     $this->form_validation->set_rules("nama_owner", "* Nama owner", "trim|xss_clean");
+    $this->form_validation->set_rules("deadline", "* Deadline", "trim|xss_clean");
+    $this->form_validation->set_rules("sbu", "* SBU", "trim|xss_clean");
+    $this->form_validation->set_rules("npp", "* NPP", "trim|xss_clean");
+    $this->form_validation->set_rules("wilayah", "* Wilayah", "trim|xss_clean");
+    $this->form_validation->set_rules("omzet_kontrak", "* Omzet Kontrak", "trim|xss_clean");
+    $this->form_validation->set_rules("omzet_penjualan", "* Omzet Penjualan", "trim|xss_clean");
+    $this->form_validation->set_rules("termin", "* Termin", "trim|xss_clean");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
     if ($this->form_validation->run()) {
@@ -459,6 +508,13 @@ class Rfq_request extends Backend
       $save_data['nama_owner'] = $this->input->post('nama_owner', true);
       $save_data['pelanggan'] = $this->input->post('pelanggan', true);
       $save_data['kebutuhan_produk'] = $this->input->post('kebutuhan_produk', true);
+      $save_data['deadline'] = $this->input->post('deadline', true);
+      $save_data['sbu'] = $this->input->post('sbu', true);
+      $save_data['npp'] = $this->input->post('npp', true);
+      $save_data['wilayah'] = $this->input->post('wilayah', true);
+      $save_data['omzet_kontrak'] = $this->input->post('omzet_kontrak', true);
+      $save_data['omzet_penjualan'] = $this->input->post('omzet_penjualan', true);
+      $save_data['termin'] = $this->input->post('termin', true);
 
       // var_dump($this->input->post(null, true));
 

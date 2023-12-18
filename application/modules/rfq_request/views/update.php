@@ -13,8 +13,27 @@
           </div>
 
           <div class="form-group">
+            <label>Deadline</label>
+            <input type="date" class="form-control form-control-sm" placeholder="deadline" name="deadline" id="deadline" value="<?=$deadline?>">
+          </div>
+          <div class="form-group">
+            <label>SBU</label>
+            <select name="sbu" id="" class="form-control">
+                <option value="">-- Silahkan Pilih --</option>
+                <option value="RD" <?= $sbu == 'RD' ? 'selected' : '' ?>>RD</option>
+                <option value="QR" <?= $sbu == 'QR' ? 'selected' : '' ?>>QR</option>
+                <option value="OT" <?= $sbu == 'OT' ? 'selected' : '' ?>>OT</option>
+                <option value="SV" <?= $sbu == 'SV' ? 'selected' : '' ?>>SV</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label>NPP</label>
+            <input type="text" class="form-control form-control-sm" placeholder="npp" name="npp" id="npp" value="<?=$npp?>">
+          </div>
+
+          <div class="form-group">
             <label>Status penawaran</label>
-            <!-- <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="no_penawaran" id="no_penawaran" value="<?= $no_penawaran ?>"> -->
+            <!-- <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="sbu" id="no_penawaran" value="<?= $no_penawaran ?>"> -->
             <select name="status_penawaran" id="" class="form-control">
               <option value="">-- Silahkan Pilih --</option>
               <option value="Diperoleh" <?= $status_penawaran == 'Diperoleh' ? 'selected' : '' ?>>Diperoleh</option>
@@ -57,13 +76,37 @@
             <label>Nama owner</label>
             <input type="text" class="form-control form-control-sm" placeholder="Nama owner" name="nama_owner" id="nama_owner" value="<?=$nama_owner?>">
           </div>
-        
     
           <div class="form-group">
             <label>Kebutuhan produk</label>
             <textarea class="form-control" rows="3" name="kebutuhan_produk" id="ckeditor300"><?=$kebutuhan_produk?></textarea>
           </div>
-        
+          
+          <div class="form-group">
+              <label>Wilayah</label>
+              <select class="form-control" data-placeholder=" -- Select -- "
+                  name="wilayah" id="wilayah">
+                  <option value="Banten" <?= $wilayah == 'Banten' ? 'selected' : '' ?>>Banten</option>
+                  <option value="DKI Jakarta" <?= $wilayah == 'DKI Jakarta' ? 'selected' : '' ?>>DKI Jakarta</option>
+                  <option value="Jawa Barat" <?= $wilayah == 'Jawa Barat' ? 'selected' : '' ?>>Jawa Barat</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label>Omzet Kontrak</label>
+            <input type="number" class="form-control" rows="3" name="omzet_kontrak" id="omzet_kontrak" value="<?=$omzet_kontrak?>">
+          </div>
+
+          <div class="form-group">
+            <label>Omzet Penjualan</label>
+            <input type="number" class="form-control" rows="3" name="omzet_penjualan" id="omzet_penjualan" value="<?=$omzet_penjualan?>">
+          </div>
+
+          <div class="form-group">
+            <label>Termin</label>
+            <input type="number" class="form-control" rows="3" name="termin" id="termin" value="<?=$termin?>">
+          </div>
+
           <input type="hidden" name="submit" value="update">
 
           <div class="text-right">

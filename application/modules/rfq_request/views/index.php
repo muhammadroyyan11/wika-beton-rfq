@@ -132,6 +132,9 @@
                                 <thead>
                                     <tr>
                                     <th>No Id</th>
+                                    <th>Deadline</th>
+                                    <th>SBU</th>
+                                    <th>NPP</th>
                                     <th>No penawaran</th>
                                     <th>Status penawaran</th>
                                     <th>Pelanggan</th>
@@ -148,9 +151,13 @@
                                     <th>Jenis proyek</th>
                                     <th>Tanggal mulai</th>
                                     <th>Tanggal selesai</th>
+                                    <th>Wilayah</th>
                                     <th>Koordinat maps</th>
                                     <th>Jarak Batching Plant Menuju Site</th>
                                     <th>Metode pembayaran</th>
+                                    <th>Omzet Kontrak</th>
+                                    <th>Omzet Penjualan</th>
+                                    <th>Termin</th>
                                         <th>#</th>
                                     </tr>
                                 </thead>
@@ -189,6 +196,9 @@
                 "type": "POST",
                 "data": function(data) {
                     data.id = $("#id").val();
+                    data.deadline = $("#deadline").val();
+                    data.sbu = $("#sbu").val();
+                    data.npp = $("#npp").val();
                     data.no_penawaran = $("#no_penawaran").val();
                     data.status_penawaran = $("#status_penawaran").val();
                     data.pelanggan = $("#pelanggan").val();
@@ -206,9 +216,13 @@
                     data.jenis_proyek = $("#jenis_proyek").val();
                     data.tanggal_mulai = $("#tanggal_mulai").val();
                     data.tanggal_selesai = $("#tanggal_selesai").val();
+                    data.wilayah = $("#wilayah").val();
                     data.koordinat = $("#koordinat").val();
                     data.batching_jarak = $("#batching_jarak").val();
                     data.metode_pembayaran = $("#metode_pembayaran:checked").val();
+                    data.omzet_kontrak = $("#batching_jarak").val();
+                    data.omzet_penjualan = $("#batching_jarak").val();
+                    data.termin = $("#batching_jarak").val();
                 }
             },
 
@@ -221,111 +235,18 @@
                 },
 
                 {
-                    "targets": 1,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 2,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 3,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 4,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 5,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 6,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 7,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 8,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 9,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 10,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 11,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 12,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 13,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 14,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 15,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 16,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 17,
-                    "orderable": false
-                },
-
-
-                {
-                    "targets": 18,
-                    "orderable": false
-                },
-
-                {
-                    "targets": 19,
-                    "orderable": false
-                },
-
-                {
                     "className": "text-center",
                     "orderable": false,
-                    "targets": 20
+                    "targets": 27
                 },
             ],
         });
 
         $("#reload").click(function() {
             $("#no_penawaran").val("");
+            $("#deadline").val("");
+            $("#sbu").val("");
+            $("#npp").val("");
             $("#status_penawaran").val("");
             $("#nama_perusahaan").val("");
             $("#nama_proyek").val("");
@@ -341,9 +262,13 @@
             $("#jenis_proyek").val("");
             $("#tanggal_mulai").val("");
             $("#tanggal_selesai").val("");
+            $("#wilayah").val("");
             $("#koordinat").val("");
             $("#batching_jarak").val("");
             $("#metode_pembayaran").val("");
+            $("#omzet_kontrak").val("");
+            $("#omzet_penjualan").val("");
+            $("#termin").val("");
             table.ajax.reload();
         });
 

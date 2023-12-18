@@ -21,6 +21,18 @@
             <td><?= $no_penawaran ?></td>
           </tr>
           <tr>
+            <td>Deadline</td>
+            <td><?= $deadline != "" ? date('d-m-Y', strtotime($deadline)) : ""?></td>
+          </tr>
+          <tr>
+            <td>SBU</td>
+            <td><?= $sbu ?></td>
+          </tr>
+          <tr>
+            <td>NPP</td>
+            <td><?= $npp ?></td>
+          </tr>
+          <tr>
             <td>Status penawaran</td>
             <td><?= $status_penawaran ?></td>
           </tr>
@@ -81,6 +93,10 @@
             <td><?= $tanggal_selesai != "" ? date('d-m-Y', strtotime($tanggal_selesai)) : "" ?></td>
           </tr>
           <tr>
+            <td>Wilayah</td>
+            <td><?= $wilayah ?></td>
+          </tr>
+          <tr>
             <td>Koordinat maps</td>
             <td><?= $koordinat ?></td>
           </tr>
@@ -91,6 +107,18 @@
           <tr>
             <td>Metode pembayaran</td>
             <td><?= $metode_pembayaran ?></td>
+          </tr>
+          <tr>
+            <td>Omzet Kontrak</td>
+            <td><?= $omzet_kontrak ?></td>
+          </tr>
+          <tr>
+            <td>Omzet Penjualan</td>
+            <td><?= $omzet_penjualan ?></td>
+          </tr>
+          <tr>
+            <td>Termin</td>
+            <td><?= $termin ?></td>
           </tr>
           <tr>
             <td>Lampiran</td>
