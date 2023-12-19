@@ -153,7 +153,7 @@
                 class: "notification-text"
               }).text(" " + notification.created_by))
             )
-            .append($("<small>").html("<time class='media-meta' datetime='" + notification.created_at + "'>" + notification.created_at + "</time>"));
+            .append($("<small>").html("<time class='media-meta' datetime='" + notification.created_at + "'>" + calculateTimeDifference(notification.created_at) + "</time>"));
 
           listItem.append(content);
 
@@ -166,7 +166,27 @@
       }
     }
 
-    // Use setInterval to repeatedly call the async function
+    function calculateTimeDifference(created_at) {
+      const now = new Date();
+      const createdAtDate = new Date(created_at);
+
+      const timeDifference = now - createdAtDate;
+      const seconds = Math.floor(timeDifference / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+
+      if (days > 0) {
+        return days + (days === 1 ? ' day ago' : ' days ago');
+      } else if (hours > 0) {
+        return hours + (hours === 1 ? ' hour ago' : ' hours ago');
+      } else if (minutes > 0) {
+        return minutes + (minutes === 1 ? ' minute ago' : ' minutes ago');
+      } else {
+        return seconds + (seconds === 1 ? ' second ago' : ' seconds ago');
+      }
+    }
+
     setInterval(fetchData, 3000);
   });
 </script>

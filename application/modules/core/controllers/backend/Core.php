@@ -68,7 +68,7 @@ class Core extends Backend
   function data_notif()
   {
     $notif_count = $this->base->get('notification')->num_rows();
-    $data = $this->base->get('notification')->result_array();;
+    $data = $this->base->get('notification', ['status' => 0])->result_array();;
     $result['notif_count'] = $notif_count;
     $result['data'] = $data;
     echo json_encode($result);
