@@ -57,11 +57,20 @@ class Core extends Backend
     }
   }
 
+  function data_notif_core()
+  {
+    $tot = $this->base->get('notification')->result();
+    // $result['notif'] = $tot;
+    // $result['msg'] = "Berhasil direfresh secara realtime";
+    echo json_encode($tot);
+  }
+  
   function data_notif()
   {
-    $tot = $this->base->get('notification')->num_rows();
-    $result['tot'] = $tot;
-    $result['msg'] = "Berhasil direfresh secara realtime";
+    $notif_count = $this->base->get('notification')->num_rows();
+    $data = $this->base->get('notification')->result_array();;
+    $result['notif_count'] = $notif_count;
+    $result['data'] = $data;
     echo json_encode($result);
   }
 

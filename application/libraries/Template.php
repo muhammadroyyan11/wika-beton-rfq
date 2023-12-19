@@ -13,7 +13,6 @@ class Template
   {
     $this->CI =& get_instance();
     $this->CI->load->model("Core_model");
-    $this->CI->load->model("Base_model");
   }
 
 

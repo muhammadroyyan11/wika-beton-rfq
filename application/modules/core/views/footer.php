@@ -92,20 +92,63 @@
 <!-- <script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script> -->
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    setInterval(function(){
-          $.ajax({
-                url:"<?= site_url('cpanel/core/data_notif') ?>",
-                type:"POST",
-                dataType:"json",//datatype lainnya: html, text
-                data:{},
-                success:function(data){
-                    $("#tot-prod").html(data.tot);
-                    console.log(data.tot);
-                }
-            });
-          },2000);
+  $(document).ready(function() {
+    setInterval(function() {
+      $.ajax({
+        url: "<?= site_url('cpanel/core/data_notif') ?>",
+        type: "POST",
+        dataType: "json", //datatype lainnya: html, text
+        data: {},
+        success: function(data) {
+          $("#tot-prod").html(data.tot);
+          console.log(data.tot);
+        }
+      });
+    }, 2000);
   })
+</script>
+
+<script>
+  $(document).ready(function () {
+  setInterval(function () {
+    $.ajax({
+      url: "<?= site_url('cpanel/core/data_notif') ?>",
+      type: "POST",
+      dataType: "json",
+      data: {},
+      success: function (res) {
+        // Update the notification count
+        $("#count_notif").html(res.notif_count);
+
+        // Clear existing notifications
+        $("#messages_notif .scrollable-container.media-list").empty();
+
+        // Iterate over the data and append notifications to the dropdown
+        res.data.forEach(function (notification) {
+          // Create a new list item for each notification
+          var listItem = $("<a>", { class: "d-flex justify-content-between", href: notification.description });
+
+          // Create the notification content
+          var content = $("<div>", { class: "media d-flex align-items-start" })
+            .append($("<div>", { class: "media-left" }).html("<i class='feather icon-plus-square font-medium-5 primary'></i>"))
+            .append($("<div>", { class: "media-body" })
+              .append($("<h6>", { class: "primary media-heading" }).text(" " + notification.description))
+              .append($("<small>", { class: "notification-text" }).text(" " + notification.created_by))
+            )
+            .append($("<small>").html("<time class='media-meta' datetime='" + notification.created_at + "'>" + notification.created_at +"</time>"));
+
+          // Append the content to the list item
+          listItem.append(content);
+
+          // Append the list item to the notifications container
+          $("#messages_notif .scrollable-container.media-list").append(listItem);
+        });
+
+        console.log('data', res);
+      }
+    });
+  }, 2000);
+});
 </script>
 
 <script>
