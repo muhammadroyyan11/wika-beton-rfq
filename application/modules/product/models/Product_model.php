@@ -16,9 +16,9 @@ class Product_model extends MY_Model{
 
   private $table        = "product";
   private $primary_key  = "id";
-  private $column_order = array('name', 'description', 'img', 'img_icon');
+  private $column_order = array('name', 'description', 'img', 'img_icon', 'img_pricelist');
   private $order        = array('product.id'=>"DESC");
-  private $select       = "product.id,product.name,product.description,product.img,product.img_icon";
+  private $select       = "product.id,product.name,product.description,product.img,product.img_icon,product.img_pricelist";
 
 public function __construct()
 	{

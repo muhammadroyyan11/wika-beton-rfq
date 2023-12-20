@@ -45,6 +45,20 @@
             <div id="img_icon"></div>
           </div>
 
+          <div class="form-group">
+            <label>Img price list</label>
+            <input type="file" name="img" class="file-upload-default" data-id="img_pricelist" style="display: none;"/>
+            <div class="input-group col-xs-12">
+              <input type="hidden" class="file-dir" name="file-dir-img_pricelist" data-id="img_pricelist"/>
+              <input type="text" class="form-control form-control-sm file-upload-info file-name" data-id="img_pricelist" placeholder="Img icon" readonly name="img_pricelist" />
+            <span class="input-group-append">
+              <button class="btn-remove-image btn btn-danger btn-sm" type="button" data-id="img_pricelist" style="display:<?=$img_pricelist!=''?'block':'none'?>;"><i class="ti-trash"></i></button>
+              <button class="file-upload-browse btn btn-primary btn-sm" data-id="img_pricelist" type="button">Select File</button>
+            </span>
+            </div>
+            <div id="img_pricelist"></div>
+          </div>
+
           <input type="hidden" name="submit" value="add">
 
           <div class="text-right">

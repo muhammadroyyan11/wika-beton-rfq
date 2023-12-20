@@ -31,11 +31,10 @@
     <!-- include summernote css/js -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
-    
-
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>assets/front/css/style.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -54,11 +53,12 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li>
-                        <a <?= $this->uri->segment(1) == 'home' || $this->uri->segment(1) == '' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="home">Beranda</a>
+                        <a <?= $this->uri->segment(1) == 'home' || $this->uri->segment(1) == '' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?>
+                            href="home">Beranda</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a <?= $this->uri->segment(1) == 'company' || $this->uri->segment(1) == 'home#about' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a <?= $this->uri->segment(1) == 'company' || $this->uri->segment(1) == 'home#about' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?>
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Perusahaan
                         </a>
                         <ul class="dropdown-menu">
@@ -68,14 +68,17 @@
                         </ul>
                     </li>
                     <li>
-                        <a <?= $this->uri->segment(1) == 'product' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('product') ?>">Produk &
+                        <a <?= $this->uri->segment(1) == 'product' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?>
+                            href="<?= site_url('product') ?>">Produk &
                             Jasa</a>
                     </li>
                     <li>
-                        <a <?= $this->uri->segment(1) == 'portfolio' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('portfolio') ?>">Portfolio</a>
+                        <a <?= $this->uri->segment(1) == 'portfolio' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?>
+                            href="<?= site_url('portfolio') ?>">Portfolio</a>
                     </li>
                     <li>
-                        <a <?= $this->uri->segment(1) == 'contact' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?> href="<?= site_url('contact') ?>">Hubungi
+                        <a <?= $this->uri->segment(1) == 'contact' ? 'class="nav-link scrollto active"' : 'nav-link scrollto' ?>
+                            href="<?= site_url('contact') ?>">Hubungi
                             Kami</a>
                     </li>
                 </ul>
@@ -115,7 +118,7 @@
                         </p>
                         <p>
                             <strong>Email:</strong>
-                            <a  href="mailto:<?= $footer_alamat_utama[0]['email'] ?>">
+                            <a href="mailto:<?= $footer_alamat_utama[0]['email'] ?>">
                                 <?= $footer_alamat_utama[0]['email'] ?>
                             </a>
                         </p>
@@ -125,18 +128,18 @@
                         <h4>Alamat Cabang</h4>
                         <ul>
                             <?php foreach ($footer_alamat_cabang as $key => $data): ?>
-                                <li style="align-items: flex-start;">
-                                    <i class="bx bx-chevron-right" style="margin-top: 3px;"></i>
-                                    <div class="row">
-                                        <p style="margin-bottom: 0px;">
-                                            <?= $data['name'] ?>
-                                        </p>
-                                        <a href="<?= $data['description'] ?>" target="_blank" style="line-height: 17px;">
-                                            <?= $data['streets'] ?>
-                                        </a>
-                                    </div>
+                            <li style="align-items: flex-start;">
+                                <i class="bx bx-chevron-right" style="margin-top: 3px;"></i>
+                                <div class="row">
+                                    <p style="margin-bottom: 0px;">
+                                        <?= $data['name'] ?>
+                                    </p>
+                                    <a href="<?= $data['description'] ?>" target="_blank" style="line-height: 17px;">
+                                        <?= $data['streets'] ?>
+                                    </a>
+                                </div>
 
-                                </li>
+                            </li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -176,8 +179,8 @@
                         </p>
                         <div class="social-links mt-3">
                             <?php foreach ($social_network as $key => $data): ?>
-                                <a href="<?= $data['link'] ?>" class="<?= $data['name'] ?>" target="_blank"><i
-                                        class="<?= $data['icon'] ?>"></i></a>
+                            <a href="<?= $data['link'] ?>" class="<?= $data['name'] ?>" target="_blank"><i
+                                    class="<?= $data['icon'] ?>"></i></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -207,6 +210,7 @@
     <script src="<?= base_url() ?>assets/front/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="<?= base_url() ?>assets/front/vendor/aos/aos.js"></script>
     <script src="<?= base_url() ?>assets/front/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() ?>assets/front/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?= base_url() ?>assets/front/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="<?= base_url() ?>assets/front/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="<?= base_url() ?>assets/front/vendor/swiper/swiper-bundle.min.js"></script>
@@ -225,6 +229,7 @@
             height: '300px'
         });
     </script>
+
 </body>
 
 </html>
