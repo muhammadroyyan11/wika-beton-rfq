@@ -36,7 +36,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" style="width: fit-content;">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Details <?= $data['name'] ?></h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
