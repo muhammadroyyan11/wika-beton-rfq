@@ -6,9 +6,12 @@
                 <div class="card-header">
                     <h4 class="card-title"><?= ucwords($title_module) ?></h4>
                     <div class="pull-right">
-                        <button class="btn btn-success btn-flat" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file btn-icon-prepend"></i> Export</button>
-                        <a href="<?= url('rfq_request/add') ?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
-                        <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
+                        <button class="btn btn-success btn-flat" type="button" data-toggle="modal"
+                            data-target="#exampleModal"><i class="fa fa-file btn-icon-prepend"></i> Export</button>
+                        <a href="<?= url('rfq_request/add') ?>" class="btn btn-success btn-flat"><i
+                                class="fa fa-file btn-icon-prepend"></i> Add</a>
+                        <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i
+                                class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -16,31 +19,39 @@
                         <form autocomplete="off" class="content-filter">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="no_penawaran" class="form-control form-control-sm" placeholder="No penawaran" />
+                                    <input type="text" id="no_penawaran" class="form-control form-control-sm"
+                                        placeholder="No penawaran" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="nama_perusahaan" class="form-control form-control-sm" placeholder="Nama perusahaan" />
+                                    <input type="text" id="nama_perusahaan" class="form-control form-control-sm"
+                                        placeholder="Nama perusahaan" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="nama_proyek" class="form-control form-control-sm" placeholder="Nama proyek" />
+                                    <input type="text" id="nama_proyek" class="form-control form-control-sm"
+                                        placeholder="Nama proyek" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="nama_owner" class="form-control form-control-sm" placeholder="Nama owner" />
+                                    <input type="text" id="nama_owner" class="form-control form-control-sm"
+                                        placeholder="Nama owner" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="untuk_perhatian" class="form-control form-control-sm" placeholder="Untuk perhatian" />
+                                    <input type="text" id="untuk_perhatian" class="form-control form-control-sm"
+                                        placeholder="Untuk perhatian" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="email_pelanggan" class="form-control form-control-sm" placeholder="Email pelanggan" />
+                                    <input type="text" id="email_pelanggan" class="form-control form-control-sm"
+                                        placeholder="Email pelanggan" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Suplai batching -- " name="suplai_batching" id="suplai_batching">
+                                    <select class="form-control form-control-sm select2"
+                                        data-placeholder=" -- Select Suplai batching -- " name="suplai_batching"
+                                        id="suplai_batching">
                                         <option value=""></option>
                                         <option value="Batching Plant Karawang">Batching Plant Karawang</option>
                                         <option value="Batching Plant Walini">Batching Plant Walini</option>
@@ -53,7 +64,8 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Sektor -- " name="sektor" id="sektor">
+                                    <select class="form-control form-control-sm select2"
+                                        data-placeholder=" -- Select Sektor -- " name="sektor" id="sektor">
                                         <option value=""></option>
                                         <option value="AGROBISNIS">AGROBISNIS</option>
                                         <option value="AIRPORT">AIRPORT</option>
@@ -79,7 +91,9 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek" id="jenis_proyek">
+                                    <select class="form-control form-control-sm select2"
+                                        data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek"
+                                        id="jenis_proyek">
                                         <option value=""></option>
                                         <option value="Retail">Retail</option>
                                         <option value="Project based">Project based</option>
@@ -87,11 +101,14 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="batching_jarak" class="form-control form-control-sm" placeholder="Batching jarak" />
+                                    <input type="text" id="batching_jarak" class="form-control form-control-sm"
+                                        placeholder="Batching jarak" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Metode pembayaran -- " name="metode_pembayaran" id="metode_pembayaran">
+                                    <select class="form-control form-control-sm select2"
+                                        data-placeholder=" -- Select Metode pembayaran -- " name="metode_pembayaran"
+                                        id="metode_pembayaran">
                                         <option value=""></option>
                                         <option value="Cash Before Delivery">Cash Before Delivery</option>
                                         <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
@@ -106,12 +123,14 @@
 
                             </div>
                             <div class="pull-right">
-                                <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?= cclang('cancel') ?></button>
+                                <button type='button' class='btn btn-default btn-sm'
+                                    id="filter-cancel"><?= cclang('cancel') ?></button>
                                 <button type="button" class="btn btn-primary btn-sm" id="filter">Filter</button>
                             </div>
                         </form>
                         <div class="table-responsive">
-                            <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table class="table display" name="table" id="table"
+                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>No Id</th>
@@ -119,6 +138,7 @@
                                         <th>SBU</th>
                                         <th>NPP</th>
                                         <th>No penawaran</th>
+                                        <th>Status Gagal</th>
                                         <th>Status penawaran</th>
                                         <th>Pelanggan</th>
                                         <th>Nama perusahaan</th>
@@ -129,6 +149,7 @@
                                         <th>No hp</th>
                                         <th>Kebutuhan produk</th>
                                         <th>Suplai batching</th>
+                                        <!-- <th>jarak</th> -->
                                         <th>Sumber dana</th>
                                         <th>Sektor</th>
                                         <th>Jenis proyek</th>
@@ -141,6 +162,7 @@
                                         <th>Omzet Kontrak</th>
                                         <th>Omzet Penjualan</th>
                                         <th>Termin</th>
+                                        <th>Tindak Lanjut</th>
                                         <th>#</th>
                                     </tr>
                                 </thead>
@@ -154,7 +176,8 @@
 </section>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -164,22 +187,24 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="https://celengan.projectskuy.site/laporan" method="post" accept-charset="utf-8">
-               
-                <div class="row form-group">
-                    <label class="col-lg-3 text-lg-right" for="tanggal">Tanggal :</label>
-                    <div class="col-lg-8">
-                        <div class="input-group">
-                            <input value="" name="tanggal" id="tanggalrange" type="text" class="form-control" placeholder="Periode Tanggal">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                <form action="https://celengan.projectskuy.site/laporan" method="post" accept-charset="utf-8">
+
+                    <div class="row form-group">
+                        <label class="col-lg-3 text-lg-right" for="tanggal">Tanggal :</label>
+                        <div class="col-lg-8">
+                            <div class="input-group">
+                                <input value="" name="tanggal" id="tanggalrange" type="text"
+                                    class="form-control" placeholder="Periode Tanggal">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                </div>
                             </div>
+                            <br>
+                            <p style="color : #ea5455 !important; font-size: smaller;">Note : Di Anjurkan mendownload
+                                file laporan pada PC / Laptop</p>
                         </div>
-                                                <br>
-                        <p style="color : #ea5455 !important; font-size: smaller;">Note : Di Anjurkan mendownload file laporan pada PC / Laptop</p>
                     </div>
-                </div>
-                <!-- <div class="row form-group">
+                    <!-- <div class="row form-group">
                     <div class="col-lg-9 offset-lg-3">
                         <button type="submit" class="btn btn-primary btn-icon-split">
                             <span class="icon">
@@ -191,7 +216,7 @@
                         </button>
                     </div>
                 </div> -->
-            </form> 
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -230,6 +255,7 @@
                     data.sbu = $("#sbu").val();
                     data.npp = $("#npp").val();
                     data.no_penawaran = $("#no_penawaran").val();
+                    data.status_gagal = $("#status_gagal").val();
                     data.status_penawaran = $("#status_penawaran").val();
                     data.pelanggan = $("#pelanggan").val();
                     data.nama_perusahaan = $("#nama_perusahaan").val();
@@ -240,7 +266,7 @@
                     data.no_hp = $("#no_hp").val();
                     data.kebutuhan_produk = $("#kebutuhan_produk").val();
                     data.suplai_batching = $("#suplai_batching").val();
-                    data.jarak = $("#jarak").val();
+                    // data.jarak = $("#jarak").val();
                     data.sumber_dana = $("#sumber_dana:checked").val();
                     data.sektor = $("#sektor:checked").val();
                     data.jenis_proyek = $("#jenis_proyek").val();
@@ -250,9 +276,10 @@
                     data.koordinat = $("#koordinat").val();
                     data.batching_jarak = $("#batching_jarak").val();
                     data.metode_pembayaran = $("#metode_pembayaran:checked").val();
-                    data.omzet_kontrak = $("#batching_jarak").val();
-                    data.omzet_penjualan = $("#batching_jarak").val();
-                    data.termin = $("#batching_jarak").val();
+                    data.omzet_kontrak = $("#omzet_kontrak").val();
+                    data.omzet_penjualan = $("#omzet_penjualan").val();
+                    data.termin = $("#termin").val();
+                    data.tindak_lanjut = $("#tindak_lanjut").val();
                 }
             },
 
@@ -267,17 +294,20 @@
                 {
                     "className": "text-center",
                     "orderable": false,
-                    "targets": 27
+                    "targets": 20
                 },
             ],
         });
 
         $("#reload").click(function() {
-            $("#no_penawaran").val("");
+            $("#id").val("");
             $("#deadline").val("");
             $("#sbu").val("");
             $("#npp").val("");
+            $("#no_penawaran").val("");
+            $("#status_gagal").val("");
             $("#status_penawaran").val("");
+            $("#pelanggan").val("");
             $("#nama_perusahaan").val("");
             $("#nama_proyek").val("");
             $("#nama_owner").val("");
@@ -286,7 +316,7 @@
             $("#no_hp").val("");
             $("#kebutuhan_produk").val("");
             $("#suplai_batching").val("");
-            $("#jarak").val("");
+            // $("#jarak").val("");
             $("#sumber_dana").val("");
             $("#sektor").val("");
             $("#jenis_proyek").val("");
@@ -299,6 +329,7 @@
             $("#omzet_kontrak").val("");
             $("#omzet_penjualan").val("");
             $("#termin").val("");
+            $("#tindak_lanjut").val("");
             table.ajax.reload();
         });
 

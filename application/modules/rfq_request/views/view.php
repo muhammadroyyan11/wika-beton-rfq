@@ -121,6 +121,14 @@
             <td><?= $termin ?></td>
           </tr>
           <tr>
+            <td>Tindak Lanjut</td>
+            <td><?= $tindak_lanjut ?></td>
+          </tr>
+          <tr>
+            <td>Status Gagal</td>
+            <td><?= $status_gagal ?></td>
+          </tr>
+          <tr>
             <td>Lampiran</td>
             <td><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">Lihat Lampiran</button></td>
           </tr>

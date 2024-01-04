@@ -85,10 +85,11 @@ class Rfq_request extends Backend
       foreach ($list as $row) {
         $rows = array();
         $rows[] = $row->id;
-        $rows[] = $row->deadline;
+        $rows[] = date("d-m-Y",  strtotime($row->deadline));
         $rows[] = $row->sbu;
         $rows[] = $row->npp;
         $rows[] = $row->no_penawaran;
+        $rows[] = $row->status_gagal;
         $rows[] = $row->status_penawaran;
         $rows[] = $row->pelanggan;
         $rows[] = $row->nama_perusahaan;
@@ -111,6 +112,7 @@ class Rfq_request extends Backend
         $rows[] = $row->omzet_kontrak;
         $rows[] = $row->omzet_penjualan;
         $rows[] = $row->termin;
+        $rows[] = $row->tindak_lanjut;
 
         $rows[] = '
                   <div class="btn-group" role="group" aria-label="Basic example">
@@ -183,6 +185,8 @@ class Rfq_request extends Backend
         "omzet_kontrak" => $row->omzet_kontrak,
         "omzet_penjualan" => $row->omzet_penjualan,
         "termin" => $row->termin,
+        "status_gagal" => $row->status_gagal,
+        "tindak_lanjut" => $row->tindak_lanjut,
       );
       $data['file'] = $this->model->get_file($row->id)->result_array();
       $this->template->view("view", $data);
@@ -335,6 +339,8 @@ class Rfq_request extends Backend
       'omzet_kontrak' => set_value("omzet_kontrak"),
       'omzet_penjualan' => set_value("omzet_penjualan"),
       'termin' => set_value("termin"),
+      'tindak_lanjut' => set_value("tindak_lanjut"),
+      'status_gagal' => set_value("status_gagal"),
     );
     $this->template->view("add", $data);
   }
@@ -375,6 +381,8 @@ class Rfq_request extends Backend
       $this->form_validation->set_rules("omzet_kontrak", "* Omzet Kontrak", "trim|xss_clean");
       $this->form_validation->set_rules("omzet_penjualan", "* Omzet Penjualan", "trim|xss_clean");
       $this->form_validation->set_rules("termin", "* Termin", "trim|xss_clean");
+      $this->form_validation->set_rules("tindak_lanjut", "* Tindak lanjut", "trim|xss_clean");
+      $this->form_validation->set_rules("status_gagal", "* Status gagal", "trim|xss_clean");
       $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
       if ($this->form_validation->run()) {
@@ -405,6 +413,8 @@ class Rfq_request extends Backend
         $save_data['omzet_kontrak'] = $this->input->post('omzet_kontrak', true);
         $save_data['omzet_penjualan'] = $this->input->post('omzet_penjualan', true);
         $save_data['termin'] = $this->input->post('termin', true);
+        $save_data['tindak_lanjut'] = $this->input->post('tindak_lanjut', true);
+        $save_data['status_gagal'] = $this->input->post('status_gagal', true);
 
         $this->model->insert($save_data);
 
@@ -437,13 +447,15 @@ class Rfq_request extends Backend
         'nama_owner' => set_value("nama_owner", $row->nama_owner),
         'pelanggan' => set_value("pelanggan", $row->pelanggan),
         'kebutuhan_produk' => set_value("kebutuhan_produk", $row->kebutuhan_produk),
-        'deadline' => set_value("deadline"),
-        'sbu' => set_value("sbu"),
-        'npp' => set_value("npp"),
-        'wilayah' => set_value("wilayah"),
-        'omzet_kontrak' => set_value("omzet_kontrak"),
-        'omzet_penjualan' => set_value("omzet_penjualan"),
-        'termin' => set_value("termin"),
+        'deadline' => $row->deadline == '' ? '' : date('Y-m-d', strtotime($row->deadline)),
+        'sbu' => set_value("sbu", $row->sbu),
+        'npp' => set_value("npp", $row->npp),
+        'wilayah' => set_value("wilayah", $row->wilayah),
+        'omzet_kontrak' => set_value("omzet_kontrak", $row->omzet_kontrak),
+        'omzet_penjualan' => set_value("omzet_penjualan", $row->omzet_penjualan),
+        'termin' => set_value("termin", $row->termin),
+        'tindak_lanjut' => set_value("tindak_lanjut", $row->tindak_lanjut),
+        'status_gagal' => set_value("status_gagal", $row->status_gagal),
       );
       $this->template->view("update", $data);
     } else {
@@ -507,6 +519,8 @@ class Rfq_request extends Backend
     $this->form_validation->set_rules("omzet_kontrak", "* Omzet Kontrak", "trim|xss_clean");
     $this->form_validation->set_rules("omzet_penjualan", "* Omzet Penjualan", "trim|xss_clean");
     $this->form_validation->set_rules("termin", "* Termin", "trim|xss_clean");
+    $this->form_validation->set_rules("tindak_lanjut", "* Tindak lanjut", "trim|xss_clean");
+    $this->form_validation->set_rules("status_gagal", "* Status gagal", "trim|xss_clean");
     $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
     if ($this->form_validation->run()) {
@@ -526,6 +540,8 @@ class Rfq_request extends Backend
       $save_data['omzet_kontrak'] = $this->input->post('omzet_kontrak', true);
       $save_data['omzet_penjualan'] = $this->input->post('omzet_penjualan', true);
       $save_data['termin'] = $this->input->post('termin', true);
+      $save_data['tindak_lanjut'] = $this->input->post('tindak_lanjut', true);
+      $save_data['status_gagal'] = $this->input->post('status_gagal', true);
 
       // var_dump($this->input->post(null, true));
 

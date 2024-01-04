@@ -15,9 +15,9 @@ class Rfq_request_model extends MY_Model
 {
     private $table = 'rfq_request';
     private $primary_key = 'id';
-    private $column_order = ['id', 'no_penawaran', 'status_penawaran', 'pelanggan', 'nama_perusahaan', 'nama_proyek', 'nama_owner', 'untuk_perhatian', 'email_pelanggan', 'no_hp', 'kebutuhan_produk', 'suplai_batching', 'sumber_dana', 'sektor', 'jenis_proyek', 'tanggal_mulai', 'tanggal_selesai', 'koordinat', 'batching_jarak', 'metode_pembayaran', 'deadline', 'sbu', 'npp', 'wilayah', 'omzet_kontrak', 'omzet_penjualan', 'termin'];
+    private $column_order = ['id', 'no_penawaran', 'status_penawaran', 'pelanggan', 'nama_perusahaan', 'nama_proyek', 'nama_owner', 'untuk_perhatian', 'email_pelanggan', 'no_hp', 'kebutuhan_produk', 'suplai_batching', 'sumber_dana', 'sektor', 'jenis_proyek', 'tanggal_mulai', 'tanggal_selesai', 'koordinat', 'batching_jarak', 'metode_pembayaran', 'deadline', 'sbu', 'npp', 'wilayah', 'omzet_kontrak', 'omzet_penjualan', 'termin', 'tindak_lanjut', 'status_gagal'];
     private $order = ['rfq_request.id' => 'ASC'];
-    private $select = 'rfq_request.id,rfq_request.no_penawaran,rfq_request.status_penawaran,rfq_request.pelanggan,rfq_request.nama_perusahaan,rfq_request.nama_proyek,rfq_request.nama_owner,rfq_request.untuk_perhatian,rfq_request.email_pelanggan,rfq_request.no_hp,rfq_request.kebutuhan_produk,rfq_request.suplai_batching,rfq_request.sumber_dana,rfq_request.sektor,rfq_request.jenis_proyek,rfq_request.tanggal_mulai,rfq_request.tanggal_selesai,rfq_request.koordinat,rfq_request.batching_jarak,rfq_request.metode_pembayaran,rfq_request.deadline,rfq_request.sbu,rfq_request.npp,rfq_request.wilayah,rfq_request.omzet_kontrak,rfq_request.omzet_penjualan,rfq_request.termin';
+    private $select = 'rfq_request.id,rfq_request.no_penawaran,rfq_request.status_penawaran,rfq_request.pelanggan,rfq_request.nama_perusahaan,rfq_request.nama_proyek,rfq_request.nama_owner,rfq_request.untuk_perhatian,rfq_request.email_pelanggan,rfq_request.no_hp,rfq_request.kebutuhan_produk,rfq_request.suplai_batching,rfq_request.sumber_dana,rfq_request.sektor,rfq_request.jenis_proyek,rfq_request.tanggal_mulai,rfq_request.tanggal_selesai,rfq_request.koordinat,rfq_request.batching_jarak,rfq_request.metode_pembayaran,rfq_request.deadline,rfq_request.sbu,rfq_request.npp,rfq_request.wilayah,rfq_request.omzet_kontrak,rfq_request.omzet_penjualan,rfq_request.termin,rfq_request.tindak_lanjut,rfq_request.status_gagal';
 
     public function __construct()
     {
@@ -135,6 +135,14 @@ class Rfq_request_model extends MY_Model
 
         if ($this->input->post('termin')) {
             $this->db->like('rfq_request.termin', $this->input->post('termin'));
+        }
+
+        if ($this->input->post('tindak_lanjut')) {
+            $this->db->like('rfq_request.tindak_lanjut', $this->input->post('tindak_lanjut'));
+        }
+
+        if ($this->input->post('status_gagal')) {
+            $this->db->like('rfq_request.status_gagal', $this->input->post('status_gagal'));
         }
 
         if (isset($_POST['order'])) {

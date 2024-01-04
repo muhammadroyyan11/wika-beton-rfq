@@ -107,6 +107,25 @@
             <input type="number" class="form-control" rows="3" name="termin" id="termin" value="<?=$termin?>">
           </div>
 
+
+          <div class="form-group">
+            <label>Tindak Lanjut</label>
+            <input type="text" class="form-control" rows="3" name="tindak_lanjut" id="tindak_lanjut" value="<?=$tindak_lanjut?>">
+          </div>
+          
+          <div class="form-group">
+              <label>Status Gagal</label>
+              <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- "
+                  name="status_gagal" id="status_gagal">
+                  <option value="C1" <?= $status_gagal == 'C1' ? 'selected' : '' ?>>C1</option>
+                  <option value="C2" <?= $status_gagal == 'C2' ? 'selected' : '' ?>>C2</option>
+                  <option value="C3" <?= $status_gagal == 'C3' ? 'selected' : '' ?>>C3</option>
+                  <option value="C4" <?= $status_gagal == 'C4' ? 'selected' : '' ?>>C4</option>
+                  <option value="C5" <?= $status_gagal == 'C5' ? 'selected' : '' ?>>C5</option>
+                  <option value="C6" <?= $status_gagal == 'C6' ? 'selected' : '' ?>>C6</option>
+              </select>
+          </div>
+
           <input type="hidden" name="submit" value="update">
 
           <div class="text-right">

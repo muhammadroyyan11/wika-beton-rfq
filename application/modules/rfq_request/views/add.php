@@ -236,6 +236,24 @@
                             name="termin" id="termin">
                     </div>
 
+                    <div class="form-group">
+                        <label>Tindak Lanjut</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Tindak Lanjut"
+                            name="tindak_lanjut" id="tindak_lanjut">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Status Gagal</label>
+                        <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- "
+                            name="status_gagal" id="status_gagal">
+                            <option value="C1">C1</option>
+                            <option value="C2">C2</option>
+                            <option value="C4">C4</option>
+                            <option value="C5">C5</option>
+                            <option value="C6">C6</option>
+                        </select>
+                    </div>
+
                     <input type="hidden" name="submit" value="add">
 
                     <div class="text-right">
