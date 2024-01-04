@@ -23,6 +23,8 @@ class Base_model extends CI_Model
         return $sql;
     }
 
+    
+
     public function getTable($table, $where = null)
     {
         $this->db->select('*');

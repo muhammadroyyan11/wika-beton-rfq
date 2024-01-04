@@ -41,7 +41,20 @@ class Contact extends CI_Controller
 
         $this->load->library('upload', $config);
 
+        $rfqNumber = $this->base->get_last_number()->row();
+
+        preg_match("/^([a-zA-Z]+)(\d+)$/", $rfqNumber, $matches);
+
+        $numericPart = $matches[2];
+
+        $numericPartAsInt2 = (int)$numericPart;
+
+        $currentNumber = $numericPartAsInt2;
+
+        $uniqueNumber = 'RFQ' . str_pad($currentNumber++, 5, '0', STR_PAD_LEFT);
+
         $params = [
+            'RFQNumber'       => $uniqueNumber,
             'nama_perusahaan' => $post['nama_perusahaan'],
             'nama_proyek'     => $post['nama_proyek'],
             'untuk_perhatian' => $post['untuk_perhatian'],
@@ -74,6 +87,15 @@ class Contact extends CI_Controller
 
         $rfq_id = $this->base->insert('rfq_request', $params);
 
+        $paramsNotif = [
+            'Description'       => 'Client membuat pesanan ID '. generateUniqueNumber("RFQ") .'',
+            'created_by'        => 'Client - '.$post['nama_perusahaan'].'',
+            'created_at'        => date('Y-m-d H:i:s'),
+            'rfq_id'            => $rfq_id
+        ];
+
+        $this->base->add('notification', $paramsNotif);
+
         if (@$_FILES['file']['name'] != null) {
             if ($this->upload->do_upload('file')) {
                 $post['file'] = $this->upload->data('file_name');
@@ -102,6 +124,27 @@ class Contact extends CI_Controller
         redirect('contact');
     }
 
+    public function generateUnique($prefix, $length = 5)
+    {
+        $rfqNumber = $this->base->get_last_number()->row();
+
+        preg_match('/^([a-zA-Z]+)(\d+)$/', $rfqNumber, $matches);
+
+        $numericPart = $matches[2];
+
+        $numericPartAsInt1 = intval($numericPart);
+
+        $numericPartAsInt2 = (int)$numericPart;
+
+        $currentNumber = $numericPartAsInt2;
+
+        $uniqueNumber = $prefix . str_pad($currentNumber, $length, '0', STR_PAD_LEFT);
+
+        $currentNumber++;
+
+        return $uniqueNumber;
+    }
+
     private function tambahkanTanda($teks)
     {
         $panjang = strlen($teks);
@@ -128,5 +171,4 @@ class Contact extends CI_Controller
         }
         return $hasil;
     }
-
 }

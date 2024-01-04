@@ -28,6 +28,14 @@ class Base_model extends CI_Model
         return $sql;
     }
 
+    public function get_last_number()
+    {
+        $this->db->select('RFQNumber');
+        $this->db->from('rfq_request');
+        $this->db->order_by('RFQNumber', 'DESC');
+        return $this->db->get();
+    }
+
     public function getTable($table, $where = null)
     {
         $this->db->select('*');

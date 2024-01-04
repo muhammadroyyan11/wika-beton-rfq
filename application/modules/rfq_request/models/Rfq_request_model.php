@@ -168,6 +168,7 @@ class Rfq_request_model extends MY_Model
         if ($_POST['length'] != -1) {
             $this->db->limit($_POST['length'], $_POST['start']);
         }
+        $this->db->order_by('createdOn', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }

@@ -265,6 +265,17 @@ class Rfq_request extends Backend
         ];
         // var_dump($params_file);
         $this->base->insert('media', $params_file);
+
+        if ($this->db->affected_rows() > 0) {
+            $paramsNotif = [
+              'Description'       => ''.profile('name').' telah mengupload dokumen',
+              'created_by'        => profile('name'),
+              'created_at'        => date('Y-m-d H:i:s'),
+              'rfq_id'            => $post['rfq_id']
+            ];
+
+            $this->base->add('notification', $paramsNotif);
+        }
       } else {
         echo 'error';
       }
