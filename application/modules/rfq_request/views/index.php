@@ -6,10 +6,9 @@
                 <div class="card-header">
                     <h4 class="card-title"><?= ucwords($title_module) ?></h4>
                     <div class="pull-right">
-                        <a href="<?= url('rfq_request/add') ?>" class="btn btn-success btn-flat"><i
-                                class="fa fa-file btn-icon-prepend"></i> Add</a>
-                        <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i
-                                class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
+                        <button class="btn btn-success btn-flat" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file btn-icon-prepend"></i> Export</button>
+                        <a href="<?= url('rfq_request/add') ?>" class="btn btn-success btn-flat"><i class="fa fa-file btn-icon-prepend"></i> Add</a>
+                        <button type="button" id="filter-show" class="btn btn-primary btn-flat"><i class="mdi mdi-backup-restore btn-icon-prepend"></i> Filter</button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -17,39 +16,31 @@
                         <form autocomplete="off" class="content-filter">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="no_penawaran" class="form-control form-control-sm"
-                                        placeholder="No penawaran" />
+                                    <input type="text" id="no_penawaran" class="form-control form-control-sm" placeholder="No penawaran" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="nama_perusahaan" class="form-control form-control-sm"
-                                        placeholder="Nama perusahaan" />
+                                    <input type="text" id="nama_perusahaan" class="form-control form-control-sm" placeholder="Nama perusahaan" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="nama_proyek" class="form-control form-control-sm"
-                                        placeholder="Nama proyek" />
+                                    <input type="text" id="nama_proyek" class="form-control form-control-sm" placeholder="Nama proyek" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="nama_owner" class="form-control form-control-sm"
-                                        placeholder="Nama owner" />
+                                    <input type="text" id="nama_owner" class="form-control form-control-sm" placeholder="Nama owner" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="untuk_perhatian" class="form-control form-control-sm"
-                                        placeholder="Untuk perhatian" />
+                                    <input type="text" id="untuk_perhatian" class="form-control form-control-sm" placeholder="Untuk perhatian" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="email_pelanggan" class="form-control form-control-sm"
-                                        placeholder="Email pelanggan" />
+                                    <input type="text" id="email_pelanggan" class="form-control form-control-sm" placeholder="Email pelanggan" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
-                                        data-placeholder=" -- Select Suplai batching -- " name="suplai_batching"
-                                        id="suplai_batching">
+                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Suplai batching -- " name="suplai_batching" id="suplai_batching">
                                         <option value=""></option>
                                         <option value="Batching Plant Karawang">Batching Plant Karawang</option>
                                         <option value="Batching Plant Walini">Batching Plant Walini</option>
@@ -62,8 +53,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
-                                        data-placeholder=" -- Select Sektor -- " name="sektor" id="sektor">
+                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Sektor -- " name="sektor" id="sektor">
                                         <option value=""></option>
                                         <option value="AGROBISNIS">AGROBISNIS</option>
                                         <option value="AIRPORT">AIRPORT</option>
@@ -89,9 +79,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
-                                        data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek"
-                                        id="jenis_proyek">
+                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek" id="jenis_proyek">
                                         <option value=""></option>
                                         <option value="Retail">Retail</option>
                                         <option value="Project based">Project based</option>
@@ -99,14 +87,11 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" id="batching_jarak" class="form-control form-control-sm"
-                                        placeholder="Batching jarak" />
+                                    <input type="text" id="batching_jarak" class="form-control form-control-sm" placeholder="Batching jarak" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
-                                        data-placeholder=" -- Select Metode pembayaran -- " name="metode_pembayaran"
-                                        id="metode_pembayaran">
+                                    <select class="form-control form-control-sm select2" data-placeholder=" -- Select Metode pembayaran -- " name="metode_pembayaran" id="metode_pembayaran">
                                         <option value=""></option>
                                         <option value="Cash Before Delivery">Cash Before Delivery</option>
                                         <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
@@ -121,43 +106,41 @@
 
                             </div>
                             <div class="pull-right">
-                                <button type='button' class='btn btn-default btn-sm'
-                                    id="filter-cancel"><?= cclang('cancel') ?></button>
+                                <button type='button' class='btn btn-default btn-sm' id="filter-cancel"><?= cclang('cancel') ?></button>
                                 <button type="button" class="btn btn-primary btn-sm" id="filter">Filter</button>
                             </div>
                         </form>
                         <div class="table-responsive">
-                            <table class="table display" name="table" id="table"
-                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table class="table display" name="table" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                    <th>No Id</th>
-                                    <th>Deadline</th>
-                                    <th>SBU</th>
-                                    <th>NPP</th>
-                                    <th>No penawaran</th>
-                                    <th>Status penawaran</th>
-                                    <th>Pelanggan</th>
-                                    <th>Nama perusahaan</th>
-                                    <th>Nama proyek</th>
-                                    <th>Nama owner</th>
-                                    <th>Untuk perhatian</th>
-                                    <th>Email pelanggan</th>
-                                    <th>No hp</th>
-                                    <th>Kebutuhan produk</th>
-                                    <th>Suplai batching</th>
-                                    <th>Sumber dana</th>
-                                    <th>Sektor</th>
-                                    <th>Jenis proyek</th>
-                                    <th>Tanggal mulai</th>
-                                    <th>Tanggal selesai</th>
-                                    <th>Wilayah</th>
-                                    <th>Koordinat maps</th>
-                                    <th>Jarak Batching Plant Menuju Site</th>
-                                    <th>Metode pembayaran</th>
-                                    <th>Omzet Kontrak</th>
-                                    <th>Omzet Penjualan</th>
-                                    <th>Termin</th>
+                                        <th>No Id</th>
+                                        <th>Deadline</th>
+                                        <th>SBU</th>
+                                        <th>NPP</th>
+                                        <th>No penawaran</th>
+                                        <th>Status penawaran</th>
+                                        <th>Pelanggan</th>
+                                        <th>Nama perusahaan</th>
+                                        <th>Nama proyek</th>
+                                        <th>Nama owner</th>
+                                        <th>Untuk perhatian</th>
+                                        <th>Email pelanggan</th>
+                                        <th>No hp</th>
+                                        <th>Kebutuhan produk</th>
+                                        <th>Suplai batching</th>
+                                        <th>Sumber dana</th>
+                                        <th>Sektor</th>
+                                        <th>Jenis proyek</th>
+                                        <th>Tanggal mulai</th>
+                                        <th>Tanggal selesai</th>
+                                        <th>Wilayah</th>
+                                        <th>Koordinat maps</th>
+                                        <th>Jarak Batching Plant Menuju Site</th>
+                                        <th>Metode pembayaran</th>
+                                        <th>Omzet Kontrak</th>
+                                        <th>Omzet Penjualan</th>
+                                        <th>Termin</th>
                                         <th>#</th>
                                     </tr>
                                 </thead>
@@ -170,6 +153,53 @@
     </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Filter Periode</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form action="https://celengan.projectskuy.site/laporan" method="post" accept-charset="utf-8">
+               
+                <div class="row form-group">
+                    <label class="col-lg-3 text-lg-right" for="tanggal">Tanggal :</label>
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <input value="" name="tanggal" id="tanggalrange" type="text" class="form-control" placeholder="Periode Tanggal">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                            </div>
+                        </div>
+                                                <br>
+                        <p style="color : #ea5455 !important; font-size: smaller;">Note : Di Anjurkan mendownload file laporan pada PC / Laptop</p>
+                    </div>
+                </div>
+                <!-- <div class="row form-group">
+                    <div class="col-lg-9 offset-lg-3">
+                        <button type="submit" class="btn btn-primary btn-icon-split">
+                            <span class="icon">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            <span class="text">
+                                Cetak
+                            </span>
+                        </button>
+                    </div>
+                </div> -->
+            </form> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
