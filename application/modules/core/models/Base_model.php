@@ -123,6 +123,12 @@ class Base_model extends CI_Model
         return $this->db->update($table, $data);
     }
 
+    public function update_notif($table, $conditions, $data)
+    {
+        $this->db->where($conditions);
+        return $this->db->update($table, $data);
+    }
+
     public function insert($table, $data)
     {
         $this->db->insert($table, $data);

@@ -204,6 +204,13 @@ class Rfq_request_model extends MY_Model
         }
         return $this->db->get();
     }
+
+    function get_all_id()
+    {
+        $this->db->select('id_user');
+        $this->db->from('auth_user');
+        return $this->db->get();
+    }
 }
 
 /* End of file Rfq_request_model.php */

@@ -135,7 +135,9 @@
                 </li>
                 <li class="scrollable-container media-list">
                 </li>
-                <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a></li>
+                <li class="dropdown-menu-footer">
+                  <a class="dropdown-item p-1 text-center" id="markAllNotificationsAsRead" href="javascript:void(0)">Read all notifications</a>
+                </li>
               </ul>
             </li>
 
