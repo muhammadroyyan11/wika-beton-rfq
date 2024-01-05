@@ -85,9 +85,10 @@ class Core extends Backend
     function markNotificationsAsRead()
     {
         $rfqId = $this->input->post('rfq_id');
-        $this->base->update_notif('notification', ['id_user' => profile('id_user'), 'rfq_id' => $rfqId], ['status' => 1]);
+        $id = $this->input->post('id');
+        $this->base->update_notif('notification', ['id_user' => profile('id_user'), 'rfq_id' => $rfqId, 'id' => $id], ['status' => 1]);
 
-        $dataRead = $this->base->get('notification', ['status' => 1])->result_array();
+        $dataRead = $this->base->get('notification', ['status' => 1, 'id' => $id])->result_array();
         // Check if there are notifications with status 1
         if (!empty($dataRead)) {
             foreach ($dataRead as $notification) {

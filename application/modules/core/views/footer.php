@@ -138,6 +138,7 @@
                     var listItem = $("<a>", {
                         class: "d-flex justify-content-between notification-link",
                         "data-rfq-id": notification.rfq_id,
+                        "data-id": notification.id,
                         href: "<?= url('rfq_request/detail/') ?>" + notification.rfq_id
                     });
 
@@ -157,7 +158,7 @@
                             }).text(" " + notification.description))
                             .append($("<small>", {
                                 class: "notification-text"
-                            }).text(" " + "RFQ Id: " + notification.rfq_id))
+                            }).text(" " + "RFQ Id: " + notification.rfq_id + ' id file: ' + notification.id))
                         )
                         .append($("<small>").html("<time class='media-meta' datetime='" +
                             notification.created_at + "'>" + calculateTimeDifference(
@@ -182,7 +183,7 @@
                 url: '<?= site_url('cpanel/core/markAllNotificationsAsRead') ?>',
                 type: 'POST',
                 data: {
-                    action: 'markAllNotificationsAsRead'
+                    action: 'markAllNotificationsAsRead',
                 },
                 success: function(response) {
                     // Handle the response if needed
@@ -200,18 +201,20 @@
 
         $(".scrollable-container.media-list").on("click", ".mark-notifications-as-read", function() {
             var rfqId = $(this).data('rfq-id');
-            markNotificationsAsRead(rfqId);
+            var id = $(this).data('id');
+            markNotificationsAsRead(rfqId, id);
         });
 
 
 
-        function markNotificationsAsRead(rfqId) {
+        function markNotificationsAsRead(rfqId,id) {
             $.ajax({
                 url: '<?= site_url('cpanel/core/markNotificationsAsRead') ?>',
                 type: 'POST',
                 data: {
                     action: 'markNotificationsAsRead',
-                    rfq_id: rfqId
+                    rfq_id: rfqId,
+                    id: id
                 },
                 success: function(response) {
                     // Handle the response if needed
