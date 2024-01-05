@@ -37,7 +37,9 @@
             <select name="status_penawaran" id="" class="form-control">
               <option value="">-- Silahkan Pilih --</option>
               <option value="Diperoleh" <?= $status_penawaran == 'Diperoleh' ? 'selected' : '' ?>>Diperoleh</option>
+              <option value="On Going" <?= $status_penawaran == 'On Going' ? 'selected' : '' ?>>On Going</option>
               <option value="Gagal Diperoleh" <?= $status_penawaran == 'Gagal Diperoleh' ? 'selected' : '' ?>>Gagal Diperoleh</option>
+              <option value="Penyusunan HPP" <?= $status_penawaran == 'Penyusunan HPP' ? 'selected' : '' ?>>Penyusunan HPP</option>
             </select>
           </div>
 

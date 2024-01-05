@@ -230,6 +230,8 @@
             <label>Tambah lampiran</label>
             <input type="file" class="form-control" name="file">
             <input type="hidden" name="rfq_id" value="<?= $id ?>" class="form-control">
+            <input type="hidden" name="nama_perusahaan" value="<?= $nama_perusahaan ?>" class="form-control">
+            <input type="hidden" name="nama_proyek" value="<?= $nama_proyek ?>" class="form-control">
           </div>
           <!-- <input type="hidden" name="submit" value="update"> -->
 
