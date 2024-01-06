@@ -7,6 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* Please DO NOT modify this information */
 
+// Include librari PhpSpreadsheet
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Backend extends CI_Controller{
 

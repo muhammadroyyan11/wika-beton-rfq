@@ -13,7 +13,7 @@
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Excel_export extends Backend
+class Excel_export extends CI_Controller
 {
     private $title = 'Rfq Request';
 
@@ -27,7 +27,7 @@ class Excel_export extends Backend
         $this->load->model('Base_model', 'base');
     }
 
-    public function exportExcel()
+    public function export()
     {
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();

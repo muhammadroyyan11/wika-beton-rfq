@@ -186,42 +186,43 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="https://celengan.projectskuy.site/laporan" method="post" accept-charset="utf-8">
+            <form action="<?= site_url('cpanel/rfq_request/export/')?>" method="post" accept-charset="utf-8">
+                <div class="modal-body">
 
-                    <div class="row form-group">
-                        <label class="col-lg-3 text-lg-right" for="tanggal">Tanggal :</label>
-                        <div class="col-lg-8">
-                            <div class="input-group">
-                                <input value="" name="tanggal" id="tanggalrange" type="text"
-                                    class="form-control" placeholder="Periode Tanggal">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                        <div class="row form-group">
+                            <label class="col-lg-3 text-lg-right" for="tanggal">Tanggal :</label>
+                            <div class="col-lg-8">
+                                <div class="input-group">
+                                    <input value="" name="tanggal" id="tanggalrange" type="text"
+                                        class="form-control" placeholder="Periode Tanggal">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fa fa-fw fa-calendar"></i></span>
+                                    </div>
                                 </div>
+                                <br>
+                                <p style="color : #ea5455 !important; font-size: smaller;">Note : Di Anjurkan mendownload
+                                    file laporan pada PC / Laptop</p>
                             </div>
-                            <br>
-                            <p style="color : #ea5455 !important; font-size: smaller;">Note : Di Anjurkan mendownload
-                                file laporan pada PC / Laptop</p>
                         </div>
-                    </div>
-                    <!-- <div class="row form-group">
-                    <div class="col-lg-9 offset-lg-3">
-                        <button type="submit" class="btn btn-primary btn-icon-split">
-                            <span class="icon">
-                                <i class="fa fa-print"></i>
-                            </span>
-                            <span class="text">
-                                Cetak
-                            </span>
-                        </button>
-                    </div>
-                </div> -->
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                        <!-- <div class="row form-group">
+                        <div class="col-lg-9 offset-lg-3">
+                            <button type="submit" class="btn btn-primary btn-icon-split">
+                                <span class="icon">
+                                    <i class="fa fa-print"></i>
+                                </span>
+                                <span class="text">
+                                    Cetak
+                                </span>
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Download</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>

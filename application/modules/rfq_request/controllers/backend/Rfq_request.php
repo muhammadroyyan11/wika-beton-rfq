@@ -10,6 +10,9 @@
 /*| Generate By M-CRUD Generator 12/12/2023 17:07*/
 /*| Please DO NOT modify this information*/
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Rfq_request extends Backend
 {
     private $title = 'Rfq Request';
@@ -289,7 +292,7 @@ class Rfq_request extends Backend
 
                 $params_file = [
                     'type' => profile('name'),
-                    'file' => $file_name. '.' . $file_extension,
+                    'file' => $file_name . '.' . $file_extension,
                     'rfq_id' => $post['rfq_id'],
                     'create_at' => date('Y-m-d H:i:s'),
                 ];
@@ -614,6 +617,171 @@ class Rfq_request extends Backend
 
             return $this->response($json);
         }
+    }
+
+
+    public function export()
+    {
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet;
+        $sheet = $spreadsheet->getActiveSheet();
+        // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+        $style_col = [
+            'font' => ['bold' => true], // Set font nya jadi bold
+            'alignment' => [
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+            ],
+            'borders' => [
+                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+            ]
+        ];
+        // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+        $style_row = [
+            'alignment' => [
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+            ],
+            'borders' => [
+                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+            ]
+        ];
+        $sheet->setCellValue('A1', "RESUME MONIOR PENAWARAN"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
+        $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
+        // Buat header tabel nya pada baris ke 3
+        $sheet->setCellValue('A3', "ID"); 
+        $sheet->setCellValue('B3', "NO PENAWARAN");
+        $sheet->setCellValue('C3', "STATUS PENAWARAN");
+        $sheet->setCellValue('D3', "PELANGGAN");
+        $sheet->setCellValue('E3', "NAMA PERUSAHAAN"); 
+        $sheet->setCellValue('F3', "NAMA PROYEK"); 
+        $sheet->setCellValue('G3', "NAMA OWNER");
+        $sheet->setCellValue('H3', "UNTUK PERHATIAN"); 
+        $sheet->setCellValue('I3', "EMAIL PELANGGAN"); 
+        $sheet->setCellValue('J3', "NO HP"); 
+        $sheet->setCellValue('K3', 'KEBUTUHAN PRODUK');
+        $sheet->setCellValue('L3', 'SUPLAI BATCHING');
+        $sheet->setCellValue('M3', 'JARAK');
+        $sheet->setCellValue('N3', 'SUMBER DANA');
+        $sheet->setCellValue('O3', 'SEKTOR');
+        $sheet->setCellValue('P3', 'JENIS PROYEK');
+        $sheet->setCellValue('Q3', 'TANGGAL MULAI');
+        $sheet->setCellValue('R3', 'TANGGAL SELSAI');
+        $sheet->setCellValue('S3', 'KOORDINAT');
+        $sheet->setCellValue('T3', 'BATCHING JARAK');
+        $sheet->setCellValue('U3', 'METODE PEMBAYARAN');
+        $sheet->setCellValue('V3', 'CREATED AT');
+        $sheet->setCellValue('W3', 'TINDAK LANJUT');
+        $sheet->setCellValue('X3', 'STATUS GAGAL');
+        // Apply style header yang telah kita buat tadi ke masing-masing kolom header
+        $sheet->getStyle('A3')->applyFromArray($style_col);
+        $sheet->getStyle('B3')->applyFromArray($style_col);
+        $sheet->getStyle('C3')->applyFromArray($style_col);
+        $sheet->getStyle('D3')->applyFromArray($style_col);
+        $sheet->getStyle('E3')->applyFromArray($style_col);
+        $sheet->getStyle('F3')->applyFromArray($style_col);
+        $sheet->getStyle('G3')->applyFromArray($style_col);
+        $sheet->getStyle('H3')->applyFromArray($style_col);
+        $sheet->getStyle('I3')->applyFromArray($style_col);
+        $sheet->getStyle('J3')->applyFromArray($style_col);
+        $sheet->getStyle('K3')->applyFromArray($style_col);
+        $sheet->getStyle('L3')->applyFromArray($style_col);
+        $sheet->getStyle('M3')->applyFromArray($style_col);
+        $sheet->getStyle('N3')->applyFromArray($style_col);
+        $sheet->getStyle('O3')->applyFromArray($style_col);
+        $sheet->getStyle('P3')->applyFromArray($style_col);
+        $sheet->getStyle('Q3')->applyFromArray($style_col);
+        $sheet->getStyle('R3')->applyFromArray($style_col);
+        $sheet->getStyle('S3')->applyFromArray($style_col);
+        $sheet->getStyle('T3')->applyFromArray($style_col);
+        $sheet->getStyle('U3')->applyFromArray($style_col);
+        $sheet->getStyle('V3')->applyFromArray($style_col);
+        $sheet->getStyle('W3')->applyFromArray($style_col);
+        $sheet->getStyle('X3')->applyFromArray($style_col);
+
+        //GET DATA
+        $rfqData = $this->base->get('rfq_request')->result();
+        $no = 1; // Untuk penomoran tabel, di awal set dengan 1
+        $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
+        foreach($rfqData as $data){ // Lakukan looping pada variabel siswa
+          $sheet->setCellValue('A'.$numrow, $data->id);
+          $sheet->setCellValue('B'.$numrow, $data->no_penawaran);
+          $sheet->setCellValue('C'.$numrow, $data->status_penawaran);
+          $sheet->setCellValue('D'.$numrow, $data->pelanggan);
+          $sheet->setCellValue('E'.$numrow, $data->nama_perusahaan);
+          $sheet->setCellValue('F'.$numrow, $data->nama_proyek);
+          $sheet->setCellValue('G'.$numrow, $data->nama_owner);
+          $sheet->setCellValue('H'.$numrow, $data->untuk_perhatian);
+          $sheet->setCellValue('I'.$numrow, $data->email_pelanggan);
+          $sheet->setCellValue('J'.$numrow, $data->no_hp);
+          $sheet->setCellValue('K'.$numrow, $data->kebutuhan_produk);
+          $sheet->setCellValue('L'.$numrow, $data->suplai_batching);
+          $sheet->setCellValue('M'.$numrow, $data->jarak);
+          $sheet->setCellValue('N'.$numrow, $data->sumber_dana);
+          $sheet->setCellValue('O'.$numrow, $data->sektor);
+          $sheet->setCellValue('P'.$numrow, $data->jenis_proyek);
+          $sheet->setCellValue('Q'.$numrow, $data->tanggal_mulai);
+          $sheet->setCellValue('R'.$numrow, $data->tanggal_selesai);
+          $sheet->setCellValue('S'.$numrow, $data->koordinat);
+          $sheet->setCellValue('T'.$numrow, $data->batching_jarak);
+          $sheet->setCellValue('U'.$numrow, $data->metode_pembayaran);
+          $sheet->setCellValue('V'.$numrow, $data->createdOn);
+          $sheet->setCellValue('W'.$numrow, $data->tindak_lanjut);
+          $sheet->setCellValue('X'.$numrow, $data->status_gagal);
+
+          // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
+          $sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('B'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('C'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('D'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('E'.$numrow)->applyFromArray($style_row);
+
+          $no++; // Tambah 1 setiap kali looping
+          $numrow++; // Tambah 1 setiap kali looping
+        }
+        // Set width kolom
+        $sheet->getColumnDimension('A')->setWidth(5); // Set width kolom A
+        $sheet->getColumnDimension('B')->setWidth(30); // Set width kolom B
+        $sheet->getColumnDimension('C')->setWidth(20); // Set width kolom C
+        $sheet->getColumnDimension('D')->setWidth(50); // Set width kolom D
+        $sheet->getColumnDimension('E')->setWidth(80); // Set width kolom D
+        $sheet->getColumnDimension('F')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('G')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('H')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('I')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('J')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('K')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('L')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('M')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('N')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('O')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('P')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('Q')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('R')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('S')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('T')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('U')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('V')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('W')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('X')->setWidth(50); // Set width kolom E
+
+        // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
+        $sheet->getDefaultRowDimension()->setRowHeight(-1);
+        // Set orientasi kertas jadi LANDSCAPE
+        $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        // Set judul file excel nya
+        $sheet->setTitle("RESUME MONIOR PENAWARAN");
+        // Proses file excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="RESUME MONIOR PENAWARAN.xlsx"'); // Set nama file excel nya
+        header('Cache-Control: max-age=0');
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
     }
 }
 
