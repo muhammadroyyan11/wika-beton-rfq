@@ -744,7 +744,7 @@ class Rfq_request extends Backend
           $sheet->setCellValue('M'.$numrow, $data->email_pelanggan);
           $sheet->setCellValue('N'.$numrow, $data->no_hp);
           $sheet->setCellValue('O'.$numrow, strip_tags($data->kebutuhan_produk));
-          $sheet->setCellValue('P'.$numrow, $data->suplay_batching);
+          $sheet->setCellValue('P'.$numrow, $data->suplai_batching);
           $sheet->setCellValue('Q'.$numrow, $data->sumber_dana);
           $sheet->setCellValue('R'.$numrow, $data->sektor);
           $sheet->setCellValue('S'.$numrow, $data->jenis_proyek);
