@@ -28,6 +28,16 @@ class Base_model extends CI_Model
         return $sql;
     }
 
+    public function getExport($range = null){
+        $this->db->select('*');
+        $this->db->from('rfq_request');
+        if ($range != null) {
+            $this->db->where('createdOn' . ' >=', $range['mulai']);
+            $this->db->where('createdOn' . ' <=', $range['akhir']);
+        }
+        return $this->db->get();
+    }
+
     public function getTable($table, $where = null)
     {
         $this->db->select('*');

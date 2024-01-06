@@ -624,7 +624,15 @@ class Rfq_request extends Backend
     {
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet;
         $sheet = $spreadsheet->getActiveSheet();
-        // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+
+        $post = $this->input->post(null, true);
+
+        $pecah = explode(' - ', $post['tanggal']);
+        $dateMasuk = new DateTime();
+        $dateKeluar = new DateTime();
+        $mulai = date('Y-m-d', strtotime($pecah[0]));
+        $akhir = date('Y-m-d', strtotime(end($pecah)));
+
         $style_col = [
             'font' => ['bold' => true], // Set font nya jadi bold
             'alignment' => [
@@ -705,7 +713,7 @@ class Rfq_request extends Backend
         $sheet->getStyle('X3')->applyFromArray($style_col);
 
         //GET DATA
-        $rfqData = $this->base->get('rfq_request')->result();
+        $rfqData = $this->base->getExport(['mulai' => $mulai, 'akhir' => $akhir])->result();
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
         foreach($rfqData as $data){ // Lakukan looping pada variabel siswa
@@ -740,6 +748,25 @@ class Rfq_request extends Backend
           $sheet->getStyle('C'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('D'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('E'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('F'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('G'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('H'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('I'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('J'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('K'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('L'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('M'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('N'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('O'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('P'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('Q'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('R'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('S'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('T'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('U'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('V'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('W'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('X'.$numrow)->applyFromArray($style_row);
 
           $no++; // Tambah 1 setiap kali looping
           $numrow++; // Tambah 1 setiap kali looping
@@ -778,7 +805,7 @@ class Rfq_request extends Backend
         $sheet->setTitle("RESUME MONIOR PENAWARAN");
         // Proses file excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="RESUME MONIOR PENAWARAN.xlsx"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="RESUME MONIOR PENAWARAN '. $mulai. ' - '. $akhir .'.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
