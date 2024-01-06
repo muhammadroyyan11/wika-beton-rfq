@@ -624,6 +624,8 @@ class Rfq_request extends Backend
     {
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet;
         $sheet = $spreadsheet->getActiveSheet();
+        $purifierConfig = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($purifierConfig);
 
         $post = $this->input->post(null, true);
 
@@ -727,7 +729,7 @@ class Rfq_request extends Backend
           $sheet->setCellValue('H'.$numrow, $data->untuk_perhatian);
           $sheet->setCellValue('I'.$numrow, $data->email_pelanggan);
           $sheet->setCellValue('J'.$numrow, $data->no_hp);
-          $sheet->setCellValue('K'.$numrow, $data->kebutuhan_produk);
+          $sheet->setCellValue('K'.$numrow, strip_tags($data->kebutuhan_produk));
           $sheet->setCellValue('L'.$numrow, $data->suplai_batching);
           $sheet->setCellValue('M'.$numrow, $data->jarak);
           $sheet->setCellValue('N'.$numrow, $data->sumber_dana);
