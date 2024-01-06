@@ -665,31 +665,34 @@ class Rfq_request extends Backend
         $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
         $sheet->setCellValue('A3', "ID"); 
-        $sheet->setCellValue('B3', "NO PENAWARAN");
-        $sheet->setCellValue('C3', "STATUS PENAWARAN");
-        $sheet->setCellValue('D3', "PELANGGAN");
-        $sheet->setCellValue('E3', "NAMA PERUSAHAAN"); 
-        $sheet->setCellValue('F3', "NAMA PROYEK"); 
-        $sheet->setCellValue('G3', "NAMA OWNER");
-        $sheet->setCellValue('H3', "UNTUK PERHATIAN"); 
-        $sheet->setCellValue('I3', "EMAIL PELANGGAN"); 
-        $sheet->setCellValue('J3', "NO HP"); 
-        $sheet->setCellValue('K3', 'KEBUTUHAN PRODUK');
-        $sheet->setCellValue('L3', 'SUPLAI BATCHING');
-        $sheet->setCellValue('M3', 'DEADLINE');
-        $sheet->setCellValue('N3', 'SUMBER DANA');
-        $sheet->setCellValue('O3', 'SEKTOR');
-        $sheet->setCellValue('P3', 'JENIS PROYEK');
-        $sheet->setCellValue('Q3', 'TANGGAL MULAI');
-        $sheet->setCellValue('R3', 'TANGGAL SELSAI');
-        $sheet->setCellValue('S3', 'KOORDINAT');
-        $sheet->setCellValue('T3', 'BATCHING JARAK');
-        $sheet->setCellValue('U3', 'METODE PEMBAYARAN');
-        $sheet->setCellValue('V3', 'CREATED AT');
-        $sheet->setCellValue('W3', 'TINDAK LANJUT');
-        $sheet->setCellValue('X3', 'STATUS GAGAL');
-        $sheet->setCellValue('Y3', 'SBU');
-        $sheet->setCellValue('Z3', 'NPP');
+        $sheet->setCellValue('B3', "Deadline");
+        $sheet->setCellValue('C3', "SBU");
+        $sheet->setCellValue('D3', "NPP");
+        $sheet->setCellValue('E3', "No penawaran"); 
+        $sheet->setCellValue('F3', "Status Gagal"); 
+        $sheet->setCellValue('G3', "Status penawaran");
+        $sheet->setCellValue('H3', "Pelanggan"); 
+        $sheet->setCellValue('I3', "Nama perusahaan"); 
+        $sheet->setCellValue('J3', "Nama proyek"); 
+        $sheet->setCellValue('K3', 'Nama owner');
+        $sheet->setCellValue('L3', 'Untuk perhatian');
+        $sheet->setCellValue('M3', 'Email pelanggan');
+        $sheet->setCellValue('N3', 'No hp');
+        $sheet->setCellValue('O3', 'Kebutuhan produk');
+        $sheet->setCellValue('P3', 'Suplai batching');
+        $sheet->setCellValue('Q3', 'Sumber dana');
+        $sheet->setCellValue('R3', 'Sektor');
+        $sheet->setCellValue('S3', 'Jenis proyek');
+        $sheet->setCellValue('T3', 'Tanggal mulai');
+        $sheet->setCellValue('U3', 'Tanggal selesai');
+        $sheet->setCellValue('V3', 'Wilayah');
+        $sheet->setCellValue('W3', 'Koordinat maps');
+        $sheet->setCellValue('X3', 'Jarak Batching Plant Menuju Site');
+        $sheet->setCellValue('Y3', 'Metode pembayaran');
+        $sheet->setCellValue('Z3', 'Omzet Kontrak');
+        $sheet->setCellValue('AA3', 'Omzet Penjualan');
+        $sheet->setCellValue('AB3', 'Termin');
+        $sheet->setCellValue('AC3', 'Tindak Lanjut');
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
         $sheet->getStyle('B3')->applyFromArray($style_col);
@@ -717,6 +720,9 @@ class Rfq_request extends Backend
         $sheet->getStyle('X3')->applyFromArray($style_col);
         $sheet->getStyle('Y3')->applyFromArray($style_col);
         $sheet->getStyle('Z3')->applyFromArray($style_col);
+        $sheet->getStyle('AA3')->applyFromArray($style_col);
+        $sheet->getStyle('AB3')->applyFromArray($style_col);
+        $sheet->getStyle('AC3')->applyFromArray($style_col);
 
         //GET DATA
         $rfqData = $this->base->getExport(['mulai' => $mulai, 'akhir' => $akhir])->result();
@@ -724,31 +730,34 @@ class Rfq_request extends Backend
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
         foreach($rfqData as $data){ // Lakukan looping pada variabel siswa
           $sheet->setCellValue('A'.$numrow, $data->id);
-          $sheet->setCellValue('B'.$numrow, $data->no_penawaran);
-          $sheet->setCellValue('C'.$numrow, $data->status_penawaran);
-          $sheet->setCellValue('D'.$numrow, $data->pelanggan);
-          $sheet->setCellValue('E'.$numrow, $data->nama_perusahaan);
-          $sheet->setCellValue('F'.$numrow, $data->nama_proyek);
-          $sheet->setCellValue('G'.$numrow, $data->nama_owner);
-          $sheet->setCellValue('H'.$numrow, $data->untuk_perhatian);
-          $sheet->setCellValue('I'.$numrow, $data->email_pelanggan);
-          $sheet->setCellValue('J'.$numrow, $data->no_hp);
-          $sheet->setCellValue('K'.$numrow, strip_tags($data->kebutuhan_produk));
-          $sheet->setCellValue('L'.$numrow, $data->suplai_batching);
-          $sheet->setCellValue('M'.$numrow, $data->deadline);
-          $sheet->setCellValue('N'.$numrow, $data->sumber_dana);
-          $sheet->setCellValue('O'.$numrow, $data->sektor);
-          $sheet->setCellValue('P'.$numrow, $data->jenis_proyek);
-          $sheet->setCellValue('Q'.$numrow, $data->tanggal_mulai);
-          $sheet->setCellValue('R'.$numrow, $data->tanggal_selesai);
-          $sheet->setCellValue('S'.$numrow, $data->koordinat);
-          $sheet->setCellValue('T'.$numrow, $data->batching_jarak);
-          $sheet->setCellValue('U'.$numrow, $data->metode_pembayaran);
-          $sheet->setCellValue('V'.$numrow, $data->createdOn);
-          $sheet->setCellValue('W'.$numrow, $data->tindak_lanjut);
-          $sheet->setCellValue('X'.$numrow, $data->status_gagal);
-          $sheet->setCellValue('Y'.$numrow, $data->sbu);
-          $sheet->setCellValue('Z'.$numrow, $data->npp);
+          $sheet->setCellValue('B'.$numrow, $data->deadline);
+          $sheet->setCellValue('C'.$numrow, $data->sbu);
+          $sheet->setCellValue('D'.$numrow, $data->npp);
+          $sheet->setCellValue('E'.$numrow, $data->no_penawaran);
+          $sheet->setCellValue('F'.$numrow, $data->status_gagal);
+          $sheet->setCellValue('G'.$numrow, $data->status_penawaran);
+          $sheet->setCellValue('H'.$numrow, $data->pelanggan);
+          $sheet->setCellValue('I'.$numrow, $data->nama_perusahaan);
+          $sheet->setCellValue('J'.$numrow, $data->nama_proyek);
+          $sheet->setCellValue('K'.$numrow, $data->nama_owner);
+          $sheet->setCellValue('L'.$numrow, $data->untuk_perhatian);
+          $sheet->setCellValue('M'.$numrow, $data->email_pelanggan);
+          $sheet->setCellValue('N'.$numrow, $data->no_hp);
+          $sheet->setCellValue('O'.$numrow, strip_tags($data->kebutuhan_produk));
+          $sheet->setCellValue('P'.$numrow, $data->suplay_batching);
+          $sheet->setCellValue('Q'.$numrow, $data->sumber_dana);
+          $sheet->setCellValue('R'.$numrow, $data->sektor);
+          $sheet->setCellValue('S'.$numrow, $data->jenis_proyek);
+          $sheet->setCellValue('T'.$numrow, $data->tanggal_mulai);
+          $sheet->setCellValue('U'.$numrow, $data->tanggal_selesai);
+          $sheet->setCellValue('V'.$numrow, $data->wilayah);
+          $sheet->setCellValue('W'.$numrow, $data->koordinat);
+          $sheet->setCellValue('X'.$numrow, $data->batching_jarak);
+          $sheet->setCellValue('Y'.$numrow, $data->metode_pembayaran);
+          $sheet->setCellValue('Z'.$numrow, $data->omzet_kontrak);
+          $sheet->setCellValue('AA'.$numrow, $data->omzet_penjualan);
+          $sheet->setCellValue('AB'.$numrow, $data->termin);
+          $sheet->setCellValue('AC'.$numrow, $data->tindak_lanjut);
 
           // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
           $sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -777,6 +786,10 @@ class Rfq_request extends Backend
           $sheet->getStyle('X'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('Y'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('Z'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('Z'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AA'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AB'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AC'.$numrow)->applyFromArray($style_row);
 
           $no++; // Tambah 1 setiap kali looping
           $numrow++; // Tambah 1 setiap kali looping
@@ -808,6 +821,9 @@ class Rfq_request extends Backend
         $sheet->getColumnDimension('X')->setWidth(50); // Set width kolom E
         $sheet->getColumnDimension('Y')->setWidth(50); // Set width kolom E
         $sheet->getColumnDimension('Z')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AA')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AB')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AC')->setWidth(50); // Set width kolom E
 
         // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
         $sheet->getDefaultRowDimension()->setRowHeight(-1);
