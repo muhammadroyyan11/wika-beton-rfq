@@ -676,7 +676,7 @@ class Rfq_request extends Backend
         $sheet->setCellValue('J3', "NO HP"); 
         $sheet->setCellValue('K3', 'KEBUTUHAN PRODUK');
         $sheet->setCellValue('L3', 'SUPLAI BATCHING');
-        $sheet->setCellValue('M3', 'JARAK');
+        $sheet->setCellValue('M3', 'DEADLINE');
         $sheet->setCellValue('N3', 'SUMBER DANA');
         $sheet->setCellValue('O3', 'SEKTOR');
         $sheet->setCellValue('P3', 'JENIS PROYEK');
@@ -688,6 +688,8 @@ class Rfq_request extends Backend
         $sheet->setCellValue('V3', 'CREATED AT');
         $sheet->setCellValue('W3', 'TINDAK LANJUT');
         $sheet->setCellValue('X3', 'STATUS GAGAL');
+        $sheet->setCellValue('Y3', 'SBU');
+        $sheet->setCellValue('Z3', 'NPP');
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
         $sheet->getStyle('B3')->applyFromArray($style_col);
@@ -713,6 +715,8 @@ class Rfq_request extends Backend
         $sheet->getStyle('V3')->applyFromArray($style_col);
         $sheet->getStyle('W3')->applyFromArray($style_col);
         $sheet->getStyle('X3')->applyFromArray($style_col);
+        $sheet->getStyle('Y3')->applyFromArray($style_col);
+        $sheet->getStyle('Z3')->applyFromArray($style_col);
 
         //GET DATA
         $rfqData = $this->base->getExport(['mulai' => $mulai, 'akhir' => $akhir])->result();
@@ -731,7 +735,7 @@ class Rfq_request extends Backend
           $sheet->setCellValue('J'.$numrow, $data->no_hp);
           $sheet->setCellValue('K'.$numrow, strip_tags($data->kebutuhan_produk));
           $sheet->setCellValue('L'.$numrow, $data->suplai_batching);
-          $sheet->setCellValue('M'.$numrow, $data->jarak);
+          $sheet->setCellValue('M'.$numrow, $data->deadline);
           $sheet->setCellValue('N'.$numrow, $data->sumber_dana);
           $sheet->setCellValue('O'.$numrow, $data->sektor);
           $sheet->setCellValue('P'.$numrow, $data->jenis_proyek);
@@ -743,6 +747,8 @@ class Rfq_request extends Backend
           $sheet->setCellValue('V'.$numrow, $data->createdOn);
           $sheet->setCellValue('W'.$numrow, $data->tindak_lanjut);
           $sheet->setCellValue('X'.$numrow, $data->status_gagal);
+          $sheet->setCellValue('Y'.$numrow, $data->sbu);
+          $sheet->setCellValue('Z'.$numrow, $data->npp);
 
           // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
           $sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -769,6 +775,8 @@ class Rfq_request extends Backend
           $sheet->getStyle('V'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('W'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('X'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('Y'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('Z'.$numrow)->applyFromArray($style_row);
 
           $no++; // Tambah 1 setiap kali looping
           $numrow++; // Tambah 1 setiap kali looping
@@ -798,6 +806,8 @@ class Rfq_request extends Backend
         $sheet->getColumnDimension('V')->setWidth(50); // Set width kolom E
         $sheet->getColumnDimension('W')->setWidth(50); // Set width kolom E
         $sheet->getColumnDimension('X')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('Y')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('Z')->setWidth(50); // Set width kolom E
 
         // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
         $sheet->getDefaultRowDimension()->setRowHeight(-1);
