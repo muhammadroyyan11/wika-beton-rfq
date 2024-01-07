@@ -624,8 +624,6 @@ class Rfq_request extends Backend
     {
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet;
         $sheet = $spreadsheet->getActiveSheet();
-        $purifierConfig = HTMLPurifier_Config::createDefault();
-        $purifier = new HTMLPurifier($purifierConfig);
 
         $post = $this->input->post(null, true);
 
@@ -636,33 +634,34 @@ class Rfq_request extends Backend
         $akhir = date('Y-m-d', strtotime(end($pecah)));
 
         $style_col = [
-            'font' => ['bold' => true], // Set font nya jadi bold
+            'font' => ['bold' => true],
             'alignment' => [
-                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
-                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
             ],
             'borders' => [
-                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
-                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
-                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
-                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN]
             ]
         ];
-        // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+
         $style_row = [
             'alignment' => [
-                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
             ],
             'borders' => [
-                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
-                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
-                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
-                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+                'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN]
             ]
         ];
-        $sheet->setCellValue('A1', "RESUME MONIOR PENAWARAN"); // Set kolom A1 dengan tulisan "DATA SISWA"
-        $sheet->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
-        $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
+        $sheet->setCellValue('A1', "Data Monitor RFQ");
+        $sheet->mergeCells('A1:E1');
+        $sheet->getStyle('A1')->getFont()->setBold(true);
+
         // Buat header tabel nya pada baris ke 3
         $sheet->setCellValue('A3', "ID"); 
         $sheet->setCellValue('B3', "Deadline");
@@ -830,10 +829,10 @@ class Rfq_request extends Backend
         // Set orientasi kertas jadi LANDSCAPE
         $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
         // Set judul file excel nya
-        $sheet->setTitle("RESUME MONIOR PENAWARAN");
+        $sheet->setTitle("Data Monitor RFQ");
         // Proses file excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="RESUME MONIOR PENAWARAN '. $mulai. ' - '. $akhir .'.xlsx"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="Data Monitor RFQ '. $mulai. ' - '. $akhir .'.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
