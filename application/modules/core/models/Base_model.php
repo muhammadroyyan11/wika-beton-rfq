@@ -23,7 +23,18 @@ class Base_model extends CI_Model
         return $sql;
     }
 
-    
+    public function get_data_notif($table, $where = null, $orWhere = null)
+    {
+        if ($where != null) {
+            $this->db->where($where);
+        }
+        if ($orWhere != null) {
+            $this->db->or_where($orWhere);
+        }
+        $this->db->order_by('created_at', 'DESC');
+        $sql = $this->db->get($table);
+        return $sql;
+    }
 
     public function getTable($table, $where = null)
     {

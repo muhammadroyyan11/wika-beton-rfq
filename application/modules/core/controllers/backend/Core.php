@@ -63,8 +63,16 @@ class Core extends Backend
 
     function data_notif()
     {
-        $notif_count = $this->base->get('notification', ['status' => 0, 'id_user' => profile('id_user')])->num_rows();
-        $data = $this->base->get('notification', ['status' => 0, 'id_user' => profile('id_user')])->result_array();
+        $sevenDaysAgo = date('Y-m-d', strtotime('-7 days'));
+
+        $notif_count = $this->base->get('notification', ['status' => 0, 'id_user' => profile('id_user'), 'created_at >=' => $sevenDaysAgo,])->num_rows();
+
+        $data = $this->base->get_data_notif('notification',
+          [
+          'created_at >=' => $sevenDaysAgo,
+          'id_user' => profile('id_user'),
+          ])->result_array();
+          
         $result['notif_count'] = $notif_count;
         $result['data'] = $data;
         echo json_encode($result);
@@ -74,7 +82,8 @@ class Core extends Backend
     {
         $this->base->update('notification', 'id_user', profile('id_user'), ['status' => 1]);
 
-        $dataRead = $this->base->get('notification', ['status' => 1])->result_array();
+        $sevenDaysAgo = date('Y-m-d', strtotime('-7 days'));
+        $dataRead = $this->base->get('notification', ['status' => 1, 'create_at <=' => $sevenDaysAgo])->result_array();
         if (!empty($dataRead)) {
             foreach ($dataRead as $notification) {
                 $this->base->delete('notification', 'id', $notification['id']);
@@ -88,8 +97,9 @@ class Core extends Backend
         $id = $this->input->post('id');
         $this->base->update_notif('notification', ['id_user' => profile('id_user'), 'rfq_id' => $rfqId, 'id' => $id], ['status' => 1]);
 
-        $dataRead = $this->base->get('notification', ['status' => 1, 'id' => $id])->result_array();
-        // Check if there are notifications with status 1
+        $sevenDaysAgo = date('Y-m-d', strtotime('-7 days'));
+        $dataRead = $this->base->get('notification', ['status' => 1, 'id' => $id, 'create_at <=' => $sevenDaysAgo])->result_array();
+
         if (!empty($dataRead)) {
             foreach ($dataRead as $notification) {
                 $this->base->delete('notification', 'id', $notification['id']);

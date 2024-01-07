@@ -18,98 +18,102 @@
                     <div class="card-body card-dashboard">
                         <form autocomplete="off" class="content-filter">
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="no_penawaran" class="form-control form-control-sm"
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="id" class="form-control form-control-sm" style="height: 38px;"
+                                        placeholder="No Id" />
+                                </div>
+
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="no_penawaran" class="form-control form-control-sm" style="height: 38px;"
                                         placeholder="No penawaran" />
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="nama_perusahaan" class="form-control form-control-sm"
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="nama_perusahaan" class="form-control form-control-sm" style="height: 38px;"
                                         placeholder="Nama perusahaan" />
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="nama_proyek" class="form-control form-control-sm"
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="nama_proyek" class="form-control form-control-sm" style="height: 38px;"
                                         placeholder="Nama proyek" />
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="nama_owner" class="form-control form-control-sm"
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="nama_owner" class="form-control form-control-sm" style="height: 38px;"
                                         placeholder="Nama owner" />
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="untuk_perhatian" class="form-control form-control-sm"
-                                        placeholder="Untuk perhatian" />
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="untuk_perhatian" class="form-control form-control-sm" style="height: 38px;"
+                                    placeholder="Untuk perhatian" />
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="email_pelanggan" class="form-control form-control-sm"
-                                        placeholder="Email pelanggan" />
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="email_pelanggan" class="form-control form-control-sm" style="height: 38px;"
+                                    placeholder="Email pelanggan" />
                                 </div>
-
-                                <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
-                                        data-placeholder=" -- Select Suplai batching -- " name="suplai_batching"
-                                        id="suplai_batching">
-                                        <option value=""></option>
-                                        <option value="Batching Plant Karawang">Batching Plant Karawang</option>
-                                        <option value="Batching Plant Walini">Batching Plant Walini</option>
-                                        <option value="Batching Plant Cakung">Batching Plant Cakung</option>
-                                        <option value="Batching Plant Cilegon">Batching Plant Cilegon</option>
-                                        <option value="Batching Plant Ancol">Batching Plant Ancol</option>
-                                        <option value="Batching Plant On Site">Batching Plant On Site</option>
-                                        <option value="Other">Other</option>
-                                    </select>
+                                
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <select class="form-control form-control-sm select2" style="width: 100%;"
+                                    data-placeholder=" -- Select Suplai batching -- " name="suplai_batching"
+                                    id="suplai_batching">
+                                    <option value=" ">All Suplai batching</option>
+                                    <option value="Batching Plant Karawang">Batching Plant Karawang</option>
+                                    <option value="Batching Plant Walini">Batching Plant Walini</option>
+                                    <option value="Batching Plant Cakung">Batching Plant Cakung</option>
+                                    <option value="Batching Plant Cilegon">Batching Plant Cilegon</option>
+                                    <option value="Batching Plant Ancol">Batching Plant Ancol</option>
+                                    <option value="Batching Plant On Site">Batching Plant On Site</option>
+                                </select>
                                 </div>
+                                
+                                <div class=" col-md-4 col-lg-4">
+                                    <select class="form-control form-control-sm select2" style="width: 100%;"
+                                    data-placeholder=" -- Select Sektor -- " name="sektor" id="sektor">
+                                    <option value=" ">All Sektor</option>
+                                    <option value="AGROBISNIS">AGROBISNIS</option>
+                                    <option value="AIRPORT">AIRPORT</option>
+                                    <option value="ELECTRICITY">ELECTRICITY</option>
+                                    <option value="ENERGY">ENERGY</option>
+                                    <option value="INDUSTRI">INDUSTRI</option>
+                                    <option value="INFRASTRUKTUR">INFRASTRUKTUR</option>
+                                    <option value="INFRASTRUKTUR ENERGI">INFRASTRUKTUR ENERGI</option>
+                                    <option value="INFRASTRUKTUR TAMBANG">INFRASTRUKTUR TAMBANG</option>
+                                    <option value="JALAN DAN JEMBATAN">JALAN DAN JEMBATAN</option>
+                                    <option value="MARINE">MARINE</option>
+                                    <option value="PEKERJAAN UMUM">PEKERJAAN UMUM</option>
+                                    <option value="PEMERINTAHAN">PEMERINTAHAN</option>
+                                    <option value="PERHUBUNGAN">PERHUBUNGAN</option>
+                                    <option value="PERTAMBANGAN">PERTAMBANGAN</option>
+                                    <option value="POWER PLANT">POWER PLANT</option>
+                                    <option value="PROPERTI">PROPERTI</option>
+                                    <option value="PROPERTI & COMMERCIAL">PROPERTI & COMMERCIAL</option>
+                                    <option value="RAILWAY">RAILWAY</option>
+                                    <option value="SUMBER DAYA AIR">SUMBER DAYA AIR</option>
+                                    <option value="SWASTA">SWASTA</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
-                                        data-placeholder=" -- Select Sektor -- " name="sektor" id="sektor">
-                                        <option value=""></option>
-                                        <option value="AGROBISNIS">AGROBISNIS</option>
-                                        <option value="AIRPORT">AIRPORT</option>
-                                        <option value="ELECTRICITY">ELECTRICITY</option>
-                                        <option value="ENERGY">ENERGY</option>
-                                        <option value="INDUSTRI">INDUSTRI</option>
-                                        <option value="INFRASTRUKTUR">INFRASTRUKTUR</option>
-                                        <option value="INFRASTRUKTUR ENERGI">INFRASTRUKTUR ENERGI</option>
-                                        <option value="INFRASTRUKTUR TAMBANG">INFRASTRUKTUR TAMBANG</option>
-                                        <option value="JALAN DAN JEMBATAN">JALAN DAN JEMBATAN</option>
-                                        <option value="MARINE">MARINE</option>
-                                        <option value="PEKERJAAN UMUM">PEKERJAAN UMUM</option>
-                                        <option value="PEMERINTAHAN">PEMERINTAHAN</option>
-                                        <option value="PERHUBUNGAN">PERHUBUNGAN</option>
-                                        <option value="PERTAMBANGAN">PERTAMBANGAN</option>
-                                        <option value="POWER PLANT">POWER PLANT</option>
-                                        <option value="PROPERTI">PROPERTI</option>
-                                        <option value="PROPERTI & COMMERCIAL">PROPERTI & COMMERCIAL</option>
-                                        <option value="RAILWAY">RAILWAY</option>
-                                        <option value="SUMBER DAYA AIR">SUMBER DAYA AIR</option>
-                                        <option value="SWASTA">SWASTA</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
+                            <div class="form-group col-md-4 col-lg-4">
+                                <input type="text" id="batching_jarak" class="form-control form-control-sm" style="height: 38px;"
+                                    placeholder="Batching jarak" />
+                            </div>
+                            
+                            <div class="form-group col-md-4 col-lg-4">
+                                    <select class="form-control form-control-sm select2" style="width: 100%;"
                                         data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek"
                                         id="jenis_proyek">
-                                        <option value=""></option>
+                                        <option value=" ">All Jenis Proyek</option>
                                         <option value="Retail">Retail</option>
                                         <option value="Project based">Project based</option>
                                     </select>
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <input type="text" id="batching_jarak" class="form-control form-control-sm"
-                                        placeholder="Batching jarak" />
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <select class="form-control form-control-sm select2"
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <select class="form-control form-control-sm select2" style="width: 100%;"
                                         data-placeholder=" -- Select Metode pembayaran -- " name="metode_pembayaran"
                                         id="metode_pembayaran">
-                                        <option value=""></option>
+                                        <option value=" ">All Metode Pembayaran</option>
                                         <option value="Cash Before Delivery">Cash Before Delivery</option>
                                         <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
                                         <option value="SCF 120 Hari">SCF 120 Hari</option>
@@ -117,7 +121,6 @@
                                         <option value="Reguler 14 Hari">Reguler 14 Hari</option>
                                         <option value="Reguler 30 Hari">Reguler 30 Hari</option>
                                         <option value="Reguler 60 Hari">Reguler 60 Hari</option>
-                                        <option value="Other">Other</option>
                                     </select>
                                 </div>
 
@@ -268,15 +271,15 @@
                     data.kebutuhan_produk = $("#kebutuhan_produk").val();
                     data.suplai_batching = $("#suplai_batching").val();
                     // data.jarak = $("#jarak").val();
-                    data.sumber_dana = $("#sumber_dana:checked").val();
-                    data.sektor = $("#sektor:checked").val();
+                    data.sumber_dana = $("#sumber_dana").val();
+                    data.sektor = $("#sektor").val();
                     data.jenis_proyek = $("#jenis_proyek").val();
                     data.tanggal_mulai = $("#tanggal_mulai").val();
                     data.tanggal_selesai = $("#tanggal_selesai").val();
                     data.wilayah = $("#wilayah").val();
                     data.koordinat = $("#koordinat").val();
                     data.batching_jarak = $("#batching_jarak").val();
-                    data.metode_pembayaran = $("#metode_pembayaran:checked").val();
+                    data.metode_pembayaran = $("#metode_pembayaran").val();
                     data.omzet_kontrak = $("#omzet_kontrak").val();
                     data.omzet_penjualan = $("#omzet_penjualan").val();
                     data.termin = $("#termin").val();

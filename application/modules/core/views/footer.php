@@ -94,22 +94,6 @@
 <!-- CKEDITOR-->
 <!-- <script src="https://kobis.id/assets/ckeditor/ckeditor.js"></script> -->
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        setInterval(function() {
-            $.ajax({
-                url: "<?= site_url('cpanel/core/data_notif') ?>",
-                type: "POST",
-                dataType: "json", //datatype lainnya: html, text
-                data: {},
-                success: function(data) {
-                    $("#tot-prod").html(data.tot);
-                    // console.log(data.tot);
-                }
-            });
-        }, 2000);
-    })
-</script>
 
 <script>
     $(document).ready(function() {
@@ -142,6 +126,14 @@
                         href: "<?= url('rfq_request/detail/') ?>" + notification.rfq_id
                     });
 
+                    let status = null;
+                    if (notification.status == 1) {
+                        status = 'read';
+                        listItem.css('background-color', '');
+                    } else if (notification.status == 0) {
+                        status = 'unread';
+                        listItem.css('background-color', '#edebfc');
+                    }
 
                     var content = $("<div>", {
                             class: "media d-flex align-items-start"
@@ -158,7 +150,7 @@
                             }).text(" " + notification.description))
                             .append($("<small>", {
                                 class: "notification-text"
-                            }).text(" " + "RFQ Id: " + notification.rfq_id + ' id file: ' + notification.id))
+                            }).text(" " + "RFQ Id: " + notification.rfq_id + ', Status: ' + status))
                         )
                         .append($("<small>").html("<time class='media-meta' datetime='" +
                             notification.created_at + "'>" + calculateTimeDifference(

@@ -37,6 +37,10 @@ class Rfq_request_model extends MY_Model
         $this->db->select($this->select);
         $this->db->from($this->table);
 
+        if ($this->input->post('id')) {
+            $this->db->like('rfq_request.id', $this->input->post('id'));
+        }
+
         if ($this->input->post('no_penawaran')) {
             $this->db->like('rfq_request.no_penawaran', $this->input->post('no_penawaran'));
         }
