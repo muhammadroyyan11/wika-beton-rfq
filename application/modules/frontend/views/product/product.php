@@ -33,7 +33,8 @@
             <!-- Modal -->
             <div class="modal fade" id="pricelist_modal<?= $key ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" style="width: fit-content;">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+                    style="width: fit-content;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Details <?= $data['name'] ?></h1>
@@ -41,11 +42,24 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="" id="modalContent<?= $key ?>" style="text-align: center;">
-                            <img src="<?= base_url() ?>/_temp/uploads/img/<?= $data['img_pricelist'] ?>"
-                                alt="<?= $data['id'] ?>" style="height: 900px; text-align: center;">
+                            <?php
+                            $name_file = $data['name'] . '-price-list';
+                            $file_path = '_temp/uploads/img/' . $data['img_pricelist'];
+                            $fileExtension = pathinfo($data['img_pricelist'], PATHINFO_EXTENSION);
+                            ?>
+
+                            <?php if (strtolower($fileExtension) == 'pdf') : ?>
+                            <?= anchor(base_url($file_path), 'Download Price List', 'class="btn btn-sm btn-success mt-3" download="' . $name_file . '.' . $fileExtension . '"') ?>
+                            
+                            <?php else : ?>
+                            <?= anchor(base_url($file_path), 'Download Image', 'class="btn btn-sm btn-success mt-3" download="' . $name_file . '.' . $fileExtension . '"') ?>
+                            <div class="" id="modalContent<?= $key ?>" style="text-align: center; margin-top: 10px;">
+                                <img src="<?= base_url() ?>/_temp/uploads/img/<?= $data['img_pricelist'] ?>"
+                                    alt="<?= $data['id'] ?>" style="height: 900px; text-align: center;">
                             </div>
+                            <?php endif; ?>
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>

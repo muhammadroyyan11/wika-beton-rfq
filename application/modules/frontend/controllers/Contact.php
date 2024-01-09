@@ -77,14 +77,19 @@ class Contact extends CI_Controller
 
         $rfq_id = $this->base->insert('rfq_request', $params);
 
-        $paramsNotif = [
-            'Description'       => 'Client membuat pesanan ID ' . $RFQNumber . '',
-            'created_by'        => 'Client - ' . $post['nama_perusahaan'] . '',
-            'created_at'        => date('Y-m-d H:i:s'),
-            'rfq_id'            => $rfq_id
-        ];
+        $uploaderId = $this->base->get_all_id()->result_array();
 
-        $this->base->add('notification', $paramsNotif);
+        foreach ($uploaderId as $userId) {
+            $paramsAllUsers = [
+                'Description'       => 'Client membuat pesanan ID ' . $RFQNumber . '',
+                'created_by'        => 'Client - ' . $post['nama_perusahaan'] . '',
+                'created_at' => date('Y-m-d H:i:s'),
+                'rfq_id' => $rfq_id,
+                'id_user' => $userId['id_user'],
+            ];
+
+            $this->base->add('notification', $paramsAllUsers);
+        }
 
         if (@$_FILES['file']['name'] != null) {
             if ($this->upload->do_upload('file')) {

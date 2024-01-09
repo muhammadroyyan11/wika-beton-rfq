@@ -18,9 +18,16 @@
                     <div class="card-body card-dashboard">
                         <form autocomplete="off" class="content-filter">
                             <div class="row">
-                                <div class="form-group col-md-4 col-lg-4">
-                                    <input type="text" id="id" class="form-control form-control-sm" style="height: 38px;"
-                                        placeholder="No Id" />
+                                <div class="row col-md-4 col-lg-4" style="margin: initial;">
+                                    <div class="form-group col" style="padding: 0px;">
+                                        <input type="text" id="id" class="form-control form-control-sm" style="height: 38px;"
+                                            placeholder="No Id" />
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="form-group col" style="padding: 0px;">
+                                        <input type="text" id="RFQNumber" class="form-control form-control-sm" style="height: 38px;"
+                                            placeholder="RFQ Number" />
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-md-4 col-lg-4">
@@ -39,25 +46,25 @@
                                 </div>
 
                                 <div class="form-group col-md-4 col-lg-4">
-                                    <input type="text" id="nama_owner" class="form-control form-control-sm" style="height: 38px;"
-                                        placeholder="Nama owner" />
+                                    <input type="text" id="npp" class="form-control form-control-sm" style="height: 38px;"
+                                        placeholder="NPP" />
                                 </div>
 
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="sbu" class="form-control form-control-sm" style="height: 38px;"
+                                    placeholder="SBU" />
+                                </div>
+                                
                                 <div class="form-group col-md-4 col-lg-4">
                                     <input type="text" id="untuk_perhatian" class="form-control form-control-sm" style="height: 38px;"
                                     placeholder="Untuk perhatian" />
-                                </div>
-
-                                <div class="form-group col-md-4 col-lg-4">
-                                    <input type="text" id="email_pelanggan" class="form-control form-control-sm" style="height: 38px;"
-                                    placeholder="Email pelanggan" />
                                 </div>
                                 
                                 <div class="form-group col-md-4 col-lg-4">
                                     <select class="form-control form-control-sm select2" style="width: 100%;"
                                     data-placeholder=" -- Select Suplai batching -- " name="suplai_batching"
                                     id="suplai_batching">
-                                    <option value=" ">All Suplai batching</option>
+                                    <option value="">All Suplai batching</option>
                                     <option value="Batching Plant Karawang">Batching Plant Karawang</option>
                                     <option value="Batching Plant Walini">Batching Plant Walini</option>
                                     <option value="Batching Plant Cakung">Batching Plant Cakung</option>
@@ -70,7 +77,7 @@
                                 <div class=" col-md-4 col-lg-4">
                                     <select class="form-control form-control-sm select2" style="width: 100%;"
                                     data-placeholder=" -- Select Sektor -- " name="sektor" id="sektor">
-                                    <option value=" ">All Sektor</option>
+                                    <option value="">All Sektor</option>
                                     <option value="AGROBISNIS">AGROBISNIS</option>
                                     <option value="AIRPORT">AIRPORT</option>
                                     <option value="ELECTRICITY">ELECTRICITY</option>
@@ -95,34 +102,41 @@
                             </div>
 
                             <div class="form-group col-md-4 col-lg-4">
-                                <input type="text" id="batching_jarak" class="form-control form-control-sm" style="height: 38px;"
-                                    placeholder="Batching jarak" />
+                                <select class="form-control form-control-sm select2" style="width: 100%;"
+                                    data-placeholder=" -- Select Status Penawaran -- " name="status_penawaran"
+                                    id="status_penawaran">
+                                    <option value="">All Status Penawaran</option>
+                                    <option value="Diperoleh">Diperoleh</option>
+                                    <option value="On Going">On Going</option>
+                                    <option value="Gagal Diperoleh">Gagal Diperoleh</option>
+                                    <option value="Penyusunan HPP">Penyusunan HPP</option>
+                                </select>
                             </div>
                             
                             <div class="form-group col-md-4 col-lg-4">
-                                    <select class="form-control form-control-sm select2" style="width: 100%;"
-                                        data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek"
-                                        id="jenis_proyek">
-                                        <option value=" ">All Jenis Proyek</option>
-                                        <option value="Retail">Retail</option>
-                                        <option value="Project based">Project based</option>
-                                    </select>
-                                </div>
+                                <select class="form-control form-control-sm select2" style="width: 100%;"
+                                    data-placeholder=" -- Select Jenis proyek -- " name="jenis_proyek"
+                                    id="jenis_proyek">
+                                    <option value="">All Jenis Proyek</option>
+                                    <option value="Retail">Retail</option>
+                                    <option value="Project based">Project based</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group col-md-4 col-lg-4">
-                                    <select class="form-control form-control-sm select2" style="width: 100%;"
-                                        data-placeholder=" -- Select Metode pembayaran -- " name="metode_pembayaran"
-                                        id="metode_pembayaran">
-                                        <option value=" ">All Metode Pembayaran</option>
-                                        <option value="Cash Before Delivery">Cash Before Delivery</option>
-                                        <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
-                                        <option value="SCF 120 Hari">SCF 120 Hari</option>
-                                        <option value="SCF 180 Hari">SCF 180 Hari</option>
-                                        <option value="Reguler 14 Hari">Reguler 14 Hari</option>
-                                        <option value="Reguler 30 Hari">Reguler 30 Hari</option>
-                                        <option value="Reguler 60 Hari">Reguler 60 Hari</option>
-                                    </select>
-                                </div>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <select class="form-control form-control-sm select2" style="width: 100%;"
+                                    data-placeholder=" -- Select Metode pembayaran -- " name="metode_pembayaran"
+                                    id="metode_pembayaran">
+                                    <option value="">All Metode Pembayaran</option>
+                                    <option value="Cash Before Delivery">Cash Before Delivery</option>
+                                    <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
+                                    <option value="SCF 120 Hari">SCF 120 Hari</option>
+                                    <option value="SCF 180 Hari">SCF 180 Hari</option>
+                                    <option value="Reguler 14 Hari">Reguler 14 Hari</option>
+                                    <option value="Reguler 30 Hari">Reguler 30 Hari</option>
+                                    <option value="Reguler 60 Hari">Reguler 60 Hari</option>
+                                </select>
+                            </div>
 
                             </div>
                             <div class="pull-right">
@@ -137,6 +151,7 @@
                                 <thead>
                                     <tr>
                                         <th>No Id</th>
+                                        <th>RFQ Number</th>
                                         <th>Deadline</th>
                                         <th>SBU</th>
                                         <th>NPP</th>
@@ -255,6 +270,7 @@
                 "type": "POST",
                 "data": function(data) {
                     data.id = $("#id").val();
+                    data.RFQNumber = $("#RFQNumber").val();
                     data.deadline = $("#deadline").val();
                     data.sbu = $("#sbu").val();
                     data.npp = $("#npp").val();
@@ -298,13 +314,14 @@
                 {
                     "className": "text-center",
                     "orderable": false,
-                    "targets": 20
+                    "targets": 30
                 },
             ],
         });
 
         $("#reload").click(function() {
             $("#id").val("");
+            $("#RFQNumber").val("");
             $("#deadline").val("");
             $("#sbu").val("");
             $("#npp").val("");
@@ -337,19 +354,37 @@
             table.ajax.reload();
         });
 
+        function resetFilterValues() {
+            // Reset values in your filter form fields
+            $("#id, #RFQNumber, #no_penawaran, #nama_perusahaan, #nama_proyek, #npp, #sbu, #untuk_perhatian, #suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val("");
+            // Reset select2 elements
+            $("#suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val(null).trigger("change");
+        }
+
         $(document).on("click", "#filter-show", function(e) {
             e.preventDefault();
-            $(".content-filter").slideDown();
+            var $contentFilter = $(".content-filter");
+            // Check if the filter is already visible
+            if ($contentFilter.is(":visible")) {
+                // Reset filter values and reload table
+                resetFilterValues();
+                table.ajax.reload();
+            } else {
+                // Slide down the filter
+                $contentFilter.slideDown();
+            }
         });
 
         $(document).on("click", "#filter", function(e) {
             e.preventDefault();
+            resetFilterValues();
             $("#table").DataTable().ajax.reload();
         })
 
         $(document).on("click", "#filter-cancel", function(e) {
             e.preventDefault();
             $(".content-filter").slideUp();
+            resetFilterValues();
         });
 
         $(document).on("click", "#delete", function(e) {

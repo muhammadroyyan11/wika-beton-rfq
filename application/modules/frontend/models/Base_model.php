@@ -223,5 +223,12 @@ class Base_model extends CI_Model
         $this->db->order_by('number', 'DESC');
         return $this->db->get()->row();
     }
+    
+    function get_all_id()
+    {
+        $this->db->select('id_user');
+        $this->db->from('auth_user');
+        return $this->db->get();
+    }
 
 }

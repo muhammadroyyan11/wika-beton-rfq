@@ -17,6 +17,10 @@
         <?= $this->session->flashdata('pesan'); ?>
         <table class="table table-bordered table-striped">
           <tr>
+            <td>RFQ Number</td>
+            <td><?= $RFQNumber ?></td>
+          </tr>
+          <tr>
             <td>No penawaran</td>
             <td><?= $no_penawaran ?></td>
           </tr>

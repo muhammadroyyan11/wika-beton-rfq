@@ -85,6 +85,7 @@ class Rfq_request extends Backend
             foreach ($list as $row) {
                 $rows = [];
                 $rows[] = $row->id;
+                $rows[] = $row->RFQNumber;
                 $rows[] = date('d-m-Y', strtotime($row->deadline));
                 $rows[] = $row->sbu;
                 $rows[] = $row->npp;
@@ -171,6 +172,7 @@ class Rfq_request extends Backend
             $this->template->set_title('Detail ' . $this->title);
             $data = [
                 'id' => $row->id,
+                'RFQNumber' => $row->RFQNumber,
                 'no_penawaran' => $row->no_penawaran,
                 'status_penawaran' => $row->status_penawaran,
                 'pelanggan' => $row->pelanggan,
@@ -304,7 +306,7 @@ class Rfq_request extends Backend
 
                 if ($this->db->affected_rows() > 0) {
                     $paramsNotif = [
-                        'Description' => '' . profile('name') . ' telah mengupload dokumen',
+                        'Description' => '' . profile('name') . ' telah mengupload dokumen ID ' . $post['RFQNumber'] . '',
                         'created_by' => profile('name'),
                         'created_at' => date('Y-m-d H:i:s'),
                         'rfq_id' => $post['rfq_id'],
@@ -316,7 +318,7 @@ class Rfq_request extends Backend
                     foreach ($uploaderId2 as $userId) {
                         if ($userId['id_user'] != $uploaderId) {
                             $paramsAllUsers = [
-                                'Description' => 'New document uploaded by ' . profile('name'),
+                                'Description' => 'New document ID ' . $RFQNumber . ' uploaded by' . profile('name'),
                                 'created_by' => profile('name'),
                                 'created_at' => date('Y-m-d H:i:s'),
                                 'rfq_id' => $post['rfq_id'],
@@ -357,6 +359,7 @@ class Rfq_request extends Backend
     {
         $this->is_allowed('rfq_request_add');
         $this->template->set_title(cclang('add') . ' ' . $this->title);
+
         $data = [
             'action' => url('rfq_request/add_action'),
             'no_penawaran' => set_value('no_penawaran'),
@@ -399,6 +402,7 @@ class Rfq_request extends Backend
                 show_error('Access Permission', 403, '403::Access Not Permission');
                 exit();
             }
+            $RFQNumber = $this->model->CreateCode();
 
             $json = ['success' => false];
             $this->form_validation->set_rules('no_penawaran', '* No penawaran', 'trim|xss_clean');
@@ -433,6 +437,7 @@ class Rfq_request extends Backend
             $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
             if ($this->form_validation->run()) {
+                $save_data['RFQNumber'] = $RFQNumber;
                 $save_data['no_penawaran'] = $this->input->post('no_penawaran', true);
                 $save_data['pelanggan'] = $this->input->post('pelanggan', true);
                 $save_data['nama_perusahaan'] = $this->input->post('nama_perusahaan', true);
