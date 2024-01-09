@@ -668,7 +668,7 @@ class Rfq_request extends Backend
         $sheet->getStyle('A1')->getFont()->setBold(true);
 
         // Buat header tabel nya pada baris ke 3
-        $sheet->setCellValue('A3', "ID"); 
+        $sheet->setCellValue('A3', "NO RFQ"); 
         $sheet->setCellValue('B3', "Deadline");
         $sheet->setCellValue('C3', "SBU");
         $sheet->setCellValue('D3', "NPP");
@@ -733,7 +733,7 @@ class Rfq_request extends Backend
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
         foreach($rfqData as $data){ // Lakukan looping pada variabel siswa
-          $sheet->setCellValue('A'.$numrow, $data->id);
+          $sheet->setCellValue('A'.$numrow, $data->RFQNumber);
           $sheet->setCellValue('B'.$numrow, $data->deadline);
           $sheet->setCellValue('C'.$numrow, $data->sbu);
           $sheet->setCellValue('D'.$numrow, $data->npp);
@@ -799,7 +799,7 @@ class Rfq_request extends Backend
           $numrow++; // Tambah 1 setiap kali looping
         }
         // Set width kolom
-        $sheet->getColumnDimension('A')->setWidth(5); // Set width kolom A
+        $sheet->getColumnDimension('A')->setWidth(20); // Set width kolom A
         $sheet->getColumnDimension('B')->setWidth(30); // Set width kolom B
         $sheet->getColumnDimension('C')->setWidth(20); // Set width kolom C
         $sheet->getColumnDimension('D')->setWidth(50); // Set width kolom D
