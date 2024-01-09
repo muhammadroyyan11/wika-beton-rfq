@@ -111,8 +111,8 @@
                 <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Sumber Dana Proyek</label>
-                        <select class="form-select" name="sumber_dana" required aria-label="Default select example">
-                            <option selected>Pilih sumber dana proyek</option>
+                        <select class="form-select" required name="sumber_dana" required aria-label="Default select example">
+                            <option value="">Pilih sumber dana proyek</option>
                             <option value="APBN">APBN</option>
                             <option value="APBD">APBD</option>
                             <option value="SWASTA NASIONAL">SWASTA NASIONAL</option>
@@ -128,7 +128,7 @@
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Sektor</label>
                         <select class="form-select" name="sektor" required aria-label="Default select example">
-                            <option selected>Pilih sektor</option>
+                            <option value="">Pilih sektor</option>
                             <option value="AGROBISNIS">AGROBISNIS</option>
                             <option value="AIRPORT">AIRPORT</option>
                             <option value="ELECTRICITY">ELECTRICITY</option>
@@ -192,9 +192,9 @@
                 <div class="row mt-2">
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Suplai Batching Plant dari</label>
-                        <select class="form-select" name="suplai_select" id="batchingPlantSelect"
+                        <select class="form-select" name="suplai_select" required id="batchingPlantSelect"
                             aria-label="Default select example">
-                            <option selected>Pilih Batching Plant</option>
+                            <option value="">Pilih Batching Plant</option>
                             <option value="Batching Plant Karawang">Batching Plant Karawang</option>
                             <option value="Batching Plant Walini">Batching Plant Walini</option>
                             <option value="Batching Plant Cakung">Batching Plant Cakung</option>
@@ -208,9 +208,9 @@
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Metode Pembayaran</label>
-                        <select class="form-select" name="pembayaran_select" id="methodPaymentSelect"
+                        <select class="form-select" name="pembayaran_select" required id="methodPaymentSelect"
                             aria-label="Default select example">
-                            <option value="NULL">Pilih Metode Pembayaran</option>
+                            <option value="">Pilih Metode Pembayaran</option>
                             <option value="Cash Before Delivery">Cash Before Delivery</option>
                             <option value="30% DP 70% Pelunasan">30% DP 70% Pelunasan</option>
                             <option value="SCF 120 Hari">SCF 120 Hari</option>
@@ -225,13 +225,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">
-                        Your message has been sent. Thank you!
-                    </div>
-                </div> -->
                 <br>
                 <div class="text-center d-grid gap-2">
                     <button class="btn btn-block btn-primary" type="submit">Send Message</button>

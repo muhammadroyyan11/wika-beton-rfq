@@ -46,7 +46,7 @@
           </div>
 
           <div class="form-group">
-            <label>Img price list</label>
+            <label>Price list</label>
             <input type="file" name="img" class="file-upload-default" data-id="img_pricelist" style="display: none;"/>
             <div class="input-group col-xs-12">
               <input type="hidden" class="file-dir" name="file-dir-img_pricelist" data-id="img_pricelist"/>

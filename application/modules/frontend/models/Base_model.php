@@ -36,6 +36,23 @@ class Base_model extends CI_Model
         return $this->db->get();
     }
 
+    public function CreateCode(){
+        $this->db->select('RIGHT(rfq_request.RFQNumber,5) as RFQNumber', FALSE);
+        $this->db->order_by('RFQNumber','DESC');    
+        $this->db->limit(1);    
+        $query = $this->db->get('rfq_request');
+            if($query->num_rows() <> 0){      
+                 $data = $query->row();
+                 $kode = intval($data->RFQNumber) + 1; 
+            }
+            else{      
+                 $kode = 1;  
+            }
+        $batas = str_pad($kode, 5, "0", STR_PAD_LEFT);    
+        $kodetampil = "RFQ".$batas;
+        return $kodetampil;  
+    }
+
     public function getTable($table, $where = null)
     {
         $this->db->select('*');

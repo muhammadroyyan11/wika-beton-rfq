@@ -41,20 +41,10 @@ class Contact extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        $rfqNumber = $this->base->get_last_number()->row();
-
-        preg_match("/^([a-zA-Z]+)(\d+)$/", $rfqNumber, $matches);
-
-        $numericPart = $matches[2];
-
-        $numericPartAsInt2 = (int)$numericPart;
-
-        $currentNumber = $numericPartAsInt2;
-
-        $uniqueNumber = 'RFQ' . str_pad($currentNumber++, 5, '0', STR_PAD_LEFT);
-
+        $RFQNumber = $this->base->CreateCode();
+   
         $params = [
-            'RFQNumber'       => $uniqueNumber,
+            'RFQNumber'       => $RFQNumber,
             'nama_perusahaan' => $post['nama_perusahaan'],
             'nama_proyek'     => $post['nama_proyek'],
             'untuk_perhatian' => $post['untuk_perhatian'],
@@ -68,7 +58,7 @@ class Contact extends CI_Controller
             'sektor'          => $post['sektor'],
             'koordinat'       => $post['koordinat'],
             'batching_jarak'  => $post['jarak'],
-            'kebutuhan_produk'=> $post['kebutuhan_produk'],
+            'kebutuhan_produk' => $post['kebutuhan_produk'],
             'createdOn'       => date('Y-m-d H:i:s'),
             'bulan'           => format_indo(date('Y-m-d'))
         ];
@@ -88,8 +78,8 @@ class Contact extends CI_Controller
         $rfq_id = $this->base->insert('rfq_request', $params);
 
         $paramsNotif = [
-            'Description'       => 'Client membuat pesanan ID '. generateUniqueNumber("RFQ") .'',
-            'created_by'        => 'Client - '.$post['nama_perusahaan'].'',
+            'Description'       => 'Client membuat pesanan ID ' . $RFQNumber . '',
+            'created_by'        => 'Client - ' . $post['nama_perusahaan'] . '',
             'created_at'        => date('Y-m-d H:i:s'),
             'rfq_id'            => $rfq_id
         ];
