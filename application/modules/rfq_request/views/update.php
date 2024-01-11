@@ -9,12 +9,12 @@
           
           <div class="form-group">
             <label>No penawaran</label>
-            <input type="text" class="form-control form-control-sm" placeholder="No penawaran" name="no_penawaran" id="no_penawaran" value="<?=$no_penawaran?>">
+            <input type="text" class="form-control" placeholder="No penawaran" name="no_penawaran" id="no_penawaran" value="<?=$no_penawaran?>">
           </div>
 
           <div class="form-group">
             <label>Deadline</label>
-            <input type="date" class="form-control form-control-sm" placeholder="deadline" name="deadline" id="deadline" value="<?=$deadline?>">
+            <input type="date" class="form-control" placeholder="deadline" name="deadline" id="deadline" value="<?=$deadline?>">
           </div>
           <div class="form-group">
             <label>SBU</label>
@@ -28,12 +28,12 @@
           </div>
           <div class="form-group">
             <label>NPP</label>
-            <input type="text" class="form-control form-control-sm" placeholder="npp" name="npp" id="npp" value="<?=$npp?>">
+            <input type="text" class="form-control" maxlength="10" placeholder="npp" name="npp" id="npp" value="<?=$npp?>">
           </div>
 
           <div class="form-group">
             <label>Status penawaran</label>
-            <!-- <input type="text" class="form-control form-control-sm" placeholder="Pelanggan" name="sbu" id="no_penawaran" value="<?= $no_penawaran ?>"> -->
+            <!-- <input type="text" class="form-control" placeholder="Pelanggan" name="sbu" id="no_penawaran" value="<?= $no_penawaran ?>"> -->
             <select name="status_penawaran" id="" class="form-control">
               <option value="">-- Silahkan Pilih --</option>
               <option value="Diperoleh" <?= $status_penawaran == 'Diperoleh' ? 'selected' : '' ?>>Diperoleh</option>
@@ -54,29 +54,29 @@
 
           <div class="form-group">
             <label>Untuk Perhatian</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Untuk Perhatian" name="untuk_perhatian"
+            <input type="text" class="form-control" placeholder="Untuk Perhatian" name="untuk_perhatian"
               id="untuk_perhatian" value="<?= $untuk_perhatian ?>">
           </div>
         
           <div class="form-group">
             <label>Nama perusahaan</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Nama perusahaan" name="nama_perusahaan" id="nama_perusahaan" value="<?=$nama_perusahaan?>">
+            <input type="text" class="form-control" placeholder="Nama perusahaan" name="nama_perusahaan" id="nama_perusahaan" value="<?=$nama_perusahaan?>">
           </div>
 
           <div class="form-group">
             <label>Email Pelanggan</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Email Pelanggan" name="email_pelanggan"
+            <input type="text" class="form-control" placeholder="Email Pelanggan" name="email_pelanggan"
               id="email_pelanggan" value="<?= $email_pelanggan ?>">
           </div>
         
           <div class="form-group">
             <label>Nama proyek</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Nama proyek" name="nama_proyek" id="nama_proyek" value="<?=$nama_proyek?>">
+            <input type="text" class="form-control" placeholder="Nama proyek" name="nama_proyek" id="nama_proyek" value="<?=$nama_proyek?>">
           </div>
         
           <div class="form-group">
             <label>Nama owner</label>
-            <input type="text" class="form-control form-control-sm" placeholder="Nama owner" name="nama_owner" id="nama_owner" value="<?=$nama_owner?>">
+            <input type="text" class="form-control" placeholder="Nama owner" name="nama_owner" id="nama_owner" value="<?=$nama_owner?>">
           </div>
     
           <div class="form-group">
@@ -117,7 +117,7 @@
           
           <div class="form-group">
               <label>Status Gagal</label>
-              <select class="form-control form-control-sm select2" data-placeholder=" -- Select -- "
+              <select class="form-control select2" data-placeholder=" -- Select -- "
                   name="status_gagal" id="status_gagal">
                   <option value="C1" <?= $status_gagal == 'C1' ? 'selected' : '' ?>>C1</option>
                   <option value="C2" <?= $status_gagal == 'C2' ? 'selected' : '' ?>>C2</option>

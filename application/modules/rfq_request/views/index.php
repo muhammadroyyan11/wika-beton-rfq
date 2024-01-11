@@ -151,7 +151,7 @@
                                 <thead>
                                     <tr>
                                         <th>No Id</th>
-                                        <th>RFQ Number</th>
+<!--                                        <th>RFQ Number</th>-->
                                         <th>Deadline</th>
                                         <th>SBU</th>
                                         <th>NPP</th>
@@ -270,7 +270,6 @@
                 "type": "POST",
                 "data": function(data) {
                     data.id = $("#id").val();
-                    data.RFQNumber = $("#RFQNumber").val();
                     data.deadline = $("#deadline").val();
                     data.sbu = $("#sbu").val();
                     data.npp = $("#npp").val();
@@ -310,18 +309,16 @@
                     "targets": 0,
                     "orderable": true
                 },
-
                 {
                     "className": "text-center",
                     "orderable": false,
-                    "targets": 30
+                    "targets": 29
                 },
             ],
         });
 
         $("#reload").click(function() {
             $("#id").val("");
-            $("#RFQNumber").val("");
             $("#deadline").val("");
             $("#sbu").val("");
             $("#npp").val("");
@@ -356,7 +353,7 @@
 
         function resetFilterValues() {
             // Reset values in your filter form fields
-            $("#id, #RFQNumber, #no_penawaran, #nama_perusahaan, #nama_proyek, #npp, #sbu, #untuk_perhatian, #suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val("");
+            $("#id, #no_penawaran, #nama_perusahaan, #nama_proyek, #npp, #sbu, #untuk_perhatian, #suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val("");
             // Reset select2 elements
             $("#suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val(null).trigger("change");
         }

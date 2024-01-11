@@ -85,7 +85,6 @@ class Rfq_request extends Backend
             foreach ($list as $row) {
                 $rows = [];
                 $rows[] = $row->id;
-                $rows[] = $row->RFQNumber;
                 $rows[] = date('d-m-Y', strtotime($row->deadline));
                 $rows[] = $row->sbu;
                 $rows[] = $row->npp;
@@ -172,7 +171,6 @@ class Rfq_request extends Backend
             $this->template->set_title('Detail ' . $this->title);
             $data = [
                 'id' => $row->id,
-                'RFQNumber' => $row->RFQNumber,
                 'no_penawaran' => $row->no_penawaran,
                 'status_penawaran' => $row->status_penawaran,
                 'pelanggan' => $row->pelanggan,
@@ -306,7 +304,7 @@ class Rfq_request extends Backend
 
                 if ($this->db->affected_rows() > 0) {
                     $paramsNotif = [
-                        'Description' => '' . profile('name') . ' telah mengupload dokumen ID ' . $post['RFQNumber'] . '',
+                        'Description' => '' . profile('name') . ' telah mengupload dokumen ID ' . $post['rfq_id'] . '',
                         'created_by' => profile('name'),
                         'created_at' => date('Y-m-d H:i:s'),
                         'rfq_id' => $post['rfq_id'],
@@ -318,7 +316,7 @@ class Rfq_request extends Backend
                     foreach ($uploaderId2 as $userId) {
                         if ($userId['id_user'] != $uploaderId) {
                             $paramsAllUsers = [
-                                'Description' => 'New document ID ' . $post['RFQNumber'] . ' uploaded by' . profile('name'),
+                                'Description' => 'New document ID ' . $post['rfq_id'] . ' uploaded by' . profile('name'),
                                 'created_by' => profile('name'),
                                 'created_at' => date('Y-m-d H:i:s'),
                                 'rfq_id' => $post['rfq_id'],
