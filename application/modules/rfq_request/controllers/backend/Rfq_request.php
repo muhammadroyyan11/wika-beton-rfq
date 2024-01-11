@@ -666,7 +666,7 @@ class Rfq_request extends Backend
         $sheet->getStyle('A1')->getFont()->setBold(true);
 
         // Buat header tabel nya pada baris ke 3
-        $sheet->setCellValue('A3', "NO RFQ"); 
+        $sheet->setCellValue('A3', "NO ID");
         $sheet->setCellValue('B3', "Deadline");
         $sheet->setCellValue('C3', "SBU");
         $sheet->setCellValue('D3', "NPP");
@@ -731,7 +731,7 @@ class Rfq_request extends Backend
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
         foreach($rfqData as $data){ // Lakukan looping pada variabel siswa
-          $sheet->setCellValue('A'.$numrow, $data->RFQNumber);
+          $sheet->setCellValue('A'.$numrow, $data->id);
           $sheet->setCellValue('B'.$numrow, $data->deadline);
           $sheet->setCellValue('C'.$numrow, $data->sbu);
           $sheet->setCellValue('D'.$numrow, $data->npp);
