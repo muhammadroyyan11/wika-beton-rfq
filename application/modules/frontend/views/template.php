@@ -225,7 +225,7 @@
     <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 
     <script>
-        var ckeditor = CKEDITOR.replace('editor1', {
+        var ckeditor = CKEDITOR.replace('kebutuhan_produk', {
             height: '300px'
         });
     </script>

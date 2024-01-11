@@ -41,81 +41,86 @@ class Contact extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        $RFQNumber = $this->base->CreateCode();
-   
-        $params = [
-            'RFQNumber'       => $RFQNumber,
-            'nama_perusahaan' => $post['nama_perusahaan'],
-            'nama_proyek'     => $post['nama_proyek'],
-            'untuk_perhatian' => $post['untuk_perhatian'],
-            'no_hp'           => $post['no_hp'],
-            'email_pelanggan' => $post['email'],
-            'nama_owner'      => $post['project_owner'],
-            'jenis_proyek'    => $post['jenis_proyek'],
-            'tanggal_mulai'   => $post['tanggal_mulai'],
-            'tanggal_selesai' => $post['tanggal_selesai'],
-            'sumber_dana'     => $post['sumber_dana'],
-            'sektor'          => $post['sektor'],
-            'koordinat'       => $post['koordinat'],
-            'batching_jarak'  => $post['jarak'],
-            'kebutuhan_produk' => $post['kebutuhan_produk'],
-            'createdOn'       => date('Y-m-d H:i:s'),
-            'bulan'           => format_indo(date('Y-m-d'))
-        ];
-
-        if ($post['suplai_select'] != 'other') {
-            $params['suplai_batching'] = $post['suplai_select'];
-        } else {
-            $params['suplai_batching'] = $post['suplai_text'];
-        }
-
-        if ($post['pembayaran_select'] != 'other') {
-            $params['metode_pembayaran'] = $post['pembayaran_select'];
-        } else {
-            $params['metode_pembayaran'] = $post['pembayaran_text'];
-        }
-
-        $rfq_id = $this->base->insert('rfq_request', $params);
-
-        $uploaderId = $this->base->get_all_id()->result_array();
-
-        foreach ($uploaderId as $userId) {
-            $paramsAllUsers = [
-                'Description'       => 'Client membuat pesanan ID ' . $RFQNumber . '',
-                'created_by'        => 'Client - ' . $post['nama_perusahaan'] . '',
-                'created_at' => date('Y-m-d H:i:s'),
-                'rfq_id' => $rfq_id,
-                'id_user' => $userId['id_user'],
+        if ($post['kebutuhan_produk'] != '') {
+            $RFQNumber = $this->base->CreateCode();
+    
+            $params = [
+                'RFQNumber'       => $RFQNumber,
+                'nama_perusahaan' => $post['nama_perusahaan'],
+                'nama_proyek'     => $post['nama_proyek'],
+                'untuk_perhatian' => $post['untuk_perhatian'],
+                'no_hp'           => $post['no_hp'],
+                'email_pelanggan' => $post['email'],
+                'nama_owner'      => $post['project_owner'],
+                'jenis_proyek'    => $post['jenis_proyek'],
+                'tanggal_mulai'   => $post['tanggal_mulai'],
+                'tanggal_selesai' => $post['tanggal_selesai'],
+                'sumber_dana'     => $post['sumber_dana'],
+                'sektor'          => $post['sektor'],
+                'koordinat'       => $post['koordinat'],
+                'batching_jarak'  => $post['jarak'],
+                'kebutuhan_produk' => $post['kebutuhan_produk'],
+                'createdOn'       => date('Y-m-d H:i:s'),
+                'bulan'           => format_indo(date('Y-m-d'))
             ];
 
-            $this->base->add('notification', $paramsAllUsers);
-        }
+            if ($post['suplai_select'] != 'other') {
+                $params['suplai_batching'] = $post['suplai_select'];
+            } else {
+                $params['suplai_batching'] = $post['suplai_text'];
+            }
 
-        if (@$_FILES['file']['name'] != null) {
-            if ($this->upload->do_upload('file')) {
-                $post['file'] = $this->upload->data('file_name');
-                $post['tipe_file'] = $this->upload->data('file_type');
+            if ($post['pembayaran_select'] != 'other') {
+                $params['metode_pembayaran'] = $post['pembayaran_select'];
+            } else {
+                $params['metode_pembayaran'] = $post['pembayaran_text'];
+            }
 
-                $params_file = [
-                    'type'      => 'Document Client',
-                    'file'      => $post['file'],
-                    'rfq_id'    => $rfq_id,
-                    'create_at'    => date('Y-m-d H:i:s'),
+            $rfq_id = $this->base->insert('rfq_request', $params);
+
+            $uploaderId = $this->base->get_all_id()->result_array();
+
+            foreach ($uploaderId as $userId) {
+                $paramsAllUsers = [
+                    'Description'       => 'Client membuat pesanan ID ' . $RFQNumber . '',
+                    'created_by'        => 'Client - ' . $post['nama_perusahaan'] . '',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'rfq_id' => $rfq_id,
+                    'id_user' => $userId['id_user'],
                 ];
 
-                $this->base->insert('media', $params_file);
+                $this->base->add('notification', $paramsAllUsers);
+            }
 
-                if ($this->db->affected_rows() > 0) {
-                    set_pesan('Rfq Terkirim, silahkan menunggu informasi lebih lanjut');
+            if (@$_FILES['file']['name'] != null) {
+                if ($this->upload->do_upload('file')) {
+                    $post['file'] = $this->upload->data('file_name');
+                    $post['tipe_file'] = $this->upload->data('file_type');
+
+                    $params_file = [
+                        'type'      => 'Document Client',
+                        'file'      => $post['file'],
+                        'rfq_id'    => $rfq_id,
+                        'create_at'    => date('Y-m-d H:i:s'),
+                    ];
+
+                    $this->base->insert('media', $params_file);
+
                 } else {
-                    set_pesan('Gagal menyimpan RFQ, silahkan coba kembali', FALSE);
+                    echo 'error';
                 }
             } else {
-                echo 'error';
+                redirect('contact');
             }
-        } else {
+
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Rfq Terkirim, silahkan menunggu informasi lebih lanjut');
+            } else {
+                set_pesan('Gagal menyimpan RFQ, silahkan coba kembali', FALSE);
+            }
             redirect('contact');
         }
+        set_pesan('Please fill Kebutuhan Produk', FALSE);
         redirect('contact');
     }
 

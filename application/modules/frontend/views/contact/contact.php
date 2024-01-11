@@ -63,7 +63,7 @@
                     </div>
                     <div class="col form-group">
                         <label for="exampleFormControlInput1" class="form-label">Untuk Perhatian (u.p.)</label>
-                        <input type="text" name="untuk_perhatian" class="form-control" name="email" id="email"
+                        <input type="text" name="untuk_perhatian" required class="form-control" name="email" id="email"
                             placeholder="" />
                     </div>
                 </div>
@@ -90,8 +90,8 @@
                 </div>
                 <div class="form-group mt-2">
                     <label for="exampleFormControlInput1" class="form-label">Jenis Proyek</label>
-                    <select class="form-select" name="jenis_proyek" required aria-label="Default select example">
-                        <option selected>Pilih proyek</option>
+                    <select class="form-select" required name="jenis_proyek" required aria-label="Default select example">
+                        <option value="">Pilih proyek</option>
                         <option value="Retail">Retail</option>
                         <option value="Project Based">Project Based</option>
                     </select>
@@ -185,7 +185,7 @@
                 <div class="form-group" style="margin-top: 5px;">
                     <label for="exampleFormControlInput1" class="form-label">Kebutuhan Produk(Spesifikasi/Mutu, FA/NFA,
                         Slump dan Vol)</label>
-                    <textarea name="kebutuhan_produk" class="form-control editor1" id="editor1" cols="50" row
+                    <textarea name="kebutuhan_produk" required class="form-control" id="kebutuhan_produk" cols="50" row
                         mt-2s="10"></textarea>
                 </div>
 
