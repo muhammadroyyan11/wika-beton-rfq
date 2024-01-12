@@ -23,8 +23,6 @@
                                         <input type="text" id="id" class="form-control form-control-sm" style="height: 38px;"
                                             placeholder="No Id" />
                                     </div>
-                                    <div class="col-1"></div>
-
                                 </div>
 
                                 <div class="form-group col-md-4 col-lg-4">
@@ -371,7 +369,6 @@
 
         $(document).on("click", "#filter", function(e) {
             e.preventDefault();
-            resetFilterValues();
             $("#table").DataTable().ajax.reload();
         })
 

@@ -316,7 +316,7 @@ class Rfq_request extends Backend
                     foreach ($uploaderId2 as $userId) {
                         if ($userId['id_user'] != $uploaderId) {
                             $paramsAllUsers = [
-                                'Description' => 'New document ID ' . $post['rfq_id'] . ' uploaded by' . profile('name'),
+                                'Description' => 'New document ID ' . $post['rfq_id'] . ' uploaded by ' . profile('name'),
                                 'created_by' => profile('name'),
                                 'created_at' => date('Y-m-d H:i:s'),
                                 'rfq_id' => $post['rfq_id'],
