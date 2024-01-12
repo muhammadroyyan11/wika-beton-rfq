@@ -109,9 +109,9 @@ class Rfq_request extends Backend
                 $rows[] = $row->koordinat;
                 $rows[] = $row->batching_jarak;
                 $rows[] = $row->metode_pembayaran;
-                $rows[] = $row->omzet_kontrak;
-                $rows[] = $row->omzet_penjualan;
-                $rows[] = $row->termin;
+                $rows[] = number_format($row->omzet_kontrak,0,",",".");
+                $rows[] = number_format($row->omzet_penjualan,0,",",".");
+                $rows[] = number_format($row->termin,0,",",".");
                 $rows[] = $row->tindak_lanjut;
 
                 $rows[] =
@@ -195,9 +195,9 @@ class Rfq_request extends Backend
                 'sbu' => $row->sbu,
                 'npp' => $row->npp,
                 'wilayah' => $row->wilayah,
-                'omzet_kontrak' => $row->omzet_kontrak,
-                'omzet_penjualan' => $row->omzet_penjualan,
-                'termin' => $row->termin,
+                'omzet_kontrak' => number_format($row->omzet_kontrak,0,",","."),
+                'omzet_penjualan' => number_format($row->omzet_penjualan,0,",","."),
+                'termin' => number_format($row->termin,0,",","."),
                 'status_gagal' => $row->status_gagal,
                 'tindak_lanjut' => $row->tindak_lanjut,
             ];
@@ -756,9 +756,9 @@ class Rfq_request extends Backend
           $sheet->setCellValue('W'.$numrow, $data->koordinat);
           $sheet->setCellValue('X'.$numrow, $data->batching_jarak);
           $sheet->setCellValue('Y'.$numrow, $data->metode_pembayaran);
-          $sheet->setCellValue('Z'.$numrow, $data->omzet_kontrak);
-          $sheet->setCellValue('AA'.$numrow, $data->omzet_penjualan);
-          $sheet->setCellValue('AB'.$numrow, $data->termin);
+          $sheet->setCellValue('Z'.$numrow, number_format($data->omzet_kontrak,0,",","."));
+          $sheet->setCellValue('AA'.$numrow, number_format($data->omzet_penjualan,0,",","."));
+          $sheet->setCellValue('AB'.$numrow, number_format($data->termin,0,",","."));
           $sheet->setCellValue('AC'.$numrow, $data->tindak_lanjut);
 
           // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
