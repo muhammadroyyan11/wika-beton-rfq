@@ -24,10 +24,7 @@
                                             placeholder="No Id" />
                                     </div>
                                     <div class="col-1"></div>
-                                    <div class="form-group col" style="padding: 0px;">
-                                        <input type="text" id="RFQNumber" class="form-control form-control-sm" style="height: 38px;"
-                                            placeholder="RFQ Number" />
-                                    </div>
+
                                 </div>
 
                                 <div class="form-group col-md-4 col-lg-4">
