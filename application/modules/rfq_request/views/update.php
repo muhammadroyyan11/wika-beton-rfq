@@ -86,8 +86,8 @@
           
           <div class="form-group">
               <label>Wilayah</label>
-              <select class="form-control" data-placeholder=" -- Select -- "
-                  name="wilayah" id="wilayah">
+              <select class="form-control" name="wilayah" id="wilayah">
+                  <option value="">-- Silahkan Pilih --</option>
                   <option value="Banten" <?= $wilayah == 'Banten' ? 'selected' : '' ?>>Banten</option>
                   <option value="DKI Jakarta" <?= $wilayah == 'DKI Jakarta' ? 'selected' : '' ?>>DKI Jakarta</option>
                   <option value="Jawa Barat" <?= $wilayah == 'Jawa Barat' ? 'selected' : '' ?>>Jawa Barat</option>
@@ -117,8 +117,8 @@
           
           <div class="form-group">
               <label>Status Gagal</label>
-              <select class="form-control select2" data-placeholder=" -- Select -- "
-                  name="status_gagal" id="status_gagal">
+              <select class="form-control select2" name="status_gagal" id="status_gagal">
+                  <option value="">-- Silahkan Pilih --</option>
                   <option value="C1" <?= $status_gagal == 'C1' ? 'selected' : '' ?>>C1</option>
                   <option value="C2" <?= $status_gagal == 'C2' ? 'selected' : '' ?>>C2</option>
                   <option value="C3" <?= $status_gagal == 'C3' ? 'selected' : '' ?>>C3</option>
