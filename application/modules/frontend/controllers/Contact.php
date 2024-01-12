@@ -82,7 +82,7 @@ class Contact extends CI_Controller
 
             foreach ($uploaderId as $userId) {
                 $paramsAllUsers = [
-                    'Description'       => 'Client membuat pesanan ID ' . $RFQNumber . '',
+                    'Description'       => 'Client membuat pesanan ID ' . $rfq_id . '',
                     'created_by'        => 'Client - ' . $post['nama_perusahaan'] . '',
                     'created_at' => date('Y-m-d H:i:s'),
                     'rfq_id' => $rfq_id,
