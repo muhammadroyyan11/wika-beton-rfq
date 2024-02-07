@@ -95,6 +95,32 @@
           </div>
 
           <div class="form-group">
+              <label>Suplai batching</label>
+              <select class="form-control" name="suplai_batching" id="suplai_batching">
+                  <option value="">-- Silahkan Pilih --</option>
+                  <?php
+                  $batching_plants = [
+                      'Batching Plant Karawang',
+                      'Batching Plant Walini',
+                      'Batching Plant Cakung',
+                      'Batching Plant Cilegon',
+                      'Batching Plant Ancol',
+                      'Batching Plant On Site'
+                  ];
+                  $selected_other = !in_array($suplai_batching, $batching_plants) ? 'selected' : $suplai_batching;
+                  foreach ($batching_plants as $plant) {
+                      $selected = ($suplai_batching == $plant) ? 'selected' : '';
+                      echo "<option value=\"$plant\" $selected>$plant</option>";
+                  }
+                  $check_data = !in_array($suplai_batching, $batching_plants);
+                  if ($check_data) {
+                    echo "<option value=\"$suplai_batching\" $selected_other >$suplai_batching</option>";
+                  }
+                  ?>
+              </select>
+          </div>
+
+          <div class="form-group">
             <label>Share location</label>
             <input type="text" class="form-control" rows="3" name="koordinat" id="koordinat" value="<?=$koordinat?>">
           </div>
