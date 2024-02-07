@@ -95,6 +95,16 @@
           </div>
 
           <div class="form-group">
+            <label>Share location</label>
+            <input type="text" class="form-control" rows="3" name="koordinat" id="koordinat" value="<?=$koordinat?>">
+          </div>
+
+          <div class="form-group">
+            <label>Jarak Batching Plan</label>
+            <input type="text" class="form-control" rows="3" name="batching_jarak" id="batching_jarak" value="<?=$batching_jarak?>">
+          </div>
+
+          <div class="form-group">
             <label>Omzet Kontrak</label>
             <input type="number" class="form-control" rows="3" name="omzet_kontrak" id="omzet_kontrak" value="<?=$omzet_kontrak?>">
           </div>

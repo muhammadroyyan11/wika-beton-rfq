@@ -500,6 +500,8 @@ class Rfq_request extends Backend
                 'deadline' => $row->deadline == '' ? '' : date('Y-m-d', strtotime($row->deadline)),
                 'sbu' => set_value('sbu', $row->sbu),
                 'npp' => set_value('npp', $row->npp),
+                'koordinat' => set_value('koordinat', $row->koordinat),
+                'batching_jarak' => set_value('batching_jarak', $row->batching_jarak),
                 'wilayah' => set_value('wilayah', $row->wilayah),
                 'omzet_kontrak' => set_value('omzet_kontrak', $row->omzet_kontrak),
                 'omzet_penjualan' => set_value('omzet_penjualan', $row->omzet_penjualan),
@@ -564,6 +566,8 @@ class Rfq_request extends Backend
         $this->form_validation->set_rules('deadline', '* Deadline', 'trim|xss_clean');
         $this->form_validation->set_rules('sbu', '* SBU', 'trim|xss_clean');
         $this->form_validation->set_rules('npp', '* NPP', 'trim|xss_clean');
+        $this->form_validation->set_rules('koordinat', '* Share Location', 'trim|xss_clean');
+        $this->form_validation->set_rules('batching_jarak', '* Batching Jarak', 'trim|xss_clean');
         $this->form_validation->set_rules('wilayah', '* Wilayah', 'trim|xss_clean');
         $this->form_validation->set_rules('omzet_kontrak', '* Omzet Kontrak', 'trim|xss_clean');
         $this->form_validation->set_rules('omzet_penjualan', '* Omzet Penjualan', 'trim|xss_clean');
@@ -585,6 +589,8 @@ class Rfq_request extends Backend
             $save_data['deadline'] = $this->input->post('deadline', true);
             $save_data['sbu'] = $this->input->post('sbu', true);
             $save_data['npp'] = $this->input->post('npp', true);
+            $save_data['koordinat'] = $this->input->post('koordinat', true);
+            $save_data['batching_jarak'] = $this->input->post('batching_jarak', true);
             $save_data['wilayah'] = $this->input->post('wilayah', true);
             $save_data['omzet_kontrak'] = $this->input->post('omzet_kontrak', true);
             $save_data['omzet_penjualan'] = $this->input->post('omzet_penjualan', true);
