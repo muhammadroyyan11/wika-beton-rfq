@@ -80,14 +80,25 @@ class Rfq_request extends Backend
                 exit();
             }
 
+            $today = new DateTime();
+
             $list = $this->model->get_datatables();
             $data = [];
             foreach ($list as $row) {
                 $rows = [];
+                $rows[] = '';
                 $rows[] = $row->id;
+                $rows[] = $row->pic_se;
                 $rows[] = date('d-m-Y', strtotime($row->deadline));
                 $rows[] = $row->sbu;
                 $rows[] = $row->npp;
+                $rows[] = $row->tgl_penawaran;
+
+                $tgl_penawaran = new DateTime($row->tgl_penawaran);
+                $diff = $today->diff($tgl_penawaran)->format("%R%a days");
+                $rows[] = $diff;
+
+                $rows[] = $row->p_ke;
                 $rows[] = $row->no_penawaran;
                 $rows[] = $row->status_gagal;
                 $rows[] = $row->status_penawaran;
@@ -109,6 +120,8 @@ class Rfq_request extends Backend
                 $rows[] = $row->koordinat;
                 $rows[] = $row->batching_jarak;
                 $rows[] = $row->metode_pembayaran;
+                $rows[] = number_format($row->total_vol,0,",",".");
+                $rows[] = $row->lkb;
                 $rows[] = number_format($row->omzet_kontrak,0,",",".");
                 $rows[] = number_format($row->omzet_penjualan,0,",",".");
                 $rows[] = number_format($row->termin,0,",",".");
@@ -389,6 +402,11 @@ class Rfq_request extends Backend
             'termin' => set_value('termin'),
             'tindak_lanjut' => set_value('tindak_lanjut'),
             'status_gagal' => set_value('status_gagal'),
+            'pic_se' => set_value('pic_se'),
+            'total_vol' => set_value('total_vol'),
+            'lkb' => set_value('lkb'),
+            'tgl_penawaran' => set_value('tgl_penawaran'),
+            'p_ke' => set_value('p_ke'),
         ];
         $this->template->view('add', $data);
     }
@@ -432,6 +450,11 @@ class Rfq_request extends Backend
             $this->form_validation->set_rules('termin', '* Termin', 'trim|xss_clean');
             $this->form_validation->set_rules('tindak_lanjut', '* Tindak lanjut', 'trim|xss_clean');
             $this->form_validation->set_rules('status_gagal', '* Status gagal', 'trim|xss_clean');
+            $this->form_validation->set_rules('pic_se', '* PIC SE', 'trim|xss_clean');
+            $this->form_validation->set_rules('total_vol', '* Total Vol', 'trim|xss_clean');
+            $this->form_validation->set_rules('lkb', '* LKB', 'trim|xss_clean');
+            $this->form_validation->set_rules('tgl_penawaran', '* Tanggal Penawaran', 'trim|xss_clean');
+            $this->form_validation->set_rules('p_ke', '* P ke', 'trim|xss_clean');
             $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
             if ($this->form_validation->run()) {
@@ -465,6 +488,11 @@ class Rfq_request extends Backend
                 $save_data['termin'] = $this->input->post('termin', true);
                 $save_data['tindak_lanjut'] = $this->input->post('tindak_lanjut', true);
                 $save_data['status_gagal'] = $this->input->post('status_gagal', true);
+                $save_data['pic_se'] = $this->input->post('pic_se', true);
+                $save_data['total_vol'] = $this->input->post('total_vol', true);
+                $save_data['lkb'] = $this->input->post('lkb', true);
+                $save_data['tgl_penawaran'] = $this->input->post('tgl_penawaran', true);
+                $save_data['p_ke'] = $this->input->post('p_ke', true);
 
                 $this->model->insert($save_data);
 
@@ -509,6 +537,11 @@ class Rfq_request extends Backend
                 'termin' => set_value('termin', $row->termin),
                 'tindak_lanjut' => set_value('tindak_lanjut', $row->tindak_lanjut),
                 'status_gagal' => set_value('status_gagal', $row->status_gagal),
+                'pic_se' => set_value('pic_se', $row->pic_se),
+                'total_vol' => set_value('total_vol', $row->total_vol),
+                'lkb' => set_value('lkb', $row->lkb),
+                'tgl_penawaran' =>  $row->tgl_penawaran == '' ? '' : date('Y-m-d', strtotime($row->tgl_penawaran)),
+                'p_ke' => set_value('p_ke', $row->p_ke),
             ];
             $this->template->view('update', $data);
         } else {
@@ -576,6 +609,11 @@ class Rfq_request extends Backend
         $this->form_validation->set_rules('termin', '* Termin', 'trim|xss_clean');
         $this->form_validation->set_rules('tindak_lanjut', '* Tindak lanjut', 'trim|xss_clean');
         $this->form_validation->set_rules('status_gagal', '* Status gagal', 'trim|xss_clean');
+        $this->form_validation->set_rules('pic_se', '* PIC SE', 'trim|xss_clean');
+        $this->form_validation->set_rules('total_vol', '* Total Vol', 'trim|xss_clean');
+        $this->form_validation->set_rules('lkb', '* LKB', 'trim|xss_clean');
+        $this->form_validation->set_rules('tgl_penawaran', '* Tanggal Penawaran', 'trim|xss_clean');
+        $this->form_validation->set_rules('p_ke', '* P ke', 'trim|xss_clean');
         $this->form_validation->set_error_delimiters('<i class="error text-danger" style="font-size:11px">', '</i>');
 
         if ($this->form_validation->run()) {
@@ -600,6 +638,11 @@ class Rfq_request extends Backend
             $save_data['termin'] = $this->input->post('termin', true);
             $save_data['tindak_lanjut'] = $this->input->post('tindak_lanjut', true);
             $save_data['status_gagal'] = $this->input->post('status_gagal', true);
+            $save_data['pic_se'] = $this->input->post('pic_se', true);
+            $save_data['total_vol'] = $this->input->post('total_vol', true);
+            $save_data['lkb'] = $this->input->post('lkb', true);
+            $save_data['tgl_penawaran'] = $this->input->post('tgl_penawaran', true);
+            $save_data['p_ke'] = $this->input->post('p_ke', true);
 
             // var_dump($this->input->post(null, true));
 
@@ -640,7 +683,7 @@ class Rfq_request extends Backend
         $post = $this->input->post(null, true);
 
         $pecah = explode(' - ', $post['tanggal']);
-        $dateMasuk = new DateTime();
+        $today = new DateTime();
         $dateKeluar = new DateTime();
         $mulai = date('Y-m-d', strtotime($pecah[0]));
         $akhir = date('Y-m-d', strtotime(end($pecah)));
@@ -679,12 +722,12 @@ class Rfq_request extends Backend
         $sheet->setCellValue('B3', "Deadline");
         $sheet->setCellValue('C3', "SBU");
         $sheet->setCellValue('D3', "NPP");
-        $sheet->setCellValue('E3', "No penawaran"); 
-        $sheet->setCellValue('F3', "Status Gagal"); 
+        $sheet->setCellValue('E3', "No penawaran");
+        $sheet->setCellValue('F3', "Status Gagal");
         $sheet->setCellValue('G3', "Status penawaran");
-        $sheet->setCellValue('H3', "Pelanggan"); 
-        $sheet->setCellValue('I3', "Nama perusahaan"); 
-        $sheet->setCellValue('J3', "Nama proyek"); 
+        $sheet->setCellValue('H3', "Pelanggan");
+        $sheet->setCellValue('I3', "Nama perusahaan");
+        $sheet->setCellValue('J3', "Nama proyek");
         $sheet->setCellValue('K3', 'Nama owner');
         $sheet->setCellValue('L3', 'Untuk perhatian');
         $sheet->setCellValue('M3', 'Email pelanggan');
@@ -704,6 +747,12 @@ class Rfq_request extends Backend
         $sheet->setCellValue('AA3', 'Omzet Penjualan');
         $sheet->setCellValue('AB3', 'Termin');
         $sheet->setCellValue('AC3', 'Tindak Lanjut');
+        $sheet->setCellValue('AD3', 'PIC SE');
+        $sheet->setCellValue('AE3', 'Total Vol');
+        $sheet->setCellValue('AF3', 'LKB');
+        $sheet->setCellValue('AG3', 'Tanggal Penawaran');
+        $sheet->setCellValue('AH3', 'Umur Penawaran');
+        $sheet->setCellValue('AI3', 'P Ke');
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
         $sheet->getStyle('B3')->applyFromArray($style_col);
@@ -734,6 +783,12 @@ class Rfq_request extends Backend
         $sheet->getStyle('AA3')->applyFromArray($style_col);
         $sheet->getStyle('AB3')->applyFromArray($style_col);
         $sheet->getStyle('AC3')->applyFromArray($style_col);
+        $sheet->getStyle('AD3')->applyFromArray($style_col);
+        $sheet->getStyle('AE3')->applyFromArray($style_col);
+        $sheet->getStyle('AF3')->applyFromArray($style_col);
+        $sheet->getStyle('AG3')->applyFromArray($style_col);
+        $sheet->getStyle('AH3')->applyFromArray($style_col);
+        $sheet->getStyle('AI3')->applyFromArray($style_col);
 
         //GET DATA
         $rfqData = $this->base->getExport(['mulai' => $mulai, 'akhir' => $akhir])->result();
@@ -769,6 +824,16 @@ class Rfq_request extends Backend
           $sheet->setCellValue('AA'.$numrow, number_format($data->omzet_penjualan,0,",","."));
           $sheet->setCellValue('AB'.$numrow, number_format($data->termin,0,",","."));
           $sheet->setCellValue('AC'.$numrow, $data->tindak_lanjut);
+          $sheet->setCellValue('AD'.$numrow, $data->pic_se);
+          $sheet->setCellValue('AE'.$numrow, $data->total_vol);
+          $sheet->setCellValue('AF'.$numrow, $data->lkb);
+          $sheet->setCellValue('AG'.$numrow, $data->tgl_penawaran);
+
+          $tgl_penawaran = new DateTime($data->tgl_penawaran);
+          $diff = $today->diff($tgl_penawaran)->format("%R%a days");
+          $sheet->setCellValue('AH'.$numrow, $diff);
+
+          $sheet->setCellValue('AI'.$numrow, $data->p_ke);
 
           // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
           $sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -801,6 +866,12 @@ class Rfq_request extends Backend
           $sheet->getStyle('AA'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('AB'.$numrow)->applyFromArray($style_row);
           $sheet->getStyle('AC'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AD'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AE'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AF'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AG'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AH'.$numrow)->applyFromArray($style_row);
+          $sheet->getStyle('AI'.$numrow)->applyFromArray($style_row);
 
           $no++; // Tambah 1 setiap kali looping
           $numrow++; // Tambah 1 setiap kali looping
@@ -835,6 +906,12 @@ class Rfq_request extends Backend
         $sheet->getColumnDimension('AA')->setWidth(50); // Set width kolom E
         $sheet->getColumnDimension('AB')->setWidth(50); // Set width kolom E
         $sheet->getColumnDimension('AC')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AD')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AE')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AF')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AG')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AH')->setWidth(50); // Set width kolom E
+        $sheet->getColumnDimension('AI')->setWidth(50); // Set width kolom E
 
         // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
         $sheet->getDefaultRowDimension()->setRowHeight(-1);

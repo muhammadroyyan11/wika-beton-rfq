@@ -173,6 +173,37 @@
                         <input type="date" class="form-control form-control-sm" placeholder="Tanggal selesai"
                             name="tanggal_selesai" id="tanggal_selesai">
                     </div>
+                    
+                    <!-- NEW PROJECT 3 -->
+                    <div class="form-group">
+                        <label>PIC SE</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="PIC SE"
+                            name="pic_se" id="pic_se">
+                            
+                    <div class="form-group">
+                        <label>Total Volume</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="total_vol"
+                            name="total_vol" id="total_vol">
+                    </div>
+
+                    <div class="form-group">
+                        <label>LKB</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="lkb"
+                            name="lkb" id="lkb">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tanggal Penawaran</label>
+                        <input type="date" class="form-control form-control-sm" placeholder="tgl_penawaran"
+                            name="tgl_penawaran" id="tgl_penawaran">
+                    </div>
+
+                    <div class="form-group">
+                        <label>P Ke</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="p_ke"
+                            name="p_ke" id="p_ke">
+                    </div>
+                    <!-- END -->
 
                     <div class="form-group">
                         <label>Wilayah</label>

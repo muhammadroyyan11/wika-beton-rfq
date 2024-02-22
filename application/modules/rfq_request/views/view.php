@@ -126,8 +126,35 @@
             <td><?= $tindak_lanjut ?></td>
           </tr>
           <tr>
-            <td>Status Gagal</td>
-            <td><?= $status_gagal ?></td>
+            <td>PIC SE</td>
+            <td><?= $pic_se ?></td>
+          </tr>
+          <tr>
+            <td>Total Volume</td>
+            <td><?= $total_vol ?></td>
+          </tr>
+          <tr>
+            <td>LKB</td>
+            <td><?= $lkb ?></td>
+          </tr>
+          <tr>
+            <td>Tanggal Penawaran</td>
+            <td><?= $tgl_penawaran ?></td>
+          </tr>
+          <tr>
+            <td>Umur Penawaran</td>
+            <td>
+              <?=
+                $today = new DateTime();
+                $tgl_penawaran = new DateTime($tgl_penawaran);
+                $diff = $today->diff($tgl_penawaran)->format("%R%a days");
+                echo $diff;
+              ?>
+            </td>
+          </tr>
+          <tr>
+            <td>P ke</td>
+            <td><?= $p_ke ?></td>
           </tr>
           <tr>
             <td>Lampiran</td>

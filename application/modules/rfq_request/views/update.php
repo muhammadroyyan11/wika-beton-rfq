@@ -164,8 +164,34 @@
               </select>
           </div>
 
-          <input type="hidden" name="submit" value="update">
+          <!-- NEW PROJECT 3 -->
+          <div class="form-group">
+              <label>PIC SE</label>
+              <input type="text" class="form-control" rows="3" name="pic_se" id="pic_se" value="<?=$pic_se?>">
+          </div>
+                  
+          <div class="form-group">
+              <label>Total Volume</label>
+              <input type="text" class="form-control" rows="3" name="total_vol" id="total_vol" value="<?=$total_vol?>">
+          </div>
 
+          <div class="form-group">
+              <label>LKB</label>
+              <input type="text" class="form-control" rows="3" name="lkb" id="lkb" value="<?=$lkb?>">
+          </div>
+
+          <div class="form-group">
+            <label>Tanggal Penawaran</label>
+            <input type="date" class="form-control" placeholder="tgl_penawaran" name="tgl_penawaran" id="tgl_penawaran" value="<?=$tgl_penawaran?>">
+          </div>
+
+          <div class="form-group">
+              <label>P Ke</label>
+              <input type="text" class="form-control" rows="3" name="p_ke" id="p_ke" value="<?=$p_ke?>">
+          </div>
+          <!-- END -->
+
+          <input type="hidden" name="submit" value="update">
           <div class="text-right">
             <a href="<?=url($this->uri->segment(2))?>" class="btn btn-sm btn-danger"><?=cclang("cancel")?></a>
             <button type="submit" id="submit"  class="btn btn-sm btn-primary"><?=cclang("update")?></button>

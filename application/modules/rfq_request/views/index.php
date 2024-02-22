@@ -18,11 +18,9 @@
                     <div class="card-body card-dashboard">
                         <form autocomplete="off" class="content-filter">
                             <div class="row">
-                                <div class="row col-md-4 col-lg-4" style="margin: initial;">
-                                    <div class="form-group col" style="padding: 0px;">
-                                        <input type="text" id="id" class="form-control form-control-sm" style="height: 38px;"
-                                            placeholder="No Id" />
-                                    </div>
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input type="text" id="id" class="form-control form-control-sm" style="height: 38px;"
+                                        placeholder="No Id" />
                                 </div>
 
                                 <div class="form-group col-md-4 col-lg-4">
@@ -40,16 +38,32 @@
                                         placeholder="Nama proyek" />
                                 </div>
 
-                                <div class="form-group col-md-4 col-lg-4">
-                                    <input type="text" id="npp" class="form-control form-control-sm" style="height: 38px;"
+                                <div class="row col-md-4 col-lg-4" style="margin: initial;">
+                                    <div class="form-group col" style="padding: 0px;">
+                                        <input type="text" id="npp" class="form-control form-control-sm" style="height: 38px;"
                                         placeholder="NPP" />
-                                </div>
+                                    </div>
 
-                                <div class="form-group col-md-4 col-lg-4">
-                                    <input type="text" id="sbu" class="form-control form-control-sm" style="height: 38px;"
-                                    placeholder="SBU" />
+                                    <div class="form-group col-1" style="padding: 0px;">
+                                    </div>
+
+                                    <div class="form-group col" style="padding: 0px;">
+                                        <input type="text" id="sbu" class="form-control form-control-sm" style="height: 38px;"
+                                        placeholder="SBU" />
+                                    </div>
                                 </div>
                                 
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <input
+                                            placeholder="deadline"
+                                            class="form-control form-control-sm"
+                                            type="text"
+                                            onfocus="(this.type='date')"
+                                            onblur="(this.type='text')"
+                                            style="height: 38px;"
+                                            id="deadline" />
+                                </div>
+
                                 <div class="form-group col-md-4 col-lg-4">
                                     <input type="text" id="untuk_perhatian" class="form-control form-control-sm" style="height: 38px;"
                                     placeholder="Untuk perhatian" />
@@ -145,11 +159,16 @@
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>No Id</th>
-<!--                                        <th>RFQ Number</th>-->
+                                        <!-- <th>RFQ Number</th> -->
+                                        <th>PIC SE</th>
                                         <th>Deadline</th>
                                         <th>SBU</th>
                                         <th>NPP</th>
+                                        <th>Tanggal Penawaran</th>
+                                        <th>Umur Penawaran</th>
+                                        <th>P ke</th>
                                         <th>No penawaran</th>
                                         <th>Status Gagal</th>
                                         <th>Status penawaran</th>
@@ -172,6 +191,8 @@
                                         <th>Koordinat maps</th>
                                         <th>Jarak Batching Plant Menuju Site</th>
                                         <th>Metode pembayaran</th>
+                                        <th>Total Vol</th>
+                                        <th>LKB</th>
                                         <th>Omzet Kontrak</th>
                                         <th>Omzet Penjualan</th>
                                         <th>Termin</th>
@@ -240,14 +261,11 @@
     </div>
 </div>
 
-
-
 <script type="text/javascript">
     $(document).ready(function() {
         var table;
         //datatables
         table = $('#table').DataTable({
-
             "processing": true, //Feature control the processing indicator.
             "serverSide": true, //Feature control DataTables' server-side processing mode.
             "order": [0, 'ASC'], //Initial no order.
@@ -265,6 +283,12 @@
                 "type": "POST",
                 "data": function(data) {
                     data.id = $("#id").val();
+                    data.pic_se = $("#pic_se").val();
+                    data.total_vol = $("#total_vol").val();
+                    data.lkb = $("#lkb").val();
+                    data.tgl_penawaran = $("#tgl_penawaran").val();
+                    data.umur_penawaran = $("#umur_penawaran").val();
+                    data.p_ke = $("#p_ke").val();
                     data.deadline = $("#deadline").val();
                     data.sbu = $("#sbu").val();
                     data.npp = $("#npp").val();
@@ -301,19 +325,52 @@
             "columnDefs": [
 
                 {
-                    "targets": 0,
-                    "orderable": true
+                    "targets": 1,
+                    "orderable": true,
                 },
                 {
                     "className": "text-center",
                     "orderable": false,
-                    "targets": 29
+                    "targets": 36
                 },
             ],
+
+            "rowCallback": function (row, data) {
+                // console.log(data)
+
+                if (data[11] === "Gagal Diperoleh") {
+                    $(row).css('background-color', '#f78d8d');
+                    $(row).css('color', '#000000');
+                }
+
+                if (data[11] == "Diperoleh" ) {
+                    $(row).css('background-color', '#96ff9d');
+                    $(row).css('color', '#000000');
+                }
+
+                var today = new Date();
+                var deadlineParts = data[3].split('-');
+                var deadline = new Date(deadlineParts[2], deadlineParts[1] - 1, deadlineParts[0]);
+                var dday = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+                console.log(dday);
+
+                if (dday >= 0 || dday === -1) {
+                    $('td:eq(0)', row).html('<i style="color:red; font-size:20px" class="fa fa-warning">');
+                }
+
+
+            }
+
         });
 
         $("#reload").click(function() {
             $("#id").val("");
+            $("#pic_se").val("");
+            $("#total_vol").val("");
+            $("#lkb").val("");
+            $("#tgl_penawaran").val("");
+            $("#umur_penawaran").val("");
+            $("#p_ke").val("");
             $("#deadline").val("");
             $("#sbu").val("");
             $("#npp").val("");
@@ -348,9 +405,9 @@
 
         function resetFilterValues() {
             // Reset values in your filter form fields
-            $("#id, #no_penawaran, #nama_perusahaan, #nama_proyek, #npp, #sbu, #untuk_perhatian, #suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val("");
+            $("#id, #no_penawaran, #nama_perusahaan, #nama_proyek, #npp, #deadline, #sbu, #untuk_perhatian, #suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val("");
             // Reset select2 elements
-            $("#suplai_batching, #sektor, #status_penawaran, #jenis_proyek, #metode_pembayaran").val(null).trigger("change");
+            $("#suplai_batching, #sektor, #status_penawaran, #deadline, #jenis_proyek, #metode_pembayaran").val(null).trigger("change");
         }
 
         $(document).on("click", "#filter-show", function(e) {

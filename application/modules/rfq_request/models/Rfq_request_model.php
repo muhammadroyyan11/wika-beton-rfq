@@ -15,9 +15,18 @@ class Rfq_request_model extends MY_Model
 {
     private $table = 'rfq_request';
     private $primary_key = 'id';
-    private $column_order = ['id', 'no_penawaran', 'status_penawaran', 'pelanggan', 'nama_perusahaan', 'nama_proyek', 'nama_owner', 'untuk_perhatian', 'email_pelanggan', 'no_hp', 'kebutuhan_produk', 'suplai_batching', 'sumber_dana', 'sektor', 'jenis_proyek', 'tanggal_mulai', 'tanggal_selesai', 'koordinat', 'batching_jarak', 'metode_pembayaran', 'deadline', 'sbu', 'npp', 'wilayah', 'omzet_kontrak', 'omzet_penjualan', 'termin', 'tindak_lanjut', 'status_gagal'];
+    private $column_order = ['id', 'no_penawaran', 'status_penawaran', 'pelanggan', 'nama_perusahaan', 'nama_proyek', 'nama_owner', 'untuk_perhatian', 'email_pelanggan', 'no_hp', 'kebutuhan_produk', 'suplai_batching', 'sumber_dana', 'sektor', 'jenis_proyek', 'tanggal_mulai', 'tanggal_selesai', 'koordinat', 'batching_jarak', 'metode_pembayaran', 'deadline', 'sbu', 'npp', 'wilayah', 'omzet_kontrak', 'omzet_penjualan', 'termin', 'tindak_lanjut', 'status_gagal', 'pic_se', 'total_vol', 'lkb', 'tgl_penawaran', 'p_ke'];
     private $order = ['rfq_request.id' => 'ASC'];
-    private $select = 'rfq_request.id,rfq_request.no_penawaran,rfq_request.status_penawaran,rfq_request.pelanggan,rfq_request.nama_perusahaan,rfq_request.nama_proyek,rfq_request.nama_owner,rfq_request.untuk_perhatian,rfq_request.email_pelanggan,rfq_request.no_hp,rfq_request.kebutuhan_produk,rfq_request.suplai_batching,rfq_request.sumber_dana,rfq_request.sektor,rfq_request.jenis_proyek,rfq_request.tanggal_mulai,rfq_request.tanggal_selesai,rfq_request.koordinat,rfq_request.batching_jarak,rfq_request.metode_pembayaran,rfq_request.deadline,rfq_request.sbu,rfq_request.npp,rfq_request.wilayah,rfq_request.omzet_kontrak,rfq_request.omzet_penjualan,rfq_request.termin,rfq_request.tindak_lanjut,rfq_request.status_gagal';
+    private $select = 'rfq_request.id,rfq_request.no_penawaran,rfq_request.status_penawaran,
+    rfq_request.pelanggan,rfq_request.nama_perusahaan,rfq_request.nama_proyek,
+    rfq_request.nama_owner,rfq_request.untuk_perhatian,rfq_request.email_pelanggan,
+    rfq_request.no_hp,rfq_request.kebutuhan_produk,rfq_request.suplai_batching,
+    rfq_request.sumber_dana,rfq_request.sektor,rfq_request.jenis_proyek,rfq_request.tanggal_mulai,
+    rfq_request.tanggal_selesai,rfq_request.koordinat,rfq_request.batching_jarak,
+    rfq_request.metode_pembayaran,rfq_request.deadline,rfq_request.sbu,rfq_request.npp,
+    rfq_request.wilayah,rfq_request.omzet_kontrak,rfq_request.omzet_penjualan,
+    rfq_request.termin,rfq_request.tindak_lanjut,rfq_request.status_gagal,
+    rfq_request.pic_se,rfq_request.total_vol,rfq_request.lkb,rfq_request.tgl_penawaran,rfq_request.p_ke';
 
     public function __construct()
     {
@@ -44,6 +53,28 @@ class Rfq_request_model extends MY_Model
         if ($this->input->post('no_penawaran')) {
             $this->db->like('rfq_request.no_penawaran', $this->input->post('no_penawaran'));
         }
+
+        // new task
+        if ($this->input->post('pic_se')) {
+            $this->db->like('rfq_request.pic_se', $this->input->post('pic_se'));
+        }
+
+        if ($this->input->post('total_vol')) {
+            $this->db->like('rfq_request.total_vol', $this->input->post('total_vol'));
+        }
+
+        if ($this->input->post('lkb')) {
+            $this->db->like('rfq_request.lkb', $this->input->post('lkb'));
+        }
+
+        if ($this->input->post('tgl_penawaran')) {
+            $this->db->like('rfq_request.tgl_penawaran', $this->input->post('tgl_penawaran'));
+        }
+
+        if ($this->input->post('p_ke')) {
+            $this->db->like('rfq_request.p_ke', $this->input->post('p_ke'));
+        }
+        // end new task
 
         if ($this->input->post('nama_perusahaan')) {
             $this->db->like('rfq_request.nama_perusahaan', $this->input->post('nama_perusahaan'));
@@ -113,9 +144,9 @@ class Rfq_request_model extends MY_Model
             $this->db->like('rfq_request.metode_pembayaran', $this->input->post('metode_pembayaran'));
         }
 
-        // if ($this->input->post('deadline')) {
-        //     $this->db->like('rfq_request.deadline', $this->input->post('deadline'));
-        // }
+        if ($this->input->post('deadline')) {
+            $this->db->like('rfq_request.deadline', $this->input->post('deadline'));
+        }
 
         if ($this->input->post('sbu')) {
             $this->db->like('rfq_request.sbu', $this->input->post('sbu'));
