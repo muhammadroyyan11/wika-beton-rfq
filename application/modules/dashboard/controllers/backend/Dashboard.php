@@ -20,7 +20,7 @@ class Dashboard extends Backend
     $data = [
       'newRFQ'  => $this->base->get('rfq_request'),
       'company' => $this->db->get('company')->result_array(),
-      'tes'    => 'tes'
+      'data_deadline'    => $this->base->data_deadline(),
     ];
     $this->template->set_title("Dashboard", $data);
     $this->template->view("index", $data);

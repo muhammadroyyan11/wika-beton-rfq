@@ -21,6 +21,63 @@
         </div>
       </div>
     </div>
+
+    <div class="row match-height">
+      <div class="col-xl-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <h4 class="card-title">Data Deadline</h4>
+            </div>
+            <div class="card">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Id</th>
+                              <th>Deadline</th>
+                              <th>Hari</th>
+                              <th>No Penawaran</th>
+                              <th>Nama Pelanggan</th>
+                              <th>Nama Perusahaan</th>
+                              <th>Nama Proyek</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      foreach ($data_deadline as $key => $data):
+                          $today = new DateTime();
+                          $deadline = new DateTime($data->deadline);
+                          $diff = $today->diff($deadline)->format("%R%a days");
+                          $diff_cons = $today->diff($deadline)->days;
+                          if ($diff_cons <= 7) {
+                      ?>
+                      <tr>
+                          <td><?php echo $data->id; ?></td>
+                          <td><?php echo date('d-m-Y', strtotime($data->deadline)); ?></td>
+                          <td><?php echo $diff; ?></td>
+                          <td><?php echo $data->no_penawaran; ?></td>
+                          <td><?php echo $data->pelanggan; ?></td>
+                          <td><?php echo $data->nama_perusahaan; ?></td>
+                          <td><?php echo $data->nama_proyek; ?></td>
+                          <td>
+                            <a href="<?php echo base_url('cpanel/rfq_request/detail/') . $data->id; ?>" class="btn-sm btn-primary"> <b>></b> </a>
+                          </td>
+                      </tr>
+                      <?php
+                          }
+                      endforeach;
+                      ?>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row match-height">
       <div class="col-xl-12 col-md-12 col-sm-12">
         <div class="card">

@@ -182,6 +182,11 @@ class Rfq_request extends Backend
         $this->is_allowed('rfq_request_detail');
         if ($row = $this->model->find($id)) {
             $this->template->set_title('Detail ' . $this->title);
+
+            $today = new DateTime();
+            $tgl_penawaran = new DateTime($row->tgl_penawaran);
+            $diff = $today->diff($tgl_penawaran)->format("%R%a days");
+
             $data = [
                 'id' => $row->id,
                 'no_penawaran' => $row->no_penawaran,
@@ -213,6 +218,12 @@ class Rfq_request extends Backend
                 'termin' => number_format($row->termin,0,",","."),
                 'status_gagal' => $row->status_gagal,
                 'tindak_lanjut' => $row->tindak_lanjut,
+                'pic_se' => $row->pic_se,
+                'total_vol' => $row->total_vol,
+                'lkb' => $row->lkb,
+                'p_ke' => $row->p_ke,
+                'tgl_penawaran' => $row->tgl_penawaran,
+                'diff' => $diff
             ];
             $data['file'] = $this->model->get_file($row->id)->result_array();
             $this->template->view('view', $data);

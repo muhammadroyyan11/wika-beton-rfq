@@ -145,10 +145,7 @@
             <td>Umur Penawaran</td>
             <td>
               <?=
-                $today = new DateTime();
-                $tgl_penawaran = new DateTime($tgl_penawaran);
-                $diff = $today->diff($tgl_penawaran)->format("%R%a days");
-                echo $diff;
+                $diff;
               ?>
             </td>
           </tr>
