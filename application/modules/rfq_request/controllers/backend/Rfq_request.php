@@ -121,10 +121,11 @@ class Rfq_request extends Backend
                 $rows[] = $row->batching_jarak;
                 $rows[] = $row->metode_pembayaran;
                 $rows[] = number_format($row->total_vol,2,",",".");
+                // $rows[] = number_format($row->lkb,2,",",".");
                 $rows[] = $row->lkb;
-                $rows[] = number_format($row->omzet_kontrak,2,",",".");
-                $rows[] = number_format($row->omzet_penjualan,2,",",".");
-                $rows[] = number_format($row->termin,2,",",".");
+                $rows[] = number_format($row->omzet_kontrak,0,",",".");
+                $rows[] = number_format($row->omzet_penjualan,0,",",".");
+                $rows[] = number_format($row->termin,0,",",".");
                 $rows[] = $row->tindak_lanjut;
 
                 $rows[] =
@@ -213,14 +214,14 @@ class Rfq_request extends Backend
                 'sbu' => $row->sbu,
                 'npp' => $row->npp,
                 'wilayah' => $row->wilayah,
-                'omzet_kontrak' => number_format($row->omzet_kontrak,2,",","."),
-                'omzet_penjualan' => number_format($row->omzet_penjualan,2,",","."),
-                'termin' => number_format($row->termin,2,",","."),
+                'omzet_kontrak' => number_format($row->omzet_kontrak,0,",","."),
+                'omzet_penjualan' => number_format($row->omzet_penjualan,0,",","."),
+                'termin' => number_format($row->termin,0,",","."),
                 'status_gagal' => $row->status_gagal,
                 'tindak_lanjut' => $row->tindak_lanjut,
                 'pic_se' => $row->pic_se,
                 'total_vol' => number_format($row->total_vol,2,",","."),
-                'lkb' => $row->lkb,
+                'lkb' => number_format($row->lkb,2,",","."),
                 'p_ke' => $row->p_ke,
                 'tgl_penawaran' => $row->tgl_penawaran,
                 'diff' => $diff
@@ -831,9 +832,9 @@ class Rfq_request extends Backend
           $sheet->setCellValue('W'.$numrow, $data->koordinat);
           $sheet->setCellValue('X'.$numrow, $data->batching_jarak);
           $sheet->setCellValue('Y'.$numrow, $data->metode_pembayaran);
-          $sheet->setCellValue('Z'.$numrow, number_format($data->omzet_kontrak,2,",","."));
-          $sheet->setCellValue('AA'.$numrow, number_format($data->omzet_penjualan,2,",","."));
-          $sheet->setCellValue('AB'.$numrow, number_format($data->termin,2,",","."));
+          $sheet->setCellValue('Z'.$numrow, $data->omzet_kontrak);
+          $sheet->setCellValue('AA'.$numrow, $data->omzet_penjualan);
+          $sheet->setCellValue('AB'.$numrow, $data->termin);
           $sheet->setCellValue('AC'.$numrow, $data->tindak_lanjut);
           $sheet->setCellValue('AD'.$numrow, $data->pic_se);
           $sheet->setCellValue('AE'.$numrow, $data->total_vol);

@@ -133,19 +133,16 @@
           <div class="form-group">
             <label>Omzet Kontrak</label>
             <input type="number" class="form-control" rows="3" name="omzet_kontrak" id="omzet_kontrak" value="<?=$omzet_kontrak?>">
-            <span style="font-size: smaller;">contoh: 1000.50</span>
           </div>
 
           <div class="form-group">
             <label>Omzet Penjualan</label>
             <input type="number" class="form-control" rows="3" name="omzet_penjualan" id="omzet_penjualan" value="<?=$omzet_penjualan?>">
-            <span style="font-size: smaller;">contoh: 1000.50</span>
           </div>
 
           <div class="form-group">
             <label>Termin</label>
             <input type="number" class="form-control" rows="3" name="termin" id="termin" value="<?=$termin?>">
-            <span style="font-size: smaller;">contoh: 1000.50</span>
           </div>
 
 
@@ -182,7 +179,7 @@
           <div class="form-group">
               <label>LKB</label>
               <input type="text" class="form-control" rows="3" name="lkb" id="lkb" value="<?=$lkb?>">
-              <span style="font-size: smaller;">contoh: 1000.50</span>
+              <span style="font-size: smaller;">contoh: 0.00%</span>
           </div>
 
           <div class="form-group">
